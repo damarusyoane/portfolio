@@ -1,7 +1,7 @@
 # Damarus Ngankou — Portfolio
 
 Bilingual (EN/FR) portfolio for an **AI & Automation Engineer**, targeting the
-Canadian IT market. Dark, premium design with an animated automation-graph hero,
+ IT market. Dark, premium design with an animated automation-graph hero,
 anonymized case studies, a technical blog, and a working contact form.
 
 ## Stack
