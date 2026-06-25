@@ -1,0 +1,35 @@
+---
+title: "Concevoir un système de scraping multi-agents résilient"
+date: "2026-05-28"
+excerpt: "Comment récupérer des assets de façon fiable sur une plateforme sans API et anti-bot — via capture d'URL au clic, une flotte d'agents navigateur et une bascule ordonnée."
+tags: ["Automatisation", "Playwright", "Fiabilité"]
+---
+
+Certaines des automatisations les plus utiles vivent en terrain hostile : une plateforme sans API publique, une protection anti-bot agressive, et de gros fichiers derrière des URL signées à courte durée de vie. Voici comment j'ai transformé ce chaos en un service interne en un clic — qui continue de tourner même quand des éléments tombent.
+
+## Le problème central
+
+La plateforme cible émet une **URL CDN signée** quand un utilisateur clique sur « télécharger ». Cette URL est le trésor : elle diffuse le fichier directement du CDN, sans authentification. Mais elle expire vite — de l'ordre de **45 secondes**. Toute architecture qui capture l'URL tôt pour l'utiliser plus tard est condamnée : le temps qu'un email soit envoyé, reçu et cliqué, le lien est mort.
+
+La solution : **capturer au moment du clic**. L'orchestrateur ne détient jamais d'URL périmée. À l'instant où l'utilisateur final agit, un agent navigateur réalise le vrai clic et renvoie une URL signée fraîche, vers laquelle on redirige immédiatement.
+
+## Une flotte, pas un serveur
+
+Une seule instance de navigateur est un point de défaillance unique. Les sessions expirent, les machines se mettent en veille, la plateforme limite une IP. Le système fait donc tourner une **flotte d'agents headless** — de petits services Python (FastAPI + Playwright) détenant chacun un profil navigateur authentifié et persistant, exposé via son propre tunnel Cloudflare.
+
+La couche d'orchestration garde une **liste ordonnée** d'agents. Pour chaque demande, elle teste le premier agent ; s'il ne répond pas en quelques secondes, elle passe au suivant. Le premier qui renvoie une URL exploitable gagne. Une machine éteinte est invisible pour l'utilisateur.
+
+```text
+demande → [agent-1 ?] → [agent-2 ?] → [agent-3 ?] → URL signée → redirection 302
+```
+
+## Les leçons qui comptent
+
+- **Échouer vite, puis basculer.** Les health-checks utilisent un timeout court : un agent mort coûte ~2 s, pas 60. La boucle de bascule n'a de valeur que si chaque saut est bon marché.
+- **Ne pas relayer la charge.** Les fichiers de plusieurs gigaoctets ne passent jamais par l'orchestrateur. Il capture une URL et redirige ; le CDN fait le gros du travail. Un téléchargement *commencé* dans la fenêtre de validité se poursuit même après l'expiration, car le CDN vérifie la signature une fois, au démarrage.
+- **Jetons à usage unique.** Chaque demande reçoit un jeton éphémère, à usage unique. Impossible à rejouer ou à partager.
+- **Rendre les échecs visibles.** Quand tous les agents sont en panne, l'utilisateur voit une page « service indisponible » propre et je reçois un email — jamais un blocage silencieux.
+
+## À retenir
+
+La fiabilité ici n'est pas une astuce maligne, mais une série de petites décisions défensives : capturer tard, distribuer le risque, échouer vite, et ne jamais échouer en silence. C'est ce qui transforme un script fragile en un système sur lequel on peut compter.

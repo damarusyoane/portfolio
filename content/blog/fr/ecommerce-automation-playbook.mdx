@@ -1,0 +1,41 @@
+---
+title: "Le playbook de l'automatisation e-commerce"
+date: "2026-03-12"
+excerpt: "Paniers, commandes, stocks, avis — les automatisations qui composent discrètement du vrai chiffre d'affaires pour une boutique en ligne, et comment les construire pour qu'elles ne cassent pas."
+tags: ["E-commerce", "n8n", "Automatisation"]
+---
+
+La plupart des équipes e-commerce ne perdent pas d'argent sur de grosses pannes spectaculaires. Elles le perdent dans les interstices — le panier abandonné que personne n'a relancé, l'article survendu, la demande d'avis jamais partie. L'automatisation, c'est combler ces interstices sans embaucher pour ça.
+
+Voici le playbook que je dégaine.
+
+## 1. Récupération de paniers abandonnés
+
+L'automatisation au meilleur ROI de l'e-commerce, point. Un client ajoute au panier puis s'en va ; un workflow attend, puis envoie une séquence minutée — email d'abord, relance SMS ensuite, peut-être une incitation à la fin.
+
+L'astuce, c'est la **retenue et le timing** : un rappel bien placé vaut mieux que cinq désespérés. Tracez qui a converti pour cesser de le solliciter dès l'achat.
+
+## 2. Synchro commande → fulfillment
+
+Quand les commandes vivent dans un système et le fulfillment dans un autre, les humains deviennent l'intégration — copier-coller et erreurs. Un workflow de synchro pousse chaque commande payée vers le 3PL ou l'ERP, réécrit le numéro de suivi, et signale toute incohérence.
+
+Rendez-le **idempotent** : le même événement de commande ne doit jamais créer deux expéditions, même si le webhook se déclenche deux fois.
+
+## 3. Synchro stock & prix multicanal
+
+Vendre sur une boutique *et* des marketplaces, c'est voir le stock se désynchroniser vite, et les survendus coûtent des notes. Un job planifié réconcilie les quantités entre canaux et propage les prix depuis une seule source de vérité.
+
+## 4. Avis post-achat & réputation
+
+Quelques jours après livraison, demandez un avis — et routez la réponse. Les cinq étoiles partent en public ; une plainte file droit au support avant de le devenir. Ce seul flux améliore à la fois votre note *et* votre rétention.
+
+## Les construire pour durer
+
+Sur tout cela s'applique la même discipline d'ingénierie :
+
+- **Retries avec backoff** sur chaque appel d'API externe.
+- **Clés d'idempotence** pour que les rejeux ne facturent ni n'expédient en double.
+- **Un chemin d'erreur qui alerte un humain** — les échecs silencieux sont les plus coûteux.
+- **Secrets dans des credentials managés**, jamais en dur.
+
+Bien faites, ces automatisations ne ressemblent pas à du logiciel. On dirait juste que la boutique... tourne.

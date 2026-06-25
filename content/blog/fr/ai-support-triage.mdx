@@ -1,0 +1,40 @@
+---
+title: "Construire un triage support par IA qui dévie vraiment les tickets"
+date: "2026-04-08"
+excerpt: "Greffer un LLM sur votre helpdesk est facile. En construire un auquel les clients font confiance — et qui n'invente jamais une politique de remboursement — demande quelques garde-fous délibérés."
+tags: ["IA", "Support", "RAG"]
+---
+
+Toute équipe support attend la même chose de l'IA : moins de tickets répétitifs, des premières réponses plus rapides, des clients plus heureux. La version naïve — envoyer le ticket à un LLM et renvoyer ce qu'il dit — échoue vite, car le modèle invente joyeusement des politiques qu'il ne connaît pas.
+
+Un système de triage qui marche vraiment, c'est surtout **ce que vous interdisez au modèle de faire**.
+
+## Étape 1 : classer avant de répondre
+
+Le premier travail n'est pas de répondre — c'est de router. Une passe de classification rapide étiquette chaque ticket : facturation, bug, mode d'emploi, risque de churn, spam. Ce seul signal permet de résoudre automatiquement la voie facile et d'accélérer l'urgente vers un humain.
+
+## Étape 2 : sourcer chaque réponse
+
+Pour tout ce qui est face client, le modèle ne doit répondre **qu'**à partir de vos vraies docs et politiques — en RAG, avec citations. Si le contexte récupéré ne couvre pas la question, le bon comportement est de le dire et de passer la main, pas de deviner.
+
+C'est toute la différence entre un outil de déviation et un risque.
+
+## Étape 3 : proposer, pas envoyer (au début)
+
+Démarrez le modèle en **mode brouillon** : il propose une réponse, un agent valide ou édite en un clic. Vous gagnez en vitesse immédiatement, vous constituez un jeu de bonnes réponses, et vous gagnez la confiance d'auto-envoyer les catégories sûres plus tard.
+
+## Étape 4 : toujours laisser une sortie
+
+Trois garde-fous évitent de piéger les clients :
+
+- **Confiance faible → humain.** Si la récupération est faible ou le classifieur incertain, on escalade.
+- **Frustration → humain.** Détectez la colère ou les tentatives répétées et routez immédiatement.
+- **Demande explicite → humain.** « Parler à quelqu'un » doit toujours fonctionner.
+
+## Étape 5 : boucler la boucle
+
+Journalisez chaque question à laquelle l'assistant n'a pas su répondre. Cette liste est en or — c'est votre backlog de documentation, classé par demande réelle. Corrigez les docs, et le taux de déviation grimpe tout seul.
+
+## Le gain
+
+Ainsi conçue, l'IA ne remplace pas votre équipe support — elle retire les 40 % ennuyeux pour qu'elle passe sa journée sur les tickets qui ont vraiment besoin d'un humain. C'est la version dont les clients vous remercient.

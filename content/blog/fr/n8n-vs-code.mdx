@@ -1,0 +1,37 @@
+---
+title: "n8n ou code : choisir le bon outil pour automatiser"
+date: "2026-02-18"
+excerpt: "Les moteurs de workflow visuels et le code écrit à la main ne sont pas rivaux — c'est un spectre. Voici comment je choisis sur chaque projet."
+tags: ["n8n", "Architecture", "Automatisation"]
+---
+
+Chaque projet d'automatisation commence par le même carrefour : je câble ça dans un outil visuel comme n8n, ou j'écris du code ? Après des dizaines d'automatisations livrées, j'ai arrêté d'en faire un débat religieux. C'est un spectre, et la bonne réponse dépend de ce que le workflow doit vraiment faire.
+
+## Là où n8n gagne
+
+n8n brille quand le travail consiste surtout à **déplacer des données entre services**. Webhook entrant, transformation, appel de trois API, branchement sur une condition, notification à un humain. Vous obtenez gratuitement les retries, la planification, la gestion des credentials et l'historique d'exécution — et une personne non-développeuse peut lire le canevas et comprendre ce qui se passe.
+
+Ce dernier point compte plus qu'on ne l'admet. Un workflow qu'un collègue peut ouvrir et comprendre est un workflow qui survit à votre départ du projet.
+
+## Là où le code gagne
+
+Dès que la logique se densifie — boucles imbriquées, parsing complexe, transformations algorithmiques — un graphe visuel devient plus difficile à lire que la fonction équivalente. C'est là que je bascule dans un **node Code** ou que je déplace l'étape dans un petit service.
+
+Sur un projet, capturer une URL signée éphémère sur une plateforme anti-bot exigeait un navigateur headless persistant, des délais humains et des requêtes DOM conscientes des frames. Rien de tout ça n'a sa place dans un graphe de nodes — ça appartient à un service Python dédié que n8n se contente d'appeler.
+
+## Le juste milieu hybride
+
+Les meilleurs systèmes que j'ai construits sont **hybrides** : n8n comme orchestrateur, le code là où se trouve la réflexion.
+
+- n8n possède la planification, les retries, les credentials, le branchement et la traçabilité.
+- Un node `Code` ou un service externe possède la logique ardue.
+- Les deux communiquent en simple HTTP, donc chacun se teste isolément.
+
+## Règles empiriques
+
+- Si un collègue doit pouvoir le lire, commencez dans n8n.
+- Si vous luttez contre le canevas pour exprimer la logique, cette étape veut du code.
+- Gardez les secrets dans des credentials managés, jamais dans les paramètres de node.
+- Quel que soit votre choix, ajoutez retries et chemin d'erreur dès le jour 1 — pas après le premier échec à 3 h du matin.
+
+Choisissez l'outil qui facilite la vie de la *prochaine* personne. En général, c'est les deux.

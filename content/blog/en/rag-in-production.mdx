@@ -1,0 +1,42 @@
+---
+title: "RAG in production: grounding an AI assistant on your own docs"
+date: "2026-05-20"
+excerpt: "Retrieval-augmented generation is simple in a demo and unforgiving in production. The hard parts aren't the model — they're chunking, retrieval quality, and knowing when to say 'I don't know'."
+tags: ["AI", "RAG", "LLM"]
+---
+
+A RAG demo takes an afternoon. A RAG system people actually trust takes a lot more care. The model is the easy part; everything around retrieval is where projects succeed or quietly degrade.
+
+Here's what actually moves the needle.
+
+## Chunking is a product decision
+
+How you split documents determines what the model can ever see. Chunks that are too big bury the answer in noise; too small and you lose the context that makes a passage meaningful.
+
+I lean toward **structure-aware chunking** — split on headings and sections, keep a bit of overlap, and attach metadata (source, title, date) to every chunk. That metadata later powers filtering and, crucially, citations.
+
+## Retrieval quality beats model size
+
+If the right passage never makes it into the context window, no model can save the answer. Most "the AI is wrong" complaints are really **retrieval** failures.
+
+Things that help:
+
+- Hybrid search (semantic + keyword) so exact terms still match.
+- Re-ranking the top results before they hit the prompt.
+- Keeping the index fresh — a scheduled sync, so answers reflect today's docs, not last quarter's.
+
+## Teach it to say "I don't know"
+
+The single most important guardrail: when retrieval returns nothing relevant, the assistant must **refuse and hand off**, not improvise. A confident wrong answer erodes trust faster than an honest "I couldn't find that."
+
+## Always cite
+
+Every answer should point back to the source chunks it used. Citations do three jobs at once: users can verify, you can debug bad answers, and the whole system feels trustworthy instead of magical.
+
+## Measure the gaps
+
+Log the questions retrieval couldn't satisfy. That log is your roadmap — it tells you exactly which documents to write or fix, ranked by real demand.
+
+## The mindset
+
+Treat RAG as an **information-retrieval system with a language model on top**, not a chatbot with a search bolted on. Get chunking, retrieval, and refusal right, and the model almost takes care of itself.

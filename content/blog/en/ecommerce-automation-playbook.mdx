@@ -1,0 +1,41 @@
+---
+title: "The e-commerce automation playbook"
+date: "2026-03-12"
+excerpt: "Carts, orders, inventory, reviews — the automations that quietly compound into real revenue for an online store, and how to build them so they don't break."
+tags: ["E-commerce", "n8n", "Automation"]
+---
+
+Most e-commerce teams don't lose money on big, dramatic failures. They lose it in the gaps — the abandoned cart no one followed up on, the oversold item, the review request that never went out. Automation is how you close those gaps without hiring for them.
+
+Here's the playbook I reach for.
+
+## 1. Abandoned-cart recovery
+
+The highest-ROI automation in e-commerce, full stop. A shopper adds to cart and leaves; a workflow waits, then sends a timed sequence — email first, an SMS nudge later, maybe an incentive last.
+
+The trick is **restraint and timing**: one well-placed reminder beats five desperate ones. Track who recovered so you stop messaging them the moment they convert.
+
+## 2. Order-to-fulfillment sync
+
+When orders live in one system and fulfillment in another, humans become the integration — copy-pasting, and making mistakes. A sync workflow pushes each paid order to the 3PL or ERP, writes the tracking number back, and flags anything that doesn't match.
+
+Make it **idempotent**: the same order event should never create two shipments, even if the webhook fires twice.
+
+## 3. Inventory & price sync across channels
+
+Selling on a store *and* marketplaces means stock can drift out of sync fast, and oversells cost you ratings. A scheduled job reconciles quantities across channels and pushes price changes from one source of truth.
+
+## 4. Post-purchase reviews & reputation
+
+A few days after delivery, ask for a review — and route the response. Five stars go public; a complaint goes straight to support before it becomes a public one. This single flow improves both your rating *and* your retention.
+
+## Build them to last
+
+Across all of these, the same engineering discipline applies:
+
+- **Retries with backoff** on every external API call.
+- **Idempotency keys** so replays don't double-charge or double-ship.
+- **An error path that pages a human** — silent failures are the expensive kind.
+- **Secrets in managed credentials**, never hardcoded.
+
+Done right, these automations don't feel like software. They feel like the store just... runs.

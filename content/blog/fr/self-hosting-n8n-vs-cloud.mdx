@@ -1,0 +1,38 @@
+---
+title: "Pourquoi j'héberge n8n moi-même plutôt que d'utiliser n8n Cloud"
+date: "2026-06-10"
+excerpt: "n8n Cloud, c'est le bouton facile — mais dès qu'on traite du vrai volume d'automatisation, les calculs, le contrôle et la propriété des données pointent dans la même direction : le self-host. Voici exactement la stack que j'utilise."
+tags: ["Self-hosting", "n8n", "Infrastructure", "Coût"]
+---
+
+n8n Cloud est vraiment excellent pour démarrer — zéro configuration, mises à jour automatiques, on construit en quelques minutes. Mais dès que l'automatisation est devenue le cœur de ma façon de livrer, trois choses m'ont poussé vers le self-host : **le coût, le contrôle et la propriété des données.** Voici le décryptage honnête et la stack exacte que j'utilise.
+
+## Le calcul du coût
+
+C'est ce qui a fait pencher la balance en premier. n8n Cloud facture autour du volume d'exécutions — et une automatisation sérieuse en génère *énormément*. Boucles de scraping, audits planifiés, jobs de polling, pipelines IA multi-étapes : un seul workflow peut déclencher des milliers d'exécutions par jour. Sur un plan à l'usage, ça grimpe vite, et on se met à rationner la chose même qu'on cherche à passer à l'échelle.
+
+Un petit VPS **Hetzner** coûte quelques euros par mois et fait tourner les mêmes workflows avec un nombre d'exécutions **pratiquement illimité**. La différence n'est pas marginale — c'est la différence entre « surveiller le compteur » et « tout automatiser sans y penser ».
+
+## Contrôle et propriété des données
+
+Le self-host signifie que **mes données ne quittent jamais une infrastructure que je contrôle.** Pour des workflows qui touchent des credentials clients, du contenu scrappé ou des données métier, ça compte — pour la confiance comme pour la conformité. Je décide la version de n8n, les variables d'environnement, les timeouts d'exécution, le mode queue, les règles réseau. Aucune limite surprise de plateforme en plein projet.
+
+## La stack que j'utilise vraiment
+
+Le self-host a la réputation d'être pénible. Il ne l'est pas, avec les bons outils :
+
+- **Hetzner** — le VPS. Excellent rapport prix/performance, data centers européens, snapshots pour les sauvegardes.
+- **Cloudron** — la pièce que la plupart des gens manquent. Il transforme un serveur nu en plateforme managée : installation d'apps en un clic, SSL Let's Encrypt automatique, sauvegardes et mises à jour sans douleur. n8n tourne comme une app Cloudron — j'ai donc le confort « façon Cloud » sur ma propre machine.
+- **Netdata** — monitoring temps réel. CPU, RAM, disque, métriques par process, et des alertes dès qu'un pic apparaît. Quand un job de scraping s'emballe ou que la mémoire grimpe, je le vois instantanément au lieu de le découvrir via une exécution échouée.
+
+Ensemble, ça donne un setup self-hosted qui paraît managé : SSL géré, mises à jour gérées, sauvegardes gérées, monitoring géré — pour une fraction d'une facture à l'usage.
+
+## Les compromis (soyons honnêtes)
+
+Le self-host n'est pas gratuit en *effort*. On est responsable de l'uptime, des correctifs de sécurité et des sauvegardes. Il faut une discipline de monitoring. Si la machine tombe à 3 h du matin, c'est pour soi — c'est précisément pourquoi Netdata et les sauvegardes automatiques ne sont pas optionnels.
+
+## Quand le Cloud reste pertinent
+
+Si vous faites tourner une poignée de workflows à faible volume et ne voulez jamais penser à un serveur, n8n Cloud est le bon choix — payez le confort, passez à autre chose. Dès que le volume d'exécutions grandit, que la sensibilité des données compte, ou que la facture grimpe plus vite que la valeur, le self-host l'emporte.
+
+Pour ma façon de travailler — automatisation à fort volume, sensible et toujours active — **Hetzner + Cloudron + Netdata** est le setup qui me permet d'automatiser sans limites et sans surveiller un compteur.

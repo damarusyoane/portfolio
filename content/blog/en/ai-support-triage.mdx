@@ -1,0 +1,40 @@
+---
+title: "Building an AI support triage that actually deflects tickets"
+date: "2026-04-08"
+excerpt: "Bolting an LLM onto your helpdesk is easy. Building one that customers trust — and that never invents a refund policy — takes a few deliberate guardrails."
+tags: ["AI", "Support", "RAG"]
+---
+
+Every support team wants the same thing from AI: fewer repetitive tickets, faster first responses, happier customers. The naïve version — pipe the ticket to an LLM, send back whatever it says — fails fast, because the model cheerfully invents policies it doesn't know.
+
+A triage system that actually works is mostly about **what you don't let the model do**.
+
+## Step 1: Classify before you answer
+
+The first job isn't answering — it's routing. A quick classification pass tags each ticket: billing, bug, how-to, churn risk, spam. That single signal lets you auto-resolve the easy lane and fast-track the urgent one to a human.
+
+## Step 2: Ground every answer
+
+For anything customer-facing, the model should answer **only** from your real help docs and policies — retrieval-augmented, with citations. If the retrieved context doesn't cover the question, the correct behaviour is to say so and hand off, not to guess.
+
+This is the difference between a deflection tool and a liability.
+
+## Step 3: Draft, don't send (at first)
+
+Start the model in **draft mode**: it proposes a reply, an agent approves or edits with one click. You get the speed-up immediately, you build a dataset of good answers, and you earn the confidence to auto-send the safe categories later.
+
+## Step 4: Always leave an exit
+
+Three guardrails keep customers from getting trapped:
+
+- **Low confidence → human.** If retrieval is weak or the classifier is unsure, escalate.
+- **Frustration → human.** Detect anger or repeated attempts and route immediately.
+- **Explicit request → human.** "Talk to a person" must always work.
+
+## Step 5: Close the loop
+
+Log every question the assistant couldn't answer. That list is gold — it's your documentation backlog, ranked by real demand. Fix the docs, and the deflection rate climbs on its own.
+
+## The payoff
+
+Done this way, AI doesn't replace your support team — it removes the boring 40% so they can spend their day on the tickets that actually need a human. That's the version customers thank you for.

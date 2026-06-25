@@ -1,0 +1,135 @@
+{
+  "Nav": {
+    "work": "Projets",
+    "catalog": "Automatisations",
+    "about": "À propos",
+    "skills": "Compétences",
+    "experience": "Parcours",
+    "blog": "Blog",
+    "contact": "Contact",
+    "hireMe": "Me contacter"
+  },
+  "Hero": {
+    "badge": "Disponible — emploi & freelance",
+    "greeting": "Bonjour, je suis Damarus",
+    "role": "Ingénieur IA & Automatisation",
+    "tagline": "Je transforme des workflows manuels et fragiles en systèmes résilients qui tournent seuls — là où l'automatisation, les LLM et les API du monde réel se rencontrent.",
+    "ctaWork": "Voir mes projets",
+    "ctaContact": "Discutons",
+    "stats": {
+      "automations": "automatisations en production",
+      "ai": "LLM-native",
+      "bilingual": "EN / FR"
+    },
+    "scroll": "Défiler"
+  },
+  "About": {
+    "kicker": "À propos",
+    "title": "L'ingénierie d'automatisations fiables, de bout en bout",
+    "p1": "Je suis Damarus — Ingénieur IA & Automatisation. Je transforme des processus manuels et désordonnés en systèmes résilients qui tournent seuls. Je travaille au croisement de l'automatisation, des grands modèles de langage et des API du monde réel.",
+    "p2": "Mon obsession, c'est la fiabilité : retries, fallback de modèle, health-checks et alertes d'erreur, pour que rien n'échoue en silence. J'ai livré de l'automatisation navigateur distribuée, des pipelines de contenu IA et des moteurs de données SEO qui tournent sans surveillance en production.",
+    "p3": "Bilingue anglais et français — ouvert aux postes salariés comme aux missions freelance, sur site ou à distance.",
+    "factsTitle": "En bref",
+    "languages": "Anglais & français"
+  },
+  "Skills": {
+    "kicker": "Compétences",
+    "title": "Une boîte à outils complète pour l'automatisation pilotée par l'IA",
+    "subtitle": "De l'orchestration de workflows à l'intégration LLM, en passant par l'automatisation navigateur et les patterns de fiabilité qui font tourner le tout en production."
+  },
+  "Work": {
+    "kicker": "Projets sélectionnés",
+    "title": "Des systèmes conçus pour tourner seuls",
+    "subtitle": "Études de cas anonymisées de vrais projets en production — le problème, l'architecture, et comment chacun a été pensé pour la fiabilité.",
+    "viewCase": "Lire l'étude de cas",
+    "domain": "Domaine",
+    "stackLabel": "Stack"
+  },
+  "Catalog": {
+    "kicker": "Bibliothèque d'automatisations",
+    "title": "Des automatisations dans tous les domaines",
+    "subtitle": "Une boîte à outils multisectorielle — le type de systèmes que je conçois et livre, de l'e-commerce et la finance aux agents IA et au DevOps.",
+    "all": "Tous",
+    "count": "{count} automatisations · {domains} domaines"
+  },
+  "Experience": {
+    "kicker": "Parcours",
+    "title": "Là où j'ai livré",
+    "subtitle": "Ingénierie d'automatisation et d'IA concrète, en production."
+  },
+  "BlogPreview": {
+    "kicker": "Articles",
+    "title": "Notes de terrain",
+    "subtitle": "Leçons pratiques sur l'automatisation, la fiabilité des LLM et les systèmes résilients.",
+    "readMore": "Lire",
+    "readingTime": "{minutes} min de lecture",
+    "viewAll": "Tous les articles",
+    "empty": "Les articles arrivent bientôt."
+  },
+  "Contact": {
+    "kicker": "Contact",
+    "title": "Construisons quelque chose qui tourne tout seul",
+    "subtitle": "Que vous recrutiez ou que vous ayez un projet en tête, j'aimerais en discuter. Je réponds sous 24 h.",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "Email",
+    "emailPlaceholder": "vous@entreprise.com",
+    "subject": "Sujet",
+    "subjectPlaceholder": "Poste, projet ou question",
+    "message": "Message",
+    "messagePlaceholder": "Dites-m'en un peu plus sur votre besoin…",
+    "send": "Envoyer le message",
+    "sending": "Envoi…",
+    "success": "Merci — votre message est parti. Je vous réponds très vite.",
+    "error": "Une erreur est survenue. Réessayez ou contactez-moi directement.",
+    "validation": "Veuillez vérifier les champs en surbrillance.",
+    "directTitle": "Ou contactez-moi directement",
+    "linkedin": "LinkedIn",
+    "emailDirect": "Email",
+    "whatsapp": "WhatsApp",
+    "availability": "Disponible — emploi & freelance"
+  },
+  "Footer": {
+    "tagline": "Ingénieur IA & Automatisation — des systèmes résilients qui tournent tout seuls.",
+    "rights": "Tous droits réservés.",
+    "sections": "Sections",
+    "elsewhere": "Ailleurs",
+    "backToTop": "Haut de page"
+  },
+  "CaseStudy": {
+    "back": "Tous les projets",
+    "overview": "Aperçu",
+    "problem": "Le problème",
+    "approach": "L'approche",
+    "architecture": "Architecture",
+    "highlights": "Points forts",
+    "stack": "Stack technique",
+    "results": "Chiffres clés",
+    "nextLabel": "Étude de cas suivante",
+    "ctaTitle": "Un défi similaire ?",
+    "ctaText": "Parlons de la façon de l'automatiser de manière fiable.",
+    "ctaButton": "Démarrer la conversation"
+  },
+  "Blog": {
+    "back": "Blog",
+    "title": "Blog",
+    "subtitle": "Notes pratiques sur l'automatisation, la fiabilité des LLM et la conception de systèmes qui n'échouent pas en silence.",
+    "readingTime": "{minutes} min de lecture",
+    "empty": "Pas encore d'article — revenez bientôt.",
+    "backToList": "Tous les articles",
+    "ctaTitle": "Envie de travailler ensemble ?",
+    "ctaButton": "Me contacter"
+  },
+  "Common": {
+    "language": "Langue",
+    "switchToFr": "Passer en français",
+    "switchToEn": "Switch to English",
+    "menu": "Menu",
+    "close": "Fermer"
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "text": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "home": "Retour à l'accueil"
+  }
+}

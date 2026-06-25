@@ -1,0 +1,42 @@
+---
+title: "Le RAG en production : ancrer un assistant IA sur vos propres docs"
+date: "2026-05-20"
+excerpt: "La génération augmentée par récupération est simple en démo et impitoyable en production. Le difficile, ce n'est pas le modèle — c'est le découpage, la qualité de récupération, et savoir dire « je ne sais pas »."
+tags: ["IA", "RAG", "LLM"]
+---
+
+Une démo de RAG prend un après-midi. Un système RAG auquel les gens font vraiment confiance demande bien plus de soin. Le modèle est la partie facile ; tout ce qui entoure la récupération est là où les projets réussissent ou se dégradent en silence.
+
+Voici ce qui fait vraiment la différence.
+
+## Le découpage est une décision produit
+
+La façon dont vous découpez les documents détermine ce que le modèle pourra voir. Des chunks trop gros enterrent la réponse dans le bruit ; trop petits, et vous perdez le contexte qui donne du sens à un passage.
+
+Je penche pour un **découpage conscient de la structure** — couper sur les titres et sections, garder un peu de chevauchement, et attacher des métadonnées (source, titre, date) à chaque chunk. Ces métadonnées alimenteront ensuite le filtrage et, surtout, les citations.
+
+## La qualité de récupération bat la taille du modèle
+
+Si le bon passage n'arrive jamais dans la fenêtre de contexte, aucun modèle ne sauvera la réponse. La plupart des plaintes « l'IA se trompe » sont en réalité des échecs de **récupération**.
+
+Ce qui aide :
+
+- Une recherche hybride (sémantique + mots-clés) pour que les termes exacts matchent.
+- Un re-ranking des meilleurs résultats avant qu'ils n'entrent dans le prompt.
+- Garder l'index frais — une synchro planifiée, pour que les réponses reflètent les docs d'aujourd'hui, pas celles du trimestre dernier.
+
+## Apprenez-lui à dire « je ne sais pas »
+
+Le garde-fou le plus important : quand la récupération ne renvoie rien de pertinent, l'assistant doit **refuser et passer la main**, pas improviser. Une réponse fausse mais assurée érode la confiance plus vite qu'un honnête « je n'ai pas trouvé ça ».
+
+## Toujours citer
+
+Chaque réponse doit pointer vers les chunks sources utilisés. Les citations font trois choses à la fois : l'utilisateur peut vérifier, vous pouvez déboguer les mauvaises réponses, et tout le système paraît fiable plutôt que magique.
+
+## Mesurez les lacunes
+
+Journalisez les questions que la récupération n'a pas su satisfaire. Ce journal est votre feuille de route — il dit exactement quels documents écrire ou corriger, classés par demande réelle.
+
+## L'état d'esprit
+
+Traitez le RAG comme un **système de recherche d'information avec un modèle de langage par-dessus**, pas comme un chatbot avec une recherche greffée. Réussissez le découpage, la récupération et le refus, et le modèle se débrouille presque tout seul.

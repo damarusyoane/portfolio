@@ -1,0 +1,35 @@
+---
+title: "Building a resilient multi-agent scraping system"
+date: "2026-05-28"
+excerpt: "How to retrieve assets from a no-API, anti-bot platform reliably — using click-time URL capture, a fleet of browser agents, and ordered failover."
+tags: ["Automation", "Playwright", "Reliability"]
+---
+
+Some of the most useful automations live in hostile territory: a platform with no public API, aggressive anti-bot protection, and large files behind short-lived signed URLs. Here's how I built a system that turns that mess into a one-click internal service — and keeps running when individual pieces fail.
+
+## The core problem
+
+The target platform issues a **signed CDN URL** when a user clicks "download". That URL is the prize: it streams the file straight from the CDN, no authentication required. But it expires fast — on the order of **45 seconds**. Any architecture that captures the URL early and uses it later is doomed: by the time an email is sent, received, and clicked, the link is dead.
+
+The fix is to **capture at click-time**. The orchestrator never holds a stale URL. Instead, the moment the end user acts, a browser agent performs the real click and hands back a fresh signed URL that's immediately redirected to.
+
+## A fleet, not a server
+
+A single browser instance is a single point of failure. Sessions expire, machines sleep, the platform rate-limits an IP. So the system runs a **fleet of headless agents** — small Python services (FastAPI + Playwright) each holding an authenticated, persistent browser profile, exposed through its own Cloudflare Tunnel.
+
+The orchestration layer keeps an **ordered list** of agents. For each request it health-checks the first agent; if it doesn't answer in a couple of seconds, it moves to the next. The first agent that returns a usable URL wins. One offline machine is invisible to the user.
+
+```text
+request → [agent-1?] → [agent-2?] → [agent-3?] → signed URL → 302 redirect
+```
+
+## Lessons that mattered
+
+- **Fail fast, then fall over.** Health checks use a short timeout so a dead agent costs ~2s, not 60. The failover loop is only valuable if each hop is cheap.
+- **Don't proxy the payload.** Multi-gigabyte files never pass through the orchestrator. It captures a URL and redirects; the CDN does the heavy lifting. A download that *starts* inside the validity window keeps going even after the URL expires, because the CDN checks the signature once at the start.
+- **Single-use tokens.** Each request gets a short-lived, one-time token. It can't be replayed or shared.
+- **Make failures loud.** When every agent is down, the user gets a clean "service unavailable" page and I get an email — never a silent hang.
+
+## The takeaway
+
+Reliability here isn't one clever trick; it's a series of small, defensive decisions: capture late, distribute the risk, fail fast, and never fail silently. That's what turns a fragile script into a system people can depend on.

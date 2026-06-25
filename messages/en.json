@@ -1,0 +1,135 @@
+{
+  "Nav": {
+    "work": "Work",
+    "catalog": "Automations",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "blog": "Blog",
+    "contact": "Contact",
+    "hireMe": "Get in touch"
+  },
+  "Hero": {
+    "badge": "Available for roles & freelance",
+    "greeting": "Hi, I'm Damarus",
+    "role": "AI & Automation Engineer",
+    "tagline": "I turn manual, error-prone workflows into resilient systems that run themselves — where automation, LLMs, and real-world APIs meet.",
+    "ctaWork": "View my work",
+    "ctaContact": "Let's talk",
+    "stats": {
+      "automations": "production automations",
+      "ai": "LLM-native",
+      "bilingual": "EN / FR"
+    },
+    "scroll": "Scroll"
+  },
+  "About": {
+    "kicker": "About",
+    "title": "Engineering reliable automation, end to end",
+    "p1": "I'm Damarus — an AI & Automation Engineer who turns messy, manual processes into resilient systems that run themselves. I work at the intersection of automation, large language models, and real-world APIs.",
+    "p2": "My focus is reliability: retries, model fallbacks, health checks, and error alerting, so nothing fails silently. I've shipped distributed browser-automation, AI content pipelines, and SEO data engines that run unattended in production.",
+    "p3": "Bilingual in English and French — open to both full-time roles and freelance engagements, on-site or remote.",
+    "factsTitle": "At a glance",
+    "languages": "English & French"
+  },
+  "Skills": {
+    "kicker": "Capabilities",
+    "title": "A full toolkit for AI-driven automation",
+    "subtitle": "From workflow orchestration to LLM integration, browser automation, and the reliability patterns that keep it all running in production."
+  },
+  "Work": {
+    "kicker": "Selected work",
+    "title": "Systems built to run on their own",
+    "subtitle": "Anonymized case studies from real production projects — the problem, the architecture, and how each one was engineered for reliability.",
+    "viewCase": "Read case study",
+    "domain": "Domain",
+    "stackLabel": "Stack"
+  },
+  "Catalog": {
+    "kicker": "Automation library",
+    "title": "Automations across every domain",
+    "subtitle": "A cross-industry toolkit — the kinds of systems I design and ship, from e-commerce and finance to AI agents and DevOps.",
+    "all": "All",
+    "count": "{count} automations · {domains} domains"
+  },
+  "Experience": {
+    "kicker": "Experience",
+    "title": "Where I've delivered",
+    "subtitle": "Hands-on automation and AI engineering, in production."
+  },
+  "BlogPreview": {
+    "kicker": "Writing",
+    "title": "Notes from the build",
+    "subtitle": "Practical lessons on automation, LLM reliability, and resilient systems.",
+    "readMore": "Read",
+    "readingTime": "{minutes} min read",
+    "viewAll": "All articles",
+    "empty": "Articles are on the way."
+  },
+  "Contact": {
+    "kicker": "Contact",
+    "title": "Let's build something that runs itself",
+    "subtitle": "Whether you're hiring or have a project in mind, I'd love to hear about it. I reply within a day.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "Role, project, or question",
+    "message": "Message",
+    "messagePlaceholder": "Tell me a bit about what you need…",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Thanks — your message is on its way. I'll get back to you shortly.",
+    "error": "Something went wrong. Please try again or reach me directly.",
+    "validation": "Please check the highlighted fields.",
+    "directTitle": "Or reach me directly",
+    "linkedin": "LinkedIn",
+    "emailDirect": "Email",
+    "whatsapp": "WhatsApp",
+    "availability": "Available for roles & freelance"
+  },
+  "Footer": {
+    "tagline": "AI & Automation Engineer — building resilient systems that run themselves.",
+    "rights": "All rights reserved.",
+    "sections": "Sections",
+    "elsewhere": "Elsewhere",
+    "backToTop": "Back to top"
+  },
+  "CaseStudy": {
+    "back": "All work",
+    "overview": "Overview",
+    "problem": "The problem",
+    "approach": "The approach",
+    "architecture": "Architecture",
+    "highlights": "Highlights",
+    "stack": "Tech stack",
+    "results": "Key numbers",
+    "nextLabel": "Next case study",
+    "ctaTitle": "Have a similar challenge?",
+    "ctaText": "Let's talk about how to automate it reliably.",
+    "ctaButton": "Start a conversation"
+  },
+  "Blog": {
+    "back": "Blog",
+    "title": "Blog",
+    "subtitle": "Practical notes on automation, LLM reliability, and building systems that don't fail silently.",
+    "readingTime": "{minutes} min read",
+    "empty": "No articles yet — check back soon.",
+    "backToList": "All articles",
+    "ctaTitle": "Want to work together?",
+    "ctaButton": "Get in touch"
+  },
+  "Common": {
+    "language": "Language",
+    "switchToFr": "Passer en français",
+    "switchToEn": "Switch to English",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "text": "The page you're looking for doesn't exist or has moved.",
+    "home": "Back home"
+  }
+}

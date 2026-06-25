@@ -1,0 +1,43 @@
+---
+title: "LLM fallback strategies for production reliability"
+date: "2026-06-10"
+excerpt: "Models get overloaded, quotas get hit, and outputs come back malformed. Here are the patterns that keep an LLM pipeline running unattended."
+tags: ["AI", "LLM", "Reliability"]
+---
+
+Putting a large language model into a scheduled, unattended pipeline is humbling. The model is the easy part. The hard part is everything around it: overload errors, rate limits, malformed responses, and the silence that follows when a nightly job quietly dies. Here's the reliability layer I wrap around every production LLM call.
+
+## Retry with backoff — but with limits
+
+Provider overload (HTTP 529) and quota errors (HTTP 429) are transient. The first defense is a bounded **retry with a fixed wait**: try up to ten times, waiting ~30 seconds between attempts. That ~5-minute window absorbs most short outages and gives per-minute quotas time to reset.
+
+The key word is *bounded*. Infinite retries turn a transient blip into a stuck workflow. Cap the attempts, then escalate.
+
+## Fall back to a smaller model
+
+When the primary model stays overloaded past the retry window, quality should degrade — not the whole job. So every critical call has a **fallback branch**: if the high-end model keeps failing, route the same prompt to a lighter, less-contended model.
+
+```text
+prompt → [Opus] --overloaded--> [Sonnet] → continue
+            |
+         success → continue
+```
+
+You keep the best model on the happy path and gain a safety net for prolonged outages. If even the fallback struggles, that's a signal worth a third tier — or an alert.
+
+## Never fail silently
+
+The worst production failure is the one nobody notices. Every workflow carries a small, isolated **error sub-flow**: an error trigger, a node that formats the failure (workflow name, failing node, error message, execution URL), and an email. Critically, the workflow references *itself* as its own error handler — without that wiring, the trigger stays dormant and the alert never fires.
+
+## Treat secrets as configuration
+
+None of this matters if your keys are sitting in plain text inside node parameters. Secrets belong in managed credentials, referenced by name — never hardcoded, never committed, easy to rotate.
+
+## The pattern, distilled
+
+1. **Retry** transient errors, with a hard cap.
+2. **Fall back** to a cheaper model under sustained load.
+3. **Alert** on every unhandled failure — loudly.
+4. **Externalize** secrets into managed credentials.
+
+None of these are glamorous. Together, they're the difference between a demo and something you can leave running.

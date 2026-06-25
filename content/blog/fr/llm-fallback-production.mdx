@@ -1,0 +1,43 @@
+---
+title: "Stratégies de fallback LLM pour la fiabilité en production"
+date: "2026-06-10"
+excerpt: "Les modèles se surchargent, les quotas sautent, les sorties reviennent malformées. Voici les patterns qui font tourner un pipeline LLM sans surveillance."
+tags: ["IA", "LLM", "Fiabilité"]
+---
+
+Mettre un grand modèle de langage dans un pipeline planifié et autonome est une leçon d'humilité. Le modèle, c'est la partie facile. Le difficile, c'est tout ce qui l'entoure : erreurs de surcharge, limites de débit, réponses malformées, et le silence qui suit quand un job nocturne meurt discrètement. Voici la couche de fiabilité que j'enroule autour de chaque appel LLM en production.
+
+## Retry avec backoff — mais borné
+
+La surcharge fournisseur (HTTP 529) et les erreurs de quota (HTTP 429) sont transitoires. La première défense est un **retry borné avec attente fixe** : jusqu'à dix tentatives, ~30 secondes entre chacune. Cette fenêtre d'environ 5 minutes absorbe la plupart des pannes courtes et laisse aux quotas par minute le temps de se réinitialiser.
+
+Le mot clé est *borné*. Des retries infinis transforment un petit raté en workflow bloqué. On plafonne les tentatives, puis on escalade.
+
+## Basculer vers un modèle plus léger
+
+Quand le modèle principal reste surchargé au-delà de la fenêtre de retry, c'est la qualité qui doit se dégrader — pas le job entier. Chaque appel critique a donc une **branche de secours** : si le modèle haut de gamme continue d'échouer, le même prompt est routé vers un modèle plus léger et moins sollicité.
+
+```text
+prompt → [Opus] --surchargé--> [Sonnet] → suite
+            |
+        succès → suite
+```
+
+On garde le meilleur modèle sur le chemin nominal et on gagne un filet de sécurité pour les pannes prolongées. Si même le modèle de secours peine, c'est le signal d'un troisième niveau — ou d'une alerte.
+
+## Ne jamais échouer en silence
+
+Le pire échec de production est celui que personne ne remarque. Chaque workflow embarque un petit **sous-flux d'erreur** isolé : un déclencheur d'erreur, un nœud qui formate l'échec (nom du workflow, nœud fautif, message d'erreur, URL d'exécution) et un email. Point crucial : le workflow se référence *lui-même* comme son propre gestionnaire d'erreur — sans ce câblage, le déclencheur reste dormant et l'alerte ne part jamais.
+
+## Traiter les secrets comme de la configuration
+
+Rien de tout cela ne compte si vos clés traînent en clair dans les paramètres des nœuds. Les secrets appartiennent à des credentials managés, référencés par nom — jamais en dur, jamais commités, faciles à faire tourner.
+
+## Le pattern, en résumé
+
+1. **Retry** des erreurs transitoires, avec un plafond strict.
+2. **Fallback** vers un modèle moins cher sous charge prolongée.
+3. **Alerte** sur chaque échec non géré — bruyamment.
+4. **Externaliser** les secrets dans des credentials managés.
+
+Aucune de ces idées n'est glamour. Ensemble, elles font la différence entre une démo et quelque chose qu'on peut laisser tourner.

@@ -1,0 +1,37 @@
+---
+title: "n8n vs. code: choosing the right tool for automation"
+date: "2026-02-18"
+excerpt: "Visual workflow engines and hand-written code aren't rivals — they're a spectrum. Here's how I decide which one to reach for on each project."
+tags: ["n8n", "Architecture", "Automation"]
+---
+
+Every automation project starts with the same fork in the road: do I wire this up in a visual tool like n8n, or do I write code? After shipping dozens of automations, I've stopped treating it as a religious debate. It's a spectrum, and the right answer depends on what the workflow actually has to do.
+
+## Where n8n wins
+
+n8n shines when the work is mostly **moving data between services**. Webhooks in, transform, call three APIs, branch on a condition, notify a human. You get retries, scheduling, credential management, and an execution history for free — and a non-developer can read the canvas and understand what's happening.
+
+That last point matters more than people admit. A workflow that a teammate can open and reason about is a workflow that survives you leaving the project.
+
+## Where code wins
+
+The moment logic gets dense — nested loops, intricate parsing, algorithm-heavy transforms — a visual graph becomes harder to read than the equivalent function. That's when I drop into a **Code node** or move the whole step into a small service.
+
+In one project, capturing a short-lived signed URL from an anti-bot platform needed a persistent headless browser, human-like delays, and frame-aware DOM queries. None of that belongs in a node graph — it belongs in a focused Python service that n8n simply calls.
+
+## The hybrid sweet spot
+
+The best systems I've built are **hybrids**: n8n as the orchestrator, code where the thinking happens.
+
+- n8n owns the schedule, the retries, the credentials, the branching, and the audit trail.
+- A `Code` node or an external service owns the gnarly logic.
+- The two talk over plain HTTP, so each can be tested in isolation.
+
+## Rules of thumb
+
+- If a teammate should be able to read it, start in n8n.
+- If you're fighting the canvas to express logic, that step wants code.
+- Keep secrets in managed credentials, never in node parameters.
+- Whatever you choose, add retries and an error path on day one — not after the first 3 a.m. failure.
+
+Pick the tool that makes the *next* person's life easier. Usually that's both.
