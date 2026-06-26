@@ -87,7 +87,7 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
   {
-    period: { en: "2024 — Present", fr: "2024 — Présent" },
+    period: { en: "Mar 2026 — Present", fr: "Mars 2026 — Présent" },
     role: { en: "AI & Automation Engineer", fr: "Ingénieur IA & Automatisation" },
     org: { en: "Digital agency", fr: "Agence digitale" },
     description: {
@@ -108,7 +108,7 @@ export const experience: ExperienceItem[] = [
     },
   },
   {
-    period: { en: "2023 — 2024", fr: "2023 — 2024" },
+    period: { en: "Jan 2024 — Feb 2026", fr: "Janv. 2024 — Févr. 2026" },
     role: { en: "Automation & Integrations Developer", fr: "Développeur Automatisation & Intégrations" },
     org: { en: "Freelance / Independent", fr: "Freelance / Indépendant" },
     description: {
