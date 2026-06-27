@@ -417,6 +417,85 @@ export const projects: Project[] = [
       { label: { en: "Slack / Web answer", fr: "Réponse Slack / Web" }, kind: "output" },
     ],
   },
+  {
+    slug: "ai-voice-calling-assistant",
+    screenshot: "/projects/ai-voice-calling-assistant.png",
+    accent: "indigo",
+    year: "2026",
+    title: {
+      en: "AI Voice Calling Assistant",
+      fr: "Assistant d'appels vocaux IA",
+    },
+    domain: {
+      en: "Conversational AI · Outbound automation",
+      fr: "IA conversationnelle · Automatisation d'appels",
+    },
+    tagline: {
+      en: "A fully autonomous outbound-calling pipeline: it reads your contacts, places real AI voice calls, analyses every conversation, logs it, and updates the CRM — with no human in the loop.",
+      fr: "Un pipeline d'appels sortants entièrement autonome : il lit vos contacts, passe de vrais appels vocaux IA, analyse chaque conversation, la journalise et met à jour le CRM — sans intervention humaine.",
+    },
+    stack: [
+      "n8n",
+      "Vapi (Voice AI)",
+      "LLM",
+      "Supabase",
+      "Google Sheets",
+      "Webhooks",
+    ],
+    problem: {
+      en: "Outbound calling — lead qualification, follow-ups, reminders — eats hours of repetitive dialing. Many calls go unanswered, reps forget to log outcomes, and CRM updates slip, so follow-ups are missed and the pipeline leaks.",
+      fr: "Les appels sortants — qualification de leads, relances, rappels — engloutissent des heures de numérotation répétitive. Beaucoup d'appels restent sans réponse, les conclusions ne sont pas notées et les mises à jour CRM passent à la trappe : les relances sont manquées et le pipeline fuit.",
+    },
+    approach: {
+      en: [
+        "A scheduled n8n workflow reads the contact list (Google Sheets) and loops through every contact, automatically skipping anyone already called — idempotent, so re-runs never double-dial.",
+        "For each contact it places a real outbound phone call through a voice-AI agent (Vapi) that holds a natural conversation toward a defined goal.",
+        "A wait step holds execution until the call ends, then the full transcript and metadata are pulled back via API.",
+        "An LLM analyses each transcript and extracts a structured result — outcome (interested / no-answer / voicemail / callback), sentiment, a summary, and the recommended next action.",
+        "Every call is logged to a database (Supabase) with transcript and analysis, the contact's status is auto-updated to 'Called', and the loop advances to the next contact — fully unattended.",
+      ],
+      fr: [
+        "Un workflow n8n planifié lit la liste de contacts (Google Sheets) et boucle sur chacun, en écartant automatiquement ceux déjà appelés — idempotent, donc aucune ré-exécution ne rappelle deux fois.",
+        "Pour chaque contact, il passe un vrai appel téléphonique sortant via un agent vocal IA (Vapi) qui mène une conversation naturelle vers un objectif défini.",
+        "Une étape d'attente suspend l'exécution jusqu'à la fin de l'appel, puis le transcript complet et les métadonnées sont récupérés via API.",
+        "Un LLM analyse chaque transcript et en extrait un résultat structuré — issue (intéressé / sans réponse / messagerie / à rappeler), sentiment, résumé et action recommandée.",
+        "Chaque appel est journalisé en base (Supabase) avec transcript et analyse, le statut du contact passe à « Appelé », et la boucle avance au contact suivant — en totale autonomie.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Fully autonomous: reads contacts, calls, analyses, logs, updates the CRM, repeats — no human, no missed follow-ups.",
+        "Idempotent by design: already-called contacts are skipped, so it's safe to re-run anytime.",
+        "Structured, queryable outcomes (outcome + sentiment + next action) instead of unwritten call notes.",
+      ],
+      fr: [
+        "Totalement autonome : lit les contacts, appelle, analyse, journalise, met à jour le CRM, recommence — sans humain, sans relance oubliée.",
+        "Idempotent par conception : les contacts déjà appelés sont ignorés, relançable à tout moment sans risque.",
+        "Des résultats structurés et requêtables (issue + sentiment + action) au lieu de notes d'appel jamais écrites.",
+      ],
+    },
+    metrics: [
+      {
+        value: "0",
+        label: { en: "manual dialing or note-taking", fr: "numérotation/prise de notes manuelle" },
+      },
+      {
+        value: "100%",
+        label: { en: "calls transcribed & analysed", fr: "appels transcrits & analysés" },
+      },
+      {
+        value: "24/7",
+        label: { en: "unattended outreach loop", fr: "boucle d'appels sans surveillance" },
+      },
+    ],
+    flow: [
+      { label: { en: "Contact list", fr: "Liste de contacts" }, kind: "trigger" },
+      { label: { en: "Skip already-called", fr: "Ignorer déjà appelés" }, kind: "process" },
+      { label: { en: "AI voice call", fr: "Appel vocal IA" }, kind: "process" },
+      { label: { en: "Transcript analysis", fr: "Analyse du transcript" }, kind: "ai" },
+      { label: { en: "Log + CRM update", fr: "Journal + MAJ CRM" }, kind: "output" },
+    ],
+  },
 ];
 
 export function getProject(slug: string) {

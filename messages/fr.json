@@ -7,7 +7,9 @@
     "experience": "Parcours",
     "blog": "Blog",
     "contact": "Contact",
-    "hireMe": "Me contacter"
+    "hireMe": "Me contacter",
+    "cv": "CV",
+    "downloadCv": "Télécharger le CV"
   },
   "Hero": {
     "badge": "Disponible — emploi & freelance",
@@ -16,6 +18,7 @@
     "tagline": "Je transforme des workflows manuels et fragiles en systèmes résilients qui tournent seuls — là où l'automatisation, les LLM et les API du monde réel se rencontrent.",
     "ctaWork": "Voir mes projets",
     "ctaContact": "Discutons",
+    "downloadCV": "Télécharger le CV",
     "stats": {
       "automations": "automatisations en production",
       "ai": "LLM-native",
