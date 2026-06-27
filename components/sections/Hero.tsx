@@ -1,14 +1,16 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { ArrowUpRight, ArrowDown, Download } from "lucide-react";
 import { NodeGraph } from "@/components/NodeGraph";
 import { Badge } from "@/components/ui/Badge";
 
 export function Hero() {
   const t = useTranslations("Hero");
+  const locale = useLocale();
   const reduce = useReducedMotion();
+  const cvHref = `/cv/Damarus-Ngankou-CV-${locale === "fr" ? "FR" : "EN"}.pdf`;
 
   const container = {
     hidden: {},
@@ -92,6 +94,14 @@ export function Hero() {
               className="glass inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-medium text-ink transition-all hover:-translate-y-0.5 hover:border-border-strong"
             >
               {t("ctaContact")}
+            </a>
+            <a
+              href={cvHref}
+              download
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium text-muted transition-colors hover:text-ink"
+            >
+              <Download className="h-4 w-4" />
+              {t("downloadCV")}
             </a>
           </motion.div>
 

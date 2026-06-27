@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { Menu, X, ArrowUpRight, Download } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Brandmark } from "@/components/Brandmark";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -19,6 +19,8 @@ const navItems = [
 
 export function Header() {
   const t = useTranslations("Nav");
+  const locale = useLocale();
+  const cvHref = `/cv/Damarus-Ngankou-CV-${locale === "fr" ? "FR" : "EN"}.pdf`;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -71,6 +73,14 @@ export function Header() {
 
         <div className="flex items-center gap-2.5">
           <LanguageSwitcher className="hidden sm:inline-flex" />
+          <a
+            href={cvHref}
+            download
+            className="hidden items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-border-strong hover:bg-white/5 md:inline-flex"
+          >
+            <Download className="h-4 w-4" />
+            {t("cv")}
+          </a>
           <Link
             href="/#contact"
             className="hidden items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5 md:inline-flex"
@@ -125,6 +135,15 @@ export function Header() {
             {t("hireMe")}
             <ArrowUpRight className="h-4 w-4" />
           </Link>
+          <a
+            href={cvHref}
+            download
+            onClick={() => setOpen(false)}
+            className="mt-2 flex items-center justify-center gap-1.5 rounded-xl border border-border px-4 py-3 text-base font-medium text-ink"
+          >
+            <Download className="h-4 w-4" />
+            {t("downloadCv")}
+          </a>
           <div className="mt-3 px-1">
             <LanguageSwitcher />
           </div>

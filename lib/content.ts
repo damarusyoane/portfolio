@@ -23,24 +23,26 @@ export const skillGroups: SkillGroup[] = [
     id: "ai",
     title: { en: "AI / LLM Integration", fr: "Intégration IA / LLM" },
     skills: [
-      "Claude API",
+      "Claude & OpenAI APIs",
       "Prompt engineering",
-      "RAG",
-      "AI agents",
-      "Model fallback",
       "Structured output",
+      "RAG",
+      "Vector databases",
+      "Fine-tuning",
     ],
   },
   {
     id: "aitools",
-    title: { en: "AI Dev Tooling", fr: "Outils de dev IA" },
+    title: { en: "Agentic AI & Dev Tooling", fr: "IA agentique & Outils de dev" },
     skills: [
+      "LangChain",
+      "LangGraph",
+      "AI agents",
+      "MCP / tool calling",
+      "LLM observability",
       "Claude Code",
       "OpenClaw",
       "Hermes Agent",
-      "MCP",
-      "Agentic workflows",
-      "AI-boosted delivery",
     ],
   },
   {
@@ -73,7 +75,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "infra",
     title: { en: "Cloud & Tooling", fr: "Cloud & Outils" },
-    skills: ["Cloudflare Tunnels", "Vercel", "Git", "Next.js", "CI/CD", "Postgres"],
+    skills: ["AWS / GCP / Azure", "Vercel", "Cloudflare Tunnels", "Git", "CI/CD", "PostgreSQL"],
   },
 ];
 
