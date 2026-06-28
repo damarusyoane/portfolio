@@ -496,6 +496,301 @@ export const projects: Project[] = [
       { label: { en: "Log + CRM update", fr: "Journal + MAJ CRM" }, kind: "output" },
     ],
   },
+  {
+    slug: "whatsapp-ai-assistant",
+    screenshot: "/projects/whatsapp-ai-assistant.png",
+    accent: "violet",
+    year: "2026",
+    title: {
+      en: "WhatsApp AI Assistant (Productized)",
+      fr: "Assistant WhatsApp IA (productisé)",
+    },
+    domain: {
+      en: "Conversational AI · Productized automation",
+      fr: "IA conversationnelle · Automatisation productisée",
+    },
+    tagline: {
+      en: "A resellable, config-driven WhatsApp assistant that answers customers 24/7, captures leads, and runs on both the official Meta API and self-hosted Evolution — one template, infinite clients.",
+      fr: "Un assistant WhatsApp revendable et piloté par configuration qui répond aux clients 24/7, capte les leads et tourne aussi bien sur l'API officielle Meta que sur Evolution auto-hébergé — un template, une infinité de clients.",
+    },
+    stack: ["n8n", "Claude (Haiku)", "Meta WhatsApp Cloud API", "Evolution API", "Google Sheets", "Webhooks"],
+    problem: {
+      en: "Small businesses lose sales by not replying fast on WhatsApp, and building a bespoke bot for every client is slow and impossible to scale.",
+      fr: "Les PME perdent des ventes faute de répondre vite sur WhatsApp, et construire un bot sur-mesure pour chaque client est lent et impossible à mettre à l'échelle.",
+    },
+    approach: {
+      en: [
+        "A single generic webhook normalizes inbound messages from both the Meta Cloud API and self-hosted Evolution, so the same bot serves either channel.",
+        "Each client lives in a Google Sheet 'profile' (business info, hours, prices, FAQ, persona) — the LLM answers strictly from it, never inventing prices, and hands off to a human on request.",
+        "Detected leads are logged and the owner is notified instantly; reselling is just swapping the config sheet and credentials.",
+      ],
+      fr: [
+        "Un webhook générique unique normalise les messages entrants de l'API Meta Cloud et d'Evolution auto-hébergé : le même bot sert les deux canaux.",
+        "Chaque client tient dans une 'fiche' Google Sheet (infos, horaires, prix, FAQ, persona) — le LLM répond strictement à partir d'elle, n'invente jamais de prix et passe la main à un humain sur demande.",
+        "Les leads détectés sont journalisés et le patron notifié instantanément ; la revente se résume à changer la fiche et les credentials.",
+      ],
+    },
+    highlights: {
+      en: [
+        "One template, resold to unlimited clients by changing a config sheet.",
+        "Grounded answers with guardrails — no hallucinated prices, clean human handoff.",
+        "Dual-channel: official Meta API or the client's existing number via Evolution.",
+      ],
+      fr: [
+        "Un template, revendu à une infinité de clients en changeant une fiche.",
+        "Réponses sourcées avec garde-fous — aucun prix inventé, passation humaine propre.",
+        "Dual-canal : API officielle Meta ou le numéro existant du client via Evolution.",
+      ],
+    },
+    metrics: [
+      { value: "24/7", label: { en: "always-on responses", fr: "réponses en continu" } },
+      { value: "2 canaux", label: { en: "Meta + Evolution", fr: "Meta + Evolution" } },
+      { value: "Multi-tenant", label: { en: "config-driven resale", fr: "revente par configuration" } },
+    ],
+    flow: [
+      { label: { en: "WhatsApp message", fr: "Message WhatsApp" }, kind: "trigger" },
+      { label: { en: "Normalize (Meta/Evo)", fr: "Normaliser (Meta/Evo)" }, kind: "process" },
+      { label: { en: "Config + LLM", fr: "Fiche + LLM" }, kind: "ai" },
+      { label: { en: "Reply", fr: "Réponse" }, kind: "output" },
+      { label: { en: "Lead + notify", fr: "Lead + notif" }, kind: "store" },
+    ],
+  },
+  {
+    slug: "appointment-reminder-system",
+    screenshot: "/projects/appointment-reminder-system.png",
+    accent: "cyan",
+    year: "2026",
+    title: {
+      en: "Appointment Reminder System",
+      fr: "Système de rappels de rendez-vous",
+    },
+    domain: {
+      en: "Scheduling automation · Anti no-show",
+      fr: "Automatisation d'agenda · Anti no-show",
+    },
+    tagline: {
+      en: "An automated engine that cuts no-shows by reminding clients 24 hours and 2 hours before their appointment, with duplicate-proof tracking.",
+      fr: "Un moteur automatisé qui réduit les no-shows en rappelant les clients 24 h et 2 h avant leur rendez-vous, sans jamais doubler les envois.",
+    },
+    stack: ["n8n", "Google Sheets", "Scheduler", "Email / WhatsApp"],
+    problem: {
+      en: "No-shows cost service businesses real money, and manual reminders don't scale across a busy calendar.",
+      fr: "Les no-shows coûtent cher aux entreprises de service, et les rappels manuels ne tiennent pas sur un agenda chargé.",
+    },
+    approach: {
+      en: [
+        "An hourly scheduler reads the appointments sheet and computes the time until each booking.",
+        "It sends a reminder in two windows (~24h and ~2h before) and marks each one sent, so reminders never double-fire.",
+        "Cancelled appointments are skipped; the whole flow is idempotent and safe to run continuously.",
+      ],
+      fr: [
+        "Un planificateur horaire lit la feuille des rendez-vous et calcule le temps restant avant chaque réservation.",
+        "Il envoie un rappel sur deux fenêtres (~24 h et ~2 h avant) et marque chacun comme envoyé, pour ne jamais doubler.",
+        "Les rendez-vous annulés sont ignorés ; tout le flux est idempotent et peut tourner en continu sans risque.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Fewer no-shows with zero manual effort.",
+        "Idempotent by design — never sends a reminder twice.",
+        "Drops into any business with a simple appointments sheet.",
+      ],
+      fr: [
+        "Moins de no-shows, sans aucun effort manuel.",
+        "Idempotent par conception — jamais deux fois le même rappel.",
+        "S'intègre à toute entreprise avec une simple feuille de rendez-vous.",
+      ],
+    },
+    metrics: [
+      { value: "24h + 2h", label: { en: "timed reminders", fr: "rappels minutés" } },
+      { value: "0", label: { en: "manual reminders", fr: "rappel manuel" } },
+      { value: "Idempotent", label: { en: "no double-sends", fr: "aucun doublon" } },
+    ],
+    flow: [
+      { label: { en: "Hourly schedule", fr: "Planif. horaire" }, kind: "trigger" },
+      { label: { en: "Read appointments", fr: "Lire les RDV" }, kind: "process" },
+      { label: { en: "Filter due", fr: "Filtrer à rappeler" }, kind: "process" },
+      { label: { en: "Send reminder", fr: "Envoyer rappel" }, kind: "output" },
+      { label: { en: "Mark sent", fr: "Marquer envoyé" }, kind: "store" },
+    ],
+  },
+  {
+    slug: "instant-lead-response",
+    screenshot: "/projects/instant-lead-response.png",
+    accent: "indigo",
+    year: "2026",
+    title: {
+      en: "Instant Lead Capture & Response",
+      fr: "Capture & relance de leads instantanée",
+    },
+    domain: {
+      en: "Sales automation · Speed-to-lead",
+      fr: "Automatisation commerciale · Speed-to-lead",
+    },
+    tagline: {
+      en: "Captures inbound leads, qualifies them with an LLM, auto-replies in under a minute, and alerts sales — because answering in 5 minutes instead of an hour wins the deal.",
+      fr: "Capte les leads entrants, les qualifie via un LLM, répond automatiquement en moins d'une minute et alerte le commercial — car répondre en 5 min plutôt qu'en 1 h fait gagner l'affaire.",
+    },
+    stack: ["n8n", "Claude", "Google Sheets", "Webhooks", "Email"],
+    problem: {
+      en: "Speed-to-lead drives conversion, yet leads slip away when no one responds fast — and manual qualification is inconsistent.",
+      fr: "La vitesse de réponse pilote la conversion, mais les leads s'évaporent quand personne ne répond vite — et la qualification manuelle est inconstante.",
+    },
+    approach: {
+      en: [
+        "A webhook receives leads from any form or ad platform and normalizes the fields.",
+        "An LLM scores the lead (hot / warm / cold), summarizes it, and drafts a warm first reply in the lead's language.",
+        "The prospect gets an instant auto-reply, sales is notified with the qualification, and the lead is logged to the CRM sheet.",
+      ],
+      fr: [
+        "Un webhook reçoit les leads de n'importe quel formulaire ou plateforme publicitaire et normalise les champs.",
+        "Un LLM note le lead (chaud / tiède / froid), le résume et rédige une première réponse chaleureuse dans sa langue.",
+        "Le prospect reçoit une réponse instantanée, le commercial est notifié avec la qualification, et le lead est journalisé dans le CRM.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Sub-minute first response, automatically.",
+        "Every lead AI-scored and summarized for sales.",
+        "No lead ever falls through the cracks.",
+      ],
+      fr: [
+        "Première réponse en moins d'une minute, automatiquement.",
+        "Chaque lead noté et résumé par l'IA pour le commercial.",
+        "Plus aucun lead ne passe à la trappe.",
+      ],
+    },
+    metrics: [
+      { value: "<1 min", label: { en: "first reply", fr: "première réponse" } },
+      { value: "AI-scored", label: { en: "hot / warm / cold", fr: "chaud / tiède / froid" } },
+      { value: "0", label: { en: "leads lost", fr: "lead perdu" } },
+    ],
+    flow: [
+      { label: { en: "Form / ad lead", fr: "Lead formulaire / pub" }, kind: "trigger" },
+      { label: { en: "Normalize", fr: "Normaliser" }, kind: "process" },
+      { label: { en: "LLM qualify + reply", fr: "LLM qualifie + répond" }, kind: "ai" },
+      { label: { en: "Auto-reply + notify", fr: "Réponse auto + notif" }, kind: "output" },
+      { label: { en: "Log to CRM", fr: "Journal CRM" }, kind: "store" },
+    ],
+  },
+  {
+    slug: "review-reputation-automation",
+    screenshot: "/projects/review-reputation-automation.png",
+    accent: "violet",
+    year: "2026",
+    title: {
+      en: "Google Review Automation",
+      fr: "Automatisation des avis Google",
+    },
+    domain: {
+      en: "Reputation · Local marketing",
+      fr: "Réputation · Marketing local",
+    },
+    tagline: {
+      en: "After every sale, automatically asks happy customers for a Google review and routes unhappy ones to private feedback — more 5-star reviews, fewer public complaints.",
+      fr: "Après chaque vente, demande automatiquement un avis Google aux clients satisfaits et oriente les mécontents vers un retour privé — plus d'avis 5 étoiles, moins de plaintes publiques.",
+    },
+    stack: ["n8n", "Webhooks", "Email / WhatsApp", "Google Sheets"],
+    problem: {
+      en: "More reviews mean more customers, but businesses forget to ask — and bad experiences go straight to public reviews.",
+      fr: "Plus d'avis = plus de clients, mais les entreprises oublient de les demander — et les mauvaises expériences finissent directement en avis public.",
+    },
+    approach: {
+      en: [
+        "Fires right after a sale or visit (POS webhook, form, or manual trigger).",
+        "Sends a friendly review request with the business's Google link, and invites unhappy customers to reply privately first so issues are fixed before they become a 1-star.",
+        "Every request is logged for follow-up and reporting.",
+      ],
+      fr: [
+        "Se déclenche juste après une vente ou une visite (webhook caisse, formulaire ou déclenchement manuel).",
+        "Envoie une demande d'avis sympathique avec le lien Google, et invite les clients mécontents à répondre en privé d'abord pour régler le souci avant qu'il ne devienne un avis 1 étoile.",
+        "Chaque demande est journalisée pour le suivi et le reporting.",
+      ],
+    },
+    highlights: {
+      en: [
+        "More reviews collected, fully on autopilot.",
+        "Intercepts unhappy customers before a public bad review.",
+        "Complete audit log of every request sent.",
+      ],
+      fr: [
+        "Plus d'avis collectés, en pilote automatique.",
+        "Intercepte les clients mécontents avant un mauvais avis public.",
+        "Journal complet de chaque demande envoyée.",
+      ],
+    },
+    metrics: [
+      { value: "Auto", label: { en: "after every sale", fr: "après chaque vente" } },
+      { value: "5-star", label: { en: "review-focused", fr: "axé avis positifs" } },
+      { value: "Gated", label: { en: "unhappy → private", fr: "mécontent → privé" } },
+    ],
+    flow: [
+      { label: { en: "Sale completed", fr: "Vente terminée" }, kind: "trigger" },
+      { label: { en: "Normalize customer", fr: "Normaliser client" }, kind: "process" },
+      { label: { en: "Send review request", fr: "Demande d'avis" }, kind: "output" },
+      { label: { en: "Private feedback path", fr: "Voie retour privé" }, kind: "process" },
+      { label: { en: "Log request", fr: "Journaliser" }, kind: "store" },
+    ],
+  },
+  {
+    slug: "payment-reminder-engine",
+    screenshot: "/projects/payment-reminder-engine.png",
+    accent: "cyan",
+    year: "2026",
+    title: {
+      en: "Payment Reminder Engine",
+      fr: "Moteur de relances de paiement",
+    },
+    domain: {
+      en: "Finance automation · Cash flow",
+      fr: "Automatisation financière · Trésorerie",
+    },
+    tagline: {
+      en: "A daily engine that chases unpaid invoices with escalating, polite reminders — get paid faster without the awkward manual follow-ups.",
+      fr: "Un moteur quotidien qui relance les factures impayées avec des rappels polis et progressifs — être payé plus vite sans les relances manuelles gênantes.",
+    },
+    stack: ["n8n", "Google Sheets", "Scheduler", "Email"],
+    problem: {
+      en: "Chasing payments is awkward and time-consuming, and late invoices quietly strangle a small business's cash flow.",
+      fr: "Relancer les paiements est gênant et chronophage, et les factures en retard étranglent discrètement la trésorerie d'une petite entreprise.",
+    },
+    approach: {
+      en: [
+        "A daily scheduler reads the invoices sheet and finds what's unpaid.",
+        "It reminds 3 days before the due date and again while overdue, with a tone that escalates politely as the delay grows.",
+        "Each reminder is timestamped so customers are never spammed, and the flow stops the moment an invoice is marked paid.",
+      ],
+      fr: [
+        "Un planificateur quotidien lit la feuille des factures et repère les impayées.",
+        "Il relance 3 jours avant l'échéance puis tant que c'est en retard, avec un ton qui monte poliment à mesure que le délai s'allonge.",
+        "Chaque relance est horodatée pour ne jamais spammer, et le flux s'arrête dès qu'une facture passe à 'payée'.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Get paid faster with zero awkward manual chasing.",
+        "Escalating tone matched to how overdue the invoice is.",
+        "Spam-safe: one reminder per invoice per day, max.",
+      ],
+      fr: [
+        "Être payé plus vite, sans aucune relance manuelle gênante.",
+        "Ton progressif selon le retard de la facture.",
+        "Anti-spam : une relance par facture et par jour, maximum.",
+      ],
+    },
+    metrics: [
+      { value: "Daily", label: { en: "automated chasing", fr: "relance automatisée" } },
+      { value: "0", label: { en: "manual follow-ups", fr: "relance manuelle" } },
+      { value: "Faster", label: { en: "time-to-payment", fr: "délai de paiement" } },
+    ],
+    flow: [
+      { label: { en: "Daily schedule", fr: "Planif. quotidienne" }, kind: "trigger" },
+      { label: { en: "Read invoices", fr: "Lire les factures" }, kind: "process" },
+      { label: { en: "Filter unpaid/due", fr: "Filtrer impayées" }, kind: "process" },
+      { label: { en: "Send reminder", fr: "Envoyer relance" }, kind: "output" },
+      { label: { en: "Mark reminded", fr: "Marquer relancé" }, kind: "store" },
+    ],
+  },
 ];
 
 export function getProject(slug: string) {

@@ -119,10 +119,12 @@ export const experience: ExperienceItem[] = [
     },
     points: {
       en: [
+        "Productized a suite of resellable SMB automations on n8n — a WhatsApp AI assistant, appointment-reminder system, instant lead capture, Google-review automation, and a payment-reminder engine — each config-driven and deployed per client.",
         "Connected social, CMS, storage, and messaging APIs into reliable end-to-end flows.",
         "Moved hardcoded secrets into managed credentials and added monitoring to existing automations.",
       ],
       fr: [
+        "Productisation d'une suite d'automatisations PME revendables sur n8n — assistant WhatsApp IA, système de rappels de RDV, capture de leads instantanée, automatisation d'avis Google et moteur de relances de paiement — chacune pilotée par configuration et déployée par client.",
         "Connexion d'API sociales, CMS, stockage et messagerie en flux fiables de bout en bout.",
         "Migration de secrets en dur vers des credentials managés et ajout de monitoring aux automatisations existantes.",
       ],
