@@ -1,37 +1,177 @@
 {
   "Nav": {
-    "work": "Work",
-    "catalog": "Automations",
-    "about": "About",
-    "skills": "Skills",
-    "experience": "Experience",
+    "services": "Services",
+    "industries": "Industries",
+    "automations": "Automations",
+    "results": "Results",
+    "process": "How it works",
+    "faq": "FAQ",
+    "pricing": "Pricing",
     "blog": "Blog",
     "contact": "Contact",
-    "hireMe": "Get in touch",
+    "hire": "For recruiters",
+    "bookAudit": "Book a free audit",
     "cv": "CV",
-    "downloadCv": "Download CV"
+    "downloadCv": "Download CV",
+    "hireMe": "Get in touch"
   },
   "Hero": {
-    "badge": "Available for roles & freelance",
-    "greeting": "Hi, I'm Damarus",
-    "role": "AI & Automation Engineer",
-    "tagline": "I turn manual, error-prone workflows into resilient systems that run themselves — where automation, LLMs, and real-world APIs meet.",
-    "ctaWork": "View my work",
-    "ctaContact": "Let's talk",
-    "downloadCV": "Download CV",
+    "badge": "Taking on new automation projects",
+    "eyebrow": "AI & Automation Studio",
+    "headlineTop": "Automate the busywork.",
+    "headlineAccent": "Grow without hiring.",
+    "tagline": "I build AI-powered automations that run your operations 24/7 — sales, support, finance, reporting, operations and more. You save hours, cut costs, and never drop the ball.",
+    "ctaPrimary": "Book a free audit",
+    "ctaSecondary": "See what I automate",
     "stats": {
-      "automations": "production automations",
-      "ai": "LLM-native",
-      "bilingual": "EN / FR"
+      "v1": "30+",
+      "l1": "automations shipped",
+      "v2": "up to 86h",
+      "l2": "saved / month",
+      "v3": "24/7",
+      "l3": "runs itself"
     },
     "scroll": "Scroll"
   },
+  "Pains": {
+    "kicker": "Sound familiar?",
+    "title": "The work that quietly drains your business",
+    "subtitle": "Every hour your team spends on manual, repetitive tasks is an hour not spent growing. Here's what automation quietly takes off your plate.",
+    "items": [
+      { "title": "Hours lost to repetitive tasks", "text": "Your team copies data, sends the same emails, and updates spreadsheets by hand — every single day." },
+      { "title": "Leads that go cold", "text": "Enquiries arrive after hours or pile up unanswered, and the sale goes to whoever replies first." },
+      { "title": "Invoices paid late", "text": "Chasing payments is awkward and easy to forget, so your cash sits in unpaid invoices." },
+      { "title": "Support that can't keep up", "text": "The same questions over and over, tickets piling up, customers waiting too long for a reply." },
+      { "title": "Reports that eat your week", "text": "Pulling numbers from five different tools into one spreadsheet, by hand, again and again." },
+      { "title": "Data re-typed by hand", "text": "The same information keyed into your CRM, accounting, and inbox — with mistakes creeping in." }
+    ]
+  },
+  "Outcomes": {
+    "items": [
+      { "value": "$3k+/mo", "label": "saved on manual work" },
+      { "value": "86h/mo", "label": "freed from busywork" },
+      { "value": "−75%", "label": "cost on automated tasks" },
+      { "value": "3×", "label": "faster response = more sales" }
+    ],
+    "note": "Typical results across real projects — your numbers are estimated in the free audit."
+  },
+  "Trust": {
+    "trustedBy": "Trusted by",
+    "logos": ["Nubet", "Upwork", "Fiverr", "30+ projects delivered"],
+    "testimonials": [
+      { "quote": "Damarus builds and runs our production automation — AI content, SEO QA, and data pipelines that operate the agency every day.", "name": "Nubet", "role": "Digital agency" }
+    ],
+    "guarantees": [
+      { "title": "Free audit, no commitment", "text": "You get a clear plan and keep it — whether we work together or not." },
+      { "title": "Fixed quote, no surprises", "text": "You approve a fixed price before anything is built." },
+      { "title": "Your data stays yours", "text": "Self-hosted on your servers, managed credentials, least-access by default." }
+    ],
+    "credentials": ["Full-Stack Web Dev — OIF / Simplon", "B.Sc. Software Engineering", "Claude · OpenAI · n8n", "Self-hosted & secure"]
+  },
+  "Offers": {
+    "kicker": "Packages",
+    "title": "Pick the outcome you want",
+    "subtitle": "Not sure where to start? These are my most-requested bundles — each one built around a single business goal.",
+    "cta": "Book a free audit",
+    "ctaTitle": "Not sure which fits?",
+    "ctaText": "Let's find the highest-impact one for your business in a free 30-minute call.",
+    "items": [
+      { "name": "Sales Machine", "outcome": "Capture and convert every lead, 24/7", "points": ["24/7 WhatsApp & website AI assistant", "Instant lead capture + auto-reply", "Automated follow-ups into your CRM"] },
+      { "name": "Support Autopilot", "outcome": "Cut your support load, delight customers", "points": ["AI ticket triage & grounded replies", "WhatsApp / Telegram support bot", "Answers grounded in your own docs"] },
+      { "name": "Cash Flow Booster", "outcome": "Get paid faster, protect your reputation", "points": ["Automated payment reminders", "Invoice data capture (OCR)", "Google-review requests after each sale"] },
+      { "name": "Effortless Ops", "outcome": "Kill the manual busywork", "points": ["Automated reports & KPI digests", "Data synced across your tools", "Appointment reminders — fewer no-shows"] },
+      { "name": "Content on Autopilot", "outcome": "Stay visible without lifting a finger", "points": ["Auto-generated posts & videos", "One piece repurposed to every channel", "Scheduled, hands-off publishing"] }
+    ]
+  },
+  "Pricing": {
+    "kicker": "Pricing",
+    "title": "Simple pricing, quick payback",
+    "subtitle": "Set up once, then a small monthly fee for hosting, monitoring and support. Most automations pay for themselves within weeks.",
+    "popular": "Most popular",
+    "cta": "Book a free audit",
+    "note": "Indicative pricing — your exact quote is set after the free audit, based on scope.",
+    "plans": [
+      { "name": "Starter", "tagline": "One automation, done right", "price": "from $500", "priceSuffix": "setup + $150/mo", "features": ["1 automation built & deployed", "Hosting + monitoring", "Email support", "Fixes & tweaks included"] },
+      { "name": "Growth", "tagline": "A system that moves the needle", "price": "from $1,500", "priceSuffix": "setup + $400/mo", "features": ["Up to 3 automations", "Everything in Starter", "Priority support", "Monthly optimization"], "popular": true },
+      { "name": "Scale", "tagline": "Your automation partner", "price": "Custom", "priceSuffix": "tailored to you", "features": ["Unlimited scope, phased", "Dedicated build & roadmap", "Self-hosted on your servers", "Ongoing partnership"] }
+    ]
+  },
+  "Industries": {
+    "kicker": "Industries",
+    "title": "Built for your business",
+    "subtitle": "Pick your industry and see exactly what I automate — with the numbers.",
+    "explore": "Explore",
+    "viewAll": "Browse all 34 automations"
+  },
+  "Catalog": {
+    "kicker": "Services",
+    "title": "What I can automate for you",
+    "subtitle": "Real, revenue-moving automations across every part of the business — sales, support, finance, operations, marketing, HR and more. Filter by your world.",
+    "all": "All",
+    "count": "{count} automations · {domains} industries"
+  },
+  "Process": {
+    "kicker": "How it works",
+    "title": "From first call to systems that run themselves",
+    "subtitle": "Simple, low-risk, and you see the value before committing to anything big.",
+    "steps": [
+      { "title": "Free audit call", "text": "We spend 30 minutes on your operations and I map where automation will pay off the fastest." },
+      { "title": "A clear plan", "text": "You get the top 3 high-impact automations, what they'll save you, and a fixed quote. No jargon." },
+      { "title": "I build & deploy", "text": "I develop, test, and launch — reliable by design, with monitoring so nothing ever fails silently." },
+      { "title": "You save time & money", "text": "Your systems run 24/7. I stay on hand to tweak, extend, and keep everything humming." }
+    ]
+  },
+  "Work": {
+    "kicker": "Proven results",
+    "title": "Automations that paid for themselves",
+    "subtitle": "A few systems I've built and the business impact they delivered — with a short demo on each.",
+    "viewCase": "See the details",
+    "domain": "Area",
+    "stackLabel": "Built with"
+  },
+  "BookCall": {
+    "badge": "Free · no commitment",
+    "title": "Let's find 3 tasks worth automating in your business",
+    "subtitle": "Book a free 30-minute automation audit. We look at how you work today and I show you exactly where you're losing time and money — and how to fix it. You keep the plan whether we work together or not.",
+    "points": [
+      "A quick map of your most costly manual tasks",
+      "3 concrete automation opportunities, ranked by impact",
+      "A rough estimate of the time and money each one saves",
+      "Straight answers — no obligation, no pressure"
+    ],
+    "cta": "Book my free audit",
+    "note": "Prefer to write first? Use the contact form or WhatsApp below."
+  },
+  "LeadMagnet": {
+    "badge": "Free guide",
+    "title": "20 tasks you can automate in your business",
+    "subtitle": "A practical checklist to spot where you're losing time and money — and what to automate first. Straight to your inbox.",
+    "points": ["Sorted by impact", "Works for any small business", "No fluff — just what to do"],
+    "email": "you@company.com",
+    "cta": "Send me the guide",
+    "sending": "Sending…",
+    "successTitle": "You're in! Grab your guide:",
+    "download": "Download the guide",
+    "error": "Please enter a valid email."
+  },
+  "Faq": {
+    "kicker": "FAQ",
+    "title": "Questions business owners ask me",
+    "items": [
+      { "q": "Do I need any technical knowledge?", "a": "None at all. You describe how you work today; I handle everything technical and hand you systems that simply run, with clear documentation and simple dashboards." },
+      { "q": "Is my data safe?", "a": "Yes. I can self-host everything on your own servers or a private instance, use managed credentials (never hardcoded secrets), and follow least-access principles. Your data stays yours." },
+      { "q": "How much does it cost?", "a": "It depends on scope, so I quote after the free audit. Most small-business automations are a one-time setup plus a small monthly fee for hosting and maintenance — and they pay for themselves quickly." },
+      { "q": "How long does it take?", "a": "Simple automations ship in days; larger systems in a few weeks. You get a clear timeline with your quote, and I deliver in stages so you see value early." },
+      { "q": "Will it work with my current tools?", "a": "Almost certainly. I connect the tools you already use — CRM, spreadsheets, WhatsApp, email, e-commerce, accounting, and hundreds of others — no need to switch anything." },
+      { "q": "What if something breaks?", "a": "Every system is built with retries, fallbacks, and error alerts, so I'm notified before you are. Maintenance is included in the monthly plan." }
+    ]
+  },
   "About": {
-    "kicker": "About",
-    "title": "Engineering reliable automation, end to end",
-    "p1": "I'm Damarus — an AI & Automation Engineer who turns messy, manual processes into resilient systems that run themselves. I work at the intersection of automation, large language models, and real-world APIs.",
-    "p2": "My focus is reliability: retries, model fallbacks, health checks, and error alerting, so nothing fails silently. I've shipped distributed browser-automation, AI content pipelines, and SEO data engines that run unattended in production.",
-    "p3": "Bilingual in English and French — open to both full-time roles and freelance engagements, on-site or remote.",
+    "kicker": "Who you're working with",
+    "title": "An engineer who speaks results, not jargon",
+    "p1": "I'm Damarus — an AI & Automation Engineer. I've shipped 30+ automations in production, from AI assistants and lead systems to finance, reporting, and operations pipelines.",
+    "p2": "My obsession is reliability and impact: systems that run 24/7 without babysitting and save real hours and money. I build with modern AI (Claude, OpenAI), self-host for security, and monitor everything.",
+    "p3": "I work with clients remotely, in English and French, and treat your business like my own.",
     "factsTitle": "At a glance",
     "languages": "English & French"
   },
@@ -40,30 +180,15 @@
     "title": "A full toolkit for AI-driven automation",
     "subtitle": "From workflow orchestration to LLM integration, browser automation, and the reliability patterns that keep it all running in production."
   },
-  "Work": {
-    "kicker": "Selected work",
-    "title": "Systems built to run on their own",
-    "subtitle": "Anonymized case studies from real production projects — the problem, the architecture, and how each one was engineered for reliability.",
-    "viewCase": "Read case study",
-    "domain": "Domain",
-    "stackLabel": "Stack"
-  },
-  "Catalog": {
-    "kicker": "Automation library",
-    "title": "Automations across every domain",
-    "subtitle": "A cross-industry toolkit — the kinds of systems I design and ship, from e-commerce and finance to AI agents and DevOps.",
-    "all": "All",
-    "count": "{count} automations · {domains} domains"
-  },
   "Experience": {
     "kicker": "Experience",
     "title": "Where I've delivered",
     "subtitle": "Hands-on automation and AI engineering, in production."
   },
   "BlogPreview": {
-    "kicker": "Writing",
+    "kicker": "Insights",
     "title": "Notes from the build",
-    "subtitle": "Practical lessons on automation, LLM reliability, and resilient systems.",
+    "subtitle": "Practical lessons on automation, AI reliability, and getting more done with less.",
     "readMore": "Read",
     "readingTime": "{minutes} min read",
     "viewAll": "All articles",
@@ -71,16 +196,16 @@
   },
   "Contact": {
     "kicker": "Contact",
-    "title": "Let's build something that runs itself",
-    "subtitle": "Whether you're hiring or have a project in mind, I'd love to hear about it. I reply within a day.",
+    "title": "Tell me what's slowing you down",
+    "subtitle": "Send a message or book a free audit — I reply within a day.",
     "name": "Name",
     "namePlaceholder": "Your name",
     "email": "Email",
     "emailPlaceholder": "you@company.com",
     "subject": "Subject",
-    "subjectPlaceholder": "Role, project, or question",
+    "subjectPlaceholder": "What would you like to automate?",
     "message": "Message",
-    "messagePlaceholder": "Tell me a bit about what you need…",
+    "messagePlaceholder": "Tell me a bit about your business and what's eating your time…",
     "send": "Send message",
     "sending": "Sending…",
     "success": "Thanks — your message is on its way. I'll get back to you shortly.",
@@ -90,38 +215,60 @@
     "linkedin": "LinkedIn",
     "emailDirect": "Email",
     "whatsapp": "WhatsApp",
-    "availability": "Available for roles & freelance"
+    "availability": "Taking on new automation projects"
+  },
+  "Hire": {
+    "badge": "For recruiters & hiring managers",
+    "title": "Looking to hire me?",
+    "subtitle": "Beyond client projects, I'm open to full-time roles and contract missions as an AI & Automation Engineer. Here's my background, skills, and CV.",
+    "cvTitle": "My CV",
+    "cvText": "Download my up-to-date resume in your preferred language.",
+    "downloadEn": "Download CV (English)",
+    "downloadFr": "Télécharger le CV (français)",
+    "backHome": "Back to services",
+    "contactCta": "Get in touch"
   },
   "Footer": {
-    "tagline": "AI & Automation Engineer — building resilient systems that run themselves.",
+    "tagline": "AI & automation that saves businesses time and money — built to run itself.",
     "rights": "All rights reserved.",
-    "sections": "Sections",
+    "sections": "Explore",
     "elsewhere": "Elsewhere",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "privacy": "Privacy",
+    "legal": "Legal notice"
   },
   "CaseStudy": {
-    "back": "All work",
+    "back": "All results",
     "overview": "Overview",
     "problem": "The problem",
     "approach": "The approach",
-    "architecture": "Architecture",
+    "architecture": "How it works",
+    "walkthrough": "Step by step, in pictures",
+    "walkthroughIntro": "See the automation in action — these are demonstration captures of the working project, so you know exactly what you'd get.",
     "highlights": "Highlights",
-    "stack": "Tech stack",
+    "stack": "Built with",
     "results": "Key numbers",
-    "nextLabel": "Next case study",
-    "ctaTitle": "Have a similar challenge?",
-    "ctaText": "Let's talk about how to automate it reliably.",
-    "ctaButton": "Start a conversation"
+    "demo": "Demo",
+    "nextLabel": "Next result",
+    "ctaTitle": "Want the same for your business?",
+    "ctaText": "Let's find where automation pays off fastest for you.",
+    "ctaButton": "Book a free audit"
   },
   "Blog": {
     "back": "Blog",
     "title": "Blog",
-    "subtitle": "Practical notes on automation, LLM reliability, and building systems that don't fail silently.",
+    "subtitle": "Practical notes on automation, AI reliability, and getting more done with less.",
     "readingTime": "{minutes} min read",
     "empty": "No articles yet — check back soon.",
     "backToList": "All articles",
-    "ctaTitle": "Want to work together?",
-    "ctaButton": "Get in touch"
+    "ctaTitle": "Want to automate your business?",
+    "ctaButton": "Book a free audit"
+  },
+  "Cookies": {
+    "text": "I use cookies to measure traffic and improve the site. Analytics and ads run only if you accept.",
+    "learnMore": "Learn more",
+    "accept": "Accept",
+    "reject": "Decline"
   },
   "Common": {
     "language": "Language",

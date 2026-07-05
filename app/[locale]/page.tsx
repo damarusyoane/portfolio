@@ -1,10 +1,17 @@
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Skills } from "@/components/sections/Skills";
+import { Pains } from "@/components/sections/Pains";
+import { Outcomes } from "@/components/sections/Outcomes";
+import { Trust } from "@/components/sections/Trust";
+import { Offers } from "@/components/sections/Offers";
+import { Pricing } from "@/components/sections/Pricing";
+import { Industries } from "@/components/sections/Industries";
+import { Process } from "@/components/sections/Process";
 import { Work } from "@/components/sections/Work";
-import { AutomationCatalog } from "@/components/sections/AutomationCatalog";
-import { Experience } from "@/components/sections/Experience";
+import { BookCall } from "@/components/sections/BookCall";
+import { About } from "@/components/sections/About";
+import { Faq } from "@/components/sections/Faq";
+import { LeadMagnet } from "@/components/sections/LeadMagnet";
 import { BlogPreview } from "@/components/sections/BlogPreview";
 import { Contact } from "@/components/sections/Contact";
 import { getAllPosts } from "@/lib/blog";
@@ -22,11 +29,18 @@ export default async function HomePage({
   return (
     <>
       <Hero />
-      <About />
-      <Skills />
+      <Pains />
+      <Outcomes />
+      <Trust />
+      <Offers />
+      <Industries />
+      <Pricing />
+      <Process />
       <Work />
-      <AutomationCatalog />
-      <Experience />
+      <BookCall />
+      <About />
+      <Faq />
+      <LeadMagnet />
       <BlogPreview posts={posts} />
       <Contact />
     </>

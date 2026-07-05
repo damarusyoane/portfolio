@@ -13,7 +13,7 @@ export default async function OpengraphImage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Hero" });
-  const role = t("role");
+  const role = `${t("headlineTop")} ${t("headlineAccent")}`;
 
   return new ImageResponse(
     (
@@ -65,10 +65,11 @@ export default async function OpengraphImage({
             backgroundImage: "linear-gradient(100deg, #22d3ee, #8b5cf6)",
             backgroundClip: "text",
             color: "transparent",
-            fontSize: 96,
+            fontSize: 68,
             fontWeight: 800,
             letterSpacing: -2,
             lineHeight: 1.05,
+            maxWidth: 1040,
           }}
         >
           {role}
@@ -82,7 +83,7 @@ export default async function OpengraphImage({
             maxWidth: 900,
           }}
         >
-          {siteConfig.locationLabel[locale === "fr" ? "fr" : "en"]}
+          {t("eyebrow")}
         </div>
       </div>
     ),

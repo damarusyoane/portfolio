@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { projects } from "@/lib/projects";
+import { niches } from "@/lib/niches";
 import { getPostSlugs } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
 
@@ -15,6 +16,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
+    });
+    entries.push({
+      url: `${base}/${locale}/hire`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+    for (const niche of Object.keys(niches)) {
+      entries.push({
+        url: `${base}/${locale}/solutions/${niche}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.75,
+      });
+    }
+    entries.push({
+      url: `${base}/${locale}/automations`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
     });
     entries.push({
       url: `${base}/${locale}/blog`,
