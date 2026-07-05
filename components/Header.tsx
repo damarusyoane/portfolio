@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { Menu, X, ArrowUpRight, Download } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Menu, X, CalendarCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Brandmark } from "@/components/Brandmark";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -10,17 +10,16 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { key: "work", href: "/#work" },
-  { key: "catalog", href: "/#catalog" },
-  { key: "skills", href: "/#skills" },
-  { key: "experience", href: "/#experience" },
+  { key: "services", href: "/#offers" },
+  { key: "industries", href: "/#industries" },
+  { key: "results", href: "/#work" },
+  { key: "pricing", href: "/#pricing" },
+  { key: "faq", href: "/#faq" },
   { key: "blog", href: "/blog" },
 ] as const;
 
 export function Header() {
   const t = useTranslations("Nav");
-  const locale = useLocale();
-  const cvHref = `/cv/Damarus-Ngankou-CV-${locale === "fr" ? "FR" : "EN"}.pdf`;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -73,32 +72,32 @@ export function Header() {
 
         <div className="flex items-center gap-2.5">
           <LanguageSwitcher className="hidden sm:inline-flex" />
-          <a
-            href={cvHref}
-            download
-            className="hidden items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-border-strong hover:bg-white/5 md:inline-flex"
-          >
-            <Download className="h-4 w-4" />
-            {t("cv")}
-          </a>
           <Link
-            href="/#contact"
-            className="hidden items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5 md:inline-flex"
+            href="/hire"
+            className="hidden rounded-full px-3 py-2 text-sm text-muted transition-colors hover:text-ink lg:inline-flex"
+          >
+            {t("hire")}
+          </Link>
+          <a
+            href={siteConfig.links.cal}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-bg transition-transform hover:-translate-y-0.5 md:inline-flex"
             style={{
               backgroundImage:
                 "linear-gradient(100deg, var(--color-accent), var(--color-accent-2))",
             }}
           >
-            {t("hireMe")}
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
+            <CalendarCheck className="h-4 w-4" />
+            {t("bookAudit")}
+          </a>
 
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             className="grid h-10 w-10 place-items-center rounded-full border border-border text-ink md:hidden"
             aria-label="Menu"
-            aria-expanded={open}
+            aria-expanded={open ? "true" : "false"}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -109,7 +108,7 @@ export function Header() {
       <div
         className={cn(
           "overflow-hidden border-b border-border bg-bg/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden",
-          open ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0",
+          open ? "max-h-[460px] opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
@@ -124,25 +123,25 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/#contact"
+            href="/hire"
             onClick={() => setOpen(false)}
-            className="mt-2 flex items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-base font-medium text-bg"
+            className="rounded-xl px-4 py-3 text-base text-ink-soft transition-colors hover:bg-white/5"
+          >
+            {t("hire")}
+          </Link>
+          <a
+            href={siteConfig.links.cal}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-2 flex items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-base font-semibold text-bg"
             style={{
               backgroundImage:
                 "linear-gradient(100deg, var(--color-accent), var(--color-accent-2))",
             }}
           >
-            {t("hireMe")}
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
-          <a
-            href={cvHref}
-            download
-            onClick={() => setOpen(false)}
-            className="mt-2 flex items-center justify-center gap-1.5 rounded-xl border border-border px-4 py-3 text-base font-medium text-ink"
-          >
-            <Download className="h-4 w-4" />
-            {t("downloadCv")}
+            <CalendarCheck className="h-4 w-4" />
+            {t("bookAudit")}
           </a>
           <div className="mt-3 px-1">
             <LanguageSwitcher />

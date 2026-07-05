@@ -6,10 +6,13 @@ import { Link } from "@/i18n/navigation";
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
 import { ScreenshotFrame } from "@/components/ScreenshotFrame";
 import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/ui/Button";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import { routing, type Locale } from "@/i18n/routing";
 import { projects, getProject } from "@/lib/projects";
+import { getGallery } from "@/lib/galleries";
+import { ProcessGallery } from "@/components/sections/ProcessGallery";
 import { accentColor, accentGradient } from "@/lib/utils";
+import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -57,6 +60,7 @@ export default async function ProjectPage({
 
   const t = await getTranslations({ locale, namespace: "CaseStudy" });
   const accent = accentColor(project.accent);
+  const gallery = getGallery(slug);
 
   const index = projects.findIndex((p) => p.slug === slug);
   const next = projects[(index + 1) % projects.length];
@@ -120,8 +124,23 @@ export default async function ProjectPage({
           </div>
         </Reveal>
 
-        {/* Workflow screenshot */}
-        {project.screenshot && (
+        {/* Step-by-step walkthrough in screenshots */}
+        {gallery.length > 0 ? (
+          <Section title={t("walkthrough")}>
+            <p className="-mt-1 mb-7 max-w-2xl text-[15px] leading-relaxed text-muted">
+              {t("walkthroughIntro")}
+            </p>
+            <ProcessGallery steps={gallery} locale={l} accent={accent} />
+          </Section>
+        ) : project.loomUrl ? (
+          <Reveal className="mt-10">
+            <VideoEmbed
+              url={project.loomUrl}
+              title={`${t("demo")} · ${project.slug}`}
+              playLabel={t("demo")}
+            />
+          </Reveal>
+        ) : project.screenshot ? (
           <Reveal className="mt-10">
             <ScreenshotFrame
               src={project.screenshot}
@@ -129,7 +148,7 @@ export default async function ProjectPage({
               caption={`workflow · ${project.slug}`}
             />
           </Reveal>
-        )}
+        ) : null}
 
         {/* Architecture */}
         <Section title={t("architecture")}>
@@ -206,7 +225,18 @@ export default async function ProjectPage({
               </h2>
               <p className="mx-auto mt-3 max-w-md text-muted">{t("ctaText")}</p>
               <div className="mt-6 flex justify-center">
-                <Button href="/#contact">{t("ctaButton")}</Button>
+                <a
+                  href={siteConfig.links.cal}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-semibold text-bg transition-transform hover:-translate-y-0.5"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(100deg, var(--color-accent), var(--color-accent-2))",
+                  }}
+                >
+                  {t("ctaButton")}
+                </a>
               </div>
             </div>
           </div>

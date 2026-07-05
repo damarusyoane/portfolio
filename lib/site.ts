@@ -17,6 +17,8 @@ export const siteConfig = {
 
   links: {
     linkedin: "https://www.linkedin.com/in/damarus-ngankou-aaab6622a",
+    // Cal.com free-audit booking link (30-min event).
+    cal: "https://cal.com/damarus-ngankou-wazbmt/30min",
   },
 
   locationLabel: {

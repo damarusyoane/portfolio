@@ -26,6 +26,8 @@ export type Project = {
   metrics: Metric[];
   flow: FlowNode[];
   screenshot?: string;
+  /** Loom demo URL (share or embed). When set, shown instead of the screenshot. */
+  loomUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -89,16 +91,16 @@ export const projects: Project[] = [
     },
     metrics: [
       {
+        value: "$1.8k/mo",
+        label: { en: "in manual labor saved", fr: "de main-d'œuvre économisée /mois" },
+      },
+      {
         value: "10×",
         label: { en: "faster than manual retrieval", fr: "plus rapide que le manuel" },
       },
       {
-        value: "~45s",
-        label: { en: "signed-URL window handled", fr: "fenêtre d'URL signée gérée" },
-      },
-      {
-        value: "4",
-        label: { en: "agents, no single point of failure", fr: "agents, aucun point de défaillance" },
+        value: "Zero",
+        label: { en: "downtime, self-healing", fr: "d'indisponibilité, auto-réparant" },
       },
     ],
     flow: [
@@ -166,16 +168,16 @@ export const projects: Project[] = [
     },
     metrics: [
       {
-        value: "~90%",
-        label: { en: "less manual QA time", fr: "de temps de QA manuel en moins" },
+        value: "$2.5k/mo",
+        label: { en: "in QA time saved", fr: "de temps de QA économisé /mois" },
+      },
+      {
+        value: "−90%",
+        label: { en: "manual QA time", fr: "de QA manuel en moins" },
       },
       {
         value: "100s",
         label: { en: "of pages audited per run", fr: "de pages auditées par run" },
-      },
-      {
-        value: "8",
-        label: { en: "sitemap discovery strategies", fr: "stratégies de découverte de sitemap" },
       },
     ],
     flow: [
@@ -184,6 +186,81 @@ export const projects: Project[] = [
       { label: { en: "Crawl + extract", fr: "Crawl + extraction" }, kind: "process" },
       { label: { en: "LLM comparison", fr: "Comparaison LLM" }, kind: "ai" },
       { label: { en: "Recommendations", fr: "Recommandations" }, kind: "output" },
+    ],
+  },
+  {
+    slug: "google-ads-campaign-agent",
+    accent: "indigo",
+    year: "2026",
+    title: {
+      en: "AI Google Ads Campaign Builder",
+      fr: "Agent IA de création de campagnes Google Ads",
+    },
+    domain: {
+      en: "Paid ads · Marketing automation",
+      fr: "Publicité · Automatisation marketing",
+    },
+    tagline: {
+      en: "Turns a one-line product brief into a ready-to-import Google Ads Search campaign — keyword themes, ad groups and RSAs written by AI, exported straight to Google Ads Editor.",
+      fr: "Transforme un brief produit d'une ligne en campagne Google Ads Search prête à importer — thèmes de mots-clés, groupes d'annonces et RSA rédigés par l'IA, exportés directement vers Google Ads Editor.",
+    },
+    stack: [
+      "n8n",
+      "Claude API",
+      "Google Ads Editor CSV",
+      "Google Sheets",
+      "Email",
+    ],
+    problem: {
+      en: "Building a Search campaign by hand is slow and error-prone: dozens of keywords to group, and Responsive Search Ads whose 15 headlines and 4 descriptions must each respect strict character limits — one overflow and the whole import is rejected.",
+      fr: "Construire une campagne Search à la main est lent et risqué : des dizaines de mots-clés à regrouper, et des annonces responsives dont les 15 titres et 4 descriptions doivent respecter des limites de caractères strictes — un seul dépassement et tout l'import est rejeté.",
+    },
+    approach: {
+      en: [
+        "A product/service brief comes in from a form or Google Sheet; an LLM expands it into structured keyword themes and matching ad groups.",
+        "For each ad group, Claude writes a full Responsive Search Ad — 15 headlines and 4 descriptions — tuned to the offer and audience.",
+        "Every asset is validated against Google's exact character limits before export, so nothing gets rejected at import.",
+        "The workflow assembles a Google Ads Editor-ready CSV and emails it to the media buyer for a one-click bulk import, then logs the run.",
+      ],
+      fr: [
+        "Un brief produit/service arrive d'un formulaire ou d'un Google Sheet ; un LLM le développe en thèmes de mots-clés structurés et groupes d'annonces correspondants.",
+        "Pour chaque groupe, Claude rédige une annonce responsive complète — 15 titres et 4 descriptions — adaptée à l'offre et à l'audience.",
+        "Chaque élément est validé contre les limites de caractères exactes de Google avant export, pour qu'aucun import ne soit rejeté.",
+        "Le workflow assemble un CSV prêt pour Google Ads Editor et l'envoie par email au média-acheteur pour un import en un clic, puis journalise l'exécution.",
+      ],
+    },
+    highlights: {
+      en: [
+        "A full Search campaign drafted from a one-line brief in minutes, not hours.",
+        "Character-limit validation baked in — imports never bounce.",
+        "Delivered as a Google Ads Editor CSV: import, review, launch.",
+      ],
+      fr: [
+        "Une campagne Search complète rédigée depuis un brief d'une ligne en minutes, pas en heures.",
+        "Validation des limites de caractères intégrée — les imports ne sont jamais rejetés.",
+        "Livré en CSV Google Ads Editor : importez, relisez, lancez.",
+      ],
+    },
+    metrics: [
+      {
+        value: "~4h",
+        label: { en: "saved per campaign", fr: "gagnées par campagne" },
+      },
+      {
+        value: "100%",
+        label: { en: "within ad character limits", fr: "dans les limites de caractères" },
+      },
+      {
+        value: "1-click",
+        label: { en: "import to Google Ads", fr: "d'import vers Google Ads" },
+      },
+    ],
+    flow: [
+      { label: { en: "Product brief", fr: "Brief produit" }, kind: "trigger" },
+      { label: { en: "Keywords + ad groups", fr: "Mots-clés + groupes" }, kind: "ai" },
+      { label: { en: "RSA copy (AI)", fr: "Annonces RSA (IA)" }, kind: "ai" },
+      { label: { en: "Validate limits", fr: "Valider les limites" }, kind: "process" },
+      { label: { en: "Google Ads Editor CSV", fr: "CSV Google Ads Editor" }, kind: "output" },
     ],
   },
   {
@@ -245,12 +322,12 @@ export const projects: Project[] = [
     },
     metrics: [
       {
-        value: "~5h",
-        label: { en: "saved per video vs. manual", fr: "gagnées par vidéo vs manuel" },
+        value: "$1.2k/mo",
+        label: { en: "in content costs saved", fr: "de coûts de contenu économisés /mois" },
       },
       {
-        value: "Every 3 days",
-        label: { en: "published, fully unattended", fr: "publiée, en totale autonomie" },
+        value: "~5h",
+        label: { en: "saved per video vs. manual", fr: "gagnées par vidéo vs manuel" },
       },
       {
         value: "0",
@@ -320,16 +397,16 @@ export const projects: Project[] = [
     },
     metrics: [
       {
+        value: "$1.5k/mo",
+        label: { en: "in content ops saved", fr: "d'ops contenu économisées /mois" },
+      },
+      {
         value: "24/7",
-        label: { en: "unattended scheduled runs", fr: "exécutions planifiées sans surveillance" },
+        label: { en: "unattended, self-healing", fr: "sans surveillance, auto-réparant" },
       },
       {
         value: "0",
         label: { en: "silent failures", fr: "échec silencieux" },
-      },
-      {
-        value: "529-proof",
-        label: { en: "model fallback under load", fr: "fallback de modèle sous charge" },
       },
     ],
     flow: [
@@ -397,16 +474,16 @@ export const projects: Project[] = [
     },
     metrics: [
       {
-        value: "Seconds",
-        label: { en: "to find any answer", fr: "pour trouver une réponse" },
+        value: "$2k/mo",
+        label: { en: "in staff time saved", fr: "de temps équipe économisé /mois" },
       },
       {
-        value: "100%",
-        label: { en: "answers cited & grounded", fr: "réponses citées et sourcées" },
+        value: "−70%",
+        label: { en: "time to find answers", fr: "de temps pour trouver une réponse" },
       },
       {
-        value: "0",
-        label: { en: "fine-tuning required", fr: "fine-tuning requis" },
+        value: "Cited",
+        label: { en: "grounded, no hallucination", fr: "sourcées, sans hallucination" },
       },
     ],
     flow: [
@@ -476,16 +553,16 @@ export const projects: Project[] = [
     },
     metrics: [
       {
-        value: "0",
-        label: { en: "manual dialing or note-taking", fr: "numérotation/prise de notes manuelle" },
+        value: "$3k/mo",
+        label: { en: "in calling time saved", fr: "de temps d'appels économisé /mois" },
       },
       {
         value: "100%",
-        label: { en: "calls transcribed & analysed", fr: "appels transcrits & analysés" },
+        label: { en: "calls logged & analysed", fr: "appels journalisés & analysés" },
       },
       {
         value: "24/7",
-        label: { en: "unattended outreach loop", fr: "boucle d'appels sans surveillance" },
+        label: { en: "unattended outreach", fr: "prospection sans surveillance" },
       },
     ],
     flow: [
@@ -543,9 +620,9 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
-      { value: "24/7", label: { en: "always-on responses", fr: "réponses en continu" } },
-      { value: "2 canaux", label: { en: "Meta + Evolution", fr: "Meta + Evolution" } },
-      { value: "Multi-tenant", label: { en: "config-driven resale", fr: "revente par configuration" } },
+      { value: "$2.4k/mo", label: { en: "in recovered sales", fr: "de ventes récupérées /mois" } },
+      { value: "24/7", label: { en: "instant responses", fr: "réponses instantanées" } },
+      { value: "~30%", label: { en: "more enquiries captured", fr: "de demandes captées en plus" } },
     ],
     flow: [
       { label: { en: "WhatsApp message", fr: "Message WhatsApp" }, kind: "trigger" },
@@ -602,9 +679,9 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
-      { value: "24h + 2h", label: { en: "timed reminders", fr: "rappels minutés" } },
+      { value: "−40%", label: { en: "no-shows", fr: "de no-shows" } },
+      { value: "$1.6k/mo", label: { en: "in recovered bookings", fr: "de RDV récupérés /mois" } },
       { value: "0", label: { en: "manual reminders", fr: "rappel manuel" } },
-      { value: "Idempotent", label: { en: "no double-sends", fr: "aucun doublon" } },
     ],
     flow: [
       { label: { en: "Hourly schedule", fr: "Planif. horaire" }, kind: "trigger" },
@@ -661,9 +738,9 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
+      { value: "3×", label: { en: "lead conversion", fr: "de conversion des leads" } },
+      { value: "$3.5k/mo", label: { en: "in extra revenue", fr: "de revenus supplémentaires /mois" } },
       { value: "<1 min", label: { en: "first reply", fr: "première réponse" } },
-      { value: "AI-scored", label: { en: "hot / warm / cold", fr: "chaud / tiède / froid" } },
-      { value: "0", label: { en: "leads lost", fr: "lead perdu" } },
     ],
     flow: [
       { label: { en: "Form / ad lead", fr: "Lead formulaire / pub" }, kind: "trigger" },
@@ -720,9 +797,9 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
+      { value: "3×", label: { en: "more 5-star reviews", fr: "d'avis 5 étoiles en plus" } },
+      { value: "$1.2k/mo", label: { en: "in new-customer value", fr: "de valeur nouveaux clients /mois" } },
       { value: "Auto", label: { en: "after every sale", fr: "après chaque vente" } },
-      { value: "5-star", label: { en: "review-focused", fr: "axé avis positifs" } },
-      { value: "Gated", label: { en: "unhappy → private", fr: "mécontent → privé" } },
     ],
     flow: [
       { label: { en: "Sale completed", fr: "Vente terminée" }, kind: "trigger" },
@@ -779,9 +856,9 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
+      { value: "$4k/mo", label: { en: "in cash flow recovered", fr: "de trésorerie récupérée /mois" } },
+      { value: "−50%", label: { en: "late payments", fr: "de retards de paiement" } },
       { value: "Daily", label: { en: "automated chasing", fr: "relance automatisée" } },
-      { value: "0", label: { en: "manual follow-ups", fr: "relance manuelle" } },
-      { value: "Faster", label: { en: "time-to-payment", fr: "délai de paiement" } },
     ],
     flow: [
       { label: { en: "Daily schedule", fr: "Planif. quotidienne" }, kind: "trigger" },

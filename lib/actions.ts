@@ -112,3 +112,71 @@ export async function submitContact(
     return { status: "error", reason: "server" };
   }
 }
+
+/* ── Lead magnet (free guide email capture) ─────────────────────── */
+
+const leadSchema = z.object({ email: z.string().trim().email().max(160) });
+
+export type LeadState = {
+  status: "idle" | "success" | "error";
+  reason?: "validation" | "server";
+};
+
+export async function captureLead(
+  _prev: LeadState,
+  formData: FormData,
+): Promise<LeadState> {
+  // Honeypot
+  if (((formData.get("company") as string) || "").length > 0) {
+    return { status: "success" };
+  }
+
+  const parsed = leadSchema.safeParse({ email: formData.get("email") });
+  if (!parsed.success) return { status: "error", reason: "validation" };
+  const email = parsed.data.email;
+
+  const apiKey = process.env.BREVO_API_KEY;
+  if (apiKey) {
+    // Add the contact (best-effort — never block the download on this)
+    try {
+      await fetch("https://api.brevo.com/v3/contacts", {
+        method: "POST",
+        headers: {
+          "api-key": apiKey,
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          updateEnabled: true,
+          attributes: { SOURCE: "lead-magnet" },
+        }),
+      });
+    } catch {
+      /* ignore */
+    }
+    // Notify the owner (best-effort)
+    try {
+      const fromEmail = process.env.CONTACT_FROM_EMAIL || siteConfig.email;
+      const to = process.env.CONTACT_TO_EMAIL || siteConfig.email;
+      await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: {
+          "api-key": apiKey,
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          sender: { name: "Website", email: fromEmail },
+          to: [{ email: to }],
+          subject: `New guide download — ${email}`,
+          textContent: `${email} downloaded the free automation guide.`,
+        }),
+      });
+    } catch {
+      /* ignore */
+    }
+  }
+
+  return { status: "success" };
+}

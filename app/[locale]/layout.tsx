@@ -8,6 +8,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { Tracking } from "@/components/Tracking";
+import { CookieConsent } from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site";
 import "../globals.css";
 
@@ -38,7 +41,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Hero" });
-  const role = t("role");
+  const role = t("eyebrow");
   const description = t("tagline");
 
   return {
@@ -52,12 +55,12 @@ export async function generateMetadata({
     authors: [{ name: siteConfig.name }],
     creator: siteConfig.name,
     keywords: [
-      "AI Engineer",
-      "Automation Engineer",
-      "n8n",
-      "LLM",
-      "Python",
-      "Self-hosting",
+      "automation services",
+      "business automation",
+      "AI automation",
+      "n8n consultant",
+      "workflow automation",
+      "AI agency",
       siteConfig.name,
     ],
     alternates: {
@@ -99,6 +102,28 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: `${siteConfig.name} — Automation Studio`,
+    url: siteConfig.baseUrl,
+    email: siteConfig.email,
+    telephone: siteConfig.phone,
+    sameAs: [siteConfig.links.linkedin],
+    areaServed: "Worldwide",
+    founder: { "@type": "Person", name: siteConfig.name },
+    knowsAbout: [
+      "Business automation",
+      "AI automation",
+      "n8n",
+      "LLM integration",
+      "Workflow automation",
+      "Lead generation",
+      "Customer support automation",
+    ],
+    slogan: "AI & automation that saves businesses time and money.",
+  };
+
   return (
     <html
       lang={locale}
@@ -110,9 +135,16 @@ export default async function LocaleLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <WhatsAppFab />
+          <Tracking />
+          <CookieConsent />
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );

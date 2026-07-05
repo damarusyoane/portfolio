@@ -9,12 +9,14 @@ import { siteConfig, whatsappUrl, mailtoUrl } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
 const sectionLinks = [
-  { key: "work", href: "/#work" },
-  { key: "catalog", href: "/#catalog" },
-  { key: "about", href: "/#about" },
-  { key: "skills", href: "/#skills" },
-  { key: "experience", href: "/#experience" },
+  { key: "services", href: "/#offers" },
+  { key: "industries", href: "/#industries" },
+  { key: "results", href: "/#work" },
+  { key: "automations", href: "/automations" },
+  { key: "pricing", href: "/#pricing" },
+  { key: "faq", href: "/#faq" },
   { key: "blog", href: "/blog" },
+  { key: "hire", href: "/hire" },
 ] as const;
 
 export function Footer() {
@@ -89,7 +91,19 @@ export function Footer() {
           <p>
             © {year} {siteConfig.name}. {t("Footer.rights")}
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link
+              href="/privacy"
+              className="text-muted transition-colors hover:text-ink"
+            >
+              {t("Footer.privacy")}
+            </Link>
+            <Link
+              href="/legal"
+              className="text-muted transition-colors hover:text-ink"
+            >
+              {t("Footer.legal")}
+            </Link>
             <a
               href="#top"
               className="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-ink"
