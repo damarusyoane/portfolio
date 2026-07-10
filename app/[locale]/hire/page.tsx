@@ -20,7 +20,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Hire" });
   return {
-    title: `${t("title")} — ${siteConfig.name}`,
+    title: `${t("title")} — ${siteConfig.founder}`,
     description: t("subtitle"),
   };
 }

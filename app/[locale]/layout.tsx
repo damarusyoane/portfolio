@@ -51,8 +51,8 @@ export async function generateMetadata({
       template: `%s · ${siteConfig.name}`,
     },
     description,
-    applicationName: `${siteConfig.name} — Portfolio`,
-    authors: [{ name: siteConfig.name }],
+    applicationName: siteConfig.name,
+    authors: [{ name: siteConfig.founder }],
     creator: siteConfig.name,
     keywords: [
       "automation services",
@@ -73,7 +73,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "website",
-      siteName: `${siteConfig.name} — Portfolio`,
+      siteName: siteConfig.name,
       title: `${siteConfig.name} — ${role}`,
       description,
       url: `/${locale}`,
@@ -105,13 +105,13 @@ export default async function LocaleLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: `${siteConfig.name} — Automation Studio`,
+    name: siteConfig.name,
     url: siteConfig.baseUrl,
     email: siteConfig.email,
     telephone: siteConfig.phone,
     sameAs: [siteConfig.links.linkedin],
     areaServed: "Worldwide",
-    founder: { "@type": "Person", name: siteConfig.name },
+    founder: { "@type": "Person", name: siteConfig.founder },
     knowsAbout: [
       "Business automation",
       "AI automation",

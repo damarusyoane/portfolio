@@ -5,8 +5,9 @@ import type { Locale } from "@/i18n/routing";
  * NOTE: values marked `// TODO` are placeholders to confirm with Damarus.
  */
 export const siteConfig = {
-  name: "Damarus Ngankou",
-  initials: "DN",
+  name: "Ottomate",
+  founder: "Damarus Ngankou",
+  initials: "Ot",
   roleKey: "role", // resolved from messages per-locale
 
   email: "damarusngankou@gmail.com",
@@ -34,7 +35,7 @@ export const siteConfig = {
   // Public base URL (overridden by env in production).
   baseUrl:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-    "https://damarus-ngankou.vercel.app",
+    "https://damarus-portfolio.vercel.app",
 } as const;
 
 export function whatsappUrl(text?: string) {

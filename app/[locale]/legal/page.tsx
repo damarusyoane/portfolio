@@ -29,7 +29,7 @@ const data: Record<Locale, { title: string; sections: Section[] }> = {
       {
         h: "Publisher",
         p: [
-          `This website is published by ${siteConfig.name}, independent AI & Automation engineer (Automation Studio).`,
+          `This website is published by ${siteConfig.founder} (trading as ${siteConfig.name}), independent AI & automation engineer.`,
           `Contact: ${siteConfig.email} · ${siteConfig.phone}`,
         ],
       },
@@ -59,7 +59,7 @@ const data: Record<Locale, { title: string; sections: Section[] }> = {
       {
         h: "Éditeur",
         p: [
-          `Ce site est édité par ${siteConfig.name}, ingénieur IA & automatisation indépendant (Automation Studio).`,
+          `Ce site est édité par ${siteConfig.founder} (marque ${siteConfig.name}), ingénieur IA & automatisation indépendant.`,
           `Contact : ${siteConfig.email} · ${siteConfig.phone}`,
         ],
       },
