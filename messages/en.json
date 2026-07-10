@@ -20,9 +20,9 @@
     "eyebrow": "AI & Automation Studio",
     "headlineTop": "Automate the busywork.",
     "headlineAccent": "Grow without hiring.",
-    "tagline": "I build AI-powered automations that run your operations 24/7 — sales, support, finance, reporting, operations and more. You save hours, cut costs, and never drop the ball.",
+    "tagline": "We build AI-powered automations that run your operations 24/7 — sales, support, finance, reporting, operations and more. You save hours, cut costs, and never drop the ball.",
     "ctaPrimary": "Book a free audit",
-    "ctaSecondary": "See what I automate",
+    "ctaSecondary": "See what we automate",
     "stats": {
       "v1": "30+",
       "l1": "automations shipped",
@@ -56,10 +56,12 @@
     "note": "Typical results across real projects — your numbers are estimated in the free audit."
   },
   "Trust": {
-    "trustedBy": "Trusted by",
-    "logos": ["Nubet", "Upwork", "Fiverr", "30+ projects delivered"],
+    "trustedBy": "Businesses that trust us",
+    "logos": ["Nubet", "Maison237", "Airplace", "Upwork", "Fiverr", "30+ projects delivered"],
     "testimonials": [
-      { "quote": "Damarus builds and runs our production automation — AI content, SEO QA, and data pipelines that operate the agency every day.", "name": "Nubet", "role": "Digital agency" }
+      { "quote": "Ottomate deployed our lead automation and it's been a game-changer: we respond faster, we secure our clients, and we've doubled our revenue. We'll definitely work with them again — highly recommended.", "name": "Maison237", "role": "Real-estate developer" },
+      { "quote": "We're really happy with the WhatsApp AI assistant Ottomate deployed for us. We reply to customers fast now, and the AI feels human — so clients get a real sense of trust and professionalism. Thank you for everything!", "name": "Airplace", "role": "Phone shop" },
+      { "quote": "Ottomate builds and runs our production automation — AI content, SEO QA, and data pipelines that operate the agency every day.", "name": "Nubet", "role": "Digital agency" }
     ],
     "guarantees": [
       { "title": "Free audit, no commitment", "text": "You get a clear plan and keep it — whether we work together or not." },
@@ -71,7 +73,7 @@
   "Offers": {
     "kicker": "Packages",
     "title": "Pick the outcome you want",
-    "subtitle": "Not sure where to start? These are my most-requested bundles — each one built around a single business goal.",
+    "subtitle": "Not sure where to start? These are our most-requested bundles — each one built around a single business goal.",
     "cta": "Book a free audit",
     "ctaTitle": "Not sure which fits?",
     "ctaText": "Let's find the highest-impact one for your business in a free 30-minute call.",
@@ -99,13 +101,13 @@
   "Industries": {
     "kicker": "Industries",
     "title": "Built for your business",
-    "subtitle": "Pick your industry and see exactly what I automate — with the numbers.",
+    "subtitle": "Pick your industry and see exactly what we automate — with the numbers.",
     "explore": "Explore",
     "viewAll": "Browse all 34 automations"
   },
   "Catalog": {
     "kicker": "Services",
-    "title": "What I can automate for you",
+    "title": "What we can automate for you",
     "subtitle": "Real, revenue-moving automations across every part of the business — sales, support, finance, operations, marketing, HR and more. Filter by your world.",
     "all": "All",
     "count": "{count} automations · {domains} industries"
@@ -115,16 +117,16 @@
     "title": "From first call to systems that run themselves",
     "subtitle": "Simple, low-risk, and you see the value before committing to anything big.",
     "steps": [
-      { "title": "Free audit call", "text": "We spend 30 minutes on your operations and I map where automation will pay off the fastest." },
+      { "title": "Free audit call", "text": "We spend 30 minutes on your operations and map where automation will pay off the fastest." },
       { "title": "A clear plan", "text": "You get the top 3 high-impact automations, what they'll save you, and a fixed quote. No jargon." },
-      { "title": "I build & deploy", "text": "I develop, test, and launch — reliable by design, with monitoring so nothing ever fails silently." },
-      { "title": "You save time & money", "text": "Your systems run 24/7. I stay on hand to tweak, extend, and keep everything humming." }
+      { "title": "We build & deploy", "text": "We develop, test, and launch — reliable by design, with monitoring so nothing ever fails silently." },
+      { "title": "You save time & money", "text": "Your systems run 24/7. We stay on hand to tweak, extend, and keep everything humming." }
     ]
   },
   "Work": {
     "kicker": "Proven results",
     "title": "Automations that paid for themselves",
-    "subtitle": "A few systems I've built and the business impact they delivered — with a short demo on each.",
+    "subtitle": "A few systems we've built and the business impact they delivered — with a short demo on each.",
     "viewCase": "See the details",
     "domain": "Area",
     "stackLabel": "Built with"
@@ -132,7 +134,7 @@
   "BookCall": {
     "badge": "Free · no commitment",
     "title": "Let's find 3 tasks worth automating in your business",
-    "subtitle": "Book a free 30-minute automation audit. We look at how you work today and I show you exactly where you're losing time and money — and how to fix it. You keep the plan whether we work together or not.",
+    "subtitle": "Book a free 30-minute automation audit. We look at how you work today and show you exactly where you're losing time and money — and how to fix it. You keep the plan whether we work together or not.",
     "points": [
       "A quick map of your most costly manual tasks",
       "3 concrete automation opportunities, ranked by impact",
@@ -156,22 +158,22 @@
   },
   "Faq": {
     "kicker": "FAQ",
-    "title": "Questions business owners ask me",
+    "title": "Questions business owners ask us",
     "items": [
-      { "q": "Do I need any technical knowledge?", "a": "None at all. You describe how you work today; I handle everything technical and hand you systems that simply run, with clear documentation and simple dashboards." },
-      { "q": "Is my data safe?", "a": "Yes. I can self-host everything on your own servers or a private instance, use managed credentials (never hardcoded secrets), and follow least-access principles. Your data stays yours." },
-      { "q": "How much does it cost?", "a": "It depends on scope, so I quote after the free audit. Most small-business automations are a one-time setup plus a small monthly fee for hosting and maintenance — and they pay for themselves quickly." },
-      { "q": "How long does it take?", "a": "Simple automations ship in days; larger systems in a few weeks. You get a clear timeline with your quote, and I deliver in stages so you see value early." },
-      { "q": "Will it work with my current tools?", "a": "Almost certainly. I connect the tools you already use — CRM, spreadsheets, WhatsApp, email, e-commerce, accounting, and hundreds of others — no need to switch anything." },
-      { "q": "What if something breaks?", "a": "Every system is built with retries, fallbacks, and error alerts, so I'm notified before you are. Maintenance is included in the monthly plan." }
+      { "q": "Do I need any technical knowledge?", "a": "None at all. You describe how you work today; we handle everything technical and hand you systems that simply run, with clear documentation and simple dashboards." },
+      { "q": "Is my data safe?", "a": "Yes. We can self-host everything on your own servers or a private instance, use managed credentials (never hardcoded secrets), and follow least-access principles. Your data stays yours." },
+      { "q": "How much does it cost?", "a": "It depends on scope, so we quote after the free audit. Most small-business automations are a one-time setup plus a small monthly fee for hosting and maintenance — and they pay for themselves quickly." },
+      { "q": "How long does it take?", "a": "Simple automations ship in days; larger systems in a few weeks. You get a clear timeline with your quote, and we deliver in stages so you see value early." },
+      { "q": "Will it work with my current tools?", "a": "Almost certainly. We connect the tools you already use — CRM, spreadsheets, WhatsApp, email, e-commerce, accounting, and hundreds of others — no need to switch anything." },
+      { "q": "What if something breaks?", "a": "Every system is built with retries, fallbacks, and error alerts, so we're notified before you are. Maintenance is included in the monthly plan." }
     ]
   },
   "About": {
     "kicker": "Who you're working with",
-    "title": "An engineer who speaks results, not jargon",
-    "p1": "I'm Damarus — an AI & Automation Engineer. I've shipped 30+ automations in production, from AI assistants and lead systems to finance, reporting, and operations pipelines.",
-    "p2": "My obsession is reliability and impact: systems that run 24/7 without babysitting and save real hours and money. I build with modern AI (Claude, OpenAI), self-host for security, and monitor everything.",
-    "p3": "I work with clients remotely, in English and French, and treat your business like my own.",
+    "title": "A team that speaks results, not jargon",
+    "p1": "We're Ottomate — an AI & automation studio. We've shipped 30+ automations in production, from AI assistants and lead systems to finance, reporting, and operations pipelines.",
+    "p2": "Our obsession is reliability and impact: systems that run 24/7 without babysitting and save real hours and money. We build with modern AI (Claude, OpenAI), self-host for security, and monitor everything.",
+    "p3": "We work with clients remotely, in English and French, and treat your business like our own.",
     "factsTitle": "At a glance",
     "languages": "English & French"
   },
@@ -182,7 +184,7 @@
   },
   "Experience": {
     "kicker": "Experience",
-    "title": "Where I've delivered",
+    "title": "Where we've delivered",
     "subtitle": "Hands-on automation and AI engineering, in production."
   },
   "BlogPreview": {
@@ -196,8 +198,8 @@
   },
   "Contact": {
     "kicker": "Contact",
-    "title": "Tell me what's slowing you down",
-    "subtitle": "Send a message or book a free audit — I reply within a day.",
+    "title": "Tell us what's slowing you down",
+    "subtitle": "Send a message or book a free audit — we reply within a day.",
     "name": "Name",
     "namePlaceholder": "Your name",
     "email": "Email",
@@ -205,13 +207,13 @@
     "subject": "Subject",
     "subjectPlaceholder": "What would you like to automate?",
     "message": "Message",
-    "messagePlaceholder": "Tell me a bit about your business and what's eating your time…",
+    "messagePlaceholder": "Tell us a bit about your business and what's eating your time…",
     "send": "Send message",
     "sending": "Sending…",
-    "success": "Thanks — your message is on its way. I'll get back to you shortly.",
-    "error": "Something went wrong. Please try again or reach me directly.",
+    "success": "Thanks — your message is on its way. We'll get back to you shortly.",
+    "error": "Something went wrong. Please try again or reach us directly.",
     "validation": "Please check the highlighted fields.",
-    "directTitle": "Or reach me directly",
+    "directTitle": "Or reach us directly",
     "linkedin": "LinkedIn",
     "emailDirect": "Email",
     "whatsapp": "WhatsApp",
@@ -265,7 +267,7 @@
     "ctaButton": "Book a free audit"
   },
   "Cookies": {
-    "text": "I use cookies to measure traffic and improve the site. Analytics and ads run only if you accept.",
+    "text": "We use cookies to measure traffic and improve the site. Analytics and ads run only if you accept.",
     "learnMore": "Learn more",
     "accept": "Accept",
     "reject": "Decline"
