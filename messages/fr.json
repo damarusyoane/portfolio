@@ -9,11 +9,7 @@
     "pricing": "Tarifs",
     "blog": "Blog",
     "contact": "Contact",
-    "hire": "Recruteurs",
-    "bookAudit": "Réserver un audit gratuit",
-    "cv": "CV",
-    "downloadCv": "Télécharger le CV",
-    "hireMe": "Me contacter"
+    "bookAudit": "Réserver un audit gratuit"
   },
   "Hero": {
     "badge": "Ouvert à de nouveaux projets d'automatisation",
@@ -218,17 +214,6 @@
     "emailDirect": "Email",
     "whatsapp": "WhatsApp",
     "availability": "Ouvert à de nouveaux projets d'automatisation"
-  },
-  "Hire": {
-    "badge": "Pour recruteurs & responsables RH",
-    "title": "Vous cherchez à me recruter ?",
-    "subtitle": "Au-delà des projets clients, je suis ouvert aux postes salariés et missions en tant qu'Ingénieur IA & Automatisation. Voici mon parcours, mes compétences et mon CV.",
-    "cvTitle": "Mon CV",
-    "cvText": "Téléchargez mon CV à jour dans la langue de votre choix.",
-    "downloadEn": "Download CV (English)",
-    "downloadFr": "Télécharger le CV (français)",
-    "backHome": "Retour aux services",
-    "contactCta": "Me contacter"
   },
   "Footer": {
     "tagline": "De l'IA et de l'automatisation qui font gagner du temps et de l'argent aux entreprises — conçues pour tourner seules.",

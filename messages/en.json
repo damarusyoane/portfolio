@@ -9,11 +9,7 @@
     "pricing": "Pricing",
     "blog": "Blog",
     "contact": "Contact",
-    "hire": "For recruiters",
-    "bookAudit": "Book a free audit",
-    "cv": "CV",
-    "downloadCv": "Download CV",
-    "hireMe": "Get in touch"
+    "bookAudit": "Book a free audit"
   },
   "Hero": {
     "badge": "Taking on new automation projects",
@@ -218,17 +214,6 @@
     "emailDirect": "Email",
     "whatsapp": "WhatsApp",
     "availability": "Taking on new automation projects"
-  },
-  "Hire": {
-    "badge": "For recruiters & hiring managers",
-    "title": "Looking to hire me?",
-    "subtitle": "Beyond client projects, I'm open to full-time roles and contract missions as an AI & Automation Engineer. Here's my background, skills, and CV.",
-    "cvTitle": "My CV",
-    "cvText": "Download my up-to-date resume in your preferred language.",
-    "downloadEn": "Download CV (English)",
-    "downloadFr": "Télécharger le CV (français)",
-    "backHome": "Back to services",
-    "contactCta": "Get in touch"
   },
   "Footer": {
     "tagline": "AI & automation that saves businesses time and money — built to run itself.",

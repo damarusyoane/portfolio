@@ -72,12 +72,6 @@ export function Header() {
 
         <div className="flex items-center gap-2.5">
           <LanguageSwitcher className="hidden sm:inline-flex" />
-          <Link
-            href="/hire"
-            className="hidden rounded-full px-3 py-2 text-sm text-muted transition-colors hover:text-ink lg:inline-flex"
-          >
-            {t("hire")}
-          </Link>
           <a
             href={siteConfig.links.cal}
             target="_blank"
@@ -122,13 +116,6 @@ export function Header() {
               {t(item.key)}
             </Link>
           ))}
-          <Link
-            href="/hire"
-            onClick={() => setOpen(false)}
-            className="rounded-xl px-4 py-3 text-base text-ink-soft transition-colors hover:bg-white/5"
-          >
-            {t("hire")}
-          </Link>
           <a
             href={siteConfig.links.cal}
             target="_blank"
