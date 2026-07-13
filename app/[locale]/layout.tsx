@@ -41,13 +41,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Hero" });
-  const role = t("eyebrow");
   const description = t("tagline");
+  // SEO title targets the phrase people actually search for ("AI automation
+  // agency" / "agence d'automatisation IA"), decoupled from the visible hero
+  // eyebrow so the on-page brand voice ("Studio") stays unchanged.
+  const seoTitle =
+    locale === "fr"
+      ? `${siteConfig.name} — Agence d'automatisation IA`
+      : `${siteConfig.name} — AI Automation Agency`;
 
   return {
     metadataBase: new URL(siteConfig.baseUrl),
     title: {
-      default: `${siteConfig.name} — ${role}`,
+      default: seoTitle,
       template: `%s · ${siteConfig.name}`,
     },
     description,
@@ -55,12 +61,15 @@ export async function generateMetadata({
     authors: [{ name: siteConfig.founder }],
     creator: siteConfig.name,
     keywords: [
-      "automation services",
+      "AI automation agency",
+      "agence d'automatisation IA",
       "business automation",
       "AI automation",
       "n8n consultant",
+      "n8n automation agency",
       "workflow automation",
-      "AI agency",
+      "automatisation IA entreprise",
+      "AI automation Canada",
       siteConfig.name,
     ],
     alternates: {
@@ -74,14 +83,14 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       siteName: siteConfig.name,
-      title: `${siteConfig.name} — ${role}`,
+      title: seoTitle,
       description,
       url: `/${locale}`,
       locale: locale === "fr" ? "fr_FR" : "en_US",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${siteConfig.name} — ${role}`,
+      title: seoTitle,
       description,
     },
     robots: { index: true, follow: true },

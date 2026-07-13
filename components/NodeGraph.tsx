@@ -51,13 +51,6 @@ export function NodeGraph({ className }: { className?: string }) {
           <stop offset="0%" stopColor="var(--color-accent)" />
           <stop offset="100%" stopColor="var(--color-accent-2)" />
         </linearGradient>
-        <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="6" result="b" />
-          <feMerge>
-            <feMergeNode in="b" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
 
       {/* Base edges */}
@@ -102,7 +95,9 @@ export function NodeGraph({ className }: { className?: string }) {
 
       {/* Nodes */}
       {nodes.map((n, i) => (
-        <g key={n.id} style={{ filter: "url(#soft-glow)" }}>
+        <g key={n.id}>
+          {/* Cheap static halo — replaces a per-frame Gaussian blur filter */}
+          <circle cx={n.x} cy={n.y} r={24} fill={colorFor[n.kind]} opacity={0.1} />
           <circle
             cx={n.x}
             cy={n.y}
