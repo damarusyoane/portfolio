@@ -51,7 +51,7 @@ export async function generateMetadata({
   if (!n) return {};
   const l = locale as Locale;
   return {
-    title: `${n.hero.title[l]} — ${siteConfig.name}`,
+    title: n.hero.eyebrow[l],
     description: n.hero.subtitle[l],
     alternates: {
       canonical: `/${locale}/solutions/${niche}`,

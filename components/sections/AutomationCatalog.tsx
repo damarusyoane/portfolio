@@ -65,6 +65,7 @@ export function AutomationCatalog() {
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
+          as="h1"
           kicker={t("kicker")}
           title={t("title")}
           subtitle={t("subtitle")}

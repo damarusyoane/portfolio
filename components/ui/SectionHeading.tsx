@@ -8,12 +8,14 @@ export function SectionHeading({
   subtitle,
   align = "left",
   className,
+  as: Heading = "h2",
 }: {
   kicker: string;
   title: ReactNode;
   subtitle?: string;
   align?: "left" | "center";
   className?: string;
+  as?: "h1" | "h2";
 }) {
   return (
     <Reveal
@@ -34,9 +36,9 @@ export function SectionHeading({
           {kicker}
         </span>
       </div>
-      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl md:text-[2.7rem]">
+      <Heading className="font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl md:text-[2.7rem]">
         {title}
-      </h2>
+      </Heading>
       {subtitle && (
         <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
           {subtitle}

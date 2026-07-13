@@ -24,7 +24,9 @@ export async function generateMetadata({
   const post = getPost(locale as Locale, slug);
   if (!post) return {};
   return {
-    title: post.meta.title,
+    // `absolute` skips the "· Ottomate" template so long article titles stay
+    // under the ~70-char search-result limit.
+    title: { absolute: post.meta.title },
     description: post.meta.excerpt,
     alternates: {
       canonical: `/${locale}/blog/${slug}`,

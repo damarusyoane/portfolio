@@ -5,7 +5,6 @@ import { Link } from "@/i18n/navigation";
 import { AutomationCatalog } from "@/components/sections/AutomationCatalog";
 import { BookCall } from "@/components/sections/BookCall";
 import { routing } from "@/i18n/routing";
-import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -19,7 +18,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Catalog" });
   return {
-    title: `${t("title")} — ${siteConfig.name}`,
+    title: t("title"),
     description: t("subtitle"),
     alternates: {
       canonical: `/${locale}/automations`,
