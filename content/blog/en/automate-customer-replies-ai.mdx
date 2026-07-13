@@ -1,0 +1,50 @@
+---
+title: "How to automate customer replies with AI"
+date: "2026-07-13"
+excerpt: "Slow replies quietly cost you sales. Here's how an AI assistant answers customers on WhatsApp and web chat in under a minute — 24/7 — without sounding like a robot or going off the rails."
+tags: ["AI", "Customer support", "WhatsApp", "Automation"]
+---
+
+Most businesses don't lose customers because their product is bad. They lose them because someone else replied first. A prospect messages three shops at 9 p.m.; the one that answers by 9:05 usually wins. If your replies wait until morning, you're funding your competitors' growth.
+
+An AI reply assistant closes that gap. Done well, it answers every customer in under a minute, around the clock, in your voice — and quietly hands the tricky ones to a human. Here's how we build them.
+
+## What it actually does
+
+An AI assistant sits on the channels your customers already use — **WhatsApp, Instagram DMs, web chat, email** — and does three jobs:
+
+1. **Answers the repetitive 80%.** Opening hours, pricing ranges, availability, "do you deliver to…", "is this in stock", booking a viewing or an appointment. These questions are the bulk of the volume and the easiest to get right.
+2. **Qualifies and captures the lead.** It collects the details that matter (what they want, budget, location, timeline) and writes them straight into your CRM or a spreadsheet — so nothing is lost and follow-up is instant.
+3. **Escalates the hard 20%.** Anything ambiguous, sensitive, or high-value gets routed to a human with the full conversation attached. The AI knows what it doesn't know.
+
+## How it works under the hood
+
+The important part is that the assistant is **grounded in your business**, not making things up. We give the model a curated source of truth — your services, prices, policies, FAQs — and instruct it to answer *only* from that. If the answer isn't there, it says so and offers a human, instead of inventing one.
+
+A typical flow looks like this:
+
+- A message arrives on WhatsApp → a workflow (we build these in n8n) receives it.
+- The AI reads the message plus the recent conversation, checks your knowledge base, and drafts a reply.
+- Simple request → it responds instantly and logs the lead.
+- Complex or unhappy customer → it notifies your team and steps back.
+
+## The guardrails that keep it safe
+
+This is where most "AI chatbot" projects go wrong. Ours ship with:
+
+- **Grounding + refusal.** The assistant answers from your approved content or not at all — no hallucinated prices or promises.
+- **A human handoff path.** Every conversation can reach a person. Silent dead-ends are how you lose trust.
+- **A clear tone.** It speaks the way your brand speaks, in your customer's language — French or English, matched automatically.
+- **A fallback model.** If the primary model is slow or errors, a backup takes over so a customer is never left hanging.
+
+## What to automate — and what not to
+
+Automate the **high-volume, low-risk** conversations: information, availability, booking, first-touch qualification. Keep a human in the loop for **negotiation, complaints, and anything involving money moving or a promise being made**. The goal isn't to remove people — it's to stop them drowning in "what are your hours?" so they can spend time where it actually matters.
+
+If you run a shop, clinic, or agency, this is usually the single highest-ROI automation you can add. It's the same engine behind our [customer-facing automations for online stores](/en/solutions/ecommerce) and [clinics & practices](/en/solutions/clinics).
+
+## Getting started
+
+You don't need to automate everything on day one. Start with your **top five questions** — the ones your team answers ten times a day — and a single channel. Get that reliable, measure how many replies it handles on its own, then expand.
+
+Want to see what this would look like for your business? [Book a free 30-minute audit](/en#book) and we'll map the three automations that would pay off fastest for you — no commitment.
