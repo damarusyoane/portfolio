@@ -23,6 +23,15 @@ export function Hero() {
       transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
+  // The headline is the LCP element: keep it at full opacity so it paints on
+  // the first frame (only a subtle slide) instead of fading in after hydration.
+  const headline = {
+    hidden: reduce ? {} : { y: 16 },
+    show: {
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
 
   return (
     <section
@@ -54,7 +63,7 @@ export function Hero() {
           </motion.p>
 
           <motion.h1
-            variants={item}
+            variants={headline}
             className="mt-3 font-display text-[2.5rem] font-bold leading-[1.06] tracking-tight text-ink sm:text-6xl md:text-[4.1rem]"
           >
             {t("headlineTop")}{" "}
