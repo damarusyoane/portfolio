@@ -105,12 +105,25 @@ export default async function LocaleLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": `${siteConfig.baseUrl}/#organization`,
     name: siteConfig.name,
+    alternateName: "Ottomate Agency",
+    legalName: "Ottomate",
     url: siteConfig.baseUrl,
+    logo: `${siteConfig.baseUrl}/icon.svg`,
+    image: `${siteConfig.baseUrl}/icon.svg`,
+    description:
+      "Ottomate is an AI & automation agency that helps businesses automate repetitive work — customer replies, lead capture, invoicing, reporting and more — using n8n and large language models.",
     email: siteConfig.email,
     telephone: siteConfig.phone,
     sameAs: [siteConfig.links.linkedin],
     areaServed: "Worldwide",
+    serviceType: [
+      "AI automation",
+      "Business process automation",
+      "n8n workflow development",
+      "Chatbot & AI assistant development",
+    ],
     founder: { "@type": "Person", name: siteConfig.founder },
     knowsAbout: [
       "Business automation",
