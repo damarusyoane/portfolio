@@ -10,7 +10,7 @@ export const siteConfig = {
   initials: "Ot",
   roleKey: "role", // resolved from messages per-locale
 
-  email: "damarusngankou@gmail.com",
+  email: "contact@ottomateagency.com",
   // Digits only, international format, no "+".
   whatsapp: "237674411479",
   // E.164 for tel:.
@@ -19,7 +19,7 @@ export const siteConfig = {
   links: {
     linkedin: "https://www.linkedin.com/in/damarus-ngankou-aaab6622a",
     // Cal.com free-audit booking link (30-min event).
-    cal: "https://cal.com/damarus-ngankou-wazbmt/30min",
+    cal: "https://cal.com/ottomateagency/30min",
   },
 
   locationLabel: {
@@ -35,7 +35,7 @@ export const siteConfig = {
   // Public base URL (overridden by env in production).
   baseUrl:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-    "https://damarus-portfolio.vercel.app",
+    "https://ottomateagency.com",
 } as const;
 
 export function whatsappUrl(text?: string) {
