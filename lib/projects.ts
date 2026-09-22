@@ -868,6 +868,307 @@ export const projects: Project[] = [
       { label: { en: "Mark reminded", fr: "Marquer relancé" }, kind: "store" },
     ],
   },
+  {
+    slug: "google-ads-performance-analyst",
+    accent: "indigo",
+    year: "2026",
+    title: {
+      en: "AI Google Ads Performance Analyst",
+      fr: "Analyste de performance Google Ads propulsé par l'IA",
+    },
+    domain: {
+      en: "Paid ads · Applied AI",
+      fr: "Publicité · IA appliquée",
+    },
+    tagline: {
+      en: "A multi-account reporting engine and live chat agent that turn raw Google Ads data into prioritized, plain-English recommendations — with every number computed in code, never guessed by the model.",
+      fr: "Un moteur de reporting multi-comptes et un agent de chat en direct qui transforment les données brutes Google Ads en recommandations priorisées et en langage clair — chaque chiffre est calculé en code, jamais deviné par le modèle.",
+    },
+    stack: ["n8n", "Claude (Agent + tool calling)", "Google Ads API (GAQL)", "Google Sheets", "Email"],
+    problem: {
+      en: "Agencies managing dozens of ad accounts under one manager account spend hours every week pulling reports by hand, and answering a simple 'how is this campaign doing?' means opening the platform and digging through tabs.",
+      fr: "Les agences qui gèrent des dizaines de comptes publicitaires sous un même compte manager perdent des heures chaque semaine à sortir des rapports à la main, et répondre à un simple « comment va cette campagne ? » veut dire ouvrir la plateforme et fouiller dans les onglets.",
+    },
+    approach: {
+      en: [
+        "A scheduled workflow pulls performance data across every sub-account under the manager account via the Ads API, filtered to the campaigns that matter.",
+        "Budget pacing, quality scores, and search-term hygiene are computed deterministically in code — the LLM never invents a number, it only explains what the code already calculated.",
+        "Claude turns the structured findings into a prioritized, plain-English report per account and emails it automatically, skipping accounts with nothing new to report.",
+        "A separate conversational agent, wired to the same underlying data through callable tools, answers ad-hoc questions instantly in a chat interface instead of waiting for the next scheduled report.",
+      ],
+      fr: [
+        "Un workflow planifié récupère les performances de tous les sous-comptes du compte manager via l'API Ads, filtré sur les campagnes pertinentes.",
+        "Le rythme de dépense du budget, le quality score et l'hygiène des termes de recherche sont calculés de façon déterministe en code — le LLM n'invente jamais un chiffre, il se contente d'expliquer ce que le code a déjà calculé.",
+        "Claude transforme ces constats structurés en rapport priorisé et en langage clair par compte, envoyé automatiquement par email, en sautant les comptes sans nouveauté à signaler.",
+        "Un agent conversationnel distinct, connecté aux mêmes données via des outils appelables, répond instantanément aux questions ponctuelles dans une interface de chat, sans attendre le prochain rapport planifié.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Numbers are computed in code and only narrated by the LLM — no hallucinated metrics.",
+        "Scales across a multi-account manager structure without per-account setup.",
+        "Two ways in: scheduled email reports and an always-on chat agent for instant answers.",
+      ],
+      fr: [
+        "Les chiffres sont calculés en code et seulement racontés par le LLM — aucune métrique hallucinée.",
+        "Passe à l'échelle sur une structure multi-comptes manager sans configuration par compte.",
+        "Deux points d'entrée : rapports email planifiés et un agent de chat toujours disponible pour des réponses instantanées.",
+      ],
+    },
+    metrics: [
+      { value: "Multi-account", label: { en: "scales across a manager account", fr: "passe à l'échelle sur un compte manager" } },
+      { value: "24/7", label: { en: "instant answers via chat agent", fr: "réponses instantanées via l'agent de chat" } },
+      { value: "0", label: { en: "hand-pulled reports", fr: "rapport tiré à la main" } },
+    ],
+    flow: [
+      { label: { en: "Scheduled trigger", fr: "Déclencheur planifié" }, kind: "trigger" },
+      { label: { en: "Multi-account data pull", fr: "Extraction multi-comptes" }, kind: "process" },
+      { label: { en: "Deterministic scoring", fr: "Notation déterministe" }, kind: "process" },
+      { label: { en: "Claude synthesis", fr: "Synthèse Claude" }, kind: "ai" },
+      { label: { en: "Report + chat agent", fr: "Rapport + agent de chat" }, kind: "output" },
+    ],
+  },
+  {
+    slug: "agentic-voice-concierge",
+    accent: "violet",
+    year: "2026",
+    title: {
+      en: "Agentic Multi-Tool Voice Concierge",
+      fr: "Concierge conversationnel agentique multi-outils",
+    },
+    domain: {
+      en: "Conversational AI · Agentic tool use",
+      fr: "IA conversationnelle · Usage agentique d'outils",
+    },
+    tagline: {
+      en: "A customer-facing assistant that takes both text and voice messages and calls dedicated tools for live data — checking today's menu or booking a table — instead of guessing.",
+      fr: "Un assistant client qui reçoit aussi bien des messages texte que vocaux et appelle des outils dédiés pour obtenir des données en direct — consulter le menu du jour ou réserver une table — plutôt que d'improviser.",
+    },
+    stack: ["n8n", "Claude (AI Agent)", "Whisper (speech-to-text)", "Google Sheets", "Gmail"],
+    problem: {
+      en: "Text-only FAQ bots can't handle voice messages or real actions like checking live availability or making a booking — so businesses still need a human for anything beyond the simplest question.",
+      fr: "Les bots FAQ purement textuels ne gèrent ni les messages vocaux ni les vraies actions comme vérifier une disponibilité en direct ou effectuer une réservation — les entreprises ont donc toujours besoin d'un humain dès que la question sort du strict basique.",
+    },
+    approach: {
+      en: [
+        "Every incoming message is normalized first; voice notes are transcribed through Whisper before they ever reach the conversational agent, so the same flow handles text and audio identically.",
+        "The core agent is wired with dedicated tools, each an isolated, independently testable sub-workflow: one reads live availability from a source of truth, one records a booking, one alerts a human for anything the agent shouldn't decide alone.",
+        "Session memory keyed per contact keeps multi-turn conversations coherent without mixing up different customers.",
+        "The agent is instructed to answer only from what its tools return — never inventing availability, prices, or details it wasn't given.",
+      ],
+      fr: [
+        "Chaque message entrant est normalisé en premier ; les notes vocales sont transcrites via Whisper avant même d'atteindre l'agent conversationnel, si bien que le même flux traite texte et audio de façon identique.",
+        "L'agent central est connecté à des outils dédiés, chacun un sous-workflow isolé et testable indépendamment : l'un lit une disponibilité en direct depuis une source de vérité, l'un enregistre une réservation, l'un alerte un humain pour tout ce que l'agent ne doit pas décider seul.",
+        "Une mémoire de session par contact garde les conversations à plusieurs tours cohérentes sans mélanger les clients.",
+        "L'agent a pour consigne de ne répondre qu'à partir de ce que ses outils renvoient — jamais d'inventer une disponibilité, un prix ou un détail qu'il n'a pas reçu.",
+      ],
+    },
+    highlights: {
+      en: [
+        "One entry point handles both voice and text messages.",
+        "Tool-calling architecture keeps the agent grounded — no invented answers.",
+        "Each tool is an isolated sub-workflow, easy to test and extend independently.",
+      ],
+      fr: [
+        "Un seul point d'entrée gère aussi bien la voix que le texte.",
+        "L'architecture à base d'outils garde l'agent ancré dans le réel — aucune réponse inventée.",
+        "Chaque outil est un sous-workflow isolé, facile à tester et à faire évoluer indépendamment.",
+      ],
+    },
+    metrics: [
+      { value: "Voice + text", label: { en: "one flow handles both channels", fr: "un flux gère les deux canaux" } },
+      { value: "3 tools", label: { en: "live data & actions, not guesses", fr: "données & actions en direct, jamais devinées" } },
+      { value: "24/7", label: { en: "unattended availability", fr: "disponibilité sans surveillance" } },
+    ],
+    flow: [
+      { label: { en: "Message (text/voice)", fr: "Message (texte/voix)" }, kind: "trigger" },
+      { label: { en: "Transcribe if audio", fr: "Transcription si audio" }, kind: "process" },
+      { label: { en: "AI Agent + tools", fr: "Agent IA + outils" }, kind: "ai" },
+      { label: { en: "Live data / action", fr: "Donnée / action en direct" }, kind: "process" },
+      { label: { en: "Reply", fr: "Réponse" }, kind: "output" },
+    ],
+  },
+  {
+    slug: "seo-content-engine",
+    accent: "cyan",
+    year: "2026",
+    title: {
+      en: "Automated Blog SEO Content Engine",
+      fr: "Moteur de publication de contenu SEO automatisé",
+    },
+    domain: {
+      en: "Content ops · Applied AI",
+      fr: "Content ops · IA appliquée",
+    },
+    tagline: {
+      en: "Turns a rotating list of client sectors into fully researched, illustrated, quality-checked WordPress drafts — every keyword backed by real market data, every article measured before it's allowed to publish.",
+      fr: "Transforme une liste tournante de secteurs clients en brouillons WordPress entièrement recherchés, illustrés et contrôlés — chaque mot-clé s'appuie sur des données de marché réelles, chaque article est mesuré avant d'être autorisé à publier.",
+    },
+    stack: ["n8n", "Claude", "Keyword research API", "AI image generation", "WordPress REST API", "Google Sheets"],
+    problem: {
+      en: "Producing SEO content at scale usually means either generic AI output built on invented keyword volumes, or slow manual writing — and multi-site agencies have no reliable way to guarantee every article actually respects internal-linking and quality rules without a human re-checking each one.",
+      fr: "Produire du contenu SEO à grande échelle veut souvent dire soit un texte IA générique bâti sur des volumes de mots-clés inventés, soit une rédaction manuelle lente — et les agences multi-sites n'ont aucun moyen fiable de garantir que chaque article respecte vraiment les règles de maillage et de qualité sans qu'un humain revérifie chacun.",
+    },
+    approach: {
+      en: [
+        "A scheduled orchestrator rotates through client sectors and calls a real keyword-research API for every target term, rejecting anything not backed by actual volume and competition data.",
+        "A generator workflow drafts the article and its imagery, then runs a deterministic quality gate in code — measuring keyword density, heading hierarchy, internal-link count, and anchor-text variation programmatically instead of trusting the model's own judgment.",
+        "Articles that fail the gate are automatically revised within a bounded number of attempts; anything still failing is routed to a human with the exact reason, never silently published.",
+        "Each client site is published through its own small gateway sub-workflow, so onboarding a new site means duplicating one workflow, not touching the core pipeline.",
+        "Everything lands as a draft — a human always reviews before anything goes live.",
+      ],
+      fr: [
+        "Un orchestrateur planifié parcourt les secteurs clients et interroge une vraie API de recherche de mots-clés pour chaque terme visé, en rejetant tout ce qui n'est pas appuyé par un volume et une concurrence réels.",
+        "Un workflow générateur rédige l'article et son imagerie, puis fait passer une porte de qualité déterministe en code — mesurant programmatiquement densité de mots-clés, hiérarchie des titres, nombre de liens internes et variation des ancres, plutôt que de faire confiance au jugement du modèle.",
+        "Les articles recalés sont corrigés automatiquement dans la limite d'un nombre borné de tentatives ; ce qui échoue encore est envoyé à un humain avec la raison exacte, jamais publié en silence.",
+        "Chaque site client est publié via sa propre petite passerelle en sous-workflow, si bien qu'ajouter un site revient à dupliquer un workflow, sans toucher au pipeline central.",
+        "Tout atterrit en brouillon — un humain relit toujours avant toute mise en ligne.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Quality is measured by code, not hoped for from the model.",
+        "Keyword choices are grounded in real market data an LLM can't hallucinate around.",
+        "Multi-site by design; always publishes as a draft pending human review.",
+      ],
+      fr: [
+        "La qualité est mesurée par le code, pas espérée du modèle.",
+        "Les choix de mots-clés s'appuient sur des données de marché réelles, impossibles à halluciner pour un LLM.",
+        "Multi-site par conception ; publie toujours en brouillon en attente de relecture humaine.",
+      ],
+    },
+    metrics: [
+      { value: "~$0.40", label: { en: "cost per finished article, all-in", fr: "coût par article fini, tout compris" } },
+      { value: "2 tries", label: { en: "bounded auto-revision, never a silent failure", fr: "correction auto bornée, jamais d'échec silencieux" } },
+      { value: "Draft-only", label: { en: "always awaits human review", fr: "attend toujours une relecture humaine" } },
+    ],
+    flow: [
+      { label: { en: "Scheduled orchestrator", fr: "Orchestrateur planifié" }, kind: "trigger" },
+      { label: { en: "Real keyword research", fr: "Recherche de mots-clés réelle" }, kind: "process" },
+      { label: { en: "AI draft + imagery", fr: "Brouillon + imagerie IA" }, kind: "ai" },
+      { label: { en: "Deterministic QA gate", fr: "Porte qualité déterministe" }, kind: "process" },
+      { label: { en: "WordPress draft", fr: "Brouillon WordPress" }, kind: "output" },
+    ],
+  },
+  {
+    slug: "automated-prospecting-agent",
+    accent: "indigo",
+    year: "2026",
+    title: {
+      en: "Automated Prospecting & Outreach Agent",
+      fr: "Agent de prospection et de relance automatisé",
+    },
+    domain: {
+      en: "Sales automation · Applied AI",
+      fr: "Automatisation commerciale · IA appliquée",
+    },
+    tagline: {
+      en: "Finds local businesses, reads each one's actual website to spot real automation opportunities, drafts a genuinely personalized outreach email — then follows up on its own three days later.",
+      fr: "Trouve des commerces locaux, lit le site réel de chacun pour repérer de vraies opportunités d'automatisation, rédige un email de prospection réellement personnalisé — puis relance seul trois jours plus tard.",
+    },
+    stack: ["n8n", "Claude", "Business directory scraping", "Email", "Google Sheets"],
+    problem: {
+      en: "Cold outreach at scale is usually generic templated spam that gets ignored, because writing a genuinely personalized email to every prospect one by one doesn't scale — and a lead that doesn't reply to the first email is typically just forgotten.",
+      fr: "La prospection à froid à grande échelle finit généralement en spam générique ignoré, car rédiger un email vraiment personnalisé pour chaque prospect un par un ne passe pas à l'échelle — et un lead qui ne répond pas au premier email est en général tout simplement oublié.",
+    },
+    approach: {
+      en: [
+        "A form-triggered workflow searches a target city and business category, then filters down to businesses that actually have a website worth analyzing.",
+        "It visits each site and extracts real signals — services offered, visible gaps, missing functionality — instead of working from the business's name and category alone.",
+        "An LLM turns those signals into 2-4 concrete, specific automation ideas and drafts an outreach email that references the business by name and by what it actually saw on the site — not a generic template.",
+        "Every prospect is logged to a tracking sheet, and a second scheduled workflow automatically follows up on day 3 for anyone who hasn't replied, then marks them as followed-up so no one is ever double-emailed.",
+      ],
+      fr: [
+        "Un workflow déclenché par formulaire cherche une ville et une catégorie de commerce cibles, puis filtre sur les commerces qui ont effectivement un site web à analyser.",
+        "Il visite chaque site et en extrait de vrais signaux — services proposés, manques visibles, fonctionnalités absentes — plutôt que de se baser uniquement sur le nom et la catégorie du commerce.",
+        "Un LLM transforme ces signaux en 2 à 4 idées d'automatisation concrètes et spécifiques, puis rédige un email de prospection qui cite le commerce par son nom et par ce qu'il a réellement vu sur le site — jamais un modèle générique.",
+        "Chaque prospect est journalisé dans une feuille de suivi, et un second workflow planifié relance automatiquement à J+3 ceux qui n'ont pas répondu, puis les marque comme relancés pour qu'aucun ne reçoive deux emails.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Personalization grounded in each prospect's real website content, not a mail-merge.",
+        "Automatic day-3 follow-up with zero manual tracking.",
+        "Sheet-backed dedup keeps every prospect at exactly one email per step.",
+      ],
+      fr: [
+        "Une personnalisation ancrée dans le contenu réel du site de chaque prospect, pas un simple publipostage.",
+        "Relance automatique à J+3 sans aucun suivi manuel.",
+        "Une dédup appuyée sur une feuille garde chaque prospect à exactement un email par étape.",
+      ],
+    },
+    metrics: [
+      { value: "2-4", label: { en: "automation ideas drafted per prospect", fr: "idées d'automatisation rédigées par prospect" } },
+      { value: "J+3", label: { en: "automatic follow-up, no manual tracking", fr: "relance automatique, aucun suivi manuel" } },
+      { value: "0", label: { en: "manual research per lead", fr: "recherche manuelle par lead" } },
+    ],
+    flow: [
+      { label: { en: "Form trigger (city/category)", fr: "Déclencheur formulaire (ville/catégorie)" }, kind: "trigger" },
+      { label: { en: "Find businesses", fr: "Recherche de commerces" }, kind: "process" },
+      { label: { en: "Extract site signals", fr: "Extraction de signaux du site" }, kind: "process" },
+      { label: { en: "AI-personalized email", fr: "Email personnalisé par IA" }, kind: "ai" },
+      { label: { en: "Log + auto follow-up", fr: "Journal + relance auto" }, kind: "output" },
+    ],
+  },
+  {
+    slug: "marketplace-listing-automation",
+    accent: "cyan",
+    year: "2026",
+    title: {
+      en: "Marketplace Listing Automation",
+      fr: "Automatisation d'annonces marketplace",
+    },
+    domain: {
+      en: "Forms & data · Marketplace integrations",
+      fr: "Formulaires & données · Intégrations marketplace",
+    },
+    tagline: {
+      en: "A public form submission becomes a fully published, correctly categorized marketplace listing in seconds — no one manually retypes fields into the CMS again.",
+      fr: "Une soumission de formulaire public devient une annonce marketplace publiée et correctement catégorisée en quelques secondes — plus personne ne retape les champs à la main dans le CMS.",
+    },
+    stack: ["n8n", "Webhooks", "Custom REST API", "WordPress"],
+    problem: {
+      en: "Manually transcribing a public seller's submission into a marketplace CMS is slow and error-prone: dozens of fields, category-specific taxonomy, a photo gallery to build — and if the process is retried on a slow request, the same submission can get published twice.",
+      fr: "Retranscrire à la main la soumission d'un vendeur dans un CMS marketplace est lent et source d'erreurs : des dizaines de champs, une taxonomie propre à chaque catégorie, une galerie photo à construire — et si le traitement est relancé sur une requête lente, la même soumission peut être publiée deux fois.",
+    },
+    approach: {
+      en: [
+        "A webhook receives the raw form payload and normalizes it immediately, matching values by their human-readable label rather than brittle field IDs — form platforms often route real answers under confusing, mismatched keys.",
+        "A companion API endpoint on the marketplace side takes the normalized listing and creates it directly — category taxonomy, geographic mapping, photo gallery, and pricing fields all handled in one call.",
+        "The workflow acknowledges the form platform immediately, inside its timeout window, before doing any of the heavier processing.",
+        "The publish step deliberately never auto-retries, because it isn't idempotent — a slow, multi-photo submission must never be re-sent and published twice. Any failure alerts a human by email with the exact reason instead of vanishing silently.",
+      ],
+      fr: [
+        "Un webhook reçoit la charge brute du formulaire et la normalise immédiatement, en faisant correspondre les valeurs par leur libellé lisible plutôt que par des identifiants de champ fragiles — les plateformes de formulaire rangent souvent les vraies réponses sous des clés trompeuses.",
+        "Un point d'API compagnon côté marketplace prend l'annonce normalisée et la crée directement — taxonomie de catégorie, correspondance géographique, galerie photo et champs de prix, tout géré en un seul appel.",
+        "Le workflow accuse réception immédiatement au formulaire, dans sa fenêtre de timeout, avant tout traitement plus lourd.",
+        "L'étape de publication ne relance délibérément jamais automatiquement, car elle n'est pas idempotente — une soumission lente avec plusieurs photos ne doit jamais être renvoyée et publiée deux fois. Tout échec alerte un humain par email avec la raison exacte plutôt que de disparaître en silence.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Zero manual data entry from form submission to live listing.",
+        "Built to survive messy real-world payloads — inconsistent field keys, malformed price ranges.",
+        "Duplicate-safe by design, after a real production incident made the lesson concrete.",
+      ],
+      fr: [
+        "Aucune saisie manuelle entre la soumission du formulaire et l'annonce en ligne.",
+        "Conçu pour survivre à des charges réelles imparfaites — clés de champ incohérentes, plages de prix malformées.",
+        "Anti-doublon par conception, après un incident réel de production qui a rendu la leçon très concrète.",
+      ],
+    },
+    metrics: [
+      { value: "Seconds", label: { en: "from submission to published listing", fr: "de la soumission à l'annonce publiée" } },
+      { value: "0", label: { en: "manual data entry", fr: "saisie manuelle" } },
+      { value: "Fail-safe", label: { en: "email alert on any failure, never silent", fr: "alerte email sur tout échec, jamais silencieux" } },
+    ],
+    flow: [
+      { label: { en: "Form submission", fr: "Soumission formulaire" }, kind: "trigger" },
+      { label: { en: "Normalize by label", fr: "Normaliser par libellé" }, kind: "process" },
+      { label: { en: "Create listing (API)", fr: "Créer l'annonce (API)" }, kind: "process" },
+      { label: { en: "Published listing", fr: "Annonce publiée" }, kind: "output" },
+    ],
+  },
 ];
 
 export function getProject(slug: string) {
