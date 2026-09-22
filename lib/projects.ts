@@ -1169,6 +1169,65 @@ export const projects: Project[] = [
       { label: { en: "Published listing", fr: "Annonce publiée" }, kind: "output" },
     ],
   },
+  {
+    slug: "recurring-event-graphics-generator",
+    accent: "violet",
+    year: "2026",
+    title: {
+      en: "Automated Event Graphics Generator",
+      fr: "Générateur automatique de visuels d'événements",
+    },
+    domain: {
+      en: "Generative AI · Design automation",
+      fr: "IA générative · Automatisation du design",
+    },
+    tagline: {
+      en: "Turns a simple event submission into a ready-to-post, on-brand graphic — template, photo, and text assembled automatically, always reviewed by a human before anything goes out.",
+      fr: "Transforme une simple soumission d'événement en visuel prêt à publier et fidèle à la marque — gabarit, photo et texte assemblés automatiquement, toujours relus par un humain avant toute publication.",
+    },
+    stack: ["n8n", "Task management (Asana)", "AI image generation (Flux)", "Template-based compositing", "Google Drive"],
+    problem: {
+      en: "Organizations that post frequent event announcements — classes, socials, concerts, save-the-dates — need a fresh on-brand graphic every time, but redoing the same layout by hand for each one is repetitive, and briefing a designer for every single post doesn't scale.",
+      fr: "Les organisations qui publient de fréquentes annonces d'événements — cours, soirées, concerts, save-the-date — ont besoin d'un visuel neuf et fidèle à la marque à chaque fois, mais refaire la même mise en page à la main à chaque publication est répétitif, et briefer un graphiste pour chaque post ne passe pas à l'échelle.",
+    },
+    approach: {
+      en: [
+        "A new event request comes in through a simple task entry: which template to use, the key details (title, date, time, guests), and a photo if one is available.",
+        "When no photo is supplied, one is generated on brief by an AI image model instead of leaving the slot empty or blocking the request.",
+        "Each field is placed onto its matching template through an auto-sizing compositing engine: titles and secondary text scale and wrap to stay legible and never overlap, whatever the length of the real event details.",
+        "The finished visual is attached back to the originating task for a human to approve — nothing is ever posted automatically, so brand control always stays with the team.",
+      ],
+      fr: [
+        "Une nouvelle demande d'événement arrive via une simple tâche : le gabarit à utiliser, les informations clés (titre, date, horaires, intervenants) et une photo si elle existe.",
+        "Si aucune photo n'est fournie, une image est générée sur mesure par un modèle d'IA plutôt que de laisser l'emplacement vide ou de bloquer la demande.",
+        "Chaque champ est placé sur son gabarit via un moteur de compositing à ajustement automatique : titres et textes secondaires s'adaptent et se replient pour rester lisibles et ne jamais se chevaucher, quelle que soit la longueur des informations réelles.",
+        "Le visuel final est rattaché à la tâche d'origine pour validation humaine — rien n'est jamais publié automatiquement, le contrôle de la marque reste toujours entre les mains de l'équipe.",
+      ],
+    },
+    highlights: {
+      en: [
+        "Turns a form/task submission into a ready-to-post visual without opening a design tool.",
+        "Auto-sizing text engine keeps every visual legible and on-brand regardless of content length.",
+        "Human approval built into the loop — no visual goes out unreviewed.",
+      ],
+      fr: [
+        "Transforme une soumission de formulaire/tâche en visuel prêt à publier sans ouvrir d'outil de design.",
+        "Un moteur de texte auto-ajustable garde chaque visuel lisible et fidèle à la marque, quelle que soit la longueur du contenu.",
+        "Validation humaine intégrée à la boucle — aucun visuel ne part sans relecture.",
+      ],
+    },
+    metrics: [
+      { value: "Minutes", label: { en: "from event details to a ready visual", fr: "des informations d'événement au visuel prêt" } },
+      { value: "0", label: { en: "manual design work per post", fr: "de travail de design manuel par post" } },
+      { value: "Always", label: { en: "reviewed by a human before publishing", fr: "relu par un humain avant publication" } },
+    ],
+    flow: [
+      { label: { en: "Event details submitted", fr: "Informations d'événement soumises" }, kind: "trigger" },
+      { label: { en: "AI photo if none provided", fr: "Photo IA si absente" }, kind: "ai" },
+      { label: { en: "Auto-fit template compositing", fr: "Compositing gabarit auto-ajusté" }, kind: "process" },
+      { label: { en: "Human review", fr: "Relecture humaine" }, kind: "output" },
+    ],
+  },
 ];
 
 export function getProject(slug: string) {
