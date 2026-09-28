@@ -12,6 +12,7 @@ const sectionLinks = [
   { key: "services", href: "/#offers" },
   { key: "industries", href: "/#industries" },
   { key: "results", href: "/#work" },
+  { key: "consultation", href: "/consultation" },
   { key: "automations", href: "/automations" },
   { key: "pricing", href: "/#pricing" },
   { key: "faq", href: "/#faq" },

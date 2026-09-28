@@ -9,6 +9,7 @@
     "pricing": "Pricing",
     "blog": "Blog",
     "contact": "Contact",
+    "consultation": "Consultation",
     "bookAudit": "Book a free audit"
   },
   "Hero": {
@@ -214,6 +215,57 @@
     "emailDirect": "Email",
     "whatsapp": "WhatsApp",
     "availability": "Taking on new automation projects"
+  },
+  "Consultation": {
+    "kicker": "Project Consultation",
+    "title": "Have a project in mind?",
+    "subtitle": "If you're looking to automate a process, improve an existing workflow, or build an AI-powered system, submit a consultation request first. We review your project, current tools, and goals before any call — no random calls, no long back-and-forth messages.",
+    "badge": "Free · structured intake",
+    "includedTitle": "What the consultation covers",
+    "included": [
+      "Project requirements review",
+      "Current workflow & tools assessment",
+      "Automation opportunities and possible solutions",
+      "Scope discussion",
+      "Recommended next steps"
+    ],
+    "formTitle": "Tell us about your project",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "business": "Business / organization",
+    "businessPlaceholder": "Company name (optional)",
+    "tools": "Current tools & workflow",
+    "toolsPlaceholder": "What tools do you use today, and what does the process look like right now?",
+    "goals": "What would you like to automate?",
+    "goalsPlaceholder": "Describe the problem, goal, or process you want to improve.",
+    "timeline": "Timeline",
+    "timelinePlaceholder": "Select a timeline",
+    "timelineOptions": [
+      "Just exploring",
+      "Within 1 month",
+      "1-3 months",
+      "3-6 months"
+    ],
+    "budget": "Estimated budget",
+    "budgetPlaceholder": "Select a range",
+    "budgetOptions": [
+      "Not sure yet",
+      "Under $1k",
+      "$1k - $3k",
+      "$3k - $10k",
+      "$10k+"
+    ],
+    "submit": "Send consultation request",
+    "sending": "Sending…",
+    "validation": "Please check the highlighted fields.",
+    "error": "Something went wrong. Please try again or email us directly.",
+    "successTitle": "Request received.",
+    "successText": "Thanks — your project details are in. Pick a time below and we'll dive straight into your specifics.",
+    "bookTitle": "Now let's put a time to it",
+    "bookSubtitle": "Choose a slot that works — we'll already have your context going into the call.",
+    "bookCta": "Book your call"
   },
   "Footer": {
     "tagline": "AI & automation that saves businesses time and money — built to run itself.",

@@ -113,6 +113,125 @@ export async function submitContact(
   }
 }
 
+/* ── Project consultation (structured intake before a call) ──────── */
+
+const consultationSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  email: z.string().trim().email().max(160),
+  business: z.string().trim().max(160).optional().default(""),
+  tools: z.string().trim().min(5).max(2000),
+  goals: z.string().trim().min(10).max(3000),
+  timeline: z.string().trim().max(60).optional().default(""),
+  budget: z.string().trim().max(60).optional().default(""),
+});
+
+export type ConsultationState = {
+  status: "idle" | "success" | "error";
+  reason?: "validation" | "server" | "spam";
+  invalid?: string[];
+};
+
+export async function submitConsultation(
+  _prev: ConsultationState,
+  formData: FormData,
+): Promise<ConsultationState> {
+  // 1. Honeypot
+  if (((formData.get("company") as string) || "").length > 0) {
+    return { status: "success" };
+  }
+
+  // 2. Time trap
+  const startedAt = Number(formData.get("startedAt") || 0);
+  if (startedAt > 0 && Date.now() - startedAt < 2500) {
+    return { status: "error", reason: "spam" };
+  }
+
+  // 3. Validate
+  const parsed = consultationSchema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    business: formData.get("business"),
+    tools: formData.get("tools"),
+    goals: formData.get("goals"),
+    timeline: formData.get("timeline"),
+    budget: formData.get("budget"),
+  });
+
+  if (!parsed.success) {
+    const invalid = [
+      ...new Set(parsed.error.issues.map((i) => String(i.path[0]))),
+    ];
+    return { status: "error", reason: "validation", invalid };
+  }
+
+  const data = parsed.data;
+
+  const apiKey = process.env.BREVO_API_KEY;
+  const to = process.env.CONTACT_TO_EMAIL || siteConfig.email;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || siteConfig.email;
+  const fromName = process.env.CONTACT_FROM_NAME || "Portfolio Contact";
+
+  if (!apiKey) {
+    console.error("[consultation] BREVO_API_KEY is not set — cannot send email.");
+    return { status: "error", reason: "server" };
+  }
+
+  const subject = `[Consultation] ${data.name}${data.business ? " — " + data.business : ""}`;
+  const row = (label: string, value: string) =>
+    value
+      ? `<p style="color:#99a1b3;font-size:14px;margin:4px 0"><strong style="color:#c3c8d6">${label}:</strong> ${escapeHtml(value)}</p>`
+      : "";
+  const html = `
+    <div style="background:#0a0b12;padding:32px 0;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+      <div style="max-width:560px;margin:0 auto;background:#11131d;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px">
+        <h1 style="color:#e7e9f1;font-size:20px;font-weight:600;margin:0 0 20px">New project consultation request</h1>
+        ${row("Name", data.name)}
+        ${row("Email", data.email)}
+        ${row("Business", data.business)}
+        ${row("Timeline", data.timeline)}
+        ${row("Budget range", data.budget)}
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:20px 0" />
+        <p style="color:#c3c8d6;font-size:14px;margin:0 0 6px;font-weight:600">Current tools &amp; workflow</p>
+        <p style="color:#c3c8d6;font-size:15px;line-height:1.7;white-space:pre-wrap;margin:0 0 16px">${escapeHtml(data.tools)}</p>
+        <p style="color:#c3c8d6;font-size:14px;margin:0 0 6px;font-weight:600">What they want to automate</p>
+        <p style="color:#c3c8d6;font-size:15px;line-height:1.7;white-space:pre-wrap">${escapeHtml(data.goals)}</p>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:20px 0" />
+        <p style="color:#6b7488;font-size:12px;margin:0">Reply directly to this email to reach ${escapeHtml(data.name)}.</p>
+      </div>
+    </div>`;
+  const text = `New project consultation request\n\nName: ${data.name}\nEmail: ${data.email}\nBusiness: ${data.business}\nTimeline: ${data.timeline}\nBudget: ${data.budget}\n\nCurrent tools & workflow:\n${data.tools}\n\nWhat they want to automate:\n${data.goals}`;
+
+  try {
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        "api-key": apiKey,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify({
+        sender: { name: fromName, email: fromEmail },
+        to: [{ email: to }],
+        replyTo: { email: data.email, name: data.name },
+        subject,
+        htmlContent: html,
+        textContent: text,
+      }),
+    });
+
+    if (!res.ok) {
+      const body = await res.text().catch(() => "");
+      console.error("[consultation] Brevo error:", res.status, body);
+      return { status: "error", reason: "server" };
+    }
+
+    return { status: "success" };
+  } catch (err) {
+    console.error("[consultation] Unexpected error:", err);
+    return { status: "error", reason: "server" };
+  }
+}
+
 /* ── Lead magnet (free guide email capture) ─────────────────────── */
 
 const leadSchema = z.object({ email: z.string().trim().email().max(160) });

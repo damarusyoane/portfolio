@@ -9,6 +9,7 @@
     "pricing": "Tarifs",
     "blog": "Blog",
     "contact": "Contact",
+    "consultation": "Consultation",
     "bookAudit": "Réserver un audit gratuit"
   },
   "Hero": {
@@ -214,6 +215,57 @@
     "emailDirect": "Email",
     "whatsapp": "WhatsApp",
     "availability": "Ouvert à de nouveaux projets d'automatisation"
+  },
+  "Consultation": {
+    "kicker": "Consultation projet",
+    "title": "Un projet en tête ?",
+    "subtitle": "Si vous voulez automatiser un processus, améliorer un workflow existant ou construire un système propulsé par l'IA, soumettez d'abord une demande de consultation. On examine votre projet, vos outils actuels et vos objectifs avant tout appel — pas d'appel au hasard, pas de longs échanges de messages.",
+    "badge": "Gratuit · prise en charge structurée",
+    "includedTitle": "Ce que couvre la consultation",
+    "included": [
+      "Revue des besoins du projet",
+      "Évaluation du workflow et des outils actuels",
+      "Opportunités d'automatisation et solutions possibles",
+      "Discussion du périmètre",
+      "Prochaines étapes recommandées"
+    ],
+    "formTitle": "Parlez-nous de votre projet",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "Email",
+    "emailPlaceholder": "vous@entreprise.com",
+    "business": "Entreprise / organisation",
+    "businessPlaceholder": "Nom de l'entreprise (optionnel)",
+    "tools": "Outils et workflow actuels",
+    "toolsPlaceholder": "Quels outils utilisez-vous aujourd'hui, et à quoi ressemble le processus actuel ?",
+    "goals": "Qu'aimeriez-vous automatiser ?",
+    "goalsPlaceholder": "Décrivez le problème, l'objectif ou le processus à améliorer.",
+    "timeline": "Échéance",
+    "timelinePlaceholder": "Choisir une échéance",
+    "timelineOptions": [
+      "Juste en exploration",
+      "Sous 1 mois",
+      "1 à 3 mois",
+      "3 à 6 mois"
+    ],
+    "budget": "Budget estimé",
+    "budgetPlaceholder": "Choisir une fourchette",
+    "budgetOptions": [
+      "Pas encore sûr",
+      "Moins de 1000 $",
+      "1000 $ - 3000 $",
+      "3000 $ - 10 000 $",
+      "10 000 $+"
+    ],
+    "submit": "Envoyer la demande",
+    "sending": "Envoi…",
+    "validation": "Merci de vérifier les champs en surbrillance.",
+    "error": "Une erreur est survenue. Réessayez ou écrivez-nous directement.",
+    "successTitle": "Demande reçue.",
+    "successText": "Merci — les détails de votre projet sont bien reçus. Choisissez un créneau ci-dessous, on entrera directement dans le vif du sujet.",
+    "bookTitle": "Passons maintenant à l'agenda",
+    "bookSubtitle": "Choisissez un créneau — on aura déjà votre contexte en main pour l'appel.",
+    "bookCta": "Réserver votre appel"
   },
   "Footer": {
     "tagline": "De l'IA et de l'automatisation qui font gagner du temps et de l'argent aux entreprises — conçues pour tourner seules.",

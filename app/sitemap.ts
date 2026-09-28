@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     });
+    entries.push({
+      url: `${base}/${locale}/consultation`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
     for (const niche of Object.keys(niches)) {
       entries.push({
         url: `${base}/${locale}/solutions/${niche}`,
