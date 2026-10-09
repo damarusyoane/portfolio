@@ -2,11 +2,13 @@ import type { Locale } from "@/i18n/routing";
 
 /**
  * Central identity / contact configuration.
+ *
+ * Everything under `assets` and `claims` defaults to null/false: the site
+ * renders an honest fallback until the owner supplies the real thing.
  */
 export const siteConfig = {
   name: "Ottomate",
   founder: "Damarus Ngankou",
-  initials: "Ot",
 
   email: "contact@ottomateagency.com",
   // Digits only, international format, no "+".
@@ -22,19 +24,34 @@ export const siteConfig = {
   },
 
   founderRole: {
-    en: "Founder · AI & automation engineer",
-    fr: "Fondateur · Ingénieur IA & automatisation",
+    en: "Founder, AI & automation engineer",
+    fr: "Fondateur, ingénieur IA & automatisation",
   } as Record<Locale, string>,
 
-  locationLabel: {
-    en: "Remote, worldwide",
-    fr: "À distance, partout dans le monde",
+  // Shown with the live clock ("It's 23:12 in Cameroon"). Follows the +237
+  // number; set a city here once confirmed.
+  timezone: "Africa/Douala",
+  place: {
+    en: "in Cameroon",
+    fr: "au Cameroun",
   } as Record<Locale, string>,
+  city: null as string | null,
+  // Usual reply hours, e.g. { fr: "de 8 h à 19 h", en: "8 am to 7 pm" }.
+  hours: null as Record<Locale, string> | null,
 
-  availability: {
-    en: "Taking on new projects",
-    fr: "Ouvert aux nouveaux projets",
-  } as Record<Locale, string>,
+  // Owner-supplied files (paths under /public). Null = not rendered at all.
+  assets: {
+    founderPhoto: null as string | null,
+    signatureSvg: null as string | null,
+  },
+
+  // Statements the site may only make once the owner confirms them.
+  claims: {
+    // Ottomate's own WhatsApp is answered by its assistant.
+    ownWhatsappAnsweredByAssistant: false,
+    // Show a "recommended" label on the middle plan.
+    popularPlan: false,
+  },
 
   // Pre-filled WhatsApp opener, in the visitor's language.
   whatsappMessage: {
@@ -51,7 +68,7 @@ export const siteConfig = {
   baseUrl:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "https://ottomateagency.com",
-} as const;
+};
 
 export function whatsappUrl(text?: string) {
   const base = `https://wa.me/${siteConfig.whatsapp}`;

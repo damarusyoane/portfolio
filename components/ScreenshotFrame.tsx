@@ -1,45 +1,46 @@
-"use client";
-
-import { useState } from "react";
-import { Workflow } from "lucide-react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 /**
- * A light frame for a project screenshot. Shows the image at its natural
- * proportions; if the file isn't there yet it degrades to a clean placeholder
- * instead of a broken image.
+ * A real screenshot on a plate, at its natural proportions, with a mono
+ * caption. Dark captures (n8n canvases) sit on the night plate.
  */
 export function ScreenshotFrame({
   src,
   alt,
+  width,
+  height,
   caption,
+  dark = false,
+  sizes = "(min-width: 1024px) 860px, 100vw",
 }: {
   src: string;
   alt: string;
+  width: number;
+  height: number;
   caption?: string;
+  dark?: boolean;
+  sizes?: string;
 }) {
-  const [failed, setFailed] = useState(false);
-
   return (
-    <figure className="overflow-hidden rounded-2xl border border-border bg-surface-2 p-2 sm:p-3">
-      <div className="overflow-hidden rounded-xl border border-border bg-surface">
-        {failed ? (
-          <div className="flex aspect-[16/9] flex-col items-center justify-center gap-2 text-faint">
-            <Workflow className="h-7 w-7 opacity-50" />
-            <span className="px-4 text-center text-sm">{alt}</span>
-          </div>
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={src}
-            alt={alt}
-            loading="lazy"
-            onError={() => setFailed(true)}
-            className="block h-auto w-full"
-          />
+    <figure>
+      <div
+        className={cn(
+          "overflow-hidden rounded-lg border border-border p-1.5 sm:p-2",
+          dark ? "bg-[#0d1217]" : "bg-surface-2",
         )}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes={sizes}
+          className="block h-auto w-full rounded"
+        />
       </div>
       {caption && (
-        <figcaption className="px-1 pt-2.5 text-[13px] text-faint">
+        <figcaption className="ts mt-2.5 text-note text-faint">
           {caption}
         </figcaption>
       )}

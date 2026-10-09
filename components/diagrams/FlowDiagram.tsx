@@ -3,14 +3,6 @@ import { Fragment } from "react";
 
 type Kind = "trigger" | "process" | "ai" | "output" | "store";
 
-const kindColor: Record<Kind, string> = {
-  trigger: "var(--color-accent-ink)",
-  process: "var(--color-ink-soft)",
-  ai: "var(--color-accent-3)",
-  output: "var(--color-accent-2)",
-  store: "var(--color-muted)",
-};
-
 const kindLabel: Record<Kind, { en: string; fr: string }> = {
   trigger: { en: "Trigger", fr: "Déclencheur" },
   process: { en: "Process", fr: "Traitement" },
@@ -21,6 +13,7 @@ const kindLabel: Record<Kind, { en: string; fr: string }> = {
 
 export type DiagramNode = { label: string; kind?: Kind };
 
+/** The workflow as a plain sequence of labelled steps. */
 export function FlowDiagram({
   nodes,
   locale = "en",
@@ -29,38 +22,30 @@ export function FlowDiagram({
   locale?: "en" | "fr";
 }) {
   return (
-    <div className="rounded-3xl border border-border bg-bg-soft p-4 sm:p-6">
-      <div className="flex flex-col gap-2 md:flex-row md:items-stretch md:gap-0">
-        {nodes.map((node, i) => {
-          const kind = node.kind ?? "process";
-          const color = kindColor[kind];
-          return (
-            <Fragment key={i}>
-              <div className="flex min-w-0 flex-1 flex-col justify-center rounded-2xl border border-border bg-surface px-4 py-4 md:text-center">
-                <span
-                  className="mb-1.5 inline-flex items-center gap-1.5 text-[12px] font-semibold md:justify-center"
-                  style={{ color }}
-                >
-                  <span
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{ backgroundColor: color }}
-                  />
-                  {kindLabel[kind][locale]}
-                </span>
-                <span className="text-[15px] font-medium leading-snug text-ink">
-                  {node.label}
-                </span>
-              </div>
-
-              {i < nodes.length - 1 && (
-                <div className="flex shrink-0 items-center justify-center py-0.5 md:w-8 md:py-0">
-                  <ArrowRight className="h-4 w-4 rotate-90 text-faint md:rotate-0" />
-                </div>
-              )}
-            </Fragment>
-          );
-        })}
-      </div>
-    </div>
+    <ol className="flex flex-col gap-1.5 md:flex-row md:items-stretch md:gap-0">
+      {nodes.map((node, i) => {
+        const kind = node.kind ?? "process";
+        return (
+          <Fragment key={i}>
+            <li className="sheet flex min-w-0 flex-1 flex-col justify-center px-4 py-4">
+              <span className="ts text-note text-faint">
+                {i + 1} · {kindLabel[kind][locale]}
+              </span>
+              <span className="mt-1 text-[15px] font-medium leading-snug text-ink">
+                {node.label}
+              </span>
+            </li>
+            {i < nodes.length - 1 && (
+              <li
+                aria-hidden
+                className="flex shrink-0 items-center justify-center py-0.5 md:w-7 md:py-0"
+              >
+                <ArrowRight className="h-4 w-4 rotate-90 text-faint md:rotate-0" />
+              </li>
+            )}
+          </Fragment>
+        );
+      })}
+    </ol>
   );
 }

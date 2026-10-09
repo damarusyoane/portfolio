@@ -2,29 +2,30 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "accent" | "secondary" | "ghost";
+type Variant = "accent" | "primary" | "outline";
 
 const base =
-  "group inline-flex items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap transition-[background-color,color,border-color,transform] duration-200 active:translate-y-px";
+  "group inline-flex items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-[background-color,border-color,color] duration-200 active:translate-y-px";
 
 export const buttonSizes = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-5 text-[15px]",
-  lg: "h-13 px-6 text-base",
+  sm: "h-10 px-4 text-[15px]",
+  md: "h-12 px-5 text-base",
+  lg: "h-[52px] px-6 text-[17px]",
 };
 
-// `primary` uses the ink tokens, so inside a `.theme-ink` band it flips to a
-// light button automatically.
+// `accent` is the only filled style (one per screen): orange with ink text.
+// `primary` follows the ink token, so it flips automatically on night bands.
 export const buttonVariants: Record<Variant, string> = {
-  primary: "bg-ink text-bg hover:bg-accent hover:text-[#161512]",
-  accent: "bg-accent text-[#161512] hover:bg-ink hover:text-bg",
-  secondary:
-    "border border-border-strong text-ink hover:border-ink hover:bg-ink/[0.04]",
-  ghost: "text-ink-soft hover:text-ink",
+  accent:
+    "bg-accent text-[#121417] hover:bg-[color-mix(in_oklab,var(--color-accent),black_8%)]",
+  primary:
+    "bg-ink text-bg hover:bg-[color-mix(in_oklab,var(--color-ink),var(--color-bg)_12%)]",
+  outline:
+    "border border-ink text-ink hover:bg-[color-mix(in_oklab,var(--color-ink)_6%,transparent)]",
 };
 
 export function buttonClass(
-  variant: Variant = "primary",
+  variant: Variant = "accent",
   size: keyof typeof buttonSizes = "md",
   className?: string,
 ) {
@@ -43,7 +44,7 @@ export function ButtonArrow({ external = false }: { external?: boolean }) {
 
 export function Button({
   children,
-  variant = "primary",
+  variant = "accent",
   size = "md",
   arrow = false,
   external = false,

@@ -1,20 +1,16 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/Hero";
 import { Pains } from "@/components/sections/Pains";
+import { NightStory } from "@/components/sections/NightStory";
 import { Offers } from "@/components/sections/Offers";
 import { Work } from "@/components/sections/Work";
 import { Trust } from "@/components/sections/Trust";
 import { Process } from "@/components/sections/Process";
 import { Industries } from "@/components/sections/Industries";
 import { Pricing } from "@/components/sections/Pricing";
+import { Faq, faqJsonLd } from "@/components/sections/Faq";
 import { About } from "@/components/sections/About";
-import { Faq } from "@/components/sections/Faq";
 import { BookCall } from "@/components/sections/BookCall";
-import { LeadMagnet } from "@/components/sections/LeadMagnet";
-import { BlogPreview } from "@/components/sections/BlogPreview";
-import { Contact } from "@/components/sections/Contact";
-import { getAllPosts } from "@/lib/blog";
-import type { Locale } from "@/i18n/routing";
 
 export default async function HomePage({
   params,
@@ -23,25 +19,28 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const posts = getAllPosts(locale as Locale).slice(0, 3);
+  const tFaq = await getTranslations({ locale, namespace: "Faq" });
+  const faq = faqJsonLd(tFaq.raw("items") as { q: string; a: string }[]);
 
   return (
     <>
-      {/* Hook → problem → solutions → proof → how → price → who → objections → act */}
+      {/* claim → cost → the night it happens → offers → proof → how → price → doubts → who → book */}
       <Hero />
       <Pains />
+      <NightStory />
       <Offers />
       <Work />
       <Trust />
       <Process />
       <Industries />
       <Pricing />
-      <About />
       <Faq />
+      <About />
       <BookCall />
-      <LeadMagnet />
-      <BlogPreview posts={posts} />
-      <Contact />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
     </>
   );
 }

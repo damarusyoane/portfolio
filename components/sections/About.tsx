@@ -1,96 +1,100 @@
-"use client";
-
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowUpRight } from "lucide-react";
-import { LinkedinIcon } from "@/components/icons";
-import { Kicker } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/Reveal";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, whatsappUrl } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
+/** A short signed letter from the founder. No photo means no image at all. */
 export function About() {
   const t = useTranslations("About");
   const locale = useLocale() as Locale;
-  const facts = t.raw("facts") as { value: string; label: string }[];
-  const initials = siteConfig.founder
-    .split(" ")
-    .map((w) => w[0])
-    .join("");
+  const letter = t.raw("letter") as string[];
+  const facts = t.raw("facts") as string[];
+  const { founderPhoto, signatureSvg } = siteConfig.assets;
 
   return (
-    <section id="about" className="relative scroll-mt-20 py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-        <div>
-          <Reveal>
-            <Kicker>{t("kicker")}</Kicker>
-            <h2 className="mt-4 font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem]">
-              {t("title")}
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.05}>
-            <div className="mt-7 space-y-4 text-[17px] leading-relaxed text-muted">
-              <p className="text-ink-soft">{t("p1")}</p>
-              <p>{t("p2")}</p>
-              <p>{t("p3")}</p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-border pt-7">
-              <div className="flex items-center gap-3.5">
-                <span className="grid h-14 w-14 place-items-center rounded-full bg-ink font-display text-lg text-bg">
-                  {initials}
-                </span>
-                <div>
-                  <p className="font-display text-xl italic text-ink">
-                    {siteConfig.founder}
-                  </p>
-                  <p className="text-sm text-muted">
-                    {siteConfig.founderRole[locale]}
-                  </p>
-                </div>
-              </div>
-              <a
-                href={siteConfig.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-sm font-semibold text-ink"
-              >
-                <LinkedinIcon className="h-4 w-4 text-[#0a66c2]" />
-                <span className="link-underline">{t("linkedin")}</span>
-                <ArrowUpRight className="h-4 w-4 text-faint transition-colors group-hover:text-ink" />
-              </a>
-            </div>
-          </Reveal>
+    <section
+      id="about"
+      className="scroll-mt-16 border-t border-border py-20 lg:py-32"
+    >
+      <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-x-6">
+        <div className="lg:col-span-4">
+          <h2 className="font-display text-h2 font-normal text-ink">
+            {t("title")}
+          </h2>
+          {founderPhoto && (
+            <figure className="mt-8 w-[240px]">
+              <Image
+                src={founderPhoto}
+                alt={siteConfig.founder}
+                width={480}
+                height={600}
+                className="aspect-[4/5] w-full rounded-lg object-cover"
+              />
+              <figcaption className="ts mt-2 text-note text-faint">
+                {siteConfig.founder}
+              </figcaption>
+            </figure>
+          )}
         </div>
 
-        <Reveal delay={0.1} className="lg:pt-14">
-          <div className="grid grid-cols-2 overflow-hidden rounded-3xl border border-border bg-surface">
-            {facts.map((f, i) => (
-              <div
-                key={f.label}
-                className={[
-                  "p-6 sm:p-8",
-                  i % 2 === 0 ? "border-r border-border" : "",
-                  i < 2 ? "border-b border-border" : "",
-                ].join(" ")}
+        <div className="lg:col-span-5 lg:col-start-6">
+          <div className="max-w-[62ch] space-y-5 font-display text-[1.25rem] leading-[1.6] text-ink-soft">
+            {letter.map((p, i) => (
+              <p
+                key={i}
+                className={i === letter.length - 1 ? "text-ink" : undefined}
               >
-                <p className="font-display text-4xl font-normal tracking-[-0.02em] text-ink sm:text-5xl">
-                  {f.value}
-                </p>
-                <p className="mt-2 text-sm leading-snug text-muted">
-                  {f.label}
-                </p>
-              </div>
+                {p}
+              </p>
             ))}
           </div>
-          <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent-2" aria-hidden />
-            {siteConfig.availability[locale]} ·{" "}
-            {siteConfig.locationLabel[locale]}
+
+          <div className="mt-8">
+            {signatureSvg && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={signatureSvg}
+                alt=""
+                aria-hidden
+                className="mb-2 h-14 w-auto"
+              />
+            )}
+            <p className="font-display text-[1.25rem] font-medium text-ink">
+              {siteConfig.founder}
+            </p>
+            <p className="text-[15px] text-muted">
+              {siteConfig.founderRole[locale]}
+            </p>
+          </div>
+
+          <p className="mt-8 text-body text-ink-soft">
+            {t("ps")}{" "}
+            <a
+              href={whatsappUrl(siteConfig.whatsappMessage[locale])}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link whitespace-nowrap text-ink"
+            >
+              {siteConfig.phoneDisplay}
+            </a>
           </p>
-        </Reveal>
+        </div>
+
+        <ul className="ts space-y-2 border-t border-border pt-6 text-note text-muted lg:col-span-2 lg:col-start-11 lg:border-t-0 lg:pt-1">
+          {facts.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+          <li>
+            <a
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink underline underline-offset-4 hover:text-accent-ink"
+            >
+              {t("linkedin")} ↗
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
   );

@@ -4,14 +4,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
-import { ScreenshotFrame } from "@/components/ScreenshotFrame";
-import { Reveal } from "@/components/Reveal";
+import Image from "next/image";
 import { VideoEmbed } from "@/components/VideoEmbed";
+import { ComparisonSlider } from "@/components/ComparisonSlider";
+import { CanvasImage } from "@/components/CanvasImage";
+import { LeadMagnet } from "@/components/sections/LeadMagnet";
 import { routing, type Locale } from "@/i18n/routing";
 import { projects, getProject } from "@/lib/projects";
 import { getGallery } from "@/lib/galleries";
+import { getCanvas } from "@/lib/canvases";
+import { pngSize } from "@/lib/imageSize";
 import { ProcessGallery } from "@/components/sections/ProcessGallery";
-import { accentColor, formatMetric } from "@/lib/utils";
+import { formatMetric } from "@/lib/utils";
 import { buttonClass, ButtonArrow } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
 
@@ -60,15 +64,27 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const t = await getTranslations({ locale, namespace: "CaseStudy" });
-  const accent = accentColor(project.accent);
+  const tw = await getTranslations({ locale, namespace: "Work" });
   const gallery = getGallery(slug);
+  const canvas = getCanvas(slug);
+
+  // Customer-facing capture (step 2 of the walkthrough) vs. the workflow.
+  const customer = gallery[1];
+  const customerSrc = customer
+    ? typeof customer.src === "string"
+      ? customer.src
+      : customer.src[l]
+    : null;
+  const customerSize = customerSrc ? pngSize(customerSrc) : null;
+  const showSlider = Boolean(canvas && customerSrc && customerSize);
 
   const index = projects.findIndex((p) => p.slug === slug);
   const next = projects[(index + 1) % projects.length];
+  const [headline, ...otherMetrics] = project.metrics;
 
   return (
-    <article className="relative pt-28 sm:pt-32">
-      <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
+    <article className="pt-28 sm:pt-32">
+      <div className="wrap">
         <Link
           href="/#work"
           className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
@@ -77,155 +93,160 @@ export default async function ProjectPage({
           {t("back")}
         </Link>
 
-        <Reveal className="mt-10">
-          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-            <span className="font-medium" style={{ color: accent }}>
-              {project.domain[l]}
-            </span>
-            <span className="text-faint">· {project.year}</span>
-          </p>
-          <h1 className="mt-4 font-display text-[2.4rem] font-normal leading-[1.05] tracking-[-0.025em] text-ink sm:text-[3.4rem]">
-            {project.title[l]}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted sm:text-xl">
-            {project.tagline[l]}
-          </p>
-        </Reveal>
-
-        {/* Metrics */}
-        <Reveal className="mt-12">
-          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-surface sm:grid-cols-3">
-            {project.metrics.map((m, i) => (
-              <div
-                key={m.value}
-                className={
-                  "p-6 sm:p-7" +
-                  (i > 0
-                    ? " border-t border-border sm:border-l sm:border-t-0"
-                    : "")
-                }
-              >
-                <p className="font-display text-4xl font-normal tracking-[-0.02em] text-ink">
-                  {formatMetric(m.value, l)}
-                </p>
-                <p className="mt-2 text-sm leading-snug text-muted">
-                  {m.label[l]}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        {/* Problem */}
-        <Section title={t("problem")}>
-          <p className="prose-tech">{project.problem[l]}</p>
-        </Section>
-
-        {/* Step-by-step walkthrough in screenshots */}
-        {gallery.length > 0 ? (
-          <Section title={t("walkthrough")}>
-            <p className="-mt-1 mb-8 max-w-2xl text-[16px] leading-relaxed text-muted">
-              {t("walkthroughIntro")}
+        <header className="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-x-6">
+          <div className="lg:col-span-8">
+            <p className="ts text-note text-faint">
+              {project.domain[l]} · {project.year}
             </p>
-            <ProcessGallery steps={gallery} locale={l} accent={accent} />
-          </Section>
+            <h1 className="mt-4 font-display text-[2.5rem] font-normal leading-[1.05] tracking-[-0.025em] text-ink sm:text-[3.5rem]">
+              {project.title[l]}
+            </h1>
+            <p className="mt-6 max-w-[48ch] text-lead text-muted">
+              {project.tagline[l]}
+            </p>
+          </div>
+          <div className="border-t border-border pt-6 lg:col-span-3 lg:col-start-10 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-1">
+            <p className="figures font-display text-[3.5rem] leading-none text-ink">
+              {formatMetric(headline.value, l)}
+            </p>
+            <p className="mt-2 text-[15px] text-ink-soft">
+              {headline.label[l]}
+            </p>
+            <ul className="ts mt-6 space-y-1.5 text-note text-muted">
+              {otherMetrics.map((m) => (
+                <li key={m.value}>
+                  <span className="text-ink">{formatMetric(m.value, l)}</span>{" "}
+                  {m.label[l]}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </header>
+
+        {/* Both sides of the system */}
+        {showSlider && canvas && customerSrc && customerSize ? (
+          <div className="mt-14">
+            <ComparisonSlider
+              front={
+                <Image
+                  src={customerSrc}
+                  width={customerSize.width}
+                  height={customerSize.height}
+                  alt={tw("front")}
+                  sizes="(min-width: 1024px) 900px, 100vw"
+                  className="h-auto max-h-full w-auto max-w-full rounded-md"
+                />
+              }
+              back={
+                <CanvasImage
+                  canvas={canvas}
+                  alt={tw("back")}
+                  sizes="(min-width: 1024px) 1150px, 100vw"
+                  className="rounded"
+                />
+              }
+              frontLabel={tw("front")}
+              backLabel={tw("back")}
+              ariaLabel={tw("sliderLabel")}
+              valueTemplate={tw.raw("sliderValue") as string}
+            />
+            <p className="ts mt-2 text-note text-faint">{t("demoNote")}</p>
+          </div>
         ) : project.loomUrl ? (
-          <Reveal className="mt-12">
+          <div className="mt-14">
             <VideoEmbed
               url={project.loomUrl}
               title={`${t("demo")} · ${project.title[l]}`}
               playLabel={t("demo")}
             />
-          </Reveal>
-        ) : project.screenshot ? (
-          <Reveal className="mt-12">
-            <ScreenshotFrame
-              src={project.screenshot}
-              alt={project.title[l]}
-              caption={project.title[l]}
-            />
-          </Reveal>
+          </div>
         ) : null}
 
-        {/* Architecture */}
-        <Section title={t("architecture")}>
-          <FlowDiagram
-            locale={l}
-            nodes={project.flow.map((n) => ({
-              label: n.label[l],
-              kind: n.kind,
-            }))}
-          />
-        </Section>
+        <div className="mt-20 grid gap-x-6 lg:grid-cols-12">
+          <div className="lg:col-span-8 lg:col-start-3">
+            <Section title={t("problem")}>
+              <p className="prose-tech">{project.problem[l]}</p>
+            </Section>
 
-        {/* Approach */}
-        <Section title={t("approach")}>
-          <ol className="border-b border-border">
-            {project.approach[l].map((step, i) => (
-              <li
-                key={i}
-                className="grid grid-cols-[2.5rem_1fr] gap-x-3 border-t border-border py-5"
-              >
-                <span className="font-display text-xl italic leading-7 text-accent">
-                  {i + 1}
-                </span>
-                <p className="text-[16px] leading-relaxed text-ink-soft">
-                  {step}
+            {gallery.length > 0 && (
+              <Section title={t("walkthrough")}>
+                <p className="-mt-2 mb-8 max-w-[62ch] text-body text-muted">
+                  {t("walkthroughIntro")}
                 </p>
-              </li>
-            ))}
-          </ol>
-        </Section>
+                <ProcessGallery
+                  steps={gallery}
+                  locale={l}
+                  labels={{
+                    figure: t("figure"),
+                    demoNote: t("demoNote"),
+                    realCapture: t("realCapture"),
+                  }}
+                />
+              </Section>
+            )}
 
-        {/* Highlights */}
-        <Section title={t("highlights")}>
-          <ul className="space-y-3.5">
-            {project.highlights[l].map((h, i) => (
-              <li
-                key={i}
-                className="flex gap-3 text-[16px] leading-relaxed text-ink-soft"
-              >
-                <Check className="mt-1 h-5 w-5 shrink-0 text-accent-2" />
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
+            <Section title={t("architecture")}>
+              <FlowDiagram
+                locale={l}
+                nodes={project.flow.map((n) => ({
+                  label: n.label[l],
+                  kind: n.kind,
+                }))}
+              />
+            </Section>
 
-        {/* Stack */}
-        <Section title={t("stack")}>
-          <div className="flex flex-wrap gap-2">
-            {project.stack.map((s) => (
-              <span
-                key={s}
-                className="rounded-full border border-border-strong px-3.5 py-1.5 text-sm text-ink-soft"
-              >
-                {s}
-              </span>
-            ))}
+            <Section title={t("approach")}>
+              <ol className="border-b border-border">
+                {project.approach[l].map((step, i) => (
+                  <li
+                    key={i}
+                    className="grid grid-cols-[2rem_1fr] gap-x-3 border-t border-border py-5"
+                  >
+                    <span className="ts pt-1 text-sm text-faint">{i + 1}</span>
+                    <p className="text-body text-ink-soft">{step}</p>
+                  </li>
+                ))}
+              </ol>
+            </Section>
+
+            <Section title={t("highlights")}>
+              <ul className="space-y-3">
+                {project.highlights[l].map((h, i) => (
+                  <li key={i} className="flex gap-3 text-body text-ink-soft">
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-ink" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
+            <Section title={t("stack")}>
+              <p className="ts text-sm leading-relaxed text-muted">
+                {project.stack.join(" · ")}
+              </p>
+            </Section>
+
+            <div className="mt-16">
+              <LeadMagnet />
+            </div>
           </div>
-        </Section>
+        </div>
 
         {/* CTA */}
-        <Reveal className="mt-20">
-          <div className="theme-ink flex flex-col items-start gap-6 rounded-[2rem] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-            <div>
-              <h2 className="font-display text-3xl font-normal leading-tight tracking-[-0.02em] text-ink">
-                {t("ctaTitle")}
-              </h2>
-              <p className="mt-2 max-w-md text-muted">{t("ctaText")}</p>
-            </div>
-            <a
-              href={siteConfig.links.cal}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonClass("accent", "lg", "shrink-0")}
-            >
-              {t("ctaButton")}
-              <ButtonArrow />
-            </a>
-          </div>
-        </Reveal>
+        <div className="theme-night mt-16 flex flex-col items-start gap-6 rounded-lg p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+          <p className="max-w-[30ch] font-display text-[1.75rem] leading-snug text-ink">
+            {t("ctaTitle")}
+          </p>
+          <a
+            href={siteConfig.links.cal}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClass("accent", "lg", "shrink-0")}
+          >
+            {t("ctaButton")}
+            <ButtonArrow />
+          </a>
+        </div>
 
         {/* Next project */}
         <Link
@@ -233,8 +254,8 @@ export default async function ProjectPage({
           className="group mb-24 mt-6 flex items-center justify-between gap-6 border-y border-border py-7"
         >
           <div>
-            <p className="text-sm text-faint">{t("nextLabel")}</p>
-            <p className="mt-1 font-display text-2xl text-ink transition-colors group-hover:text-accent-ink">
+            <p className="ts text-note text-faint">{t("nextLabel")}</p>
+            <p className="mt-1 font-display text-[1.75rem] text-ink">
               {next.title[l]}
             </p>
           </div>
@@ -253,11 +274,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <Reveal className="mt-16">
-      <h2 className="mb-6 font-display text-[1.75rem] font-normal tracking-[-0.015em] text-ink sm:text-[2rem]">
+    <section className="mt-16 first:mt-0">
+      <h2 className="mb-6 font-display text-[2rem] font-normal leading-tight tracking-[-0.015em] text-ink">
         {title}
       </h2>
       {children}
-    </Reveal>
+    </section>
   );
 }

@@ -1,8 +1,8 @@
 {
   "Nav": {
     "services": "Solutions",
-    "industries": "Secteurs",
-    "automations": "Toutes les automatisations",
+    "industries": "Métiers",
+    "automations": "Catalogue",
     "results": "Réalisations",
     "process": "Méthode",
     "faq": "FAQ",
@@ -10,292 +10,485 @@
     "blog": "Blog",
     "contact": "Contact",
     "bookAudit": "Audit gratuit",
-    "bookAuditLong": "Réserver un audit gratuit"
+    "bookAuditLong": "Réserver un audit gratuit",
+    "whatsapp": "Écrire sur WhatsApp"
   },
   "Hero": {
-    "eyebrow": "Agence d'automatisation IA pour PME",
-    "headlineTop": "Vos clients reçoivent une réponse en moins d'une minute.",
+    "headlineTop": "Vos clients reçoivent une réponse en moins d’une minute.",
     "headlineAccent": "Même à 23 h.",
-    "tagline": "Assistants IA et automatisations pour PME : réponses WhatsApp, prise de rendez-vous, relances de factures. Vous gagnez des heures, vos clients n'attendent plus.",
+    "chip": "23:12",
+    "tagline": "Pour les PME qui vendent sur WhatsApp, nous installons un assistant IA qui répond avec vos vrais prix et vos horaires. Quand un client est prêt à acheter, vous êtes prévenu.",
     "ctaPrimary": "Réserver un audit gratuit",
-    "ctaSecondary": "Voir des exemples concrets",
-    "reassurance": ["30 minutes, gratuit", "Sans engagement", "Réponse sous 24 h"],
-    "proofLabel": "Ils nous ont confié leurs automatisations",
-    "clients": ["Maison237", "Airplace", "Nubet"],
-    "proofStat": "30+ automatisations en production",
+    "ctaWhatsapp": "ou écrire sur WhatsApp",
+    "byline": "30 min, gratuit · avec l’ingénieur qui construira votre système",
+    "proofQuote": "… on répond plus vite, on sécurise nos clients, et on a doublé nos revenus.",
+    "proofAttribution": "Maison237 · promoteur immobilier",
+    "proofOthers": "Aussi chez Airplace (boutique de téléphonie) et Nubet (agence digitale).",
     "demo": {
-      "business": "Horizon Immobilier",
-      "status": "Assistant IA · en ligne",
-      "day": "Aujourd'hui",
+      "business": "Agence immobilière · démo",
+      "status": "répond automatiquement",
+      "day": "Jeudi",
       "messages": [
-        { "from": "client", "text": "Bonsoir, l'appartement 3 pièces du centre-ville est toujours disponible ?", "time": "23:12" },
-        { "from": "bot", "text": "Bonsoir ! Oui, il est toujours disponible. Je peux vous proposer une visite demain à 10 h ou à 16 h. Qu'est-ce qui vous arrange ?", "time": "23:12" },
-        { "from": "client", "text": "16 h, c'est parfait.", "time": "23:13" },
-        { "from": "bot", "text": "C'est noté pour demain 16 h. Vous recevrez un rappel le matin même. Bonne soirée !", "time": "23:13" }
+        {
+          "from": "client",
+          "text": "Bonsoir, l’appartement 3 pièces du centre-ville est toujours disponible ?",
+          "time": "23:12"
+        },
+        {
+          "from": "bot",
+          "text": "Bonsoir ! Oui, il est toujours disponible. Je vous envoie le lien pour choisir un créneau de visite ?",
+          "time": "23:12"
+        },
+        {
+          "from": "client",
+          "text": "Oui, merci.",
+          "time": "23:13"
+        },
+        {
+          "from": "bot",
+          "text": "Voici le lien. L’agent est prévenu et vous confirme la visite demain matin.",
+          "time": "23:13"
+        }
       ],
-      "notifTitle": "Visite réservée",
-      "notifText": "Demain 16:00 · agenda et CRM mis à jour, agent prévenu",
-      "caption": "Échange type géré par un assistant Ottomate"
+      "caption": "Démo : conversation d’exemple, entreprise fictive."
     }
   },
   "Pains": {
-    "kicker": "Le constat",
-    "title": "Ce qui vous coûte des clients, sans que vous le voyiez",
-    "subtitle": "Votre équipe n'y est pour rien. Elle fait à la main ce qu'un système bien réglé ferait plus vite, sans oubli et sans fatigue.",
+    "title": "Ce que coûte une semaine ordinaire",
+    "lead": "Votre équipe n’y est pour rien : ces tâches se font à la main, donc elles se font en retard.",
     "items": [
-      { "title": "Des messages qui restent sans réponse", "text": "Un prospect écrit le soir ou le week-end. Le lendemain, il a déjà acheté chez celui qui a répondu en premier." },
-      { "title": "Des factures qu'on oublie de relancer", "text": "Relancer est gênant, alors on repousse. Pendant ce temps, votre trésorerie dort chez vos clients." },
-      { "title": "Des rendez-vous manqués", "text": "Sans rappel, une partie des clients oublie. Le créneau est perdu et personne ne l'a remplacé." },
-      { "title": "Les mêmes questions, cent fois par semaine", "text": "Prix, horaires, délais de livraison… Votre équipe répond en boucle au lieu de traiter les vrais dossiers." },
-      { "title": "Des données retapées à la main", "text": "La même information saisie dans le tableur, le CRM et la compta. Avec, forcément, des erreurs." },
-      { "title": "Des chiffres que personne ne regarde", "text": "Compiler un rapport prend une demi-journée, donc personne ne le fait. Vous pilotez à l'instinct." }
+      {
+        "when": "Samedi 21:40",
+        "event": "Un prospect écrit sur WhatsApp.",
+        "cost": "Lundi, il a acheté chez celui qui a répondu."
+      },
+      {
+        "when": "Le 5 du mois",
+        "event": "La facture de mars attend toujours sa relance.",
+        "cost": "Relancer gêne, alors on repousse. Votre trésorerie dort chez vos clients."
+      },
+      {
+        "when": "Mardi 10:00",
+        "event": "Le client ne vient pas.",
+        "cost": "Personne ne lui avait rappelé le rendez-vous. Le créneau est perdu."
+      },
+      {
+        "when": "Tous les jours",
+        "event": "« C’est combien ? Vous livrez où ? »",
+        "cost": "Votre équipe répond en boucle au lieu de vendre."
+      },
+      {
+        "when": "Chaque soir",
+        "event": "Les mêmes chiffres, retapés dans trois outils.",
+        "cost": "Avec les erreurs qui vont avec."
+      },
+      {
+        "when": "Fin de mois",
+        "event": "Le rapport que personne n’a eu le temps de faire.",
+        "cost": "Vous décidez à l’instinct."
+      }
     ],
-    "closing": "Bonne nouvelle : tout cela s'automatise, avec les outils que vous utilisez déjà.",
-    "closingLink": "Voir les solutions"
+    "closing": "Tout cela s’automatise avec les outils que vous avez déjà : WhatsApp, Google Sheets, votre agenda.",
+    "closingLink": "Voir ce qui se passe à 23 h"
+  },
+  "Night": {
+    "title": "Jeudi, 23:12. Un client écrit.",
+    "lead": "Ce qui se passe chez une entreprise équipée, étape par étape. Le workflow est réel ; la conversation est un exemple.",
+    "nodeLabel": "nœud",
+    "steps": [
+      {
+        "time": "23:12",
+        "sentence": "Le message arrive sur votre WhatsApp.",
+        "line": "Vous êtes chez vous, le téléphone est posé.",
+        "node": "Webhook — WhatsApp entrant (Meta/Evolution)"
+      },
+      {
+        "time": "23:12",
+        "sentence": "L’assistant lit votre fiche.",
+        "line": "Prix, horaires, disponibilités. Ce qui n’y est pas, il ne l’invente pas.",
+        "node": "Fiche entreprise (config client)"
+      },
+      {
+        "time": "23:12",
+        "sentence": "Il répond, dans la langue du client.",
+        "line": "Si le premier modèle ne répond pas, un second prend le relais.",
+        "node": "Claude — Répondre (ancré sur la fiche)"
+      },
+      {
+        "time": "23:13",
+        "sentence": "Il repère une intention d’achat.",
+        "line": "Une visite demandée, ce n’est pas une simple question.",
+        "node": "Est-ce un lead ?"
+      },
+      {
+        "time": "23:13",
+        "sentence": "Vous êtes prévenu.",
+        "line": "Le nom, la demande et le résumé de l’échange.",
+        "node": "Notifier le patron (nouveau lead)"
+      },
+      {
+        "time": "08:00",
+        "sentence": "Vous arrivez au bureau.",
+        "line": "Le client attend sa visite, pas une réponse.",
+        "node": ""
+      }
+    ],
+    "alertTitle": "Nouveau lead WhatsApp",
+    "alertBody": "Intention : visite · appartement 3 pièces",
+    "canvasAlt": "Workflow n8n de l’assistant WhatsApp",
+    "canvasCaption": "Workflow réel de l’assistant WhatsApp, lancé ici avec des messages d’exemple.",
+    "dragHint": "Faites glisser",
+    "without": "Sans assistant, ce message aurait attendu le lendemain matin.",
+    "caseLink": "Voir le dossier de l’assistant WhatsApp"
   },
   "Offers": {
-    "kicker": "Nos solutions",
     "title": "Commencez par ce qui vous coûte le plus",
-    "subtitle": "Chaque solution règle un problème précis. Vous pouvez en lancer une seule, puis ajouter les autres quand vous voyez les résultats.",
-    "metricLabel": "Sur un projet livré",
-    "caseLink": "Voir le projet en détail",
+    "lead": "Une chose à la fois. Vous ajoutez la suite quand vous voyez le résultat.",
+    "sourcePrefix": "Projet :",
     "screenshotAlt": "Capture réelle : {name}",
-    "ctaText": "Vous ne savez pas par où commencer ? C'est justement le but de l'audit gratuit.",
+    "ctaText": "L’audit gratuit sert justement à choisir par quoi commencer.",
     "cta": "Réserver un audit gratuit",
     "items": [
       {
-        "tab": "Prospects & ventes",
-        "title": "Répondre à chaque prospect en moins d'une minute",
-        "text": "Un assistant IA répond sur WhatsApp, par email ou sur votre site, pose les bonnes questions et propose un rendez-vous. Les prospects sérieux arrivent dans votre CRM et vous êtes prévenu tout de suite.",
-        "points": ["Réponse immédiate, de jour comme de nuit", "Qualification : besoin, budget, délai", "Relances automatiques tant que le prospect n'a pas répondu"],
+        "title": "Répondre à chaque prospect en moins d’une minute",
+        "text": "Sur WhatsApp, par email ou sur votre site, avec les bonnes questions et une proposition de rendez-vous.",
         "metric": "3×",
         "metricText": "de prospects convertis"
       },
       {
-        "tab": "Service client",
         "title": "Un service client qui répond juste, à toute heure",
-        "text": "L'assistant s'appuie uniquement sur vos informations (tarifs, horaires, conditions) pour répondre aux questions courantes. Il n'invente jamais un prix et passe la main à votre équipe dès que c'est nécessaire.",
-        "points": ["Sur WhatsApp, Telegram ou votre site", "Réponses tirées de vos propres documents", "Transfert propre vers un humain"],
+        "text": "À partir de vos tarifs, horaires et conditions ; la main passe à votre équipe quand il le faut.",
         "metric": "~30 %",
         "metricText": "de demandes captées en plus"
       },
       {
-        "tab": "Factures & trésorerie",
         "title": "Être payé à temps, sans relancer vous-même",
-        "text": "Les relances partent au bon moment et sur le bon ton, avant et après l'échéance. Les factures reçues sont lues et classées automatiquement. Après chaque vente, vos clients satisfaits sont invités à laisser un avis Google.",
-        "points": ["Relances polies et progressives", "Lecture automatique des factures (OCR)", "Demandes d'avis après chaque vente"],
+        "text": "Des relances au bon moment et sur le bon ton, avant et après l’échéance.",
         "metric": "−50 %",
         "metricText": "de retards de paiement"
       },
       {
-        "tab": "Rendez-vous & admin",
         "title": "Moins de rendez-vous manqués, moins de saisie",
-        "text": "Vos clients reçoivent une confirmation puis un rappel avant chaque rendez-vous. Vos outils se mettent à jour entre eux, et un rapport clair arrive dans votre boîte mail sans que personne n'ait à le préparer.",
-        "points": ["Rappels SMS, WhatsApp ou email", "Données synchronisées entre vos outils", "Rapports et indicateurs envoyés automatiquement"],
+        "text": "Un rappel la veille, un autre deux heures avant.",
         "metric": "−40 %",
         "metricText": "de rendez-vous manqués"
       },
       {
-        "tab": "Contenu & visibilité",
         "title": "Rester visible sans y passer vos soirées",
-        "text": "À partir d'une idée, d'un article ou d'une actualité, le système prépare le contenu pour chaque réseau et le publie selon votre calendrier. Vous gardez la main sur ce qui part.",
-        "points": ["Posts et vidéos générés automatiquement", "Un contenu décliné sur tous vos canaux", "Publication planifiée"],
+        "text": "Le contenu préparé pour chaque réseau et publié selon votre calendrier.",
         "metric": "~5 h",
         "metricText": "gagnées par vidéo publiée"
       }
     ]
   },
   "Work": {
-    "kicker": "Réalisations",
-    "title": "Des systèmes en production, pas des maquettes",
-    "subtitle": "Quelques automatisations que nous avons conçues et mises en service. Chaque fiche détaille le problème de départ, la solution, les captures et les chiffres clés.",
-    "viewCase": "Lire le cas",
-    "moreTitle": "Autres projets techniques",
-    "allAutomations": "Voir les 34 automatisations possibles"
+    "title": "Des systèmes en service, vus des deux côtés",
+    "lead": "Pour chaque projet : ce que voit le client, ce qui tourne derrière, et le chiffre obtenu.",
+    "leadTitle": "Capture de leads : la réponse part pendant que le prospect est encore sur votre site.",
+    "leadStandfirst": "Une demande arrive par le formulaire, l’IA la qualifie, le prospect reçoit une réponse personnalisée et l’équipe est alertée avec le résumé.",
+    "front": "Ce que reçoit le client",
+    "back": "Ce qui tourne derrière",
+    "sliderLabel": "Comparer la vue client et le workflow",
+    "sliderValue": "{percent} % vue client",
+    "problemLabel": "Le problème",
+    "problemText": "Les demandes arrivaient le soir et le week-end. Le temps de répondre, le prospect était parti ailleurs.",
+    "builtLabel": "Ce que nous avons construit",
+    "builtText": "Un workflow n8n qui capte la demande, la fait qualifier par un LLM, répond en moins d’une minute et prévient le commercial.",
+    "resultLabel": "Le résultat",
+    "readCase": "Lire le dossier complet",
+    "colProject": "Projet",
+    "colFor": "Pour quoi",
+    "colResult": "Résultat",
+    "purpose": {
+      "whatsapp-ai-assistant": "Répondre aux clients WhatsApp jour et nuit",
+      "payment-reminder-engine": "Relancer les factures impayées sans gêne",
+      "appointment-reminder-system": "Rappeler les rendez-vous la veille et le jour même",
+      "ai-voice-calling-assistant": "Appeler une liste de contacts et résumer chaque appel",
+      "review-reputation-automation": "Demander un avis Google après chaque vente",
+      "rag-knowledge-assistant": "Répondre aux questions internes à partir de vos documents",
+      "seo-audit-engine": "Vérifier que chaque page publiée respecte le brief SEO",
+      "google-ads-campaign-agent": "Préparer une campagne Google Ads à partir d’un brief",
+      "ai-content-pipeline": "Publier des vidéos courtes sans y passer de temps",
+      "resilient-llm-automation": "Produire des articles même quand un modèle d’IA tombe",
+      "distributed-automation": "Récupérer de gros fichiers en un clic, sans tâche manuelle"
+    },
+    "previewAlt": "Aperçu du workflow : {name}",
+    "catalogLink": "Parcourir le catalogue par métier"
   },
   "Trust": {
-    "kicker": "Témoignages",
-    "title": "Ce qu'en disent nos clients",
+    "title": "Avec leurs mots",
     "testimonials": [
-      { "quote": "Ottomate a déployé l'automatisation des leads de notre entreprise : on répond plus vite, on sécurise nos clients, et on a doublé nos revenus. Nous les recontacterons pour nos prochains projets et les recommandons à 100 %.", "name": "Maison237", "role": "Promoteur immobilier" },
-      { "quote": "Très content de l'assistant WhatsApp IA qu'Ottomate a déployé pour mon entreprise : je réponds vite à mes clients, et l'IA se comporte comme un humain. Mes clients ressentent un vrai sentiment de confiance et de sérieux. Merci pour tout !", "name": "Airplace", "role": "Boutique de téléphonie" },
-      { "quote": "Ottomate conçoit et exploite notre automatisation en production : contenu IA, contrôle qualité SEO et pipelines de données qui font tourner l'agence au quotidien.", "name": "Nubet", "role": "Agence digitale" }
-    ],
-    "guaranteesTitle": "Nos engagements",
-    "guarantees": [
-      { "title": "Audit gratuit, sans engagement", "text": "Vous repartez avec un plan clair, que l'on travaille ensemble ou non." },
-      { "title": "Prix fixe, validé avant de commencer", "text": "Pas de facturation à l'heure qui dérape. Vous savez ce que vous payez." },
-      { "title": "Vos données restent chez vous", "text": "Hébergement possible sur vos serveurs, accès limités au strict nécessaire." }
+      {
+        "quote": "Ottomate a déployé l’automatisation des leads de notre entreprise : on répond plus vite, on sécurise nos clients, et on a doublé nos revenus. Nous les recontacterons pour nos prochains projets et les recommandons à 100 %.",
+        "name": "Maison237",
+        "role": "promoteur immobilier"
+      },
+      {
+        "quote": "Très content de l’assistant WhatsApp IA qu’Ottomate a déployé pour mon entreprise : je réponds vite à mes clients, et l’IA se comporte comme un humain. Mes clients ressentent un vrai sentiment de confiance et de sérieux. Merci pour tout !",
+        "name": "Airplace",
+        "role": "boutique de téléphonie"
+      },
+      {
+        "quote": "Ottomate conçoit et exploite notre automatisation en production : contenu IA, contrôle qualité SEO et pipelines de données qui font tourner l’agence au quotidien.",
+        "name": "Nubet",
+        "role": "agence digitale"
+      }
     ]
   },
-  "Pricing": {
-    "kicker": "Tarifs",
-    "title": "Un prix clair, rentabilisé en quelques semaines",
-    "subtitle": "Une mise en place payée une fois, puis un abonnement mensuel qui couvre l'hébergement, la surveillance et le support.",
-    "popular": "Le plus choisi",
-    "cta": "Commencer par un audit",
-    "note": "Tarifs indicatifs. Votre devis exact est fixé après l'audit gratuit, selon le périmètre.",
-    "plans": [
-      { "name": "Essentiel", "tagline": "Une automatisation, bien faite", "price": "dès 500 $", "priceSuffix": "mise en place + 150 $/mois", "features": ["1 automatisation conçue et mise en service", "Hébergement et surveillance inclus", "Support par email", "Corrections et ajustements inclus"] },
-      { "name": "Croissance", "tagline": "Un vrai système pour votre activité", "price": "dès 1 500 $", "priceSuffix": "mise en place + 400 $/mois", "features": ["Jusqu'à 3 automatisations reliées entre elles", "Tout ce que comprend l'offre Essentiel", "Support prioritaire", "Point d'optimisation chaque mois"], "popular": true },
-      { "name": "Partenaire", "tagline": "Votre équipe automatisation", "price": "Sur devis", "priceSuffix": "selon vos besoins", "features": ["Périmètre étendu, livré par étapes", "Feuille de route dédiée", "Hébergement sur vos propres serveurs possible", "Accompagnement dans la durée"] }
+  "Process": {
+    "title": "Du premier appel au système qui tourne seul",
+    "lead": "Vous connaissez le prix avant que nous commencions.",
+    "steps": [
+      {
+        "when": "30 min",
+        "title": "Audit gratuit",
+        "text": "On passe en revue votre façon de travailler et on repère ce qui vous coûte le plus de temps ou de ventes."
+      },
+      {
+        "when": "Après l’appel",
+        "title": "Plan et prix fixe",
+        "text": "Une page : les trois automatisations les plus rentables pour votre cas, le gain estimé pour chacune, un devis fixe."
+      },
+      {
+        "when": "Quelques jours à quelques semaines",
+        "title": "Construction et mise en service",
+        "text": "Nous construisons, nous testons sur vos vrais cas, puis on lance. Si quelque chose casse, l’alerte nous arrive avant que vous ne le voyiez."
+      },
+      {
+        "when": "Chaque mois",
+        "title": "Suivi et améliorations",
+        "text": "Un point, des ajustements, et de nouvelles automatisations quand vous êtes prêt."
+      }
+    ],
+    "planTitle": "Le plan que vous recevez",
+    "planStamp": "Modèle",
+    "planBlocks": [
+      {
+        "label": "Priorités",
+        "text": "Les trois automatisations à faire en premier, dans l’ordre, avec la raison de chaque choix."
+      },
+      {
+        "label": "Gain estimé",
+        "text": "Calculé avec vos propres chiffres pendant l’audit : heures, ventes ou retards de paiement."
+      },
+      {
+        "label": "Prix fixe",
+        "text": "Mise en place et abonnement mensuel, validés avant le moindre travail."
+      }
     ]
   },
   "Industries": {
-    "kicker": "Secteurs",
-    "title": "Des solutions pensées pour votre métier",
-    "subtitle": "Chaque secteur a ses propres pertes de temps. Choisissez le vôtre pour voir ce que nous automatisons, exemples et chiffres à l'appui.",
-    "explore": "Voir les solutions",
-    "viewAll": "Votre secteur n'est pas dans la liste ?",
-    "viewAllText": "Parcourez les 34 automatisations, classées par métier."
+    "title": "Par métier",
+    "lead": "Chaque métier perd du temps à sa façon.",
+    "scenes": {
+      "real-estate": "la visite demandée à 23 h",
+      "clinics": "le rappel qui évite le rendez-vous manqué",
+      "restaurants": "l’avis Google demandé après le repas",
+      "ecommerce": "la question de prix posée à 22 h",
+      "coaches": "l’agenda rempli sans relancer à la main"
+    },
+    "catalogRow": "Votre métier n’est pas listé",
+    "catalogText": "parcourir le catalogue"
   },
   "Catalog": {
-    "kicker": "Catalogue",
-    "title": "Tout ce que nous pouvons automatiser pour vous",
-    "subtitle": "Des automatisations concrètes pour chaque service de l'entreprise : ventes, support, finance, opérations, marketing, RH. Filtrez selon votre activité.",
+    "title": "Le catalogue : ce que nous pouvons automatiser, par métier",
+    "subtitle": "Des automatisations concrètes pour chaque service de l’entreprise : ventes, support, finance, opérations, marketing, RH. Filtrez selon votre activité.",
     "all": "Tout",
-    "count": "{count} automatisations · {domains} domaines"
+    "count": "{count} automatisations · {domains} domaines",
+    "filterLabel": "Filtrer par domaine",
+    "impact": "Effet attendu",
+    "tools": "Outils"
   },
-  "Process": {
-    "kicker": "Méthode",
-    "title": "Du premier appel au système qui tourne tout seul",
-    "subtitle": "Un déroulé simple et sans risque : vous savez ce que vous allez gagner avant d'engager quoi que ce soit.",
-    "steps": [
-      { "when": "30 min", "title": "Audit gratuit", "text": "On passe en revue votre façon de travailler et on repère les tâches qui vous coûtent le plus de temps ou de ventes." },
-      { "when": "Après l'appel", "title": "Plan et prix fixe", "text": "Vous recevez les trois automatisations les plus rentables pour votre cas, le gain estimé pour chacune et un devis fixe. Sans jargon." },
-      { "when": "Quelques jours à quelques semaines", "title": "Construction et mise en service", "text": "On construit, on teste sur vos vrais cas, puis on lance. Tout est surveillé : en cas de souci, nous sommes alertés avant vous." },
-      { "when": "Chaque mois", "title": "Suivi et améliorations", "text": "On ajuste, on optimise et on ajoute de nouvelles automatisations quand vous êtes prêt." }
+  "Pricing": {
+    "title": "Un prix fixe, annoncé avant de commencer",
+    "lead": "Une mise en place payée une fois, puis un abonnement qui couvre l’hébergement, la surveillance et les corrections. Prix en dollars américains.",
+    "recommended": "Recommandé pour démarrer",
+    "exampleLabel": "Exemple :",
+    "cta": "Commencer par un audit",
+    "guarantees": "Prix fixe validé avant de commencer · Corrections incluses · Audit gratuit, sans engagement · Hébergement sur vos serveurs possible.",
+    "note": "Tarifs indicatifs. Le devis exact est fixé après l’audit gratuit, selon le périmètre.",
+    "plans": [
+      {
+        "name": "Essentiel",
+        "tagline": "Une automatisation, mise en service et surveillée.",
+        "price": "dès 500 USD",
+        "priceSuffix": "mise en place, puis 150 USD/mois",
+        "example": "un assistant WhatsApp pour une boutique",
+        "features": [
+          "1 automatisation conçue et mise en service",
+          "Hébergement et surveillance inclus",
+          "Support par email",
+          "Corrections et ajustements inclus"
+        ]
+      },
+      {
+        "name": "Croissance",
+        "tagline": "Jusqu’à 3 automatisations reliées entre elles.",
+        "price": "dès 1 500 USD",
+        "priceSuffix": "mise en place, puis 400 USD/mois",
+        "example": "réponse aux prospects, relances et rappels de rendez-vous",
+        "features": [
+          "Jusqu’à 3 automatisations reliées entre elles",
+          "Tout ce que comprend l’offre Essentiel",
+          "Support prioritaire",
+          "Point d’optimisation chaque mois"
+        ],
+        "popular": true
+      },
+      {
+        "name": "Partenaire",
+        "tagline": "Un périmètre large, livré par étapes.",
+        "price": "Sur devis",
+        "priceSuffix": "selon vos besoins",
+        "example": "",
+        "features": [
+          "Périmètre étendu, livré par étapes",
+          "Feuille de route dédiée",
+          "Hébergement sur vos propres serveurs possible",
+          "Accompagnement dans la durée"
+        ]
+      }
     ]
   },
-  "BookCall": {
-    "badge": "Gratuit · 30 minutes · sans engagement",
-    "title": "Trouvons ensemble les 3 tâches à automatiser en premier",
-    "subtitle": "En 30 minutes, on regarde comment vous travaillez aujourd'hui. Vous repartez avec une liste claire : quoi automatiser, dans quel ordre, et ce que cela peut vous rapporter.",
-    "points": [
-      "Vos tâches manuelles les plus coûteuses, identifiées",
-      "3 automatisations concrètes, classées par impact",
-      "Une estimation du temps et de l'argent gagnés",
-      "Des réponses franches, sans pression commerciale"
-    ],
-    "cta": "Choisir un créneau",
-    "note": "Vous préférez écrire ? WhatsApp et formulaire plus bas.",
-    "embedTitle": "Calendrier de réservation Ottomate"
-  },
-  "LeadMagnet": {
-    "badge": "Guide gratuit (PDF)",
-    "title": "20 tâches que vous pouvez automatiser dès ce mois-ci",
-    "subtitle": "Une checklist pour repérer où partent votre temps et votre argent, et savoir par quoi commencer.",
-    "points": ["Classées par impact", "Valable pour toute petite entreprise", "Lecture en 10 minutes"],
-    "email": "vous@entreprise.com",
-    "cta": "Recevoir le guide",
-    "sending": "Envoi…",
-    "successTitle": "C'est envoyé. Votre guide est prêt :",
-    "download": "Télécharger le guide",
-    "error": "Entrez une adresse email valide.",
-    "coverTop": "20 tâches",
-    "coverBottom": "à automatiser"
-  },
   "Faq": {
-    "kicker": "FAQ",
-    "title": "Les questions qu'on nous pose avant de démarrer",
+    "title": "Les questions qu’on nous pose avant de démarrer",
+    "whatsappLink": "Une autre question ? Écrivez-nous sur WhatsApp",
     "items": [
-      { "q": "Faut-il des connaissances techniques ?", "a": "Aucune. Vous nous expliquez comment vous travaillez ; nous nous occupons de toute la partie technique et vous remettons un système qui fonctionne, avec une documentation simple." },
-      { "q": "Et si l'IA se trompe ou invente une réponse ?", "a": "L'assistant répond uniquement à partir des informations que vous nous donnez : tarifs, horaires, conditions. S'il ne sait pas, il le dit et transmet la conversation à votre équipe. Vous validez le ton et les réponses avant la mise en ligne." },
-      { "q": "Combien ça coûte ?", "a": "Cela dépend du périmètre, c'est pourquoi le devis est établi après l'audit gratuit. En général : une mise en place payée une fois, puis un petit abonnement mensuel pour l'hébergement et la maintenance. La plupart des automatisations sont rentabilisées en quelques semaines." },
-      { "q": "Combien de temps faut-il ?", "a": "Une automatisation simple est livrée en quelques jours, un système plus complet en quelques semaines. Le calendrier figure dans le devis, et nous livrons par étapes pour que vous voyiez des résultats rapidement." },
-      { "q": "Est-ce compatible avec mes outils actuels ?", "a": "Presque toujours. Nous connectons ce que vous utilisez déjà : WhatsApp, email, tableurs, CRM, agenda, boutique en ligne, logiciel de comptabilité. Vous n'avez rien à changer." },
-      { "q": "Mes données sont-elles en sécurité ?", "a": "Oui. Nous pouvons tout héberger sur vos propres serveurs ou sur une instance privée, les identifiants sont stockés de façon sécurisée et chaque accès est limité au strict nécessaire." },
-      { "q": "Que se passe-t-il si quelque chose tombe en panne ?", "a": "Chaque système prévoit des reprises automatiques, des solutions de secours et des alertes : nous sommes prévenus avant vous. La maintenance est comprise dans l'abonnement mensuel." }
+      {
+        "q": "Combien ça coûte ?",
+        "a": "À partir de 500 USD de mise en place, puis 150 USD par mois pour une automatisation. Le devis exact est fixé après l’audit gratuit, avant tout engagement."
+      },
+      {
+        "q": "Et si l’IA se trompe ou invente une réponse ?",
+        "a": "L’assistant répond uniquement à partir des informations que vous nous donnez : tarifs, horaires, conditions. S’il ne sait pas, il le dit et transmet la conversation à votre équipe. Vous validez le ton et les réponses avant la mise en ligne."
+      },
+      {
+        "q": "Faut-il des connaissances techniques ?",
+        "a": "Aucune. Vous nous expliquez comment vous travaillez ; nous nous occupons de la technique et vous remettons un système qui fonctionne, avec une documentation simple."
+      },
+      {
+        "q": "Est-ce compatible avec mes outils actuels ?",
+        "a": "Presque toujours : WhatsApp, email, tableurs, CRM, agenda, boutique en ligne, logiciel de comptabilité. Vous n’avez rien à changer."
+      },
+      {
+        "q": "Combien de temps faut-il ?",
+        "a": "Quelques jours pour une automatisation simple, quelques semaines pour un système plus complet. Le calendrier figure dans le devis, et nous livrons par étapes."
+      },
+      {
+        "q": "Mes données sont-elles en sécurité ?",
+        "a": "Nous pouvons tout héberger sur vos propres serveurs ou sur une instance privée. Les identifiants sont stockés de façon sécurisée et chaque accès est limité au strict nécessaire."
+      },
+      {
+        "q": "Que se passe-t-il si quelque chose tombe en panne ?",
+        "a": "Si une étape échoue, elle est relancée. Si elle échoue encore, nous recevons une alerte avant que vous ne le remarquiez. La maintenance est comprise dans l’abonnement."
+      }
     ]
   },
   "About": {
-    "kicker": "Qui sommes-nous",
-    "title": "Vous parlez directement à ceux qui construisent votre système",
-    "p1": "Ottomate a été fondée par Damarus Ngankou, ingénieur logiciel spécialisé en IA et en automatisation. Depuis 2024, il conçoit des automatisations en production, pour des agences digitales comme pour des commerces de proximité.",
-    "p2": "Notre règle est simple : un système n'a de valeur que s'il tourne sans vous. Chaque automatisation est testée sur vos vrais cas, surveillée en continu et documentée clairement, pour que vous sachiez toujours ce qui se passe.",
-    "p3": "Nous travaillons à distance, en français et en anglais. Pas de commercial entre vous et nous : la personne qui vous écoute pendant l'audit est celle qui construit.",
-    "linkedin": "Voir le profil LinkedIn",
+    "title": "Qui construit votre système",
+    "letter": [
+      "Je m’appelle Damarus Ngankou. Je suis ingénieur logiciel et je construis des automatisations IA en production depuis 2024, pour des agences digitales comme pour des commerces de proximité.",
+      "Quand vous réservez un audit, c’est moi que vous avez en face. C’est aussi moi qui construis votre système, qui le teste sur vos vrais cas et qui reçois l’alerte si quelque chose casse.",
+      "Je ne livre un système que lorsqu’il tourne sans vous."
+    ],
+    "ps": "P.-S. Vous préférez écrire ? Mon WhatsApp :",
     "facts": [
-      { "value": "30+", "label": "automatisations livrées" },
-      { "value": "FR · EN", "label": "accompagnement bilingue" },
-      { "value": "< 24 h", "label": "pour vous répondre" },
-      { "value": "24/7", "label": "surveillance de vos systèmes" }
-    ]
+      "30+ automatisations en production",
+      "Français et anglais",
+      "Ingénieur logiciel de formation"
+    ],
+    "linkedin": "LinkedIn"
   },
-  "BlogPreview": {
-    "kicker": "Blog",
-    "title": "Des conseils concrets pour automatiser sans se tromper",
-    "subtitle": "Comparatifs d'outils, retours d'expérience et méthodes, écrits pour les dirigeants de PME.",
-    "readMore": "Lire l'article",
-    "readingTime": "{minutes} min de lecture",
-    "viewAll": "Tous les articles",
-    "empty": "Les articles arrivent bientôt."
+  "Book": {
+    "title": "30 minutes pour trouver vos trois premières automatisations",
+    "lead": "On regarde comment vous travaillez aujourd’hui. Vous repartez avec les trois automatisations à faire en premier, dans l’ordre, et ce qu’elles peuvent vous rapporter.",
+    "withFounder": "Vous parlerez avec Damarus, qui construira votre système.",
+    "guarantees": "Gratuit, sans engagement. Le prix est fixé avant que nous commencions.",
+    "cta": "Choisir un créneau",
+    "clock": "Il est <time></time> {place}.",
+    "hours": "Réponse en général {hours}.",
+    "posterMeta": "30 min · gratuit · sans engagement",
+    "posterSteps": [
+      "Vous choisissez un créneau.",
+      "Nous parlons de votre activité, 30 minutes.",
+      "Vous recevez votre plan et un prix fixe."
+    ],
+    "posterLink": "Ouvrir le calendrier dans un nouvel onglet",
+    "embedTitle": "Calendrier de réservation Ottomate",
+    "notReady": "Pas prêt à réserver ?",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "leaveMessage": "Laisser un message"
   },
   "Contact": {
-    "kicker": "Contact",
-    "title": "Parlez-nous de ce qui vous fait perdre du temps",
-    "subtitle": "Un message suffit. Nous répondons sous 24 h avec une première piste, même si vous ne savez pas encore quoi automatiser.",
     "name": "Nom",
     "namePlaceholder": "Votre nom",
-    "email": "Email",
-    "emailPlaceholder": "vous@entreprise.com",
-    "subject": "Sujet",
-    "subjectPlaceholder": "Ex. : répondre aux clients WhatsApp le soir",
+    "contact": "Email ou WhatsApp",
+    "contactPlaceholder": "vous@entreprise.com ou +237 …",
     "message": "Message",
-    "messagePlaceholder": "Votre activité, les tâches qui vous prennent du temps, les outils que vous utilisez…",
-    "send": "Envoyer le message",
+    "messagePlaceholder": "Votre activité, les tâches qui vous prennent du temps, vos outils…",
+    "send": "Envoyer",
     "sending": "Envoi…",
-    "success": "Merci, votre message est bien parti. Nous revenons vers vous sous 24 h.",
-    "error": "Une erreur est survenue. Réessayez ou écrivez-nous directement.",
-    "validation": "Vérifiez les champs signalés.",
-    "directTitle": "Ou écrivez-nous directement",
-    "fastest": "Le plus rapide",
-    "linkedin": "LinkedIn",
-    "emailDirect": "Email",
-    "whatsapp": "WhatsApp",
-    "availability": "Ouvert aux nouveaux projets"
+    "success": "Merci, c’est bien arrivé. Nous vous répondons sous 24 h.",
+    "error": "Une erreur est survenue. Réessayez ou écrivez-nous sur WhatsApp.",
+    "validation": "Vérifiez les champs signalés."
+  },
+  "LeadMagnet": {
+    "label": "Guide gratuit, PDF",
+    "title": "20 tâches que vous pouvez automatiser dès ce mois-ci",
+    "text": "Une checklist classée par impact. Dix minutes de lecture.",
+    "email": "vous@entreprise.com",
+    "cta": "Recevoir le guide",
+    "sending": "Envoi…",
+    "successTitle": "C’est envoyé. Votre guide est prêt :",
+    "download": "Télécharger le guide",
+    "error": "Entrez une adresse email valide."
   },
   "Footer": {
-    "tagline": "Agence d'automatisation IA. Nous aidons les PME à répondre plus vite à leurs clients, à se faire payer à temps et à passer moins de temps sur l'administratif.",
-    "rights": "Tous droits réservés.",
+    "line": "Vos clients écrivent à toute heure. Ils auront leur réponse tout de suite.",
+    "clock": "Il est <time></time> {place}.",
+    "tagline": "Ottomate est une agence d’automatisation IA fondée par Damarus Ngankou : assistants WhatsApp, relances et rappels pour les PME.",
     "sections": "Le site",
-    "elsewhere": "Contact",
-    "backToTop": "Haut de page",
+    "contact": "Contact",
+    "articles": "Derniers articles",
+    "rights": "Tous droits réservés.",
     "privacy": "Confidentialité",
     "legal": "Mentions légales",
-    "ctaTitle": "Prêt à gagner du temps ?",
-    "ctaText": "30 minutes pour savoir ce que l'automatisation peut faire pour vous."
+    "cookies": "Gérer les cookies",
+    "backToTop": "Haut de page"
   },
   "CaseStudy": {
     "back": "Toutes les réalisations",
-    "overview": "Aperçu",
     "problem": "Le problème de départ",
     "approach": "Ce que nous avons construit",
-    "architecture": "Comment ça fonctionne",
+    "architecture": "Les étapes du workflow",
     "walkthrough": "Le système en images",
-    "walkthroughIntro": "Captures du système en fonctionnement, étape par étape : ce que voit votre client, et ce que reçoit votre équipe.",
+    "walkthroughIntro": "Captures du système en fonctionnement : ce que voit le client, puis ce que reçoit l’équipe.",
+    "figure": "Fig.",
+    "demoNote": "Workflow de démonstration · messages d’exemple",
+    "realCapture": "Capture réelle",
     "highlights": "Points forts",
     "stack": "Outils utilisés",
     "results": "Chiffres clés",
     "demo": "Démo",
     "nextLabel": "Réalisation suivante",
-    "ctaTitle": "Le même système pour votre entreprise ?",
-    "ctaText": "En 30 minutes, nous regardons si et comment l'adapter à votre activité.",
+    "ctaTitle": "En 30 minutes, nous vous disons si ce système s’adapte à votre activité.",
     "ctaButton": "Réserver un audit gratuit"
   },
   "Blog": {
     "back": "Blog",
     "title": "Blog",
-    "subtitle": "Conseils pratiques sur l'automatisation et l'IA en entreprise : comparatifs, retours d'expérience et méthodes.",
+    "subtitle": "Conseils pratiques sur l’automatisation et l’IA en entreprise : comparatifs, retours d’expérience et méthodes.",
     "readingTime": "{minutes} min de lecture",
-    "empty": "Pas encore d'article, revenez bientôt.",
+    "empty": "Pas encore d’article, revenez bientôt.",
     "backToList": "Tous les articles",
-    "ctaTitle": "Envie d'automatiser une partie de votre activité ?",
-    "ctaText": "Réservez 30 minutes : nous identifions ensemble ce qui vous ferait gagner le plus de temps.",
+    "byline": "Écrit par {name}",
+    "latest": "Dernier article",
+    "ctaTitle": "30 minutes pour repérer ce qui vous ferait gagner le plus de temps.",
     "ctaButton": "Réserver un audit gratuit"
   },
   "Cookies": {
-    "text": "Nous utilisons des cookies pour mesurer l'audience et améliorer le site. Les statistiques et la publicité ne s'activent que si vous acceptez.",
+    "text": "Nous utilisons des cookies pour mesurer l’audience et améliorer le site. Les statistiques et la publicité ne s’activent que si vous acceptez.",
     "learnMore": "En savoir plus",
     "accept": "Accepter",
     "reject": "Refuser"
@@ -309,8 +502,8 @@
     "whatsappLabel": "Écrire sur WhatsApp"
   },
   "NotFound": {
-    "title": "Page introuvable",
-    "text": "La page que vous cherchez n'existe pas ou a été déplacée.",
-    "home": "Retour à l'accueil"
+    "title": "Cette page n’existe pas, ou plus.",
+    "text": "Le lien est peut-être ancien. Le reste du site est toujours là.",
+    "home": "Retour à l’accueil"
   }
 }

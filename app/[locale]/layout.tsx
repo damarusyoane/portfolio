@@ -1,36 +1,37 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Newsreader, Schibsted_Grotesk, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { MobileActionBar } from "@/components/MobileActionBar";
+import { getAllPosts } from "@/lib/blog";
 import { Tracking } from "@/components/Tracking";
 import { CookieConsent } from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site";
 import "../globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const sans = Schibsted_Grotesk({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-schibsted",
   display: "swap",
 });
-const display = Fraunces({
-  subsets: ["latin"],
+const display = Newsreader({
+  subsets: ["latin", "latin-ext"],
   style: ["normal", "italic"],
   axes: ["opsz"],
-  variable: "--font-fraunces",
+  variable: "--font-newsreader",
   display: "swap",
 });
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
-  preload: false,
 });
 
 export function generateStaticParams() {
@@ -112,6 +113,9 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
   const messages = await getMessages();
+  const latestPosts = getAllPosts(locale as Locale)
+    .slice(0, 2)
+    .map((p) => ({ slug: p.slug, title: p.title, date: p.date }));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -151,15 +155,16 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${display.variable} ${mono.variable} h-full`}
+      className={`${sans.variable} ${display.variable} ${mono.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full antialiased" suppressHydrationWarning>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <main>{children}</main>
-          <Footer />
+          <Footer posts={latestPosts} />
           <WhatsAppFab />
+          <MobileActionBar />
           <Tracking />
           <CookieConsent />
         </NextIntlClientProvider>

@@ -37,13 +37,13 @@ export default async function AutomationsPage({
 
   return (
     <div className="pt-28 sm:pt-32">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="wrap">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-ink"
         >
           <ArrowLeft className="h-4 w-4" />
-          {locale === "fr" ? "Retour à l'accueil" : "Back home"}
+          {locale === "fr" ? "Retour à l’accueil" : "Back home"}
         </Link>
       </div>
       <AutomationCatalog />

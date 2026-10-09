@@ -22,8 +22,8 @@ export function VideoEmbed({
   const embed = url ? url.replace("/share/", "/embed/") : null;
 
   return (
-    <figure className="overflow-hidden rounded-2xl border border-border bg-surface-2 p-2 sm:p-3">
-      <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-surface">
+    <figure className="overflow-hidden rounded-lg border border-border bg-surface-2 p-1.5 sm:p-2">
+      <div className="relative aspect-video overflow-hidden rounded border border-border bg-surface">
         {embed && play ? (
           <iframe
             src={`${embed}?autoplay=1`}
@@ -41,11 +41,15 @@ export function VideoEmbed({
           >
             <PlayCircle
               className={`h-14 w-14 transition-transform ${
-                embed ? "text-accent-ink group-hover:scale-110" : "text-faint/40"
+                embed
+                  ? "text-accent-ink group-hover:scale-110"
+                  : "text-faint/40"
               }`}
             />
             <span className="text-sm">
-              {embed ? playLabel || "Play demo" : soonLabel || "Demo coming soon"}
+              {embed
+                ? playLabel || "Play demo"
+                : soonLabel || "Demo coming soon"}
             </span>
           </button>
         )}

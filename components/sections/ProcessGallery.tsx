@@ -1,44 +1,46 @@
 import { ScreenshotFrame } from "@/components/ScreenshotFrame";
-import { Reveal } from "@/components/Reveal";
+import { pngSize } from "@/lib/imageSize";
 import type { Locale } from "@/i18n/routing";
 import type { GalleryStep } from "@/lib/galleries";
 
 /**
- * A numbered, captioned walkthrough of a project — one screenshot per step.
- * Each frame degrades to a clean placeholder until the PNG is dropped in.
+ * A project's walkthrough as numbered figures: one real screenshot per step,
+ * captioned in mono. Workflow canvases are flagged as demonstration runs.
  */
 export function ProcessGallery({
   steps,
   locale,
-  accent,
+  labels,
 }: {
   steps: GalleryStep[];
   locale: Locale;
-  accent: string;
+  labels: { figure: string; demoNote: string; realCapture: string };
 }) {
   return (
     <ol className="space-y-14">
       {steps.map((step, i) => {
         const src = typeof step.src === "string" ? step.src : step.src[locale];
+        const size = pngSize(src) ?? { width: 1600, height: 900 };
+        const isCanvas = /workflow/.test(src);
         return (
           <li key={src}>
-            <Reveal>
-              <div className="mb-4 flex items-baseline gap-3">
-                <span
-                  className="font-display text-2xl italic leading-none"
-                  style={{ color: accent }}
-                >
-                  {i + 1}.
-                </span>
-                <h3 className="font-display text-xl font-normal text-ink sm:text-[1.4rem]">
-                  {step.title[locale]}
-                </h3>
-              </div>
-              <ScreenshotFrame src={src} alt={step.title[locale]} />
-              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
-                {step.caption[locale]}
-              </p>
-            </Reveal>
+            <h3 className="mb-4 flex items-baseline gap-3 font-display text-[1.375rem] text-ink">
+              <span className="ts text-sm text-faint">
+                {labels.figure} {i + 1}
+              </span>
+              {step.title[locale]}
+            </h3>
+            <ScreenshotFrame
+              src={src}
+              alt={step.title[locale]}
+              width={size.width}
+              height={size.height}
+              dark={isCanvas}
+              caption={isCanvas ? labels.demoNote : labels.realCapture}
+            />
+            <p className="mt-3 max-w-[62ch] text-body text-muted">
+              {step.caption[locale]}
+            </p>
           </li>
         );
       })}

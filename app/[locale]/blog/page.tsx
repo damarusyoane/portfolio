@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { Reveal } from "@/components/Reveal";
 import { getAllPosts, formatDate } from "@/lib/blog";
 import type { Locale } from "@/i18n/routing";
 
@@ -34,57 +32,65 @@ export default async function BlogPage({
   const t = await getTranslations({ locale, namespace: "Blog" });
   const posts = getAllPosts(l);
 
+  const [lead, ...rest] = posts;
+
   return (
-    <div className="relative pt-28 sm:pt-32">
-      <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
-        <Reveal>
-          <h1 className="font-display text-5xl font-normal tracking-[-0.025em] text-ink sm:text-6xl">
-            {t("title")}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-            {t("subtitle")}
-          </p>
-        </Reveal>
+    <div className="pt-28 sm:pt-32">
+      <div className="wrap">
+        <h1 className="font-display text-display font-normal text-ink">
+          {t("title")}
+        </h1>
+        <p className="mt-5 max-w-[52ch] text-lead text-muted">
+          {t("subtitle")}
+        </p>
 
         {posts.length === 0 ? (
           <p className="mt-16 text-muted">{t("empty")}</p>
         ) : (
-          <ul className="mb-24 mt-14 border-b border-border">
-            {posts.map((post, i) => (
-              <li key={post.slug} className="border-t border-border">
-                <Reveal delay={Math.min(i * 0.04, 0.2)}>
+          <div className="mb-24 mt-14">
+            {/* Latest article, set large */}
+            <Link
+              href={`/blog/${lead.slug}`}
+              className="group grid gap-6 border-t border-ink py-10 lg:grid-cols-12 lg:gap-x-6"
+            >
+              <p className="ts text-note text-faint lg:col-span-3">
+                {t("latest")} · {formatDate(lead.date, l)} ·{" "}
+                {t("readingTime", { minutes: lead.readingMinutes })}
+              </p>
+              <div className="lg:col-span-8 lg:col-start-5">
+                <h2 className="font-display text-[2.25rem] leading-[1.1] tracking-[-0.015em] text-ink group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4 sm:text-[2.75rem]">
+                  {lead.title}
+                </h2>
+                <p className="mt-4 max-w-[60ch] text-lead text-muted">
+                  {lead.excerpt}
+                </p>
+              </div>
+            </Link>
+
+            {/* Everything else, as a dated list */}
+            <ul className="border-t border-border">
+              {rest.map((post) => (
+                <li key={post.slug} className="border-b border-border">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group grid gap-3 py-8 sm:grid-cols-[1fr_auto] sm:gap-10"
+                    className="group grid gap-2 py-6 lg:grid-cols-12 lg:gap-x-6"
                   >
-                    <div className="min-w-0">
-                      <p className="text-[13px] text-faint">
-                        {formatDate(post.date, l)} ·{" "}
-                        {t("readingTime", { minutes: post.readingMinutes })}
-                      </p>
-                      <h2 className="mt-2 font-display text-2xl font-normal leading-snug tracking-[-0.01em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.75rem]">
+                    <span className="ts pt-1.5 text-note text-faint lg:col-span-3">
+                      {formatDate(post.date, l)}
+                    </span>
+                    <span className="lg:col-span-8 lg:col-start-5">
+                      <span className="block font-display text-[1.5rem] leading-snug text-ink group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">
                         {post.title}
-                      </h2>
-                      <p className="mt-2 text-[16px] leading-relaxed text-muted">
+                      </span>
+                      <span className="mt-1.5 block max-w-[62ch] text-[15px] text-muted">
                         {post.excerpt}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {post.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <ArrowUpRight className="hidden h-6 w-6 shrink-0 text-faint transition-colors group-hover:text-ink sm:block" />
+                      </span>
+                    </span>
                   </Link>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>

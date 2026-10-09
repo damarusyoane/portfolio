@@ -31,12 +31,12 @@ export function CookieConsent() {
   if (consent !== null) return null;
 
   return (
-    <div className="fixed inset-x-3 bottom-3 z-50 sm:inset-x-auto sm:bottom-5 sm:left-5 sm:max-w-md">
+    <div className="fixed inset-x-3 bottom-3 z-[60] sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-md">
       <div
         role="dialog"
         aria-live="polite"
         aria-label="Cookies"
-        className="rounded-2xl border border-border bg-surface p-5 shadow-[var(--shadow-lift)]"
+        className="sheet p-5 shadow-[var(--shadow-device)]"
       >
         <p className="text-sm leading-relaxed text-ink-soft">
           {t("text")}{" "}
@@ -51,14 +51,14 @@ export function CookieConsent() {
           <button
             type="button"
             onClick={() => decide("granted")}
-            className={buttonClass("primary", "sm", "flex-1 sm:flex-none")}
+            className={buttonClass("outline", "sm", "flex-1")}
           >
             {t("accept")}
           </button>
           <button
             type="button"
             onClick={() => decide("denied")}
-            className={buttonClass("secondary", "sm", "flex-1 sm:flex-none")}
+            className={buttonClass("outline", "sm", "flex-1")}
           >
             {t("reject")}
           </button>

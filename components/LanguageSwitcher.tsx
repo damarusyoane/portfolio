@@ -5,6 +5,7 @@ import { useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
+/** "FR / EN" as two text links; the current language is underlined. */
 export function LanguageSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const t = useTranslations("Common");
@@ -22,27 +23,35 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full border border-border-strong p-0.5 text-xs font-semibold",
+        "flex items-center gap-1.5 text-sm font-medium",
         isPending && "opacity-60",
         className,
       )}
       role="group"
       aria-label={t("language")}
     >
-      {(["fr", "en"] as const).map((l) => (
-        <button
-          key={l}
-          type="button"
-          onClick={() => switchTo(l)}
-          aria-pressed={locale === l}
-          aria-label={l === "fr" ? t("switchToFr") : t("switchToEn")}
-          className={cn(
-            "rounded-full px-2.5 py-1 uppercase tracking-wide transition-colors",
-            locale === l ? "bg-ink text-bg" : "text-muted hover:text-ink",
+      {(["fr", "en"] as const).map((l, i) => (
+        <span key={l} className="flex items-center gap-1.5">
+          {i > 0 && (
+            <span className="text-faint" aria-hidden>
+              /
+            </span>
           )}
-        >
-          {l}
-        </button>
+          <button
+            type="button"
+            onClick={() => switchTo(l)}
+            aria-current={locale === l ? "true" : undefined}
+            aria-label={l === "fr" ? t("switchToFr") : t("switchToEn")}
+            className={cn(
+              "uppercase underline-offset-4 transition-colors",
+              locale === l
+                ? "text-ink underline decoration-1"
+                : "text-muted hover:text-ink",
+            )}
+          >
+            {l}
+          </button>
+        </span>
       ))}
     </div>
   );

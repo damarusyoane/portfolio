@@ -1,25 +1,34 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { buttonClass, ButtonArrow } from "@/components/ui/Button";
+import { buttonClass } from "@/components/ui/Button";
+import { siteConfig, whatsappUrl } from "@/lib/site";
+import type { Locale } from "@/i18n/routing";
 
 export default function NotFound() {
   const t = useTranslations("NotFound");
+  const tn = useTranslations("Nav");
+  const locale = useLocale() as Locale;
   return (
-    <div className="grid min-h-[80svh] place-items-center px-5 pt-16">
-      <div className="text-center">
-        <p className="font-display text-8xl font-normal italic tracking-[-0.04em] text-accent sm:text-9xl">
-          404
-        </p>
-        <h1 className="mt-4 font-display text-3xl font-normal text-ink">
-          {t("title")}
-        </h1>
-        <p className="mx-auto mt-3 max-w-sm text-muted">{t("text")}</p>
-        <Link href="/" className={buttonClass("primary", "md", "mt-8")}>
+    <div className="wrap flex min-h-[80svh] flex-col justify-center pb-24 pt-32">
+      <p className="ts text-note text-faint">404</p>
+      <h1 className="mt-4 max-w-[18ch] font-display text-display font-normal text-ink">
+        {t("title")}
+      </h1>
+      <p className="mt-5 max-w-[44ch] text-lead text-muted">{t("text")}</p>
+      <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <Link href="/" className={buttonClass("primary", "md")}>
           {t("home")}
-          <ButtonArrow />
         </Link>
+        <a
+          href={whatsappUrl(siteConfig.whatsappMessage[locale])}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-link text-[16px] text-ink"
+        >
+          {tn("whatsapp")}
+        </a>
       </div>
     </div>
   );

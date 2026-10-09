@@ -1,17 +1,17 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Mail, ArrowUp } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Brandmark } from "@/components/Brandmark";
-import { LinkedinIcon, WhatsappIcon } from "@/components/icons";
-import { buttonClass, ButtonArrow } from "@/components/ui/Button";
+import { LiveClock, LiveDot } from "@/components/LiveClock";
+import { buttonClass } from "@/components/ui/Button";
 import { siteConfig, whatsappUrl, mailtoUrl } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
 const sectionLinks = [
   { key: "services", href: "/#offers" },
   { key: "results", href: "/#work" },
+  { key: "process", href: "/#process" },
   { key: "industries", href: "/#industries" },
   { key: "automations", href: "/automations" },
   { key: "pricing", href: "/#pricing" },
@@ -19,134 +19,183 @@ const sectionLinks = [
   { key: "blog", href: "/blog" },
 ] as const;
 
-export function Footer() {
+type FooterPost = { slug: string; title: string; date: string };
+
+function reopenCookieBanner() {
+  try {
+    localStorage.removeItem("cookie-consent");
+  } catch {
+    // storage unavailable: nothing to reset
+  }
+  window.dispatchEvent(new Event("consent-updated"));
+}
+
+export function Footer({ posts = [] }: { posts?: FooterPost[] }) {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const year = new Date().getFullYear();
+
+  const date = (d: string) => {
+    try {
+      return new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-CA", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }).format(new Date(d));
+    } catch {
+      return d;
+    }
+  };
 
   const contacts = [
     {
       label: "WhatsApp",
       value: siteConfig.phoneDisplay,
       href: whatsappUrl(siteConfig.whatsappMessage[locale]),
-      icon: WhatsappIcon,
       external: true,
     },
     {
-      label: t("Contact.emailDirect"),
+      label: t("Book.email"),
       value: siteConfig.email,
       href: mailtoUrl(siteConfig.emailSubject[locale]),
-      icon: Mail,
       external: false,
     },
     {
       label: "LinkedIn",
       value: siteConfig.founder,
       href: siteConfig.links.linkedin,
-      icon: LinkedinIcon,
       external: true,
     },
   ];
 
   return (
-    <footer className="theme-ink relative mt-8">
-      {/* Closing call to action */}
-      <div className="mx-auto max-w-6xl px-5 pt-20 sm:px-8 sm:pt-24">
-        <div className="flex flex-col items-start justify-between gap-8 border-b border-border pb-16 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <p className="font-display text-4xl leading-[1.05] tracking-[-0.02em] text-ink sm:text-6xl">
-              {t("Footer.ctaTitle")}
-            </p>
-            <p className="mt-4 text-lg text-muted">{t("Footer.ctaText")}</p>
-          </div>
+    <footer className="theme-night">
+      {/* Closing line */}
+      <div className="wrap border-b border-border pb-16 pt-20 lg:pb-20 lg:pt-28">
+        <p className="max-w-[22ch] font-display text-[2.25rem] leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem]">
+          {t("Footer.line")}
+        </p>
+        <p className="mt-6 flex items-center gap-2.5 text-[15px] text-muted">
+          <LiveDot />
+          <span>
+            {t.rich("Footer.clock", {
+              time: () => <LiveClock />,
+              place: siteConfig.place[locale],
+            })}
+          </span>
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
           <a
             href={siteConfig.links.cal}
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonClass("accent", "lg", "shrink-0")}
+            className={buttonClass("accent", "md")}
           >
             {t("Nav.bookAuditLong")}
-            <ButtonArrow />
+          </a>
+          <a
+            href={whatsappUrl(siteConfig.whatsappMessage[locale])}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link text-[15px] text-ink"
+          >
+            {t("Nav.whatsapp")}
           </a>
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <div className="grid gap-12 md:grid-cols-[1.3fr_0.8fr_1.2fr]">
-          <div>
-            <div className="flex items-center gap-2.5 text-ink">
-              <Brandmark size={30} />
-              <span className="font-display text-[1.35rem] font-semibold tracking-[-0.02em]">
-                {siteConfig.name}
-              </span>
-            </div>
-            <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
-              {t("Footer.tagline")}
-            </p>
+      <div className="wrap grid gap-12 py-14 md:grid-cols-12">
+        <div className="md:col-span-4">
+          <div className="flex items-center gap-2.5 text-ink">
+            <Brandmark size={28} />
+            <span className="font-display text-[22px] font-medium">
+              {siteConfig.name}
+            </span>
           </div>
+          <p className="mt-4 max-w-[34ch] text-[15px] leading-relaxed text-muted">
+            {t("Footer.tagline")}
+          </p>
+        </div>
 
-          <div>
-            <h2 className="mb-4 text-sm font-medium text-faint">
-              {t("Footer.sections")}
-            </h2>
-            <ul className="space-y-2.5">
-              {sectionLinks.map((l) => (
-                <li key={l.key}>
-                  <Link
-                    href={l.href}
-                    className="link-underline text-[15px] text-ink-soft transition-colors hover:text-ink"
-                  >
-                    {t(`Nav.${l.key}`)}
+        <div className="md:col-span-2 md:col-start-5">
+          <h2 className="ts text-note text-faint">{t("Footer.sections")}</h2>
+          <ul className="mt-4 space-y-2">
+            {sectionLinks.map((l) => (
+              <li key={l.key}>
+                <Link
+                  href={l.href}
+                  className="link-underline text-[15px] text-ink-soft hover:text-ink"
+                >
+                  {t(`Nav.${l.key}`)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="md:col-span-3">
+          <h2 className="ts text-note text-faint">{t("Footer.contact")}</h2>
+          <ul className="mt-4 space-y-3">
+            {contacts.map((c) => (
+              <li key={c.label}>
+                <a
+                  href={c.href}
+                  target={c.external ? "_blank" : undefined}
+                  rel={c.external ? "noopener noreferrer" : undefined}
+                  className="group block text-[15px]"
+                >
+                  <span className="block text-faint">{c.label}</span>
+                  <span className="link-underline text-ink-soft group-hover:text-ink">
+                    {c.value}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {posts.length > 0 && (
+          <div className="md:col-span-3">
+            <h2 className="ts text-note text-faint">{t("Footer.articles")}</h2>
+            <ul className="mt-4 space-y-4">
+              {posts.map((p) => (
+                <li key={p.slug}>
+                  <Link href={`/blog/${p.slug}`} className="group block">
+                    <span className="ts block text-note text-faint">
+                      {date(p.date)}
+                    </span>
+                    <span className="mt-0.5 block text-[15px] leading-snug text-ink-soft group-hover:text-ink">
+                      {p.title}
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+        )}
+      </div>
 
-          <div>
-            <h2 className="mb-4 text-sm font-medium text-faint">
-              {t("Footer.elsewhere")}
-            </h2>
-            <ul className="space-y-3">
-              {contacts.map((c) => (
-                <li key={c.label}>
-                  <a
-                    href={c.href}
-                    target={c.external ? "_blank" : undefined}
-                    rel={c.external ? "noopener noreferrer" : undefined}
-                    className="group inline-flex items-center gap-3 text-[15px] text-ink-soft transition-colors hover:text-ink"
-                  >
-                    <c.icon className="h-4 w-4 shrink-0 text-muted transition-colors group-hover:text-accent" />
-                    <span>
-                      <span className="text-faint">{c.label} · </span>
-                      {c.value}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-sm text-faint sm:flex-row sm:items-center">
-          <p>
-            © {year} {siteConfig.name}. {t("Footer.rights")}
-          </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <Link href="/privacy" className="transition-colors hover:text-ink">
-              {t("Footer.privacy")}
-            </Link>
-            <Link href="/legal" className="transition-colors hover:text-ink">
-              {t("Footer.legal")}
-            </Link>
-            <a
-              href="#top"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
-            >
-              {t("Footer.backToTop")}
-              <ArrowUp className="h-3.5 w-3.5" />
-            </a>
-          </div>
+      <div className="wrap flex flex-col gap-4 border-t border-border py-7 text-sm text-faint sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          © {year} {siteConfig.name}. {t("Footer.rights")}
+        </p>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <Link href="/privacy" className="hover:text-ink">
+            {t("Footer.privacy")}
+          </Link>
+          <Link href="/legal" className="hover:text-ink">
+            {t("Footer.legal")}
+          </Link>
+          <button
+            type="button"
+            onClick={reopenCookieBanner}
+            className="hover:text-ink"
+          >
+            {t("Footer.cookies")}
+          </button>
+          <a href="#top" className="hover:text-ink">
+            {t("Footer.backToTop")} ↑
+          </a>
         </div>
       </div>
     </footer>

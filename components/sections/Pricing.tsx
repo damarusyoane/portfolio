@@ -1,100 +1,96 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/Reveal";
-import { buttonClass, ButtonArrow } from "@/components/ui/Button";
+import { buttonClass } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
-import { cn } from "@/lib/utils";
+
+type Plan = {
+  name: string;
+  tagline: string;
+  price: string;
+  priceSuffix: string;
+  example: string;
+  features: string[];
+  popular?: boolean;
+};
 
 export function Pricing() {
   const t = useTranslations("Pricing");
-  const plans = t.raw("plans") as {
-    name: string;
-    tagline: string;
-    price: string;
-    priceSuffix: string;
-    features: string[];
-    popular?: boolean;
-  }[];
+  const plans = t.raw("plans") as Plan[];
 
   return (
-    <section id="pricing" className="relative scroll-mt-20 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading
-          kicker={t("kicker")}
-          title={t("title")}
-          subtitle={t("subtitle")}
-        />
+    <section id="pricing" className="scroll-mt-16 py-20 lg:py-32">
+      <div className="wrap">
+        <SectionHeading title={t("title")} lead={t("lead")} />
 
-        <div className="mt-12 grid items-stretch gap-5 md:grid-cols-3">
+        <div className="sheet mt-12 grid lg:grid-cols-3">
           {plans.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.06}>
-              <div
-                className={cn(
-                  "relative flex h-full flex-col rounded-3xl border p-7 sm:p-8",
-                  p.popular
-                    ? "theme-ink border-transparent shadow-[var(--shadow-lift)]"
-                    : "border-border bg-surface",
+            <div
+              key={p.name}
+              className={
+                "flex flex-col p-7 sm:p-9" +
+                (i > 0
+                  ? " border-t border-border lg:border-l lg:border-t-0"
+                  : "")
+              }
+            >
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="font-display text-[1.625rem] text-ink">
+                  {p.name}
+                </h3>
+                {p.popular && siteConfig.claims.popularPlan && (
+                  <span className="ts text-note text-muted">
+                    {t("recommended")}
+                  </span>
                 )}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="font-display text-2xl font-normal text-ink">
-                    {p.name}
-                  </h3>
-                  {p.popular && (
-                    <span className="rounded-full bg-accent px-2.5 py-1 text-xs font-semibold text-[#161512]">
-                      {t("popular")}
-                    </span>
-                  )}
-                </div>
-                <p className="mt-1 text-[15px] text-muted">{p.tagline}</p>
-
-                <div className="mt-7 border-t border-border pt-6">
-                  <p className="font-display text-[2.6rem] font-normal leading-none tracking-[-0.02em] text-ink">
-                    {p.price}
-                  </p>
-                  <p className="mt-2 text-sm text-faint">{p.priceSuffix}</p>
-                </div>
-
-                <ul className="mt-7 flex-1 space-y-3">
-                  {p.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex gap-2.5 text-[15px] text-ink-soft"
-                    >
-                      <Check
-                        className={cn(
-                          "mt-0.5 h-4 w-4 shrink-0",
-                          p.popular ? "text-accent" : "text-accent-2",
-                        )}
-                        aria-hidden
-                      />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={siteConfig.links.cal}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonClass(
-                    p.popular ? "accent" : "secondary",
-                    "md",
-                    "mt-8 w-full",
-                  )}
-                >
-                  {t("cta")}
-                  <ButtonArrow />
-                </a>
               </div>
-            </Reveal>
+              <p className="mt-1 text-[15px] text-muted">{p.tagline}</p>
+
+              <p className="figures mt-8 whitespace-nowrap font-display text-[2.6rem] leading-none tracking-[-0.02em] text-ink xl:text-[2.9rem]">
+                {p.price}
+              </p>
+              <p className="ts mt-3 text-note text-faint">{p.priceSuffix}</p>
+
+              {p.example && (
+                <p className="mt-6 text-[15px] text-ink-soft">
+                  <span className="ts text-note text-faint">
+                    {t("exampleLabel")}
+                  </span>{" "}
+                  {p.example}
+                </p>
+              )}
+
+              <ul className="mt-6 flex-1 space-y-2.5 border-t border-border pt-6">
+                {p.features.map((f) => (
+                  <li
+                    key={f}
+                    className="flex gap-2.5 text-[15px] text-ink-soft"
+                  >
+                    <Check
+                      className="mt-1 h-4 w-4 shrink-0 text-ink"
+                      aria-hidden
+                    />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={siteConfig.links.cal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonClass("outline", "md", "mt-8 w-full")}
+              >
+                {t("cta")}
+              </a>
+            </div>
           ))}
         </div>
 
-        <p className="mt-6 text-sm text-faint">{t("note")}</p>
+        <p className="mt-6 max-w-[62ch] text-[15px] text-ink-soft">
+          {t("guarantees")}
+        </p>
+        <p className="mt-2 text-sm text-faint">{t("note")}</p>
       </div>
     </section>
   );

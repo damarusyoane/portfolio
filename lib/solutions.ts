@@ -43,7 +43,7 @@ export const solutions: Solution[] = [
       en: "Detects abandoned checkouts and triggers timed email + SMS win-back sequences.",
       fr: "Détecte les paniers abandonnés et déclenche des relances email + SMS minutées.",
     },
-    impact: { en: "Recovers 10–15% of lost carts", fr: "Récupère 10–15 % des paniers perdus" },
+    impact: { en: "Recovers 10–15% of lost carts", fr: "Récupère 10–15 % des paniers perdus" },
     stack: ["Shopify", "Klaviyo", "Twilio", "n8n"],
   },
   {
@@ -65,7 +65,7 @@ export const solutions: Solution[] = [
       en: "Requests reviews after delivery and routes feedback to the right channel.",
       fr: "Demande des avis après livraison et oriente les retours vers le bon canal.",
     },
-    impact: { en: "3× more reviews collected", fr: "3× plus d'avis collectés" },
+    impact: { en: "3× more reviews collected", fr: "3× plus d’avis collectés" },
     stack: ["Shopify", "Trustpilot", "Google", "Slack"],
   },
 
@@ -100,7 +100,7 @@ export const solutions: Solution[] = [
       en: "Curates sources and drafts a ready-to-send newsletter on a schedule.",
       fr: "Sélectionne les sources et rédige une newsletter prête à envoyer, planifiée.",
     },
-    impact: { en: "Weekly send, fully hands-off", fr: "Envoi hebdo, 100% mains libres" },
+    impact: { en: "Weekly send, fully hands-off", fr: "Envoi hebdo, 100 % mains libres" },
     stack: ["RSS", "Claude", "Mailchimp", "n8n"],
   },
 
@@ -124,7 +124,7 @@ export const solutions: Solution[] = [
       en: "Generates branded proposals from CRM data and sends them for e-signature.",
       fr: "Génère des propositions personnalisées depuis le CRM et les envoie en e-signature.",
     },
-    impact: { en: "Quotes in minutes, not days", fr: "Devis en minutes, pas en jours" },
+    impact: { en: "Quotes ready in minutes", fr: "Devis prêts en quelques minutes" },
     stack: ["HubSpot", "Claude", "PDF", "DocuSign"],
   },
   {
@@ -135,7 +135,7 @@ export const solutions: Solution[] = [
       en: "Logs booked meetings to the CRM and starts an automated follow-up sequence.",
       fr: "Journalise les rendez-vous dans le CRM et lance une séquence de relance.",
     },
-    impact: { en: "100% of meetings logged", fr: "100% des RDV journalisés" },
+    impact: { en: "100% of meetings logged", fr: "100 % des RDV journalisés" },
     stack: ["Calendly", "HubSpot", "Gmail", "n8n"],
   },
 
@@ -148,7 +148,7 @@ export const solutions: Solution[] = [
       en: "Classifies tickets, drafts grounded replies, and escalates edge cases.",
       fr: "Classe les tickets, rédige des réponses sourcées et escalade les cas limites.",
     },
-    impact: { en: "~40% of tickets deflected", fr: "~40% des tickets déviés" },
+    impact: { en: "~40% of tickets deflected", fr: "~40 % des tickets déviés" },
     stack: ["Zendesk", "Claude", "RAG", "n8n"],
   },
   {
@@ -168,7 +168,7 @@ export const solutions: Solution[] = [
     title: { en: "Support ↔ Issue Tracker Sync", fr: "Synchro support ↔ tracker" },
     description: {
       en: "Two-way sync between support tickets and engineering issues.",
-      fr: "Synchronisation bidirectionnelle entre tickets support et issues d'ingénierie.",
+      fr: "Synchronisation bidirectionnelle entre tickets support et issues d’ingénierie.",
     },
     impact: { en: "No more lost tickets", fr: "Plus de tickets perdus" },
     stack: ["Intercom", "Jira", "Linear", "Webhooks"],
@@ -183,13 +183,13 @@ export const solutions: Solution[] = [
       en: "Extracts invoice data from email/PDF and posts it to the accounting system.",
       fr: "Extrait les données de factures (email/PDF) et les pousse dans la compta.",
     },
-    impact: { en: "~8h/week saved", fr: "~8 h/semaine gagnées" },
+    impact: { en: "~8h/week saved", fr: "~8 h/semaine gagnées" },
     stack: ["OCR", "Claude", "QuickBooks", "Xero"],
   },
   {
     id: "expense-approval",
     category: "finance",
-    title: { en: "Expense Approval Workflow", fr: "Workflow d'approbation de dépenses" },
+    title: { en: "Expense Approval Workflow", fr: "Workflow d’approbation de dépenses" },
     description: {
       en: "Routes expense requests for approval in Slack with a full audit trail.",
       fr: "Achemine les demandes de dépenses pour validation dans Slack, avec traçabilité.",
@@ -203,7 +203,7 @@ export const solutions: Solution[] = [
     title: { en: "Daily Revenue / MRR Digest", fr: "Digest CA / MRR quotidien" },
     description: {
       en: "Posts a daily revenue and MRR summary from Stripe to the team.",
-      fr: "Publie un résumé quotidien du CA et du MRR depuis Stripe à l'équipe.",
+      fr: "Publie un résumé quotidien du CA et du MRR depuis Stripe à l’équipe.",
     },
     impact: { en: "Daily, before standup", fr: "Quotidien, avant le standup" },
     stack: ["Stripe", "Slack", "Sheets"],
@@ -218,7 +218,7 @@ export const solutions: Solution[] = [
       en: "Scores and ranks applicants against a role with explainable criteria.",
       fr: "Note et classe les candidats face à un poste, avec des critères explicables.",
     },
-    impact: { en: "Screen 100s of CVs fast", fr: "Trie des centaines de CV vite" },
+    impact: { en: "Screen 100s of CVs fast", fr: "Trie des centaines de CV rapidement" },
     stack: ["Claude", "ATS", "Sheets", "n8n"],
   },
   {
@@ -229,16 +229,16 @@ export const solutions: Solution[] = [
       en: "Provisions and de-provisions accounts and tasks across every tool.",
       fr: "Provisionne et déprovisionne comptes et tâches à travers tous les outils.",
     },
-    impact: { en: "Day-one access, automatic", fr: "Accès jour-1, automatique" },
+    impact: { en: "Day-one access, automatic", fr: "Accès dès le premier jour, automatique" },
     stack: ["Google Workspace", "Slack", "Notion", "n8n"],
   },
   {
     id: "interview-scheduling",
     category: "hr",
-    title: { en: "Interview Scheduling", fr: "Planification d'entretiens" },
+    title: { en: "Interview Scheduling", fr: "Planification d’entretiens" },
     description: {
       en: "Coordinates interview slots between candidates and panels automatically.",
-      fr: "Coordonne automatiquement les créneaux d'entretien entre candidats et jury.",
+      fr: "Coordonne automatiquement les créneaux d’entretien entre candidats et jury.",
     },
     impact: { en: "Back-and-forth → 0", fr: "Allers-retours → 0" },
     stack: ["Calendly", "Gmail", "ATS", "n8n"],
@@ -251,7 +251,7 @@ export const solutions: Solution[] = [
     title: { en: "Social Listening & Brand Alerts", fr: "Veille sociale & alertes marque" },
     description: {
       en: "Monitors mentions and pings the team on sentiment spikes.",
-      fr: "Surveille les mentions et alerte l'équipe sur les pics de sentiment.",
+      fr: "Surveille les mentions et alerte l’équipe sur les pics de sentiment.",
     },
     impact: { en: "Mentions caught in real time", fr: "Mentions captées en temps réel" },
     stack: ["Apify", "Claude", "Slack", "n8n"],
@@ -318,7 +318,7 @@ export const solutions: Solution[] = [
   {
     id: "listing-alerts",
     category: "realestate",
-    title: { en: "Listing Aggregation & Alerts", fr: "Agrégation d'annonces & alertes" },
+    title: { en: "Listing Aggregation & Alerts", fr: "Agrégation d’annonces & alertes" },
     description: {
       en: "Aggregates new listings and pushes instant matches to buyers.",
       fr: "Agrège les nouvelles annonces et pousse les correspondances aux acheteurs.",
@@ -347,7 +347,7 @@ export const solutions: Solution[] = [
       en: "Sends SMS/WhatsApp reminders and confirmations to cut no-shows.",
       fr: "Envoie rappels et confirmations SMS/WhatsApp pour réduire les absences.",
     },
-    impact: { en: "~30% fewer no-shows", fr: "~30% de no-shows en moins" },
+    impact: { en: "~30% fewer no-shows", fr: "~30 % de no-shows en moins" },
     stack: ["Twilio", "WhatsApp", "Calendar", "n8n"],
   },
   {
@@ -356,7 +356,7 @@ export const solutions: Solution[] = [
     title: { en: "Patient Intake → Records", fr: "Admission patient → dossier" },
     description: {
       en: "Turns intake forms into structured records in the practice system.",
-      fr: "Transforme les formulaires d'admission en dossiers structurés.",
+      fr: "Transforme les formulaires d’admission en dossiers structurés.",
     },
     impact: { en: "Paperless intake", fr: "Admission sans papier" },
     stack: ["Forms", "Claude", "EHR", "n8n"],
@@ -369,9 +369,9 @@ export const solutions: Solution[] = [
     title: { en: "Uptime & Health Monitoring", fr: "Monitoring uptime & santé" },
     description: {
       en: "Probes endpoints and pages on-call with rich context on failure.",
-      fr: "Sonde les endpoints et alerte l'astreinte avec un contexte riche en cas d'échec.",
+      fr: "Sonde les endpoints et alerte l’astreinte avec un contexte riche en cas d’échec.",
     },
-    impact: { en: "Issues caught before users", fr: "Pannes vues avant les users" },
+    impact: { en: "Issues caught before users", fr: "Pannes repérées avant les utilisateurs" },
     stack: ["n8n", "Netdata", "Slack", "PagerDuty"],
   },
   {
@@ -380,7 +380,7 @@ export const solutions: Solution[] = [
     title: { en: "CI/CD & Incident Alerts", fr: "Alertes CI/CD & incidents" },
     description: {
       en: "Streams deploy and incident events to the right channels with summaries.",
-      fr: "Diffuse les événements de déploiement et d'incident aux bons canaux, résumés.",
+      fr: "Diffuse les événements de déploiement et d’incident aux bons canaux, résumés.",
     },
     impact: { en: "Faster incident response", fr: "Réponse incident plus rapide" },
     stack: ["GitHub", "Slack", "Webhooks", "Claude"],
@@ -430,7 +430,7 @@ export const solutions: Solution[] = [
     title: { en: "Course Drip & Certificates", fr: "Diffusion de cours & certificats" },
     description: {
       en: "Delivers lessons on schedule and issues certificates on completion.",
-      fr: "Diffuse les leçons planifiées et délivre les certificats à la complétion.",
+      fr: "Diffuse les leçons planifiées et délivre les certificats une fois le cours terminé.",
     },
     impact: { en: "Hands-off course delivery", fr: "Diffusion de cours mains libres" },
     stack: ["n8n", "Email", "PDF", "Webhooks"],

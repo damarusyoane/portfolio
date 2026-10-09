@@ -26,13 +26,13 @@ export default async function Image({
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px 80px",
-        background: "#f6f4ef",
+        background: "#f3f3f0",
         fontFamily: "serif",
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
         <svg width={56} height={56} viewBox="0 0 40 40" fill="none">
-          <circle cx={20} cy={20} r={13.5} stroke="#161512" strokeWidth={3.2} />
+          <circle cx={20} cy={20} r={13.5} stroke="#121417" strokeWidth={3.2} />
           <path
             d="M8.31 13.75 A 13.5 13.5 0 0 1 31.69 13.75"
             stroke="#e4572e"
@@ -41,7 +41,7 @@ export default async function Image({
           />
           <circle cx={31.69} cy={13.75} r={3.4} fill="#e4572e" />
         </svg>
-        <div style={{ color: "#161512", fontSize: 32, fontWeight: 700 }}>
+        <div style={{ color: "#121417", fontSize: 32, fontWeight: 700 }}>
           {siteConfig.name}
         </div>
       </div>
@@ -49,7 +49,7 @@ export default async function Image({
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
           style={{
-            color: "#b23f17",
+            color: "#5b6168",
             fontSize: 26,
             fontFamily: "sans-serif",
             fontWeight: 600,
@@ -60,7 +60,7 @@ export default async function Image({
         </div>
         <div
           style={{
-            color: "#161512",
+            color: "#121417",
             fontSize: 64,
             lineHeight: 1.08,
             letterSpacing: -1.5,
@@ -75,9 +75,9 @@ export default async function Image({
         style={{
           display: "flex",
           justifyContent: "space-between",
-          borderTop: "2px solid #161512",
+          borderTop: "2px solid #121417",
           paddingTop: 24,
-          color: "#34322d",
+          color: "#2c3036",
           fontSize: 24,
           fontFamily: "sans-serif",
         }}
