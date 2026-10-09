@@ -15,11 +15,16 @@ export type GalleryStep = {
   caption: L;
 };
 
-/** FR/EN variant helper: `/projects/<slug>/<base>-fr.png` and `-en.png`. */
-function bi(slug: string, base: string): L {
+/**
+ * FR/EN variant helper: `/projects/<slug>/<base>-fr<suffix>.png` and `-en<suffix>.png`.
+ * `-clean` files are cropped copies of the raw captures (mail client chrome and
+ * personal addresses removed); the raw captures live in captures-raw/, outside
+ * public/, and are never deployed.
+ */
+function bi(slug: string, base: string, suffix = ""): L {
   return {
-    fr: `/projects/${slug}/${base}-fr.png`,
-    en: `/projects/${slug}/${base}-en.png`,
+    fr: `/projects/${slug}/${base}-fr${suffix}.png`,
+    en: `/projects/${slug}/${base}-en${suffix}.png`,
   };
 }
 
@@ -39,7 +44,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("instant-lead-response", "02-reponse-client"),
+      src: bi("instant-lead-response", "02-reponse-client", "-clean"),
       title: { en: "What the customer receives", fr: "Ce que reçoit le client" },
       caption: {
         en: "In under a minute, the prospect gets a warm, tailored reply, in their own language.",
@@ -47,7 +52,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("instant-lead-response", "03-alerte-entreprise"),
+      src: bi("instant-lead-response", "03-alerte-entreprise", "-clean"),
       title: { en: "What the business receives", fr: "Ce que reçoit l’entreprise" },
       caption: {
         en: "The team is alerted with the score, a summary and the request, by email, WhatsApp or straight into the CRM.",
@@ -65,7 +70,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("whatsapp-ai-assistant", "02-reponse-client"),
+      src: bi("whatsapp-ai-assistant", "02-reponse-client", "-clean"),
       title: { en: "The reply to the customer", fr: "La réponse au client" },
       caption: {
         en: "The customer gets an instant answer with the real business info (never an invented price), in their language.",
@@ -73,7 +78,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("whatsapp-ai-assistant", "03-alerte-lead"),
+      src: bi("whatsapp-ai-assistant", "03-alerte-lead", "-clean"),
       title: { en: "The lead alert", fr: "L’alerte lead" },
       caption: {
         en: "The moment a customer shows they want to buy, the owner is notified.",
@@ -91,7 +96,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("rag-knowledge-assistant", "02-question"),
+      src: bi("rag-knowledge-assistant", "02-question", "-clean"),
       title: { en: "The customer’s question", fr: "La question du client" },
       caption: {
         en: "The customer asks a plain-language question (French or English).",
@@ -99,7 +104,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("rag-knowledge-assistant", "03-reponse-sourcee"),
+      src: bi("rag-knowledge-assistant", "03-reponse-sourcee", "-clean"),
       title: { en: "The sourced answer", fr: "La réponse sourcée" },
       caption: {
         en: "The assistant answers strictly from your documents, with the sources cited, and admits it when it doesn’t know.",
@@ -117,7 +122,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("appointment-reminder-system", "02-rappel-client"),
+      src: bi("appointment-reminder-system", "02-rappel-client", "-clean"),
       title: { en: "The reminder the client gets", fr: "Le rappel reçu par le client" },
       caption: {
         en: "A clear reminder with the exact slot, in the client’s language.",
@@ -125,7 +130,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: "/projects/appointment-reminder-system/03-agenda.png",
+      src: "/projects/appointment-reminder-system/03-agenda-clean.png",
       title: { en: "The appointments source", fr: "La source des rendez-vous" },
       caption: {
         en: "A simple sheet or calendar feeds the whole flow: cancelled slots are skipped, no one is reminded twice.",
@@ -143,7 +148,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("payment-reminder-engine", "02-relance-client"),
+      src: bi("payment-reminder-engine", "02-relance-client", "-clean"),
       title: { en: "The reminder received", fr: "La relance reçue" },
       caption: {
         en: "A polite reminder with the invoice and amount, in the client’s language (friendly, firm or urgent depending on the delay).",
@@ -151,7 +156,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: "/projects/payment-reminder-engine/03-factures.png",
+      src: "/projects/payment-reminder-engine/03-factures-clean.png",
       title: { en: "The invoices source", fr: "La source des factures" },
       caption: {
         en: "Invoice tracking drives the tone automatically: nobody has to chase payments by hand anymore.",
@@ -169,7 +174,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("review-reputation-automation", "02-demande-avis"),
+      src: bi("review-reputation-automation", "02-demande-avis", "-clean"),
       title: { en: "The review request", fr: "La demande d’avis" },
       caption: {
         en: "The happy customer gets a one-click invitation to leave a Google review.",
@@ -177,7 +182,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("review-reputation-automation", "03-alerte-mecontent"),
+      src: bi("review-reputation-automation", "03-alerte-mecontent", "-clean"),
       title: { en: "Catching an unhappy customer", fr: "L’interception d’un mécontent" },
       caption: {
         en: "The unhappy customer is caught privately and the owner is alerted, before it becomes a public 1-star.",
@@ -195,7 +200,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("ai-voice-calling-assistant", "02-analyse"),
+      src: bi("ai-voice-calling-assistant", "02-analyse", "-clean"),
       title: { en: "The call analysis", fr: "L’analyse de l’appel" },
       caption: {
         en: "The AI extracts the outcome, sentiment, a summary and the recommended next action.",
@@ -203,7 +208,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("ai-voice-calling-assistant", "03-notif-suivi"),
+      src: bi("ai-voice-calling-assistant", "03-notif-suivi", "-clean"),
       title: { en: "The follow-up notification", fr: "La notification de suivi" },
       caption: {
         en: "The business is notified whenever a call-back is needed, so nothing slips through.",
@@ -213,7 +218,7 @@ export const galleries: Record<string, GalleryStep[]> = {
   ],
   "distributed-automation": [
     {
-      src: "/projects/distributed-automation/01-formulaire.png",
+      src: "/projects/distributed-automation/01-formulaire-clean.png",
       title: { en: "The request", fr: "La demande" },
       caption: {
         en: "An internal form: paste the link, one click.",
@@ -247,7 +252,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: "/projects/seo-audit-engine/02-formulaire.png",
+      src: "/projects/seo-audit-engine/02-formulaire-clean.png",
       title: { en: "The trigger form", fr: "Le formulaire de déclenchement" },
       caption: {
         en: "A simple form kicks off the audit: you enter the site and its SEO brief targets, and the engine takes over.",
@@ -281,7 +286,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: "/projects/google-ads-campaign-agent/03-export.png",
+      src: "/projects/google-ads-campaign-agent/03-export-clean.png",
       title: { en: "The Google Ads CSV", fr: "Le CSV Google Ads" },
       caption: {
         en: "A ready-to-import file, emailed to the media buyer for a one-click bulk import.",
