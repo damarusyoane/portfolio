@@ -2,8 +2,9 @@
 
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
-import { Download, FileText, Loader2, Check, ArrowRight } from "lucide-react";
+import { Download, Loader2, Check, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { buttonClass } from "@/components/ui/Button";
 import { captureLead, type LeadState } from "@/lib/actions";
 
 const initial: LeadState = { status: "idle" };
@@ -15,30 +16,41 @@ export function LeadMagnet() {
   const points = t.raw("points") as string[];
 
   return (
-    <section id="guide" className="relative scroll-mt-24 py-16 sm:py-20">
-      <div className="mx-auto max-w-4xl px-5 sm:px-8">
+    <section id="guide" className="relative scroll-mt-20 py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <div className="glass grid gap-8 rounded-3xl p-8 sm:p-10 md:grid-cols-2 md:items-center">
-            <div>
-              <span
-                className="inline-block rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[1.5px] text-bg"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(90deg, var(--color-accent), var(--color-accent-2))",
-                }}
-              >
-                {t("badge")}
+          <div className="grid items-center gap-8 rounded-[2rem] bg-accent p-7 text-[#161512] sm:p-10 md:grid-cols-[auto_1fr_1fr] md:gap-10">
+            {/* Mini cover of the PDF */}
+            <div
+              className="hidden h-40 w-32 rotate-[-4deg] flex-col justify-between rounded-md bg-[#f6f4ef] p-3.5 shadow-[0_18px_30px_-12px_rgba(22,21,18,0.45)] md:flex"
+              aria-hidden
+            >
+              <span className="h-1.5 w-8 rounded-full bg-[#e4572e]" />
+              <span className="font-display text-[17px] leading-tight text-[#161512]">
+                {t("coverTop")}
+                <br />
+                {t("coverBottom")}
               </span>
-              <h2 className="mt-4 font-display text-2xl font-semibold leading-tight text-ink sm:text-3xl">
+              <span className="text-[9px] font-semibold uppercase tracking-wider text-[#5c584f]">
+                Ottomate
+              </span>
+            </div>
+
+            <div>
+              <p className="text-[13px] font-semibold">{t("badge")}</p>
+              <h2 className="mt-2 font-display text-[1.75rem] font-normal leading-[1.1] tracking-[-0.015em] sm:text-[2.1rem]">
                 {t("title")}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
+              <p className="mt-3 text-[15px] leading-relaxed">
                 {t("subtitle")}
               </p>
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
                 {points.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm text-ink-soft">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <li
+                    key={p}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium"
+                  >
+                    <Check className="h-4 w-4" aria-hidden />
                     {p}
                   </li>
                 ))}
@@ -47,17 +59,12 @@ export function LeadMagnet() {
 
             <div>
               {state.status === "success" ? (
-                <div className="flex flex-col items-center rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
-                  <FileText className="h-9 w-9 text-accent" />
-                  <p className="mt-3 text-sm text-ink-soft">{t("successTitle")}</p>
+                <div className="rounded-2xl bg-[#f6f4ef] p-6 text-center">
+                  <p className="text-[15px] font-medium">{t("successTitle")}</p>
                   <a
                     href={GUIDE}
                     download
-                    className="mt-4 inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold text-bg"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(100deg, var(--color-accent), var(--color-accent-2))",
-                    }}
+                    className={buttonClass("primary", "md", "mt-4")}
                   >
                     <Download className="h-4 w-4" />
                     {t("download")}
@@ -69,26 +76,31 @@ export function LeadMagnet() {
                     aria-hidden
                     className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
                   >
-                    <input type="text" name="company" tabIndex={-1} autoComplete="off" />
+                    <input
+                      type="text"
+                      name="company"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
                   </div>
+                  <label htmlFor="lead-email" className="sr-only">
+                    Email
+                  </label>
                   <input
+                    id="lead-email"
                     type="email"
                     name="email"
                     required
                     placeholder={t("email")}
-                    className="h-12 w-full rounded-xl border border-border bg-white/[0.02] px-4 text-sm text-ink placeholder:text-faint focus:border-border-strong focus:outline-none focus:ring-2 focus:ring-accent/40"
+                    className="h-12 w-full rounded-full border-0 bg-[#f6f4ef] px-5 text-[15px] text-[#161512] placeholder:text-[#6f6a62] focus:outline-none focus:ring-2 focus:ring-[#161512]"
                   />
                   {state.status === "error" && (
-                    <p className="text-xs text-red-300">{t("error")}</p>
+                    <p className="text-sm font-medium">{t("error")}</p>
                   )}
                   <button
                     type="submit"
                     disabled={pending}
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl text-[15px] font-semibold text-bg transition-transform hover:-translate-y-0.5 disabled:opacity-70"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(100deg, var(--color-accent), var(--color-accent-2))",
-                    }}
+                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#161512] text-[15px] font-medium text-[#f6f4ef] transition-colors hover:bg-[#2a2823] disabled:opacity-70"
                   >
                     {pending ? (
                       <>

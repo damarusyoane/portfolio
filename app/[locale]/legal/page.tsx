@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const title = locale === "fr" ? "Mentions légales" : "Legal Notice";
   return {
-    title: `${title} — ${siteConfig.name}`,
+    title,
     robots: { index: false, follow: true },
   };
 }
@@ -95,9 +95,9 @@ export default async function LegalPage({
   const d = data[locale as Locale];
 
   return (
-    <main className="pb-24 pt-28">
+    <div className="pb-24 pt-32">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <h1 className="font-display text-3xl font-bold text-ink sm:text-4xl">
+        <h1 className="font-display text-4xl font-normal tracking-[-0.02em] text-ink sm:text-5xl">
           {d.title}
         </h1>
         <div className="prose-tech mt-8">
@@ -111,6 +111,6 @@ export default async function LegalPage({
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

@@ -1,16 +1,15 @@
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/Hero";
 import { Pains } from "@/components/sections/Pains";
-import { Outcomes } from "@/components/sections/Outcomes";
-import { Trust } from "@/components/sections/Trust";
 import { Offers } from "@/components/sections/Offers";
-import { Pricing } from "@/components/sections/Pricing";
-import { Industries } from "@/components/sections/Industries";
-import { Process } from "@/components/sections/Process";
 import { Work } from "@/components/sections/Work";
-import { BookCall } from "@/components/sections/BookCall";
+import { Trust } from "@/components/sections/Trust";
+import { Process } from "@/components/sections/Process";
+import { Industries } from "@/components/sections/Industries";
+import { Pricing } from "@/components/sections/Pricing";
 import { About } from "@/components/sections/About";
 import { Faq } from "@/components/sections/Faq";
+import { BookCall } from "@/components/sections/BookCall";
 import { LeadMagnet } from "@/components/sections/LeadMagnet";
 import { BlogPreview } from "@/components/sections/BlogPreview";
 import { Contact } from "@/components/sections/Contact";
@@ -28,18 +27,18 @@ export default async function HomePage({
 
   return (
     <>
+      {/* Hook → problem → solutions → proof → how → price → who → objections → act */}
       <Hero />
       <Pains />
-      <Outcomes />
-      <Trust />
       <Offers />
+      <Work />
+      <Trust />
+      <Process />
       <Industries />
       <Pricing />
-      <Process />
-      <Work />
-      <BookCall />
       <About />
       <Faq />
+      <BookCall />
       <LeadMagnet />
       <BlogPreview posts={posts} />
       <Contact />

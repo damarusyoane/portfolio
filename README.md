@@ -1,13 +1,16 @@
-# Damarus Ngankou — Portfolio
+# Ottomate — AI automation agency website
 
-Bilingual (EN/FR) portfolio for an **AI & Automation Engineer**, targeting the
- IT market. Dark, premium design with an animated automation-graph hero,
-anonymized case studies, a technical blog, and a working contact form.
+Bilingual (FR/EN) website for **Ottomate**, an AI automation agency for small
+and mid-sized businesses. Warm editorial design (paper, ink and one signal
+orange), a live WhatsApp-style demo in the hero, real screenshots of delivered
+projects, case studies, industry landing pages, a blog and a working contact
+form.
 
 ## Stack
 
 - **Next.js 16** (App Router, React 19, TypeScript)
-- **Tailwind CSS v4** — design system in `app/globals.css`
+- **Tailwind CSS v4** — design tokens in `app/globals.css` (`.theme-ink` flips
+  them for dark bands); Fraunces (titles) + Inter (text)
 - **next-intl** — bilingual routing (`/en`, `/fr`)
 - **Framer Motion** — animations
 - **MDX** (`next-mdx-remote`) — blog in `content/blog/{en,fr}`
@@ -19,20 +22,19 @@ anonymized case studies, a technical blog, and a working contact form.
 ```bash
 npm install
 cp .env.example .env.local   # then fill in values
-npm run dev                  # http://localhost:3000  -> redirects to /en
+npm run dev                  # http://localhost:3000
 ```
 
 ## Content map
 
 | What | Where |
 |---|---|
-| Identity, links, photo flag | `lib/site.ts` |
-| Skills, experience, facts | `lib/content.ts` |
-| Case studies | `lib/projects.ts` |
+| Identity, contact links, WhatsApp message | `lib/site.ts` |
+| Case studies | `lib/projects.ts` (+ screenshots in `lib/galleries.ts`) |
+| Industry pages | `lib/niches.ts` |
+| Automation catalog | `lib/solutions.ts` |
 | UI text (EN/FR) | `messages/en.json`, `messages/fr.json` |
 | Blog posts | `content/blog/{en,fr}/*.mdx` |
-
-See `PLACEHOLDERS.md` for the short list of things to confirm/replace.
 
 ## Deploy
 

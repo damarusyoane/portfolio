@@ -1,17 +1,18 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Mail, MessageCircle, ArrowUp } from "lucide-react";
+import { Mail, ArrowUp } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Brandmark } from "@/components/Brandmark";
-import { LinkedinIcon } from "@/components/icons";
+import { LinkedinIcon, WhatsappIcon } from "@/components/icons";
+import { buttonClass, ButtonArrow } from "@/components/ui/Button";
 import { siteConfig, whatsappUrl, mailtoUrl } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
 const sectionLinks = [
   { key: "services", href: "/#offers" },
-  { key: "industries", href: "/#industries" },
   { key: "results", href: "/#work" },
+  { key: "industries", href: "/#industries" },
   { key: "automations", href: "/automations" },
   { key: "pricing", href: "/#pricing" },
   { key: "faq", href: "/#faq" },
@@ -23,39 +24,77 @@ export function Footer() {
   const locale = useLocale() as Locale;
   const year = new Date().getFullYear();
 
-  const socials = [
-    { label: "LinkedIn", href: siteConfig.links.linkedin, icon: LinkedinIcon, external: true },
-    { label: t("Contact.emailDirect"), href: mailtoUrl(), icon: Mail, external: false },
-    { label: "WhatsApp", href: whatsappUrl(), icon: MessageCircle, external: true },
+  const contacts = [
+    {
+      label: "WhatsApp",
+      value: siteConfig.phoneDisplay,
+      href: whatsappUrl(siteConfig.whatsappMessage[locale]),
+      icon: WhatsappIcon,
+      external: true,
+    },
+    {
+      label: t("Contact.emailDirect"),
+      value: siteConfig.email,
+      href: mailtoUrl(siteConfig.emailSubject[locale]),
+      icon: Mail,
+      external: false,
+    },
+    {
+      label: "LinkedIn",
+      value: siteConfig.founder,
+      href: siteConfig.links.linkedin,
+      icon: LinkedinIcon,
+      external: true,
+    },
   ];
 
   return (
-    <footer className="relative mt-24 border-t border-border">
-      <div className="aurora pointer-events-none absolute inset-0 opacity-40" />
-      <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="theme-ink relative mt-8">
+      {/* Closing call to action */}
+      <div className="mx-auto max-w-6xl px-5 pt-20 sm:px-8 sm:pt-24">
+        <div className="flex flex-col items-start justify-between gap-8 border-b border-border pb-16 md:flex-row md:items-end">
+          <div className="max-w-2xl">
+            <p className="font-display text-4xl leading-[1.05] tracking-[-0.02em] text-ink sm:text-6xl">
+              {t("Footer.ctaTitle")}
+            </p>
+            <p className="mt-4 text-lg text-muted">{t("Footer.ctaText")}</p>
+          </div>
+          <a
+            href={siteConfig.links.cal}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClass("accent", "lg", "shrink-0")}
+          >
+            {t("Nav.bookAuditLong")}
+            <ButtonArrow />
+          </a>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+        <div className="grid gap-12 md:grid-cols-[1.3fr_0.8fr_1.2fr]">
           <div>
-            <div className="flex items-center gap-2.5">
-              <Brandmark size={36} />
-              <span className="font-display text-base font-semibold text-ink">
+            <div className="flex items-center gap-2.5 text-ink">
+              <Brandmark size={30} />
+              <span className="font-display text-[1.35rem] font-semibold tracking-[-0.02em]">
                 {siteConfig.name}
               </span>
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+            <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
               {t("Footer.tagline")}
             </p>
           </div>
 
           <div>
-            <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint">
+            <h2 className="mb-4 text-sm font-medium text-faint">
               {t("Footer.sections")}
-            </h3>
+            </h2>
             <ul className="space-y-2.5">
               {sectionLinks.map((l) => (
                 <li key={l.key}>
                   <Link
                     href={l.href}
-                    className="text-sm text-muted transition-colors hover:text-ink"
+                    className="link-underline text-[15px] text-ink-soft transition-colors hover:text-ink"
                   >
                     {t(`Nav.${l.key}`)}
                   </Link>
@@ -65,20 +104,23 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-faint">
+            <h2 className="mb-4 text-sm font-medium text-faint">
               {t("Footer.elsewhere")}
-            </h3>
-            <ul className="space-y-2.5">
-              {socials.map((s) => (
-                <li key={s.label}>
+            </h2>
+            <ul className="space-y-3">
+              {contacts.map((c) => (
+                <li key={c.label}>
                   <a
-                    href={s.href}
-                    target={s.external ? "_blank" : undefined}
-                    rel={s.external ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-ink"
+                    href={c.href}
+                    target={c.external ? "_blank" : undefined}
+                    rel={c.external ? "noopener noreferrer" : undefined}
+                    className="group inline-flex items-center gap-3 text-[15px] text-ink-soft transition-colors hover:text-ink"
                   >
-                    <s.icon className="h-4 w-4" />
-                    {s.label}
+                    <c.icon className="h-4 w-4 shrink-0 text-muted transition-colors group-hover:text-accent" />
+                    <span>
+                      <span className="text-faint">{c.label} · </span>
+                      {c.value}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -86,26 +128,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-xs text-faint sm:flex-row sm:items-center">
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-sm text-faint sm:flex-row sm:items-center">
           <p>
             © {year} {siteConfig.name}. {t("Footer.rights")}
           </p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <Link
-              href="/privacy"
-              className="text-muted transition-colors hover:text-ink"
-            >
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <Link href="/privacy" className="transition-colors hover:text-ink">
               {t("Footer.privacy")}
             </Link>
-            <Link
-              href="/legal"
-              className="text-muted transition-colors hover:text-ink"
-            >
+            <Link href="/legal" className="transition-colors hover:text-ink">
               {t("Footer.legal")}
             </Link>
             <a
               href="#top"
-              className="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-ink"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
             >
               {t("Footer.backToTop")}
               <ArrowUp className="h-3.5 w-3.5" />
@@ -113,7 +149,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <span className="sr-only">{locale}</span>
     </footer>
   );
 }

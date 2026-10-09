@@ -2,6 +2,26 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
 
+export function Kicker({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <p
+      className={cn(
+        "inline-flex items-center gap-2 text-sm font-medium text-accent-ink",
+        className,
+      )}
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+      {children}
+    </p>
+  );
+}
+
 export function SectionHeading({
   kicker,
   title,
@@ -25,22 +45,12 @@ export function SectionHeading({
         className,
       )}
     >
-      <div
-        className={cn(
-          "mb-3 flex items-center gap-2.5",
-          align === "center" && "justify-center",
-        )}
-      >
-        <span className="h-px w-8 bg-gradient-to-r from-accent to-accent-2" />
-        <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          {kicker}
-        </span>
-      </div>
-      <Heading className="font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl md:text-[2.7rem]">
+      <Kicker>{kicker}</Kicker>
+      <Heading className="mt-4 font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem] md:text-5xl">
         {title}
       </Heading>
       {subtitle && (
-        <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-5 text-[17px] leading-relaxed text-muted sm:text-lg">
           {subtitle}
         </p>
       )}

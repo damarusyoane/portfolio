@@ -61,8 +61,10 @@ export function AutomationCatalog() {
   );
 
   return (
-    <section id="catalog" className="relative scroll-mt-24 py-24 sm:py-28">
-      <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
+    <section
+      id="catalog"
+      className="relative scroll-mt-24 pb-20 pt-10 sm:pb-28"
+    >
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
           as="h1"
@@ -71,7 +73,7 @@ export function AutomationCatalog() {
           subtitle={t("subtitle")}
         />
 
-        <p className="mt-4 font-mono text-xs text-faint">
+        <p className="mt-4 text-sm text-faint">
           {t("count", { count: solutions.length, domains: categories.length })}
         </p>
 
@@ -87,7 +89,6 @@ export function AutomationCatalog() {
               key={c.id}
               label={c.label[locale]}
               active={active === c.id}
-              accent={accentColor(c.accent)}
               onClick={() => setActive(c.id)}
             />
           ))}
@@ -111,11 +112,11 @@ export function AutomationCatalog() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                  className="card-hover glass group flex h-full flex-col rounded-2xl p-5 hover:-translate-y-1 hover:border-border-strong"
+                  className="card group flex h-full flex-col rounded-2xl p-5"
                 >
                   <div className="mb-3 flex items-center gap-2.5">
                     <span
-                      className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border"
+                      className="grid h-9 w-9 shrink-0 place-items-center rounded-lg"
                       style={{
                         backgroundColor:
                           "color-mix(in oklab, " + color + " 12%, transparent)",
@@ -123,15 +124,12 @@ export function AutomationCatalog() {
                     >
                       <Icon className="h-5 w-5" style={{ color }} />
                     </span>
-                    <span
-                      className="font-mono text-[10px] uppercase tracking-wider"
-                      style={{ color }}
-                    >
+                    <span className="text-[13px] font-medium" style={{ color }}>
                       {cat?.label[locale]}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-base font-semibold leading-snug text-ink">
+                  <h3 className="font-display text-lg font-normal leading-snug text-ink">
                     {s.title[locale]}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -154,7 +152,7 @@ export function AutomationCatalog() {
                     {s.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-md border border-border bg-white/[0.02] px-2 py-0.5 text-[11px] text-ink-soft"
+                        className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted"
                       >
                         {tech}
                       </span>
@@ -173,33 +171,22 @@ export function AutomationCatalog() {
 function FilterChip({
   label,
   active,
-  accent,
   onClick,
 }: {
   label: string;
   active: boolean;
-  accent?: string;
   onClick: () => void;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all"
-      style={
-        active
-          ? {
-              color: accent ?? "var(--color-accent)",
-              borderColor: accent ?? "var(--color-accent)",
-              backgroundColor:
-                "color-mix(in oklab, " +
-                (accent ?? "var(--color-accent)") +
-                " 14%, transparent)",
-            }
-          : {
-              color: "var(--color-muted)",
-              borderColor: "var(--color-border)",
-            }
+      aria-pressed={active}
+      className={
+        "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors " +
+        (active
+          ? "border-ink bg-ink text-bg"
+          : "border-border-strong text-ink-soft hover:border-ink hover:text-ink")
       }
     >
       {label}
