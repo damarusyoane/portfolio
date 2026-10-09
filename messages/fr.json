@@ -1,258 +1,301 @@
 {
   "Nav": {
-    "services": "Services",
+    "services": "Solutions",
     "industries": "Secteurs",
-    "automations": "Automatisations",
-    "results": "Résultats",
-    "process": "Comment ça marche",
+    "automations": "Toutes les automatisations",
+    "results": "Réalisations",
+    "process": "Méthode",
     "faq": "FAQ",
     "pricing": "Tarifs",
     "blog": "Blog",
     "contact": "Contact",
-    "bookAudit": "Réserver un audit gratuit"
+    "bookAudit": "Audit gratuit",
+    "bookAuditLong": "Réserver un audit gratuit"
   },
   "Hero": {
-    "badge": "Ouvert à de nouveaux projets d'automatisation",
-    "eyebrow": "Studio IA & Automatisation",
-    "headlineTop": "Automatisez les tâches répétitives.",
-    "headlineAccent": "Grandissez sans recruter.",
-    "tagline": "Nous concevons des automatisations propulsées par l'IA qui font tourner vos opérations 24/7 — ventes, support, finance, reporting, opérations et plus. Vous gagnez des heures, réduisez vos coûts et ne ratez plus rien.",
+    "eyebrow": "Agence d'automatisation IA pour PME",
+    "headlineTop": "Vos clients reçoivent une réponse en moins d'une minute.",
+    "headlineAccent": "Même à 23 h.",
+    "tagline": "Assistants IA et automatisations pour PME : réponses WhatsApp, prise de rendez-vous, relances de factures. Vous gagnez des heures, vos clients n'attendent plus.",
     "ctaPrimary": "Réserver un audit gratuit",
-    "ctaSecondary": "Voir ce que nous automatisons",
-    "stats": {
-      "v1": "30+",
-      "l1": "automatisations livrées",
-      "v2": "jusqu'à 86h",
-      "l2": "gagnées / mois",
-      "v3": "24/7",
-      "l3": "tourne tout seul"
-    },
-    "scroll": "Défiler"
+    "ctaSecondary": "Voir des exemples concrets",
+    "reassurance": ["30 minutes, gratuit", "Sans engagement", "Réponse sous 24 h"],
+    "proofLabel": "Ils nous ont confié leurs automatisations",
+    "clients": ["Maison237", "Airplace", "Nubet"],
+    "proofStat": "30+ automatisations en production",
+    "demo": {
+      "business": "Horizon Immobilier",
+      "status": "Assistant IA · en ligne",
+      "day": "Aujourd'hui",
+      "messages": [
+        { "from": "client", "text": "Bonsoir, l'appartement 3 pièces du centre-ville est toujours disponible ?", "time": "23:12" },
+        { "from": "bot", "text": "Bonsoir ! Oui, il est toujours disponible. Je peux vous proposer une visite demain à 10 h ou à 16 h. Qu'est-ce qui vous arrange ?", "time": "23:12" },
+        { "from": "client", "text": "16 h, c'est parfait.", "time": "23:13" },
+        { "from": "bot", "text": "C'est noté pour demain 16 h. Vous recevrez un rappel le matin même. Bonne soirée !", "time": "23:13" }
+      ],
+      "notifTitle": "Visite réservée",
+      "notifText": "Demain 16:00 · agenda et CRM mis à jour, agent prévenu",
+      "caption": "Échange type géré par un assistant Ottomate"
+    }
   },
   "Pains": {
-    "kicker": "Ça vous parle ?",
-    "title": "Le travail qui épuise discrètement votre entreprise",
-    "subtitle": "Chaque heure passée par votre équipe sur des tâches manuelles et répétitives est une heure de moins pour grandir. Voici ce que l'automatisation vous enlève des épaules.",
+    "kicker": "Le constat",
+    "title": "Ce qui vous coûte des clients, sans que vous le voyiez",
+    "subtitle": "Votre équipe n'y est pour rien. Elle fait à la main ce qu'un système bien réglé ferait plus vite, sans oubli et sans fatigue.",
     "items": [
-      { "title": "Des heures perdues en tâches répétitives", "text": "Votre équipe recopie des données, envoie les mêmes emails et met à jour des tableurs à la main — chaque jour." },
-      { "title": "Des leads qui refroidissent", "text": "Les demandes arrivent hors horaires ou s'accumulent sans réponse, et la vente va à celui qui répond le premier." },
-      { "title": "Des factures payées en retard", "text": "Relancer, c'est gênant et vite oublié : votre trésorerie dort dans des factures impayées." },
-      { "title": "Un support débordé", "text": "Les mêmes questions en boucle, les tickets qui s'empilent, les clients qui attendent trop longtemps." },
-      { "title": "Des rapports qui bouffent la semaine", "text": "Rassembler des chiffres de cinq outils dans un seul tableur, à la main, encore et encore." },
-      { "title": "Des données ressaisies à la main", "text": "La même info retapée dans le CRM, la compta et la boîte mail — avec des erreurs qui s'y glissent." }
-    ]
-  },
-  "Outcomes": {
-    "items": [
-      { "value": "3k+ $/mois", "label": "économisés sur le travail manuel" },
-      { "value": "86h/mois", "label": "libérées des tâches répétitives" },
-      { "value": "−75%", "label": "de coût sur les tâches automatisées" },
-      { "value": "3×", "label": "de réponse en plus = plus de ventes" }
+      { "title": "Des messages qui restent sans réponse", "text": "Un prospect écrit le soir ou le week-end. Le lendemain, il a déjà acheté chez celui qui a répondu en premier." },
+      { "title": "Des factures qu'on oublie de relancer", "text": "Relancer est gênant, alors on repousse. Pendant ce temps, votre trésorerie dort chez vos clients." },
+      { "title": "Des rendez-vous manqués", "text": "Sans rappel, une partie des clients oublie. Le créneau est perdu et personne ne l'a remplacé." },
+      { "title": "Les mêmes questions, cent fois par semaine", "text": "Prix, horaires, délais de livraison… Votre équipe répond en boucle au lieu de traiter les vrais dossiers." },
+      { "title": "Des données retapées à la main", "text": "La même information saisie dans le tableur, le CRM et la compta. Avec, forcément, des erreurs." },
+      { "title": "Des chiffres que personne ne regarde", "text": "Compiler un rapport prend une demi-journée, donc personne ne le fait. Vous pilotez à l'instinct." }
     ],
-    "note": "Résultats typiques sur des projets réels — vos chiffres sont estimés lors de l'audit gratuit."
-  },
-  "Trust": {
-    "trustedBy": "Ils nous font confiance",
-    "logos": ["Nubet", "Maison237", "Airplace", "Upwork", "Fiverr", "30+ projets livrés"],
-    "testimonials": [
-      { "quote": "Ottomate a déployé l'automatisation des leads de notre entreprise : on répond plus vite, on sécurise nos clients, et on a doublé nos revenus. Nous les recontacterons pour nos prochains projets et les recommandons à 100 %.", "name": "Maison237", "role": "Promoteur immobilier" },
-      { "quote": "Très content de l'assistant WhatsApp IA qu'Ottomate a déployé pour mon entreprise : je réponds vite à mes clients, et l'IA se comporte comme un humain — mes clients ressentent un vrai sentiment de confiance et de sérieux. Merci pour tout !", "name": "Airplace", "role": "Boutique de téléphonie" },
-      { "quote": "Ottomate conçoit et exploite notre automatisation en production — contenu IA, QA SEO et pipelines de données qui font tourner l'agence au quotidien.", "name": "Nubet", "role": "Agence digitale" }
-    ],
-    "guarantees": [
-      { "title": "Audit gratuit, sans engagement", "text": "Vous repartez avec un plan clair — qu'on travaille ensemble ou non." },
-      { "title": "Devis fixe, aucune surprise", "text": "Vous validez un prix fixe avant que quoi que ce soit ne soit construit." },
-      { "title": "Vos données restent les vôtres", "text": "Auto-hébergé sur vos serveurs, identifiants managés, moindre accès par défaut." }
-    ],
-    "credentials": ["Dév. web full-stack — OIF / Simplon", "Licence en génie logiciel", "Claude · OpenAI · n8n", "Auto-hébergé & sécurisé"]
+    "closing": "Bonne nouvelle : tout cela s'automatise, avec les outils que vous utilisez déjà.",
+    "closingLink": "Voir les solutions"
   },
   "Offers": {
-    "kicker": "Offres",
-    "title": "Choisissez le résultat que vous voulez",
-    "subtitle": "Pas sûr par où commencer ? Voici nos offres les plus demandées — chacune construite autour d'un seul objectif business.",
+    "kicker": "Nos solutions",
+    "title": "Commencez par ce qui vous coûte le plus",
+    "subtitle": "Chaque solution règle un problème précis. Vous pouvez en lancer une seule, puis ajouter les autres quand vous voyez les résultats.",
+    "metricLabel": "Sur un projet livré",
+    "caseLink": "Voir le projet en détail",
+    "screenshotAlt": "Capture réelle : {name}",
+    "ctaText": "Vous ne savez pas par où commencer ? C'est justement le but de l'audit gratuit.",
     "cta": "Réserver un audit gratuit",
-    "ctaTitle": "Vous hésitez ?",
-    "ctaText": "Trouvons celle à plus fort impact pour votre entreprise en un appel gratuit de 30 min.",
     "items": [
-      { "name": "Machine à ventes", "outcome": "Capter et convertir chaque lead, 24/7", "points": ["Assistant IA WhatsApp & site 24/7", "Capture de leads + réponse auto instantanée", "Relances automatiques dans votre CRM"] },
-      { "name": "Support autopilote", "outcome": "Alléger le support, ravir les clients", "points": ["Triage IA & réponses sourcées", "Bot support WhatsApp / Telegram", "Réponses ancrées dans vos propres docs"] },
-      { "name": "Trésorerie boostée", "outcome": "Être payé plus vite, protéger sa réputation", "points": ["Relances de paiement automatiques", "Extraction de données de factures (OCR)", "Demandes d'avis Google après chaque vente"] },
-      { "name": "Opérations sans effort", "outcome": "Supprimer les tâches manuelles", "points": ["Rapports & digests KPI automatiques", "Données synchronisées entre vos outils", "Rappels de RDV — moins de no-shows"] },
-      { "name": "Contenu automatique", "outcome": "Rester visible sans lever le petit doigt", "points": ["Posts & vidéos générés automatiquement", "1 contenu décliné sur tous les canaux", "Publication planifiée, mains libres"] }
+      {
+        "tab": "Prospects & ventes",
+        "title": "Répondre à chaque prospect en moins d'une minute",
+        "text": "Un assistant IA répond sur WhatsApp, par email ou sur votre site, pose les bonnes questions et propose un rendez-vous. Les prospects sérieux arrivent dans votre CRM et vous êtes prévenu tout de suite.",
+        "points": ["Réponse immédiate, de jour comme de nuit", "Qualification : besoin, budget, délai", "Relances automatiques tant que le prospect n'a pas répondu"],
+        "metric": "3×",
+        "metricText": "de prospects convertis"
+      },
+      {
+        "tab": "Service client",
+        "title": "Un service client qui répond juste, à toute heure",
+        "text": "L'assistant s'appuie uniquement sur vos informations (tarifs, horaires, conditions) pour répondre aux questions courantes. Il n'invente jamais un prix et passe la main à votre équipe dès que c'est nécessaire.",
+        "points": ["Sur WhatsApp, Telegram ou votre site", "Réponses tirées de vos propres documents", "Transfert propre vers un humain"],
+        "metric": "~30 %",
+        "metricText": "de demandes captées en plus"
+      },
+      {
+        "tab": "Factures & trésorerie",
+        "title": "Être payé à temps, sans relancer vous-même",
+        "text": "Les relances partent au bon moment et sur le bon ton, avant et après l'échéance. Les factures reçues sont lues et classées automatiquement. Après chaque vente, vos clients satisfaits sont invités à laisser un avis Google.",
+        "points": ["Relances polies et progressives", "Lecture automatique des factures (OCR)", "Demandes d'avis après chaque vente"],
+        "metric": "−50 %",
+        "metricText": "de retards de paiement"
+      },
+      {
+        "tab": "Rendez-vous & admin",
+        "title": "Moins de rendez-vous manqués, moins de saisie",
+        "text": "Vos clients reçoivent une confirmation puis un rappel avant chaque rendez-vous. Vos outils se mettent à jour entre eux, et un rapport clair arrive dans votre boîte mail sans que personne n'ait à le préparer.",
+        "points": ["Rappels SMS, WhatsApp ou email", "Données synchronisées entre vos outils", "Rapports et indicateurs envoyés automatiquement"],
+        "metric": "−40 %",
+        "metricText": "de rendez-vous manqués"
+      },
+      {
+        "tab": "Contenu & visibilité",
+        "title": "Rester visible sans y passer vos soirées",
+        "text": "À partir d'une idée, d'un article ou d'une actualité, le système prépare le contenu pour chaque réseau et le publie selon votre calendrier. Vous gardez la main sur ce qui part.",
+        "points": ["Posts et vidéos générés automatiquement", "Un contenu décliné sur tous vos canaux", "Publication planifiée"],
+        "metric": "~5 h",
+        "metricText": "gagnées par vidéo publiée"
+      }
+    ]
+  },
+  "Work": {
+    "kicker": "Réalisations",
+    "title": "Des systèmes en production, pas des maquettes",
+    "subtitle": "Quelques automatisations que nous avons conçues et mises en service. Chaque fiche détaille le problème de départ, la solution, les captures et les chiffres clés.",
+    "viewCase": "Lire le cas",
+    "moreTitle": "Autres projets techniques",
+    "allAutomations": "Voir les 34 automatisations possibles"
+  },
+  "Trust": {
+    "kicker": "Témoignages",
+    "title": "Ce qu'en disent nos clients",
+    "testimonials": [
+      { "quote": "Ottomate a déployé l'automatisation des leads de notre entreprise : on répond plus vite, on sécurise nos clients, et on a doublé nos revenus. Nous les recontacterons pour nos prochains projets et les recommandons à 100 %.", "name": "Maison237", "role": "Promoteur immobilier" },
+      { "quote": "Très content de l'assistant WhatsApp IA qu'Ottomate a déployé pour mon entreprise : je réponds vite à mes clients, et l'IA se comporte comme un humain. Mes clients ressentent un vrai sentiment de confiance et de sérieux. Merci pour tout !", "name": "Airplace", "role": "Boutique de téléphonie" },
+      { "quote": "Ottomate conçoit et exploite notre automatisation en production : contenu IA, contrôle qualité SEO et pipelines de données qui font tourner l'agence au quotidien.", "name": "Nubet", "role": "Agence digitale" }
+    ],
+    "guaranteesTitle": "Nos engagements",
+    "guarantees": [
+      { "title": "Audit gratuit, sans engagement", "text": "Vous repartez avec un plan clair, que l'on travaille ensemble ou non." },
+      { "title": "Prix fixe, validé avant de commencer", "text": "Pas de facturation à l'heure qui dérape. Vous savez ce que vous payez." },
+      { "title": "Vos données restent chez vous", "text": "Hébergement possible sur vos serveurs, accès limités au strict nécessaire." }
     ]
   },
   "Pricing": {
     "kicker": "Tarifs",
-    "title": "Des tarifs simples, vite rentabilisés",
-    "subtitle": "Une mise en place unique, puis un petit abonnement mensuel (hébergement, monitoring, support). La plupart des automatisations se rentabilisent en quelques semaines.",
+    "title": "Un prix clair, rentabilisé en quelques semaines",
+    "subtitle": "Une mise en place payée une fois, puis un abonnement mensuel qui couvre l'hébergement, la surveillance et le support.",
     "popular": "Le plus choisi",
-    "cta": "Réserver un audit gratuit",
-    "note": "Tarifs indicatifs — votre devis exact est fixé après l'audit gratuit, selon le périmètre.",
+    "cta": "Commencer par un audit",
+    "note": "Tarifs indicatifs. Votre devis exact est fixé après l'audit gratuit, selon le périmètre.",
     "plans": [
-      { "name": "Starter", "tagline": "Une automatisation, bien faite", "price": "dès 500 $", "priceSuffix": "setup + 150 $/mois", "features": ["1 automatisation livrée & déployée", "Hébergement + monitoring", "Support par email", "Corrections & ajustements inclus"] },
-      { "name": "Growth", "tagline": "Un système qui change la donne", "price": "dès 1 500 $", "priceSuffix": "setup + 400 $/mois", "features": ["Jusqu'à 3 automatisations", "Tout Starter inclus", "Support prioritaire", "Optimisation mensuelle"], "popular": true },
-      { "name": "Scale", "tagline": "Votre partenaire automatisation", "price": "Sur mesure", "priceSuffix": "adapté à vous", "features": ["Périmètre illimité, par phases", "Build & roadmap dédiés", "Auto-hébergé sur vos serveurs", "Partenariat continu"] }
+      { "name": "Essentiel", "tagline": "Une automatisation, bien faite", "price": "dès 500 $", "priceSuffix": "mise en place + 150 $/mois", "features": ["1 automatisation conçue et mise en service", "Hébergement et surveillance inclus", "Support par email", "Corrections et ajustements inclus"] },
+      { "name": "Croissance", "tagline": "Un vrai système pour votre activité", "price": "dès 1 500 $", "priceSuffix": "mise en place + 400 $/mois", "features": ["Jusqu'à 3 automatisations reliées entre elles", "Tout ce que comprend l'offre Essentiel", "Support prioritaire", "Point d'optimisation chaque mois"], "popular": true },
+      { "name": "Partenaire", "tagline": "Votre équipe automatisation", "price": "Sur devis", "priceSuffix": "selon vos besoins", "features": ["Périmètre étendu, livré par étapes", "Feuille de route dédiée", "Hébergement sur vos propres serveurs possible", "Accompagnement dans la durée"] }
     ]
   },
   "Industries": {
     "kicker": "Secteurs",
-    "title": "Pensé pour votre activité",
-    "subtitle": "Choisissez votre secteur et voyez précisément ce que nous automatisons — chiffres à l'appui.",
-    "explore": "Découvrir",
-    "viewAll": "Voir les 34 automatisations"
+    "title": "Des solutions pensées pour votre métier",
+    "subtitle": "Chaque secteur a ses propres pertes de temps. Choisissez le vôtre pour voir ce que nous automatisons, exemples et chiffres à l'appui.",
+    "explore": "Voir les solutions",
+    "viewAll": "Votre secteur n'est pas dans la liste ?",
+    "viewAllText": "Parcourez les 34 automatisations, classées par métier."
   },
   "Catalog": {
-    "kicker": "Services",
-    "title": "Ce que nous pouvons automatiser pour vous",
-    "subtitle": "De vraies automatisations qui font bouger le chiffre, dans chaque partie de l'entreprise — ventes, support, finance, opérations, marketing, RH et plus. Filtrez par votre univers.",
-    "all": "Tous",
-    "count": "{count} automatisations · {domains} secteurs"
+    "kicker": "Catalogue",
+    "title": "Tout ce que nous pouvons automatiser pour vous",
+    "subtitle": "Des automatisations concrètes pour chaque service de l'entreprise : ventes, support, finance, opérations, marketing, RH. Filtrez selon votre activité.",
+    "all": "Tout",
+    "count": "{count} automatisations · {domains} domaines"
   },
   "Process": {
-    "kicker": "Comment ça marche",
-    "title": "Du premier appel à des systèmes qui tournent seuls",
-    "subtitle": "Simple, sans risque, et vous voyez la valeur avant de vous engager sur quoi que ce soit de gros.",
+    "kicker": "Méthode",
+    "title": "Du premier appel au système qui tourne tout seul",
+    "subtitle": "Un déroulé simple et sans risque : vous savez ce que vous allez gagner avant d'engager quoi que ce soit.",
     "steps": [
-      { "title": "Appel d'audit gratuit", "text": "30 minutes sur vos opérations et nous repérons où l'automatisation rapportera le plus vite." },
-      { "title": "Un plan clair", "text": "Vous recevez les 3 automatisations à plus fort impact, ce qu'elles vous font gagner, et un devis fixe. Sans jargon." },
-      { "title": "Nous construisons & déployons", "text": "Nous développons, testons et lançons — fiable par conception, avec du monitoring pour que rien n'échoue en silence." },
-      { "title": "Vous gagnez temps & argent", "text": "Vos systèmes tournent 24/7. Nous restons disponibles pour ajuster, étendre et garder tout fluide." }
+      { "when": "30 min", "title": "Audit gratuit", "text": "On passe en revue votre façon de travailler et on repère les tâches qui vous coûtent le plus de temps ou de ventes." },
+      { "when": "Après l'appel", "title": "Plan et prix fixe", "text": "Vous recevez les trois automatisations les plus rentables pour votre cas, le gain estimé pour chacune et un devis fixe. Sans jargon." },
+      { "when": "Quelques jours à quelques semaines", "title": "Construction et mise en service", "text": "On construit, on teste sur vos vrais cas, puis on lance. Tout est surveillé : en cas de souci, nous sommes alertés avant vous." },
+      { "when": "Chaque mois", "title": "Suivi et améliorations", "text": "On ajuste, on optimise et on ajoute de nouvelles automatisations quand vous êtes prêt." }
     ]
   },
-  "Work": {
-    "kicker": "Résultats prouvés",
-    "title": "Des automatisations vite rentabilisées",
-    "subtitle": "Quelques systèmes que nous avons construits et l'impact business qu'ils ont apporté — avec une courte démo pour chacun.",
-    "viewCase": "Voir le détail",
-    "domain": "Domaine",
-    "stackLabel": "Construit avec"
-  },
   "BookCall": {
-    "badge": "Gratuit · sans engagement",
-    "title": "Trouvons 3 tâches à automatiser dans votre entreprise",
-    "subtitle": "Réservez un audit d'automatisation gratuit de 30 minutes. On regarde comment vous travaillez aujourd'hui et nous vous montrons précisément où vous perdez du temps et de l'argent — et comment y remédier. Vous gardez le plan, qu'on travaille ensemble ou non.",
+    "badge": "Gratuit · 30 minutes · sans engagement",
+    "title": "Trouvons ensemble les 3 tâches à automatiser en premier",
+    "subtitle": "En 30 minutes, on regarde comment vous travaillez aujourd'hui. Vous repartez avec une liste claire : quoi automatiser, dans quel ordre, et ce que cela peut vous rapporter.",
     "points": [
-      "Une carte rapide de vos tâches manuelles les plus coûteuses",
-      "3 opportunités d'automatisation concrètes, classées par impact",
-      "Une estimation du temps et de l'argent économisés pour chacune",
-      "Des réponses franches — sans obligation, sans pression"
+      "Vos tâches manuelles les plus coûteuses, identifiées",
+      "3 automatisations concrètes, classées par impact",
+      "Une estimation du temps et de l'argent gagnés",
+      "Des réponses franches, sans pression commerciale"
     ],
-    "cta": "Réserver mon audit gratuit",
-    "note": "Vous préférez écrire d'abord ? Utilisez le formulaire ou WhatsApp ci-dessous."
+    "cta": "Choisir un créneau",
+    "note": "Vous préférez écrire ? WhatsApp et formulaire plus bas.",
+    "embedTitle": "Calendrier de réservation Ottomate"
   },
   "LeadMagnet": {
-    "badge": "Guide gratuit",
-    "title": "20 tâches à automatiser dans votre entreprise",
-    "subtitle": "Une checklist concrète pour repérer où vous perdez du temps et de l'argent — et par quoi commencer. Directement dans votre boîte mail.",
-    "points": ["Classées par impact", "Pour toute petite entreprise", "Sans blabla — juste l'action"],
+    "badge": "Guide gratuit (PDF)",
+    "title": "20 tâches que vous pouvez automatiser dès ce mois-ci",
+    "subtitle": "Une checklist pour repérer où partent votre temps et votre argent, et savoir par quoi commencer.",
+    "points": ["Classées par impact", "Valable pour toute petite entreprise", "Lecture en 10 minutes"],
     "email": "vous@entreprise.com",
-    "cta": "Envoyez-moi le guide",
+    "cta": "Recevoir le guide",
     "sending": "Envoi…",
-    "successTitle": "C'est bon ! Récupérez votre guide :",
+    "successTitle": "C'est envoyé. Votre guide est prêt :",
     "download": "Télécharger le guide",
-    "error": "Entrez un email valide."
+    "error": "Entrez une adresse email valide.",
+    "coverTop": "20 tâches",
+    "coverBottom": "à automatiser"
   },
   "Faq": {
     "kicker": "FAQ",
-    "title": "Les questions que me posent les dirigeants",
+    "title": "Les questions qu'on nous pose avant de démarrer",
     "items": [
-      { "q": "Dois-je avoir des connaissances techniques ?", "a": "Aucune. Vous décrivez comment vous travaillez aujourd'hui ; nous gérons tout le technique et vous remettons des systèmes qui tournent simplement, avec une documentation claire et des tableaux de bord simples." },
-      { "q": "Mes données sont-elles en sécurité ?", "a": "Oui. Nous pouvons tout auto-héberger sur vos propres serveurs ou une instance privée, utiliser des identifiants managés (jamais de secrets en dur) et appliquer le principe du moindre accès. Vos données restent les vôtres." },
-      { "q": "Combien ça coûte ?", "a": "Ça dépend du périmètre, donc nous chiffrons après l'audit gratuit. La plupart des automatisations pour PME sont un coût de mise en place unique + un petit abonnement mensuel (hébergement et maintenance) — et elles se rentabilisent vite." },
-      { "q": "Combien de temps ça prend ?", "a": "Les automatisations simples sont livrées en quelques jours ; les plus gros systèmes en quelques semaines. Vous avez un calendrier clair avec le devis, et nous livrons par étapes pour que vous voyiez la valeur tôt." },
-      { "q": "Est-ce compatible avec mes outils actuels ?", "a": "Presque toujours. Nous connectons les outils que vous utilisez déjà — CRM, tableurs, WhatsApp, email, e-commerce, comptabilité, et des centaines d'autres — sans rien changer." },
-      { "q": "Et si quelque chose casse ?", "a": "Chaque système est construit avec retries, plans de secours et alertes d'erreur : nous sommes prévenus avant vous. La maintenance est incluse dans l'abonnement mensuel." }
+      { "q": "Faut-il des connaissances techniques ?", "a": "Aucune. Vous nous expliquez comment vous travaillez ; nous nous occupons de toute la partie technique et vous remettons un système qui fonctionne, avec une documentation simple." },
+      { "q": "Et si l'IA se trompe ou invente une réponse ?", "a": "L'assistant répond uniquement à partir des informations que vous nous donnez : tarifs, horaires, conditions. S'il ne sait pas, il le dit et transmet la conversation à votre équipe. Vous validez le ton et les réponses avant la mise en ligne." },
+      { "q": "Combien ça coûte ?", "a": "Cela dépend du périmètre, c'est pourquoi le devis est établi après l'audit gratuit. En général : une mise en place payée une fois, puis un petit abonnement mensuel pour l'hébergement et la maintenance. La plupart des automatisations sont rentabilisées en quelques semaines." },
+      { "q": "Combien de temps faut-il ?", "a": "Une automatisation simple est livrée en quelques jours, un système plus complet en quelques semaines. Le calendrier figure dans le devis, et nous livrons par étapes pour que vous voyiez des résultats rapidement." },
+      { "q": "Est-ce compatible avec mes outils actuels ?", "a": "Presque toujours. Nous connectons ce que vous utilisez déjà : WhatsApp, email, tableurs, CRM, agenda, boutique en ligne, logiciel de comptabilité. Vous n'avez rien à changer." },
+      { "q": "Mes données sont-elles en sécurité ?", "a": "Oui. Nous pouvons tout héberger sur vos propres serveurs ou sur une instance privée, les identifiants sont stockés de façon sécurisée et chaque accès est limité au strict nécessaire." },
+      { "q": "Que se passe-t-il si quelque chose tombe en panne ?", "a": "Chaque système prévoit des reprises automatiques, des solutions de secours et des alertes : nous sommes prévenus avant vous. La maintenance est comprise dans l'abonnement mensuel." }
     ]
   },
   "About": {
-    "kicker": "Avec qui vous travaillez",
-    "title": "Une équipe qui parle résultats, pas jargon",
-    "p1": "Nous sommes Ottomate — un studio d'automatisation & IA. Nous avons livré plus de 30 automatisations en production, des assistants IA et systèmes de leads jusqu'aux pipelines finance, reporting et opérations.",
-    "p2": "Notre obsession, c'est la fiabilité et l'impact : des systèmes qui tournent 24/7 sans surveillance et qui font gagner de vraies heures et de l'argent. Nous construisons avec l'IA moderne (Claude, OpenAI), nous auto-hébergeons pour la sécurité et nous monitorons tout.",
-    "p3": "Nous travaillons avec nos clients à distance, en anglais et en français, et nous traitons votre entreprise comme la nôtre.",
-    "factsTitle": "En bref",
-    "languages": "Anglais & français"
-  },
-  "Skills": {
-    "kicker": "Compétences",
-    "title": "Une boîte à outils complète pour l'automatisation pilotée par l'IA",
-    "subtitle": "De l'orchestration de workflows à l'intégration LLM, l'automatisation navigateur et les patterns de fiabilité qui font tourner le tout en production."
-  },
-  "Experience": {
-    "kicker": "Parcours",
-    "title": "Là où nous avons livré",
-    "subtitle": "Ingénierie d'automatisation et d'IA concrète, en production."
+    "kicker": "Qui sommes-nous",
+    "title": "Vous parlez directement à ceux qui construisent votre système",
+    "p1": "Ottomate a été fondée par Damarus Ngankou, ingénieur logiciel spécialisé en IA et en automatisation. Depuis 2024, il conçoit des automatisations en production, pour des agences digitales comme pour des commerces de proximité.",
+    "p2": "Notre règle est simple : un système n'a de valeur que s'il tourne sans vous. Chaque automatisation est testée sur vos vrais cas, surveillée en continu et documentée clairement, pour que vous sachiez toujours ce qui se passe.",
+    "p3": "Nous travaillons à distance, en français et en anglais. Pas de commercial entre vous et nous : la personne qui vous écoute pendant l'audit est celle qui construit.",
+    "linkedin": "Voir le profil LinkedIn",
+    "facts": [
+      { "value": "30+", "label": "automatisations livrées" },
+      { "value": "FR · EN", "label": "accompagnement bilingue" },
+      { "value": "< 24 h", "label": "pour vous répondre" },
+      { "value": "24/7", "label": "surveillance de vos systèmes" }
+    ]
   },
   "BlogPreview": {
-    "kicker": "Conseils",
-    "title": "Notes de terrain",
-    "subtitle": "Leçons pratiques sur l'automatisation, la fiabilité de l'IA et comment faire plus avec moins.",
-    "readMore": "Lire",
+    "kicker": "Blog",
+    "title": "Des conseils concrets pour automatiser sans se tromper",
+    "subtitle": "Comparatifs d'outils, retours d'expérience et méthodes, écrits pour les dirigeants de PME.",
+    "readMore": "Lire l'article",
     "readingTime": "{minutes} min de lecture",
     "viewAll": "Tous les articles",
     "empty": "Les articles arrivent bientôt."
   },
   "Contact": {
     "kicker": "Contact",
-    "title": "Dites-nous ce qui vous ralentit",
-    "subtitle": "Envoyez un message ou réservez un audit gratuit — nous répondons sous 24 h.",
+    "title": "Parlez-nous de ce qui vous fait perdre du temps",
+    "subtitle": "Un message suffit. Nous répondons sous 24 h avec une première piste, même si vous ne savez pas encore quoi automatiser.",
     "name": "Nom",
     "namePlaceholder": "Votre nom",
     "email": "Email",
     "emailPlaceholder": "vous@entreprise.com",
     "subject": "Sujet",
-    "subjectPlaceholder": "Que souhaitez-vous automatiser ?",
+    "subjectPlaceholder": "Ex. : répondre aux clients WhatsApp le soir",
     "message": "Message",
-    "messagePlaceholder": "Parlez-nous un peu de votre entreprise et de ce qui vous prend du temps…",
+    "messagePlaceholder": "Votre activité, les tâches qui vous prennent du temps, les outils que vous utilisez…",
     "send": "Envoyer le message",
     "sending": "Envoi…",
-    "success": "Merci — votre message est parti. Nous vous répondons très vite.",
-    "error": "Une erreur est survenue. Réessayez ou contactez-nous directement.",
-    "validation": "Veuillez vérifier les champs en surbrillance.",
-    "directTitle": "Ou contactez-nous directement",
+    "success": "Merci, votre message est bien parti. Nous revenons vers vous sous 24 h.",
+    "error": "Une erreur est survenue. Réessayez ou écrivez-nous directement.",
+    "validation": "Vérifiez les champs signalés.",
+    "directTitle": "Ou écrivez-nous directement",
+    "fastest": "Le plus rapide",
     "linkedin": "LinkedIn",
     "emailDirect": "Email",
     "whatsapp": "WhatsApp",
-    "availability": "Ouvert à de nouveaux projets d'automatisation"
+    "availability": "Ouvert aux nouveaux projets"
   },
   "Footer": {
-    "tagline": "De l'IA et de l'automatisation qui font gagner du temps et de l'argent aux entreprises — conçues pour tourner seules.",
+    "tagline": "Agence d'automatisation IA. Nous aidons les PME à répondre plus vite à leurs clients, à se faire payer à temps et à passer moins de temps sur l'administratif.",
     "rights": "Tous droits réservés.",
-    "sections": "Explorer",
-    "elsewhere": "Ailleurs",
+    "sections": "Le site",
+    "elsewhere": "Contact",
     "backToTop": "Haut de page",
     "privacy": "Confidentialité",
-    "legal": "Mentions légales"
+    "legal": "Mentions légales",
+    "ctaTitle": "Prêt à gagner du temps ?",
+    "ctaText": "30 minutes pour savoir ce que l'automatisation peut faire pour vous."
   },
   "CaseStudy": {
-    "back": "Tous les résultats",
+    "back": "Toutes les réalisations",
     "overview": "Aperçu",
-    "problem": "Le problème",
-    "approach": "L'approche",
-    "architecture": "Comment ça marche",
-    "walkthrough": "En images, étape par étape",
-    "walkthroughIntro": "L'automatisation en action — voici des captures de démonstration du projet en fonctionnement, pour que vous sachiez exactement ce que vous obtiendriez.",
+    "problem": "Le problème de départ",
+    "approach": "Ce que nous avons construit",
+    "architecture": "Comment ça fonctionne",
+    "walkthrough": "Le système en images",
+    "walkthroughIntro": "Captures du système en fonctionnement, étape par étape : ce que voit votre client, et ce que reçoit votre équipe.",
     "highlights": "Points forts",
-    "stack": "Construit avec",
+    "stack": "Outils utilisés",
     "results": "Chiffres clés",
     "demo": "Démo",
-    "nextLabel": "Résultat suivant",
-    "ctaTitle": "Vous voulez la même chose pour votre entreprise ?",
-    "ctaText": "Trouvons où l'automatisation rapporte le plus vite chez vous.",
+    "nextLabel": "Réalisation suivante",
+    "ctaTitle": "Le même système pour votre entreprise ?",
+    "ctaText": "En 30 minutes, nous regardons si et comment l'adapter à votre activité.",
     "ctaButton": "Réserver un audit gratuit"
   },
   "Blog": {
     "back": "Blog",
     "title": "Blog",
-    "subtitle": "Notes pratiques sur l'automatisation, la fiabilité de l'IA et comment faire plus avec moins.",
+    "subtitle": "Conseils pratiques sur l'automatisation et l'IA en entreprise : comparatifs, retours d'expérience et méthodes.",
     "readingTime": "{minutes} min de lecture",
-    "empty": "Pas encore d'article — revenez bientôt.",
+    "empty": "Pas encore d'article, revenez bientôt.",
     "backToList": "Tous les articles",
-    "ctaTitle": "Envie d'automatiser votre entreprise ?",
+    "ctaTitle": "Envie d'automatiser une partie de votre activité ?",
+    "ctaText": "Réservez 30 minutes : nous identifions ensemble ce qui vous ferait gagner le plus de temps.",
     "ctaButton": "Réserver un audit gratuit"
   },
   "Cookies": {
-    "text": "Nous utilisons des cookies pour mesurer le trafic et améliorer le site. Les statistiques et les pubs ne s'activent que si vous acceptez.",
+    "text": "Nous utilisons des cookies pour mesurer l'audience et améliorer le site. Les statistiques et la publicité ne s'activent que si vous acceptez.",
     "learnMore": "En savoir plus",
     "accept": "Accepter",
     "reject": "Refuser"
@@ -262,7 +305,8 @@
     "switchToFr": "Passer en français",
     "switchToEn": "Switch to English",
     "menu": "Menu",
-    "close": "Fermer"
+    "close": "Fermer",
+    "whatsappLabel": "Écrire sur WhatsApp"
   },
   "NotFound": {
     "title": "Page introuvable",

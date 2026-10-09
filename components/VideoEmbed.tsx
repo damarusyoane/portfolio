@@ -22,16 +22,8 @@ export function VideoEmbed({
   const embed = url ? url.replace("/share/", "/embed/") : null;
 
   return (
-    <figure className="overflow-hidden rounded-2xl border border-border bg-surface">
-      <div className="flex items-center gap-1.5 border-b border-border px-4 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
-        <span className="ml-2 truncate font-mono text-[11px] text-faint">
-          {title || "Demo"}
-        </span>
-      </div>
-      <div className="relative aspect-video bg-bg">
+    <figure className="overflow-hidden rounded-2xl border border-border bg-surface-2 p-2 sm:p-3">
+      <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-surface">
         {embed && play ? (
           <iframe
             src={`${embed}?autoplay=1`}
@@ -49,7 +41,7 @@ export function VideoEmbed({
           >
             <PlayCircle
               className={`h-14 w-14 transition-transform ${
-                embed ? "text-accent group-hover:scale-110" : "text-faint/40"
+                embed ? "text-accent-ink group-hover:scale-110" : "text-faint/40"
               }`}
             />
             <span className="text-sm">
@@ -58,6 +50,11 @@ export function VideoEmbed({
           </button>
         )}
       </div>
+      {title && (
+        <figcaption className="px-1 pt-2.5 text-[13px] text-faint">
+          {title}
+        </figcaption>
+      )}
     </figure>
   );
 }

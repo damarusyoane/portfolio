@@ -1,56 +1,66 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
-import { Cookie } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { buttonClass } from "@/components/ui/Button";
+
+function subscribe(onChange: () => void) {
+  window.addEventListener("consent-updated", onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    window.removeEventListener("consent-updated", onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
 
 export function CookieConsent() {
   const t = useTranslations("Cookies");
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    if (!localStorage.getItem("cookie-consent")) setShow(true);
-  }, []);
+  // null = no choice stored yet. On the server we render nothing.
+  const consent = useSyncExternalStore(
+    subscribe,
+    () => localStorage.getItem("cookie-consent"),
+    () => "pending-hydration",
+  );
 
   const decide = (value: "granted" | "denied") => {
     localStorage.setItem("cookie-consent", value);
     window.dispatchEvent(new Event("consent-updated"));
-    setShow(false);
   };
 
-  if (!show) return null;
+  if (consent !== null) return null;
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-2xl">
-      <div className="glass-strong rounded-2xl border border-border-strong p-4 shadow-2xl sm:p-5">
-        <div className="flex items-start gap-3">
-          <Cookie className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-          <p className="text-sm leading-relaxed text-ink-soft">
-            {t("text")}{" "}
-            <Link href="/privacy" className="text-accent underline underline-offset-2">
-              {t("learnMore")}
-            </Link>
-          </p>
-        </div>
-        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end">
-          <button
-            type="button"
-            onClick={() => decide("denied")}
-            className="h-10 rounded-full border border-border px-5 text-sm font-medium text-muted transition-colors hover:text-ink"
+    <div className="fixed inset-x-3 bottom-3 z-50 sm:inset-x-auto sm:bottom-5 sm:left-5 sm:max-w-md">
+      <div
+        role="dialog"
+        aria-live="polite"
+        aria-label="Cookies"
+        className="rounded-2xl border border-border bg-surface p-5 shadow-[var(--shadow-lift)]"
+      >
+        <p className="text-sm leading-relaxed text-ink-soft">
+          {t("text")}{" "}
+          <Link
+            href="/privacy"
+            className="font-medium text-ink underline underline-offset-2"
           >
-            {t("reject")}
-          </button>
+            {t("learnMore")}
+          </Link>
+        </p>
+        <div className="mt-4 flex gap-2">
           <button
             type="button"
             onClick={() => decide("granted")}
-            className="h-10 rounded-full px-5 text-sm font-semibold text-bg transition-transform hover:-translate-y-0.5"
-            style={{
-              backgroundImage:
-                "linear-gradient(100deg, var(--color-accent), var(--color-accent-2))",
-            }}
+            className={buttonClass("primary", "sm", "flex-1 sm:flex-none")}
           >
             {t("accept")}
+          </button>
+          <button
+            type="button"
+            onClick={() => decide("denied")}
+            className={buttonClass("secondary", "sm", "flex-1 sm:flex-none")}
+          >
+            {t("reject")}
           </button>
         </div>
       </div>

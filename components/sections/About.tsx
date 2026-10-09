@@ -1,93 +1,96 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { MapPin, Languages, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { LinkedinIcon } from "@/components/icons";
+import { Kicker } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { facts } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
 export function About() {
   const t = useTranslations("About");
   const locale = useLocale() as Locale;
+  const facts = t.raw("facts") as { value: string; label: string }[];
+  const initials = siteConfig.founder
+    .split(" ")
+    .map((w) => w[0])
+    .join("");
 
   return (
-    <section id="about" className="relative scroll-mt-24 py-24 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:gap-16">
-          {/* Text */}
-          <div>
-            <Reveal>
-              <div className="mb-3 flex items-center gap-2.5">
-                <span className="h-px w-8 bg-gradient-to-r from-accent to-accent-2" />
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                  {t("kicker")}
-                </span>
-              </div>
-              <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-                {t("title")}
-              </h2>
-            </Reveal>
+    <section id="about" className="relative scroll-mt-20 py-20 sm:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+        <div>
+          <Reveal>
+            <Kicker>{t("kicker")}</Kicker>
+            <h2 className="mt-4 font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem]">
+              {t("title")}
+            </h2>
+          </Reveal>
 
-            <Reveal delay={0.05}>
-              <div className="mt-6 space-y-4 text-base leading-relaxed text-muted">
-                <p>{t("p1")}</p>
-                <p>{t("p2")}</p>
-                <p className="text-ink-soft">{t("p3")}</p>
-              </div>
-            </Reveal>
+          <Reveal delay={0.05}>
+            <div className="mt-7 space-y-4 text-[17px] leading-relaxed text-muted">
+              <p className="text-ink-soft">{t("p1")}</p>
+              <p>{t("p2")}</p>
+              <p>{t("p3")}</p>
+            </div>
+          </Reveal>
 
-            <Reveal delay={0.1}>
-              <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-                <span className="inline-flex items-center gap-2 text-muted">
-                  <MapPin className="h-4 w-4 text-accent" />
-                  {siteConfig.locationLabel[locale]}
-                </span>
-                <span className="inline-flex items-center gap-2 text-muted">
-                  <Languages className="h-4 w-4 text-accent" />
-                  {t("languages")}
-                </span>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Profile card */}
           <Reveal delay={0.1}>
-            <div className="glass relative overflow-hidden rounded-3xl p-6 sm:p-7">
-              <div
-                className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full opacity-20 blur-3xl"
-                style={{ background: "var(--color-accent-2)" }}
-                aria-hidden
-              />
-              <div className="relative">
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-faint">
-                    {t("factsTitle")}
-                  </h3>
-                  <Sparkles className="h-4 w-4 text-accent-2" />
-                </div>
-
-                <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border">
-                  {facts.map((f) => (
-                    <div key={f.value} className="bg-surface p-4 text-center">
-                      <dt className="text-gradient font-display text-2xl font-bold">
-                        {f.value}
-                      </dt>
-                      <dd className="mt-1 text-xs leading-snug text-faint">
-                        {f.label[locale]}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <div className="mt-5 flex items-center justify-center gap-2 rounded-2xl border border-border bg-white/[0.02] px-4 py-3 text-sm text-ink-soft">
-                  <CheckCircle2 className="h-4 w-4 text-accent" />
-                  {siteConfig.availability[locale]}
+            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-border pt-7">
+              <div className="flex items-center gap-3.5">
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-ink font-display text-lg text-bg">
+                  {initials}
+                </span>
+                <div>
+                  <p className="font-display text-xl italic text-ink">
+                    {siteConfig.founder}
+                  </p>
+                  <p className="text-sm text-muted">
+                    {siteConfig.founderRole[locale]}
+                  </p>
                 </div>
               </div>
+              <a
+                href={siteConfig.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-ink"
+              >
+                <LinkedinIcon className="h-4 w-4 text-[#0a66c2]" />
+                <span className="link-underline">{t("linkedin")}</span>
+                <ArrowUpRight className="h-4 w-4 text-faint transition-colors group-hover:text-ink" />
+              </a>
             </div>
           </Reveal>
         </div>
+
+        <Reveal delay={0.1} className="lg:pt-14">
+          <div className="grid grid-cols-2 overflow-hidden rounded-3xl border border-border bg-surface">
+            {facts.map((f, i) => (
+              <div
+                key={f.label}
+                className={[
+                  "p-6 sm:p-8",
+                  i % 2 === 0 ? "border-r border-border" : "",
+                  i < 2 ? "border-b border-border" : "",
+                ].join(" ")}
+              >
+                <p className="font-display text-4xl font-normal tracking-[-0.02em] text-ink sm:text-5xl">
+                  {f.value}
+                </p>
+                <p className="mt-2 text-sm leading-snug text-muted">
+                  {f.label}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
+            <span className="h-2 w-2 rounded-full bg-accent-2" aria-hidden />
+            {siteConfig.availability[locale]} ·{" "}
+            {siteConfig.locationLabel[locale]}
+          </p>
+        </Reveal>
       </div>
     </section>
   );

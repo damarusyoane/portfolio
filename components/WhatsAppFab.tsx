@@ -1,27 +1,24 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
-import { whatsappUrl } from "@/lib/site";
+import { useLocale, useTranslations } from "next-intl";
+import { WhatsappIcon } from "@/components/icons";
+import { siteConfig, whatsappUrl } from "@/lib/site";
+import type { Locale } from "@/i18n/routing";
 
 export function WhatsAppFab() {
+  const locale = useLocale() as Locale;
+  const t = useTranslations("Common");
+
   return (
     <a
-      href={whatsappUrl("Hi Damarus, I'd like to automate something in my business")}
+      href={whatsappUrl(siteConfig.whatsappMessage[locale])}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full text-white transition-transform hover:scale-105"
-      style={{
-        background: "linear-gradient(135deg, #25D366, #128C7E)",
-        boxShadow: "0 12px 34px -8px rgba(37,211,102,0.6)",
-      }}
+      aria-label={t("whatsappLabel")}
+      title={t("whatsappLabel")}
+      className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25d366] text-white shadow-[0_12px_30px_-10px_rgba(22,21,18,0.55)] transition-transform hover:scale-105"
     >
-      <span
-        className="absolute inset-0 rounded-full"
-        style={{ boxShadow: "0 0 0 0 rgba(37,211,102,0.5)", animation: "pulse-slow 3s ease-in-out infinite" }}
-        aria-hidden
-      />
-      <MessageCircle className="relative h-7 w-7" />
+      <WhatsappIcon className="h-7 w-7" />
     </a>
   );
 }

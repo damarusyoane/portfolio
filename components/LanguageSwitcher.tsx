@@ -1,12 +1,13 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
+  const t = useTranslations("Common");
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -21,24 +22,23 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-0.5 rounded-full border border-border bg-white/[0.03] p-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-full border border-border-strong p-0.5 text-xs font-semibold",
         isPending && "opacity-60",
         className,
       )}
       role="group"
-      aria-label="Language"
+      aria-label={t("language")}
     >
-      {(["en", "fr"] as const).map((l) => (
+      {(["fr", "en"] as const).map((l) => (
         <button
           key={l}
           type="button"
           onClick={() => switchTo(l)}
           aria-pressed={locale === l}
+          aria-label={l === "fr" ? t("switchToFr") : t("switchToEn")}
           className={cn(
             "rounded-full px-2.5 py-1 uppercase tracking-wide transition-colors",
-            locale === l
-              ? "bg-white/10 text-ink"
-              : "text-faint hover:text-ink-soft",
+            locale === l ? "bg-ink text-bg" : "text-muted hover:text-ink",
           )}
         >
           {l}

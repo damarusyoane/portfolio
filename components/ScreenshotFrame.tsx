@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Workflow } from "lucide-react";
 
 /**
- * A browser-chrome-styled frame for a workflow screenshot.
- * If the image file isn't present yet, it degrades to a clean placeholder
- * instead of a broken image — so dropping the real PNG later "just works".
+ * A light frame for a project screenshot. Shows the image at its natural
+ * proportions; if the file isn't there yet it degrades to a clean placeholder
+ * instead of a broken image.
  */
 export function ScreenshotFrame({
   src,
@@ -15,25 +15,17 @@ export function ScreenshotFrame({
 }: {
   src: string;
   alt: string;
-  caption: string;
+  caption?: string;
 }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <figure className="overflow-hidden rounded-2xl border border-border bg-surface">
-      <div className="flex items-center gap-1.5 border-b border-border px-4 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
-        <span className="ml-2 truncate font-mono text-[11px] text-faint">
-          {caption}
-        </span>
-      </div>
-      <div className="relative aspect-[16/9] bg-bg">
+    <figure className="overflow-hidden rounded-2xl border border-border bg-surface-2 p-2 sm:p-3">
+      <div className="overflow-hidden rounded-xl border border-border bg-surface">
         {failed ? (
-          <div className="flex h-full flex-col items-center justify-center gap-2 text-faint">
+          <div className="flex aspect-[16/9] flex-col items-center justify-center gap-2 text-faint">
             <Workflow className="h-7 w-7 opacity-50" />
-            <span className="px-4 text-center font-mono text-xs">{alt}</span>
+            <span className="px-4 text-center text-sm">{alt}</span>
           </div>
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
@@ -42,10 +34,15 @@ export function ScreenshotFrame({
             alt={alt}
             loading="lazy"
             onError={() => setFailed(true)}
-            className="h-full w-full object-cover object-top"
+            className="block h-auto w-full"
           />
         )}
       </div>
+      {caption && (
+        <figcaption className="px-1 pt-2.5 text-[13px] text-faint">
+          {caption}
+        </figcaption>
+      )}
     </figure>
   );
 }

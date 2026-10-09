@@ -17,37 +17,29 @@ export function ProcessGallery({
   accent: string;
 }) {
   return (
-    <ol className="space-y-10">
+    <ol className="space-y-14">
       {steps.map((step, i) => {
         const src = typeof step.src === "string" ? step.src : step.src[locale];
         return (
-        <li key={src}>
-          <Reveal>
-            <div className="mb-3 flex items-center gap-3">
-              <span
-                className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold"
-                style={{
-                  color: accent,
-                  border: `1px solid ${accent}`,
-                  backgroundColor: `color-mix(in oklab, ${accent} 12%, transparent)`,
-                }}
-              >
-                {i + 1}
-              </span>
-              <h3 className="font-display text-lg font-semibold text-ink sm:text-xl">
-                {step.title[locale]}
-              </h3>
-            </div>
-            <ScreenshotFrame
-              src={src}
-              alt={step.title[locale]}
-              caption={`${i + 1} / ${steps.length}`}
-            />
-            <p className="mt-3 pl-11 text-[15px] leading-relaxed text-muted">
-              {step.caption[locale]}
-            </p>
-          </Reveal>
-        </li>
+          <li key={src}>
+            <Reveal>
+              <div className="mb-4 flex items-baseline gap-3">
+                <span
+                  className="font-display text-2xl italic leading-none"
+                  style={{ color: accent }}
+                >
+                  {i + 1}.
+                </span>
+                <h3 className="font-display text-xl font-normal text-ink sm:text-[1.4rem]">
+                  {step.title[locale]}
+                </h3>
+              </div>
+              <ScreenshotFrame src={src} alt={step.title[locale]} />
+              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
+                {step.caption[locale]}
+              </p>
+            </Reveal>
+          </li>
         );
       })}
     </ol>

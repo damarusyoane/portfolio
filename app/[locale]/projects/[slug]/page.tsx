@@ -11,7 +11,8 @@ import { routing, type Locale } from "@/i18n/routing";
 import { projects, getProject } from "@/lib/projects";
 import { getGallery } from "@/lib/galleries";
 import { ProcessGallery } from "@/components/sections/ProcessGallery";
-import { accentColor, accentGradient } from "@/lib/utils";
+import { accentColor, formatMetric } from "@/lib/utils";
+import { buttonClass, ButtonArrow } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -66,15 +67,7 @@ export default async function ProjectPage({
   const next = projects[(index + 1) % projects.length];
 
   return (
-    <article className="relative pt-28">
-      {/* Ambient background */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] grid-bg opacity-60" />
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[320px] w-[680px] -translate-x-1/2 rounded-full opacity-20 blur-[120px]"
-        style={{ background: accent }}
-        aria-hidden
-      />
-
+    <article className="relative pt-28 sm:pt-32">
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
         <Link
           href="/#work"
@@ -84,68 +77,72 @@ export default async function ProjectPage({
           {t("back")}
         </Link>
 
-        <Reveal className="mt-8">
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-faint">
-            <span
-              className="inline-flex items-center gap-2 rounded-full px-3 py-1"
-              style={{
-                color: accent,
-                backgroundColor: "color-mix(in oklab, " + accent + " 12%, transparent)",
-              }}
-            >
+        <Reveal className="mt-10">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+            <span className="font-medium" style={{ color: accent }}>
               {project.domain[l]}
             </span>
-            <span>{project.year}</span>
-          </div>
-          <h1 className="mt-5 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            <span className="text-faint">· {project.year}</span>
+          </p>
+          <h1 className="mt-4 font-display text-[2.4rem] font-normal leading-[1.05] tracking-[-0.025em] text-ink sm:text-[3.4rem]">
             {project.title[l]}
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted">
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted sm:text-xl">
             {project.tagline[l]}
           </p>
         </Reveal>
 
         {/* Metrics */}
-        <Reveal className="mt-10">
-          <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
-            {project.metrics.map((m) => (
-              <div key={m.value} className="bg-surface p-5 text-center">
-                <div
-                  className="font-display text-2xl font-bold sm:text-3xl"
-                  style={{ color: accent }}
-                >
-                  {m.value}
-                </div>
-                <div className="mt-1 text-xs leading-tight text-faint">
+        <Reveal className="mt-12">
+          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-surface sm:grid-cols-3">
+            {project.metrics.map((m, i) => (
+              <div
+                key={m.value}
+                className={
+                  "p-6 sm:p-7" +
+                  (i > 0
+                    ? " border-t border-border sm:border-l sm:border-t-0"
+                    : "")
+                }
+              >
+                <p className="font-display text-4xl font-normal tracking-[-0.02em] text-ink">
+                  {formatMetric(m.value, l)}
+                </p>
+                <p className="mt-2 text-sm leading-snug text-muted">
                   {m.label[l]}
-                </div>
+                </p>
               </div>
             ))}
           </div>
         </Reveal>
 
+        {/* Problem */}
+        <Section title={t("problem")}>
+          <p className="prose-tech">{project.problem[l]}</p>
+        </Section>
+
         {/* Step-by-step walkthrough in screenshots */}
         {gallery.length > 0 ? (
           <Section title={t("walkthrough")}>
-            <p className="-mt-1 mb-7 max-w-2xl text-[15px] leading-relaxed text-muted">
+            <p className="-mt-1 mb-8 max-w-2xl text-[16px] leading-relaxed text-muted">
               {t("walkthroughIntro")}
             </p>
             <ProcessGallery steps={gallery} locale={l} accent={accent} />
           </Section>
         ) : project.loomUrl ? (
-          <Reveal className="mt-10">
+          <Reveal className="mt-12">
             <VideoEmbed
               url={project.loomUrl}
-              title={`${t("demo")} · ${project.slug}`}
+              title={`${t("demo")} · ${project.title[l]}`}
               playLabel={t("demo")}
             />
           </Reveal>
         ) : project.screenshot ? (
-          <Reveal className="mt-10">
+          <Reveal className="mt-12">
             <ScreenshotFrame
               src={project.screenshot}
-              alt={`${project.title[l]} — n8n workflow`}
-              caption={`workflow · ${project.slug}`}
+              alt={project.title[l]}
+              caption={project.title[l]}
             />
           </Reveal>
         ) : null}
@@ -161,23 +158,18 @@ export default async function ProjectPage({
           />
         </Section>
 
-        {/* Problem */}
-        <Section title={t("problem")}>
-          <p className="prose-tech text-base">{project.problem[l]}</p>
-        </Section>
-
         {/* Approach */}
         <Section title={t("approach")}>
-          <ol className="space-y-4">
+          <ol className="border-b border-border">
             {project.approach[l].map((step, i) => (
-              <li key={i} className="flex gap-4">
-                <span
-                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full border text-sm font-semibold"
-                  style={{ color: accent, borderColor: accent }}
-                >
+              <li
+                key={i}
+                className="grid grid-cols-[2.5rem_1fr] gap-x-3 border-t border-border py-5"
+              >
+                <span className="font-display text-xl italic leading-7 text-accent">
                   {i + 1}
                 </span>
-                <p className="pt-0.5 text-base leading-relaxed text-ink-soft">
+                <p className="text-[16px] leading-relaxed text-ink-soft">
                   {step}
                 </p>
               </li>
@@ -187,10 +179,13 @@ export default async function ProjectPage({
 
         {/* Highlights */}
         <Section title={t("highlights")}>
-          <ul className="space-y-3">
+          <ul className="space-y-3.5">
             {project.highlights[l].map((h, i) => (
-              <li key={i} className="flex gap-3 text-base leading-relaxed text-ink-soft">
-                <Check className="mt-1 h-5 w-5 shrink-0" style={{ color: accent }} />
+              <li
+                key={i}
+                className="flex gap-3 text-[16px] leading-relaxed text-ink-soft"
+              >
+                <Check className="mt-1 h-5 w-5 shrink-0 text-accent-2" />
                 <span>{h}</span>
               </li>
             ))}
@@ -203,7 +198,7 @@ export default async function ProjectPage({
             {project.stack.map((s) => (
               <span
                 key={s}
-                className="rounded-lg border border-border bg-white/[0.02] px-3 py-1.5 text-sm text-ink-soft"
+                className="rounded-full border border-border-strong px-3.5 py-1.5 text-sm text-ink-soft"
               >
                 {s}
               </span>
@@ -212,50 +207,38 @@ export default async function ProjectPage({
         </Section>
 
         {/* CTA */}
-        <Reveal className="mt-16">
-          <div className="glass relative overflow-hidden rounded-3xl p-8 text-center sm:p-10">
-            <div
-              className="pointer-events-none absolute inset-0 opacity-10"
-              style={{ background: accentGradient(project.accent) }}
-              aria-hidden
-            />
-            <div className="relative">
-              <h2 className="font-display text-2xl font-semibold text-ink">
+        <Reveal className="mt-20">
+          <div className="theme-ink flex flex-col items-start gap-6 rounded-[2rem] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+            <div>
+              <h2 className="font-display text-3xl font-normal leading-tight tracking-[-0.02em] text-ink">
                 {t("ctaTitle")}
               </h2>
-              <p className="mx-auto mt-3 max-w-md text-muted">{t("ctaText")}</p>
-              <div className="mt-6 flex justify-center">
-                <a
-                  href={siteConfig.links.cal}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-semibold text-bg transition-transform hover:-translate-y-0.5"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(100deg, var(--color-accent), var(--color-accent-2))",
-                  }}
-                >
-                  {t("ctaButton")}
-                </a>
-              </div>
+              <p className="mt-2 max-w-md text-muted">{t("ctaText")}</p>
             </div>
+            <a
+              href={siteConfig.links.cal}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonClass("accent", "lg", "shrink-0")}
+            >
+              {t("ctaButton")}
+              <ButtonArrow />
+            </a>
           </div>
         </Reveal>
 
         {/* Next project */}
         <Link
           href={`/projects/${next.slug}`}
-          className="group mb-24 mt-8 flex items-center justify-between rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-border-strong"
+          className="group mb-24 mt-6 flex items-center justify-between gap-6 border-y border-border py-7"
         >
           <div>
-            <div className="font-mono text-xs uppercase tracking-wider text-faint">
-              {t("nextLabel")}
-            </div>
-            <div className="mt-1 font-display text-lg font-semibold text-ink">
+            <p className="text-sm text-faint">{t("nextLabel")}</p>
+            <p className="mt-1 font-display text-2xl text-ink transition-colors group-hover:text-accent-ink">
               {next.title[l]}
-            </div>
+            </p>
           </div>
-          <ArrowRight className="h-5 w-5 text-accent transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="h-6 w-6 shrink-0 text-ink transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </article>
@@ -270,8 +253,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <Reveal className="mt-14">
-      <h2 className="mb-5 font-display text-xl font-semibold text-ink sm:text-2xl">
+    <Reveal className="mt-16">
+      <h2 className="mb-6 font-display text-[1.75rem] font-normal tracking-[-0.015em] text-ink sm:text-[2rem]">
         {title}
       </h2>
       {children}

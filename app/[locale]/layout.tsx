@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -19,15 +19,18 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
-const display = Space_Grotesk({
+const display = Fraunces({
   subsets: ["latin"],
-  variable: "--font-display",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-fraunces",
   display: "swap",
 });
 const mono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-jetbrains",
   display: "swap",
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -43,8 +46,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Hero" });
   const description = t("tagline");
   // SEO title targets the phrase people actually search for ("AI automation
-  // agency" / "agence d'automatisation IA"), decoupled from the visible hero
-  // eyebrow so the on-page brand voice ("Studio") stays unchanged.
+  // agency" / "agence d'automatisation IA"), decoupled from the visible hero.
   const seoTitle =
     locale === "fr"
       ? `${siteConfig.name} — Agence d'automatisation IA`
@@ -122,7 +124,7 @@ export default async function LocaleLayout({
     logo: `${siteConfig.baseUrl}/icon.svg`,
     image: `${siteConfig.baseUrl}/icon.svg`,
     description:
-      "Ottomate is an AI & automation agency that helps businesses automate repetitive work — customer replies, lead capture, invoicing, reporting and more — using n8n and large language models.",
+      "Ottomate is an AI automation agency for small and mid-sized businesses: AI assistants that answer customers on WhatsApp and the web, lead follow-up, appointment reminders, invoice reminders and reporting, built with n8n and large language models.",
     email: siteConfig.email,
     telephone: siteConfig.phone,
     sameAs: [siteConfig.links.linkedin],
@@ -143,7 +145,7 @@ export default async function LocaleLayout({
       "Lead generation",
       "Customer support automation",
     ],
-    slogan: "AI & automation that saves businesses time and money.",
+    slogan: "Fewer repetitive tasks. No customer left waiting.",
   };
 
   return (

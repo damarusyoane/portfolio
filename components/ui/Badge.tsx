@@ -13,16 +13,11 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full border border-border bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-ink-soft",
+        "inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-[13px] font-medium text-ink-soft",
         className,
       )}
     >
-      {dot && (
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-        </span>
-      )}
+      {dot && <span className="h-2 w-2 rounded-full bg-accent-2" aria-hidden />}
       {children}
     </span>
   );

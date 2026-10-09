@@ -92,7 +92,7 @@ export const projects: Project[] = [
     metrics: [
       {
         value: "$1.8k/mo",
-        label: { en: "in manual labor saved", fr: "de main-d'œuvre économisée /mois" },
+        label: { en: "in manual labor saved", fr: "de main-d'œuvre économisée par mois" },
       },
       {
         value: "10×",
@@ -169,7 +169,7 @@ export const projects: Project[] = [
     metrics: [
       {
         value: "$2.5k/mo",
-        label: { en: "in QA time saved", fr: "de temps de QA économisé /mois" },
+        label: { en: "in QA time saved", fr: "de temps de contrôle qualité économisé par mois" },
       },
       {
         value: "−90%",
@@ -177,7 +177,7 @@ export const projects: Project[] = [
       },
       {
         value: "100s",
-        label: { en: "of pages audited per run", fr: "de pages auditées par run" },
+        label: { en: "of pages audited per run", fr: "de pages auditées à chaque passage" },
       },
     ],
     flow: [
@@ -323,7 +323,7 @@ export const projects: Project[] = [
     metrics: [
       {
         value: "$1.2k/mo",
-        label: { en: "in content costs saved", fr: "de coûts de contenu économisés /mois" },
+        label: { en: "in content costs saved", fr: "de coûts de contenu économisés par mois" },
       },
       {
         value: "~5h",
@@ -353,7 +353,7 @@ export const projects: Project[] = [
     },
     domain: {
       en: "LLM reliability · Content ops",
-      fr: "Fiabilité LLM · Content ops",
+      fr: "Fiabilité de l'IA · Production de contenu",
     },
     tagline: {
       en: "A scheduled content engine engineered around the unglamorous reality of LLMs in production: overload, quotas, and malformed output — with no silent failures.",
@@ -398,7 +398,7 @@ export const projects: Project[] = [
     metrics: [
       {
         value: "$1.5k/mo",
-        label: { en: "in content ops saved", fr: "d'ops contenu économisées /mois" },
+        label: { en: "in content ops saved", fr: "de production de contenu économisée par mois" },
       },
       {
         value: "24/7",
@@ -475,7 +475,7 @@ export const projects: Project[] = [
     metrics: [
       {
         value: "$2k/mo",
-        label: { en: "in staff time saved", fr: "de temps équipe économisé /mois" },
+        label: { en: "in staff time saved", fr: "de temps équipe économisé par mois" },
       },
       {
         value: "−70%",
@@ -483,7 +483,7 @@ export const projects: Project[] = [
       },
       {
         value: "Cited",
-        label: { en: "grounded, no hallucination", fr: "sourcées, sans hallucination" },
+        label: { en: "grounded, no hallucination", fr: "réponses ancrées dans vos documents" },
       },
     ],
     flow: [
@@ -554,7 +554,7 @@ export const projects: Project[] = [
     metrics: [
       {
         value: "$3k/mo",
-        label: { en: "in calling time saved", fr: "de temps d'appels économisé /mois" },
+        label: { en: "in calling time saved", fr: "de temps d'appels économisé par mois" },
       },
       {
         value: "100%",
@@ -579,16 +579,16 @@ export const projects: Project[] = [
     accent: "violet",
     year: "2026",
     title: {
-      en: "WhatsApp AI Assistant (Productized)",
-      fr: "Assistant WhatsApp IA (productisé)",
+      en: "WhatsApp AI Assistant for Small Businesses",
+      fr: "Assistant WhatsApp IA pour PME",
     },
     domain: {
-      en: "Conversational AI · Productized automation",
-      fr: "IA conversationnelle · Automatisation productisée",
+      en: "Conversational AI · Customer service",
+      fr: "IA conversationnelle · Service client",
     },
     tagline: {
-      en: "A resellable, config-driven WhatsApp assistant that answers customers 24/7, captures leads, and runs on both the official Meta API and self-hosted Evolution — one template, infinite clients.",
-      fr: "Un assistant WhatsApp revendable et piloté par configuration qui répond aux clients 24/7, capte les leads et tourne aussi bien sur l'API officielle Meta que sur Evolution auto-hébergé — un template, une infinité de clients.",
+      en: "A WhatsApp assistant that answers customers day and night from the business's own information, never invents a price, flags hot leads to the owner and hands over to a human when needed.",
+      fr: "Un assistant WhatsApp qui répond aux clients jour et nuit à partir des informations de l'entreprise, n'invente jamais un prix, signale les prospects chauds au gérant et passe la main à un humain si besoin.",
     },
     stack: ["n8n", "Claude (Haiku)", "Meta WhatsApp Cloud API", "Evolution API", "Google Sheets", "Webhooks"],
     problem: {
@@ -599,28 +599,28 @@ export const projects: Project[] = [
       en: [
         "A single generic webhook normalizes inbound messages from both the Meta Cloud API and self-hosted Evolution, so the same bot serves either channel.",
         "Each client lives in a Google Sheet 'profile' (business info, hours, prices, FAQ, persona) — the LLM answers strictly from it, never inventing prices, and hands off to a human on request.",
-        "Detected leads are logged and the owner is notified instantly; reselling is just swapping the config sheet and credentials.",
+        "Detected leads are logged and the owner is notified instantly; updating prices or opening hours is just a matter of editing the sheet.",
       ],
       fr: [
         "Un webhook générique unique normalise les messages entrants de l'API Meta Cloud et d'Evolution auto-hébergé : le même bot sert les deux canaux.",
         "Chaque client tient dans une 'fiche' Google Sheet (infos, horaires, prix, FAQ, persona) — le LLM répond strictement à partir d'elle, n'invente jamais de prix et passe la main à un humain sur demande.",
-        "Les leads détectés sont journalisés et le patron notifié instantanément ; la revente se résume à changer la fiche et les credentials.",
+        "Les leads détectés sont journalisés et le gérant est prévenu immédiatement ; changer un prix ou un horaire se fait en modifiant simplement la fiche.",
       ],
     },
     highlights: {
       en: [
-        "One template, resold to unlimited clients by changing a config sheet.",
+        "Set up in days: the business's details live in a simple sheet the owner can edit.",
         "Grounded answers with guardrails — no hallucinated prices, clean human handoff.",
         "Dual-channel: official Meta API or the client's existing number via Evolution.",
       ],
       fr: [
-        "Un template, revendu à une infinité de clients en changeant une fiche.",
+        "Mise en place en quelques jours : les infos de l'entreprise tiennent dans une fiche modifiable par le gérant.",
         "Réponses sourcées avec garde-fous — aucun prix inventé, passation humaine propre.",
         "Dual-canal : API officielle Meta ou le numéro existant du client via Evolution.",
       ],
     },
     metrics: [
-      { value: "$2.4k/mo", label: { en: "in recovered sales", fr: "de ventes récupérées /mois" } },
+      { value: "$2.4k/mo", label: { en: "in recovered sales", fr: "de ventes récupérées par mois" } },
       { value: "24/7", label: { en: "instant responses", fr: "réponses instantanées" } },
       { value: "~30%", label: { en: "more enquiries captured", fr: "de demandes captées en plus" } },
     ],
@@ -643,7 +643,7 @@ export const projects: Project[] = [
     },
     domain: {
       en: "Scheduling automation · Anti no-show",
-      fr: "Automatisation d'agenda · Anti no-show",
+      fr: "Automatisation d'agenda · Rendez-vous manqués",
     },
     tagline: {
       en: "An automated engine that cuts no-shows by reminding clients 24 hours and 2 hours before their appointment, with duplicate-proof tracking.",
@@ -680,7 +680,7 @@ export const projects: Project[] = [
     },
     metrics: [
       { value: "−40%", label: { en: "no-shows", fr: "de no-shows" } },
-      { value: "$1.6k/mo", label: { en: "in recovered bookings", fr: "de RDV récupérés /mois" } },
+      { value: "$1.6k/mo", label: { en: "in recovered bookings", fr: "de RDV récupérés par mois" } },
       { value: "0", label: { en: "manual reminders", fr: "rappel manuel" } },
     ],
     flow: [
@@ -702,7 +702,7 @@ export const projects: Project[] = [
     },
     domain: {
       en: "Sales automation · Speed-to-lead",
-      fr: "Automatisation commerciale · Speed-to-lead",
+      fr: "Automatisation commerciale · Réactivité",
     },
     tagline: {
       en: "Captures inbound leads, qualifies them with an LLM, auto-replies in under a minute, and alerts sales — because answering in 5 minutes instead of an hour wins the deal.",
@@ -739,7 +739,7 @@ export const projects: Project[] = [
     },
     metrics: [
       { value: "3×", label: { en: "lead conversion", fr: "de conversion des leads" } },
-      { value: "$3.5k/mo", label: { en: "in extra revenue", fr: "de revenus supplémentaires /mois" } },
+      { value: "$3.5k/mo", label: { en: "in extra revenue", fr: "de revenus supplémentaires par mois" } },
       { value: "<1 min", label: { en: "first reply", fr: "première réponse" } },
     ],
     flow: [
@@ -798,7 +798,7 @@ export const projects: Project[] = [
     },
     metrics: [
       { value: "3×", label: { en: "more 5-star reviews", fr: "d'avis 5 étoiles en plus" } },
-      { value: "$1.2k/mo", label: { en: "in new-customer value", fr: "de valeur nouveaux clients /mois" } },
+      { value: "$1.2k/mo", label: { en: "in new-customer value", fr: "de valeur nouveaux clients par mois" } },
       { value: "Auto", label: { en: "after every sale", fr: "après chaque vente" } },
     ],
     flow: [
@@ -856,7 +856,7 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
-      { value: "$4k/mo", label: { en: "in cash flow recovered", fr: "de trésorerie récupérée /mois" } },
+      { value: "$4k/mo", label: { en: "in cash flow recovered", fr: "de trésorerie récupérée par mois" } },
       { value: "−50%", label: { en: "late payments", fr: "de retards de paiement" } },
       { value: "Daily", label: { en: "automated chasing", fr: "relance automatisée" } },
     ],

@@ -36,7 +36,7 @@ export default async function AutomationsPage({
   setRequestLocale(locale);
 
   return (
-    <main className="pt-24">
+    <div className="pt-28 sm:pt-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Link
           href="/"
@@ -48,6 +48,6 @@ export default async function AutomationsPage({
       </div>
       <AutomationCatalog />
       <BookCall />
-    </main>
+    </div>
   );
 }
