@@ -250,17 +250,47 @@
   },
   "Trust": {
     "kicker": "Testimonials",
-    "title": "What our clients say",
+    "title": "Our clients say it <hl>better</hl> than we do",
     "testimonials": [
-      { "quote": "Ottomate deployed our lead automation and it's been a game-changer: we respond faster, we secure our clients, and we've doubled our revenue. We'll definitely work with them again and recommend them 100%.", "name": "Maison237", "role": "Real-estate developer" },
-      { "quote": "We're really happy with the WhatsApp AI assistant Ottomate deployed for us. We reply to customers fast now, and the AI feels human, so clients get a real sense of trust and professionalism. Thank you for everything!", "name": "Airplace", "role": "Phone shop" },
-      { "quote": "Ottomate builds and runs our production automation: AI content, SEO quality checks and data pipelines that keep the agency running every day.", "name": "Nubet", "role": "Digital agency" }
+      {
+        "name": "Maison237",
+        "role": "Real-estate developer",
+        "result": "2×",
+        "resultLabel": "revenue",
+        "headline": "“We doubled our revenue.”",
+        "quote": "Before Ottomate, leads waited hours for an answer and some never heard back. Now every enquiry gets a reply within a minute, the serious ones land straight in our pipeline, and our sales team only calls people who are ready to move. Our next projects are already lined up with them."
+      },
+      {
+        "name": "Airplace",
+        "role": "Phone shop",
+        "result": "24/7",
+        "resultLabel": "replies in seconds",
+        "headline": "“Customers think they're talking to my best salesperson.”",
+        "quote": "The WhatsApp assistant answers prices, stock and opening hours in seconds, day and night. It sounds human, it never makes up a price, and the moment someone is ready to buy, I get a ping. Customers keep telling me how professional we've become."
+      },
+      {
+        "name": "Nubet",
+        "role": "Digital agency",
+        "result": "Every day",
+        "resultLabel": "runs on its own, monitored",
+        "headline": "“Our production runs every day without us touching it.”",
+        "quote": "Ottomate built and runs the automations behind our agency: AI content, SEO quality checks and data pipelines. Everything is monitored, and when something needs fixing, it's usually handled before we even notice."
+      }
     ],
     "guaranteesTitle": "Our commitments",
     "guarantees": [
-      { "title": "Free audit, no commitment", "text": "You leave with a clear plan, whether we work together or not." },
-      { "title": "Fixed price, agreed upfront", "text": "No hourly billing that spirals. You know exactly what you'll pay." },
-      { "title": "Your data stays yours", "text": "Can be hosted on your own servers, with access limited to the strict minimum." }
+      {
+        "title": "Free audit, no commitment",
+        "text": "You leave with a clear plan, whether we work together or not."
+      },
+      {
+        "title": "Fixed price, agreed upfront",
+        "text": "No hourly billing that spirals. You know exactly what you'll pay."
+      },
+      {
+        "title": "Your data stays yours",
+        "text": "Can be hosted on your own servers, with access limited to the strict minimum."
+      }
     ]
   },
   "Pricing": {
@@ -385,7 +415,7 @@
       "Straight answers, no sales pressure"
     ],
     "cta": "Pick a time",
-    "note": "Prefer to write? WhatsApp and the contact form are below.",
+    "note": "Prefer to write? The contact form is just below.",
     "embedTitle": "Ottomate booking calendar"
   },
   "LeadMagnet": {
@@ -434,7 +464,8 @@
         "q": "What happens if something breaks?",
         "a": "Every system has automatic retries, fallbacks and alerts, so we're notified before you are. Maintenance is included in the monthly plan."
       }
-    ]
+    ],
+    "askByEmail": "Ask your question by email"
   },
   "About": {
     "kicker": "About us",
@@ -492,8 +523,9 @@
     "fastest": "Fastest",
     "linkedin": "LinkedIn",
     "emailDirect": "Email",
-    "whatsapp": "WhatsApp",
-    "availability": "Taking on new projects"
+    "availability": "Taking on new projects",
+    "bookCall": "Book a 30-min call",
+    "bookCallValue": "Pick a time that suits you"
   },
   "Footer": {
     "tagline": "AI automation agency. We help small businesses answer customers faster, get paid on time and spend less time on admin.",
@@ -545,8 +577,7 @@
     "switchToFr": "Passer en français",
     "switchToEn": "Switch to English",
     "menu": "Menu",
-    "close": "Close",
-    "whatsappLabel": "Message us on WhatsApp"
+    "close": "Close"
   },
   "NotFound": {
     "title": "Page not found",

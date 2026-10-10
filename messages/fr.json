@@ -254,17 +254,47 @@
   },
   "Trust": {
     "kicker": "Témoignages",
-    "title": "Ce qu'en disent nos clients",
+    "title": "Nos clients en parlent <hl>mieux</hl> que nous",
     "testimonials": [
-      { "quote": "Ottomate a déployé l'automatisation des leads de notre entreprise : on répond plus vite, on sécurise nos clients, et on a doublé nos revenus. Nous les recontacterons pour nos prochains projets et les recommandons à 100 %.", "name": "Maison237", "role": "Promoteur immobilier" },
-      { "quote": "Très content de l'assistant WhatsApp IA qu'Ottomate a déployé pour mon entreprise : je réponds vite à mes clients, et l'IA se comporte comme un humain. Mes clients ressentent un vrai sentiment de confiance et de sérieux. Merci pour tout !", "name": "Airplace", "role": "Boutique de téléphonie" },
-      { "quote": "Ottomate conçoit et exploite notre automatisation en production : contenu IA, contrôle qualité SEO et pipelines de données qui font tourner l'agence au quotidien.", "name": "Nubet", "role": "Agence digitale" }
+      {
+        "name": "Maison237",
+        "role": "Promoteur immobilier",
+        "result": "×2",
+        "resultLabel": "de chiffre d'affaires",
+        "headline": "« On a doublé notre chiffre d'affaires. »",
+        "quote": "Avant Ottomate, nos prospects attendaient des heures une réponse, et certains n'en recevaient jamais. Aujourd'hui, chaque demande reçoit une réponse en moins d'une minute, les plus sérieuses arrivent directement dans notre suivi, et l'équipe commerciale n'appelle que des gens prêts à avancer. Nos prochains projets se feront avec eux."
+      },
+      {
+        "name": "Airplace",
+        "role": "Boutique de téléphonie",
+        "result": "24 h/24",
+        "resultLabel": "des réponses en quelques secondes",
+        "headline": "« Mes clients croient parler à mon meilleur vendeur. »",
+        "quote": "L'assistant WhatsApp répond aux questions de prix, de stock et d'horaires en quelques secondes, jour et nuit. Il parle comme un humain, n'invente jamais un prix, et dès qu'un client est prêt à acheter, je suis prévenu. Mes clients me disent qu'on fait beaucoup plus pro."
+      },
+      {
+        "name": "Nubet",
+        "role": "Agence digitale",
+        "result": "Chaque jour",
+        "resultLabel": "ça tourne seul, sous surveillance",
+        "headline": "« Notre production tourne tous les jours sans qu'on y touche. »",
+        "quote": "Ottomate a construit et fait tourner les automatisations de notre agence : contenu IA, contrôle qualité SEO et pipelines de données. Tout est surveillé, et quand quelque chose doit être corrigé, c'est en général réglé avant même qu'on s'en aperçoive."
+      }
     ],
     "guaranteesTitle": "Nos engagements",
     "guarantees": [
-      { "title": "Audit gratuit, sans engagement", "text": "Vous repartez avec un plan clair, que l'on travaille ensemble ou non." },
-      { "title": "Prix fixe, validé avant de commencer", "text": "Pas de facturation à l'heure qui dérape. Vous savez ce que vous payez." },
-      { "title": "Vos données restent chez vous", "text": "Hébergement possible sur vos serveurs, accès limités au strict nécessaire." }
+      {
+        "title": "Audit gratuit, sans engagement",
+        "text": "Vous repartez avec un plan clair, que l'on travaille ensemble ou non."
+      },
+      {
+        "title": "Prix fixe, validé avant de commencer",
+        "text": "Pas de facturation à l'heure qui dérape. Vous savez ce que vous payez."
+      },
+      {
+        "title": "Vos données restent chez vous",
+        "text": "Hébergement possible sur vos serveurs, accès limités au strict nécessaire."
+      }
     ]
   },
   "Pricing": {
@@ -404,7 +434,7 @@
       "Des réponses franches, sans pression commerciale"
     ],
     "cta": "Choisir un créneau",
-    "note": "Vous préférez écrire ? WhatsApp et formulaire plus bas.",
+    "note": "Vous préférez écrire ? Le formulaire de contact est juste en dessous.",
     "embedTitle": "Calendrier de réservation Ottomate"
   },
   "LeadMagnet": {
@@ -453,7 +483,8 @@
         "q": "Que se passe-t-il si quelque chose tombe en panne ?",
         "a": "Chaque système prévoit des reprises automatiques, des solutions de secours et des alertes : nous sommes prévenus avant vous. La maintenance est comprise dans l'abonnement mensuel."
       }
-    ]
+    ],
+    "askByEmail": "Posez votre question par email"
   },
   "About": {
     "kicker": "Qui sommes-nous",
@@ -511,8 +542,9 @@
     "fastest": "Le plus rapide",
     "linkedin": "LinkedIn",
     "emailDirect": "Email",
-    "whatsapp": "WhatsApp",
-    "availability": "Ouvert aux nouveaux projets"
+    "availability": "Ouvert aux nouveaux projets",
+    "bookCall": "Réserver un appel de 30 min",
+    "bookCallValue": "Choisissez le créneau qui vous convient"
   },
   "Footer": {
     "tagline": "Agence d'automatisation IA. Nous aidons les PME à répondre plus vite à leurs clients, à se faire payer à temps et à passer moins de temps sur l'administratif.",
@@ -564,8 +596,7 @@
     "switchToFr": "Passer en français",
     "switchToEn": "Switch to English",
     "menu": "Menu",
-    "close": "Fermer",
-    "whatsappLabel": "Écrire sur WhatsApp"
+    "close": "Fermer"
   },
   "NotFound": {
     "title": "Page introuvable",

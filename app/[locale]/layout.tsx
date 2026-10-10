@@ -8,7 +8,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { Tracking } from "@/components/Tracking";
 import { CookieConsent } from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site";
@@ -122,7 +121,6 @@ export default async function LocaleLayout({
     description:
       "Ottomate is an AI automation agency for small and mid-sized businesses: AI assistants that answer customers on WhatsApp and the web, lead follow-up, appointment reminders, invoice reminders and reporting, built with n8n and large language models.",
     email: siteConfig.email,
-    telephone: siteConfig.phone,
     sameAs: [siteConfig.links.linkedin],
     areaServed: "Worldwide",
     serviceType: [
@@ -155,7 +153,6 @@ export default async function LocaleLayout({
           <Header />
           <main>{children}</main>
           <Footer />
-          <WhatsAppFab />
           <Tracking />
           <CookieConsent />
         </NextIntlClientProvider>

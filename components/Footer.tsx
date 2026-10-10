@@ -1,12 +1,12 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Mail, ArrowUp } from "lucide-react";
+import { CalendarDays, Mail, ArrowUp } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Wordmark } from "@/components/Brandmark";
-import { LinkedinIcon, WhatsappIcon } from "@/components/icons";
+import { LinkedinIcon } from "@/components/icons";
 import { buttonClass, ButtonArrow } from "@/components/ui/Button";
-import { siteConfig, whatsappUrl, mailtoUrl } from "@/lib/site";
+import { siteConfig, mailtoUrl } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
 const sectionLinks = [
@@ -26,10 +26,10 @@ export function Footer() {
 
   const contacts = [
     {
-      label: "WhatsApp",
-      value: siteConfig.phoneDisplay,
-      href: whatsappUrl(siteConfig.whatsappMessage[locale]),
-      icon: WhatsappIcon,
+      label: t("Contact.bookCall"),
+      value: t("Contact.bookCall"),
+      href: siteConfig.links.cal,
+      icon: CalendarDays,
       external: true,
     },
     {

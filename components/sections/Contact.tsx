@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import {
+  CalendarDays,
   Mail,
   Send,
   CheckCircle2,
@@ -10,12 +11,12 @@ import {
   Loader2,
   ArrowUpRight,
 } from "lucide-react";
-import { LinkedinIcon, WhatsappIcon } from "@/components/icons";
+import { LinkedinIcon } from "@/components/icons";
 import { Kicker } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { buttonClass } from "@/components/ui/Button";
 import { submitContact, type ContactState } from "@/lib/actions";
-import { siteConfig, whatsappUrl, mailtoUrl } from "@/lib/site";
+import { siteConfig, mailtoUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
 
@@ -39,11 +40,11 @@ export function Contact() {
 
   const directLinks = [
     {
-      label: t("whatsapp"),
-      value: siteConfig.phoneDisplay,
-      href: whatsappUrl(siteConfig.whatsappMessage[locale]),
-      icon: WhatsappIcon,
-      iconClass: "bg-[#25d366] text-white",
+      label: t("bookCall"),
+      value: t("bookCallValue"),
+      href: siteConfig.links.cal,
+      icon: CalendarDays,
+      iconClass: "bg-accent text-[#0c1f18]",
       badge: t("fastest"),
       external: true,
     },

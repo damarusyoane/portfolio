@@ -1,16 +1,14 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Plus } from "lucide-react";
+import { Mail, Plus } from "lucide-react";
 import { Kicker } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { WhatsappIcon } from "@/components/icons";
-import { siteConfig, whatsappUrl } from "@/lib/site";
+import { siteConfig, mailtoUrl } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
 export function Faq() {
   const t = useTranslations("Faq");
-  const tc = useTranslations("Common");
   const locale = useLocale() as Locale;
   const items = t.raw("items") as { q: string; a: string }[];
 
@@ -23,13 +21,11 @@ export function Faq() {
             {t("title")}
           </h2>
           <a
-            href={whatsappUrl(siteConfig.whatsappMessage[locale])}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={mailtoUrl(siteConfig.emailSubject[locale])}
             className="group mt-7 inline-flex items-center gap-2.5 rounded-xl border border-border-strong px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink"
           >
-            <WhatsappIcon className="h-4 w-4 text-[#1fa855]" />
-            {tc("whatsappLabel")}
+            <Mail className="h-4 w-4 text-accent-ink" />
+            {t("askByEmail")}
           </a>
         </Reveal>
 

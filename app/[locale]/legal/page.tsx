@@ -30,7 +30,7 @@ const data: Record<Locale, { title: string; sections: Section[] }> = {
         h: "Publisher",
         p: [
           `This website is published by ${siteConfig.founder} (trading as ${siteConfig.name}), independent AI & automation engineer.`,
-          `Contact: ${siteConfig.email}, ${siteConfig.phone}`,
+          `Contact: ${siteConfig.email}`,
         ],
       },
       {
@@ -60,7 +60,7 @@ const data: Record<Locale, { title: string; sections: Section[] }> = {
         h: "Éditeur",
         p: [
           `Ce site est édité par ${siteConfig.founder} (marque ${siteConfig.name}), ingénieur IA & automatisation indépendant.`,
-          `Contact : ${siteConfig.email}, ${siteConfig.phone}`,
+          `Contact : ${siteConfig.email}`,
         ],
       },
       {
