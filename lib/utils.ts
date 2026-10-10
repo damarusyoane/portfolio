@@ -41,5 +41,7 @@ export function formatMetric(value: string, locale: string) {
     const amount = Math.round(parseFloat(money[1]) * 1000);
     return `${amount.toLocaleString("fr-FR")}\u00a0$${money[2]}`;
   }
-  return value.replace(/(\d)(%|h)$/, "$1\u00a0$2");
+  return value
+    .replace(/^([<>])(\d)/, "$1\u00a0$2")
+    .replace(/(\d)(%|h)$/, "$1\u00a0$2");
 }

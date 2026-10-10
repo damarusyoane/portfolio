@@ -141,6 +141,27 @@
       { "name": "Partenaire", "tagline": "Votre équipe automatisation", "price": "Sur devis", "priceSuffix": "selon vos besoins", "features": ["Périmètre étendu, livré par étapes", "Feuille de route dédiée", "Hébergement sur vos propres serveurs possible", "Accompagnement dans la durée"] }
     ]
   },
+  "Tools": {
+    "title": "Branché sur les outils que vous utilisez déjà",
+    "text": "Pas de nouveau logiciel à apprendre. Nous connectons vos outils actuels entre eux.",
+    "items": ["WhatsApp", "Gmail", "Google Sheets", "Google Agenda", "Calendly", "Shopify", "WooCommerce", "Stripe", "HubSpot", "Notion", "Slack", "Telegram", "Instagram", "QuickBooks", "Xero"],
+    "more": "et bien d'autres"
+  },
+  "Calculator": {
+    "kicker": "Calculez",
+    "title": "Combien vous coûtent les tâches répétitives ?",
+    "subtitle": "Répondre aux mêmes questions, recopier des données, relancer, planifier. Déplacez les curseurs pour voir ce que ce temps représente sur une année.",
+    "people": "Personnes concernées dans l'équipe",
+    "hours": "Heures par semaine et par personne",
+    "rate": "Coût d'une heure de travail",
+    "rateHint": "Salaire chargé divisé par les heures travaillées. Si c'est vous, comptez ce que vaut une heure de votre temps.",
+    "resultLabel": "Ce que ces tâches vous coûtent chaque année",
+    "resultHours": "{hours} heures par an, soit environ {days} journées de travail.",
+    "half": "Même en n'automatisant que la moitié de ces tâches, vous récupérez <amount></amount> par an.",
+    "compare": "À comparer avec une mise en place à partir de 500 $. Le chiffre exact dépend de vos tâches : c'est l'objet de l'audit.",
+    "cta": "Obtenir mon estimation précise",
+    "method": "Calcul sur {weeks} semaines travaillées par an. Estimation indicative."
+  },
   "Industries": {
     "kicker": "Secteurs",
     "title": "Des solutions pensées pour votre métier",
@@ -295,7 +316,7 @@
     "ctaButton": "Réserver un audit gratuit"
   },
   "Cookies": {
-    "text": "Nous utilisons des cookies pour mesurer l'audience et améliorer le site. Les statistiques et la publicité ne s'activent que si vous acceptez.",
+    "text": "Cookies de mesure d'audience et de publicité, activés seulement si vous acceptez.",
     "learnMore": "En savoir plus",
     "accept": "Accepter",
     "reject": "Refuser"

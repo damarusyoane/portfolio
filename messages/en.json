@@ -141,6 +141,27 @@
       { "name": "Partner", "tagline": "Your automation team", "price": "Custom", "priceSuffix": "based on your needs", "features": ["Wider scope, delivered in stages", "Dedicated roadmap", "Hosting on your own servers available", "Long-term support"] }
     ]
   },
+  "Tools": {
+    "title": "Plugged into the tools you already use",
+    "text": "No new software to learn. We connect the tools you already have.",
+    "items": ["WhatsApp", "Gmail", "Google Sheets", "Google Calendar", "Calendly", "Shopify", "WooCommerce", "Stripe", "HubSpot", "Notion", "Slack", "Telegram", "Instagram", "QuickBooks", "Xero"],
+    "more": "and many more"
+  },
+  "Calculator": {
+    "kicker": "Do the math",
+    "title": "What do repetitive tasks really cost you?",
+    "subtitle": "Answering the same questions, copying data, chasing, scheduling. Move the sliders to see what that time adds up to over a year.",
+    "people": "People on your team doing this",
+    "hours": "Hours per week, per person",
+    "rate": "Cost of one hour of work",
+    "rateHint": "Loaded salary divided by hours worked. If it's you, count what an hour of your time is worth.",
+    "resultLabel": "What these tasks cost you every year",
+    "resultHours": "{hours} hours a year, about {days} full working days.",
+    "half": "Automate just half of it and you get back <amount></amount> a year.",
+    "compare": "Compare that with a setup starting at $500. The exact figure depends on your tasks: that's what the audit is for.",
+    "cta": "Get my precise estimate",
+    "method": "Based on {weeks} working weeks a year. Indicative estimate."
+  },
   "Industries": {
     "kicker": "Industries",
     "title": "Built around how your business works",
@@ -295,7 +316,7 @@
     "ctaButton": "Book a free audit"
   },
   "Cookies": {
-    "text": "We use cookies to measure traffic and improve the site. Analytics and ads only run if you accept.",
+    "text": "Analytics and ad cookies, switched on only if you accept.",
     "learnMore": "Learn more",
     "accept": "Accept",
     "reject": "Decline"
