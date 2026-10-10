@@ -148,7 +148,7 @@ export default async function PrivacyPage({
   return (
     <div className="pb-24 pt-32">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <h1 className="font-display text-4xl font-normal tracking-[-0.02em] text-ink sm:text-5xl">
+        <h1 className="font-display text-4xl font-extrabold tracking-[-0.04em] text-ink sm:text-5xl">
           {d.title}
         </h1>
         <p className="mt-2 text-sm text-faint">{d.updated}</p>

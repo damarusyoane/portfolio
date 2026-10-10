@@ -25,12 +25,12 @@ export function ProcessGallery({
             <Reveal>
               <div className="mb-4 flex items-baseline gap-3">
                 <span
-                  className="font-display text-2xl italic leading-none"
+                  className="font-display text-2xl font-extrabold leading-none"
                   style={{ color: accent }}
                 >
                   {i + 1}.
                 </span>
-                <h3 className="font-display text-xl font-normal text-ink sm:text-[1.4rem]">
+                <h3 className="font-display text-xl font-bold text-ink sm:text-[1.4rem]">
                   {step.title[locale]}
                 </h3>
               </div>

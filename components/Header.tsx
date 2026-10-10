@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { Brandmark } from "@/components/Brandmark";
+import { Wordmark } from "@/components/Brandmark";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { buttonClass, ButtonArrow } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
@@ -42,23 +42,18 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300",
-        scrolled || open
-          ? "border-b border-border bg-bg/90 backdrop-blur-md"
-          : "border-b border-transparent",
+        "theme-ink fixed inset-x-0 top-0 z-50 transition-shadow duration-300",
+        (scrolled || open) && "shadow-[0_10px_30px_-18px_rgba(0,0,0,0.6)]",
       )}
     >
       <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2.5 text-ink"
+          className="flex items-center text-ink"
           aria-label={siteConfig.name}
           onClick={() => setOpen(false)}
         >
-          <Brandmark size={30} />
-          <span className="font-display text-[1.35rem] font-semibold tracking-[-0.02em]">
-            {siteConfig.name}
-          </span>
+          <Wordmark />
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
@@ -66,7 +61,7 @@ export function Header() {
             <Link
               key={item.key}
               href={item.href}
-              className="rounded-full px-3.5 py-2 text-[15px] text-ink-soft transition-colors hover:text-ink"
+              className="rounded-lg px-3.5 py-2 text-[15px] font-medium text-ink-soft transition-colors hover:text-accent"
             >
               {t(item.key)}
             </Link>
@@ -81,7 +76,7 @@ export function Header() {
               href={siteConfig.links.cal}
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonClass("primary", "sm")}
+              className={buttonClass("accent", "sm")}
             >
               {t("bookAudit")}
               <ButtonArrow />
@@ -91,7 +86,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-border-strong text-ink lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-xl border border-border-strong text-ink lg:hidden"
             aria-label={open ? tc("close") : tc("menu")}
             aria-expanded={open ? "true" : "false"}
             aria-controls="mobile-menu"
@@ -115,7 +110,7 @@ export function Header() {
               key={item.key}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rule py-4 font-display text-2xl text-ink"
+              className="rule py-4 font-display text-2xl font-bold tracking-[-0.02em] text-ink"
             >
               {t(item.key)}
             </Link>
@@ -125,7 +120,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className={buttonClass("primary", "lg", "mt-4 w-full")}
+            className={buttonClass("accent", "lg", "mt-4 w-full")}
           >
             {t("bookAuditLong")}
             <ButtonArrow />

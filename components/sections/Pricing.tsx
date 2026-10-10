@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionHeading, hl } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { buttonClass, ButtonArrow } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
@@ -24,7 +24,7 @@ export function Pricing() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
           kicker={t("kicker")}
-          title={t("title")}
+          title={t.rich("title", hl)}
           subtitle={t("subtitle")}
         />
 
@@ -33,18 +33,18 @@ export function Pricing() {
             <Reveal key={p.name} delay={i * 0.06}>
               <div
                 className={cn(
-                  "relative flex h-full flex-col rounded-3xl border p-7 sm:p-8",
+                  "relative flex h-full flex-col rounded-[var(--radius-card)] border p-7 sm:p-8",
                   p.popular
                     ? "theme-ink border-transparent shadow-[var(--shadow-lift)]"
                     : "border-border bg-surface",
                 )}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="font-display text-2xl font-normal text-ink">
+                  <h3 className="font-display text-2xl font-extrabold tracking-[-0.03em] text-ink">
                     {p.name}
                   </h3>
                   {p.popular && (
-                    <span className="rounded-full bg-accent px-2.5 py-1 text-xs font-semibold text-[#161512]">
+                    <span className="rounded-md bg-accent px-2.5 py-1 text-xs font-bold text-[#0c1f18]">
                       {t("popular")}
                     </span>
                   )}
@@ -52,7 +52,7 @@ export function Pricing() {
                 <p className="mt-1 text-[15px] text-muted">{p.tagline}</p>
 
                 <div className="mt-7 border-t border-border pt-6">
-                  <p className="font-display text-[2.6rem] font-normal leading-none tracking-[-0.02em] text-ink">
+                  <p className="font-display text-[2.8rem] font-extrabold leading-none tracking-[-0.045em] text-ink">
                     {p.price}
                   </p>
                   <p className="mt-2 text-sm text-faint">{p.priceSuffix}</p>

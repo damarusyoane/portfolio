@@ -69,10 +69,10 @@ export default async function BlogPostPage({
 
         <Reveal className="mt-10">
           <p className="text-sm text-faint">
-            {formatDate(post.meta.date, l)} ·{" "}
+            {formatDate(post.meta.date, l)},{" "}
             {t("readingTime", { minutes: post.meta.readingMinutes })}
           </p>
-          <h1 className="mt-4 font-display text-[2.3rem] font-normal leading-[1.08] tracking-[-0.025em] text-ink sm:text-5xl">
+          <h1 className="mt-4 font-display text-[2.3rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink sm:text-5xl">
             {post.meta.title}
           </h1>
           <div className="mt-5 flex flex-wrap gap-1.5">
@@ -91,8 +91,8 @@ export default async function BlogPostPage({
           <MDXRemote source={post.content} />
         </div>
 
-        <div className="theme-ink my-16 rounded-[2rem] p-8 sm:p-10">
-          <h2 className="font-display text-[1.75rem] font-normal leading-tight tracking-[-0.015em] text-ink">
+        <div className="theme-ink my-16 rounded-[var(--radius-card)] p-8 sm:p-10">
+          <h2 className="font-display text-[1.75rem] font-extrabold leading-tight tracking-[-0.04em] text-ink">
             {t("ctaTitle")}
           </h2>
           <p className="mt-3 text-muted">{t("ctaText")}</p>

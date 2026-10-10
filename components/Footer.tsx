@@ -1,12 +1,12 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Mail, ArrowUp } from "lucide-react";
+import { CalendarDays, Mail, ArrowUp } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { Brandmark } from "@/components/Brandmark";
-import { LinkedinIcon, WhatsappIcon } from "@/components/icons";
+import { Wordmark } from "@/components/Brandmark";
+import { LinkedinIcon } from "@/components/icons";
 import { buttonClass, ButtonArrow } from "@/components/ui/Button";
-import { siteConfig, whatsappUrl, mailtoUrl } from "@/lib/site";
+import { siteConfig, mailtoUrl } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
 const sectionLinks = [
@@ -26,10 +26,10 @@ export function Footer() {
 
   const contacts = [
     {
-      label: "WhatsApp",
-      value: siteConfig.phoneDisplay,
-      href: whatsappUrl(siteConfig.whatsappMessage[locale]),
-      icon: WhatsappIcon,
+      label: t("Contact.bookCall"),
+      value: t("Contact.bookCall"),
+      href: siteConfig.links.cal,
+      icon: CalendarDays,
       external: true,
     },
     {
@@ -49,12 +49,12 @@ export function Footer() {
   ];
 
   return (
-    <footer className="theme-ink relative mt-8">
+    <footer className="theme-ink relative">
       {/* Closing call to action */}
       <div className="mx-auto max-w-6xl px-5 pt-20 sm:px-8 sm:pt-24">
         <div className="flex flex-col items-start justify-between gap-8 border-b border-border pb-16 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="font-display text-4xl leading-[1.05] tracking-[-0.02em] text-ink sm:text-6xl">
+            <p className="font-display text-[2.6rem] font-extrabold leading-[1] tracking-[-0.045em] text-ink sm:text-[4.2rem]">
               {t("Footer.ctaTitle")}
             </p>
             <p className="mt-4 text-lg text-muted">{t("Footer.ctaText")}</p>
@@ -74,19 +74,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
         <div className="grid gap-12 md:grid-cols-[1.3fr_0.8fr_1.2fr]">
           <div>
-            <div className="flex items-center gap-2.5 text-ink">
-              <Brandmark size={30} />
-              <span className="font-display text-[1.35rem] font-semibold tracking-[-0.02em]">
-                {siteConfig.name}
-              </span>
-            </div>
+            <Wordmark className="text-ink" />
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
               {t("Footer.tagline")}
             </p>
           </div>
 
           <div>
-            <h2 className="mb-4 text-sm font-medium text-faint">
+            <h2 className="mb-4 text-[13px] font-bold uppercase tracking-[0.14em] text-faint">
               {t("Footer.sections")}
             </h2>
             <ul className="space-y-2.5">
@@ -104,7 +99,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="mb-4 text-sm font-medium text-faint">
+            <h2 className="mb-4 text-[13px] font-bold uppercase tracking-[0.14em] text-faint">
               {t("Footer.elsewhere")}
             </h2>
             <ul className="space-y-3">
@@ -118,7 +113,7 @@ export function Footer() {
                   >
                     <c.icon className="h-4 w-4 shrink-0 text-muted transition-colors group-hover:text-accent" />
                     <span>
-                      <span className="text-faint">{c.label} · </span>
+                      <span className="sr-only">{c.label}: </span>
                       {c.value}
                     </span>
                   </a>

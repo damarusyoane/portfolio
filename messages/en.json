@@ -14,59 +14,194 @@
   },
   "Hero": {
     "eyebrow": "AI automation agency for small businesses",
-    "headlineTop": "Your customers get a reply in under a minute.",
-    "headlineAccent": "Even at 11 pm.",
-    "tagline": "AI assistants and automations for small businesses: WhatsApp replies, bookings, invoice reminders. You get hours back, and no customer is left waiting.",
+    "headlineTop": "The busywork",
+    "headlineAccent": "runs itself.",
+    "headlineEnd": "You run the business.",
+    "tagline": "Ottomate builds AI automations for small businesses: replies to calls and messages, bookings and reminders, invoice follow-ups, Google reviews, lead qualification, reporting. All plugged into the tools you already use.",
     "ctaPrimary": "Book a free audit",
     "ctaSecondary": "See real examples",
     "reassurance": ["30 minutes, free", "No commitment", "Reply within 24 h"],
-    "proofLabel": "Trusted with their automations",
+    "proofLabel": "Businesses that trust us with their automations",
     "clients": ["Maison237", "Airplace", "Nubet"],
-    "proofStat": "30+ automations in production",
+    "proofStatValue": "30+",
+    "proofStat": "automations running in production",
     "demo": {
-      "business": "Horizon Realty",
-      "status": "AI assistant · online",
-      "day": "Today",
-      "messages": [
-        { "from": "client", "text": "Hi, is the 2-bedroom downtown apartment still available?", "time": "11:12 PM" },
-        { "from": "bot", "text": "Hi! Yes, it's still available. I can offer you a viewing tomorrow at 10 am or 4 pm. Which works best for you?", "time": "11:12 PM" },
-        { "from": "client", "text": "4 pm works.", "time": "11:13 PM" },
-        { "from": "bot", "text": "You're booked for tomorrow at 4 pm. You'll get a reminder that morning. Have a good evening!", "time": "11:13 PM" }
-      ],
-      "notifTitle": "Viewing booked",
-      "notifText": "Tomorrow 4:00 PM · calendar and CRM updated, agent notified",
-      "caption": "A typical conversation handled by an Ottomate assistant"
+      "composer": "Text Message",
+      "tabsLabel": "Examples by service",
+      "caption": "Typical exchanges handled by Ottomate automations",
+      "scenarios": [
+        {
+          "tab": "Missed calls",
+          "business": "Bright Smile Dental",
+          "initials": "BS",
+          "status": "AI assistant on",
+          "trigger": "Missed call at 9:47 PM",
+          "sticker": "Replied in 5 seconds",
+          "stickerText": "after a missed call at 9:47 PM",
+          "notifTitle": "Appointment booked",
+          "notifText": "Tomorrow at 9:30 AM. Calendar updated, front desk notified.",
+          "messages": [
+            {
+              "from": "bot",
+              "text": "Hi, this is Bright Smile Dental. Sorry we missed your call! How can we help?",
+              "time": "9:47 PM"
+            },
+            {
+              "from": "client",
+              "text": "I chipped a tooth tonight. Can I come in tomorrow?",
+              "time": "9:48 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Sorry to hear that! Dr. Patel has an opening tomorrow at 9:30 am or 2:15 pm. Which works better?",
+              "time": "9:48 PM"
+            },
+            {
+              "from": "client",
+              "text": "9:30 please",
+              "time": "9:49 PM"
+            },
+            {
+              "from": "bot",
+              "text": "You're booked for tomorrow at 9:30 am. We'll text you a reminder in the morning. Take care!",
+              "time": "9:49 PM"
+            }
+          ]
+        },
+        {
+          "tab": "Invoices",
+          "business": "Northside Plumbing",
+          "initials": "NP",
+          "status": "Automated follow-up",
+          "trigger": "Invoice #1048 is 5 days overdue",
+          "sticker": "Invoice follow-up",
+          "stickerText": "polite, on time, automatic",
+          "notifTitle": "Invoice paid",
+          "notifText": "$1,250 received. QuickBooks updated.",
+          "messages": [
+            {
+              "from": "bot",
+              "text": "Hi Mark, a quick reminder from Northside Plumbing: invoice #1048 ($1,250) was due on Oct 3. You can pay securely here: northside.co/pay/1048",
+              "time": "9:00 AM"
+            },
+            {
+              "from": "client",
+              "text": "Sorry, it slipped my mind! Paying now.",
+              "time": "9:14 AM"
+            },
+            {
+              "from": "bot",
+              "text": "Thanks Mark, payment received. Your receipt is on its way by email.",
+              "time": "9:21 AM"
+            }
+          ]
+        },
+        {
+          "tab": "Google reviews",
+          "business": "Maple Leaf Auto Care",
+          "initials": "ML",
+          "status": "Automated follow-up",
+          "trigger": "Service completed at 4:10 PM",
+          "sticker": "Review requests",
+          "stickerText": "sent after every visit",
+          "notifTitle": "New 5-star review",
+          "notifText": "Posted on your Google Business Profile",
+          "messages": [
+            {
+              "from": "bot",
+              "text": "Hi Sarah, thanks for choosing Maple Leaf Auto Care today! How did we do? Reply with a number from 1 to 5.",
+              "time": "4:30 PM"
+            },
+            {
+              "from": "client",
+              "text": "5! Quick and friendly as always",
+              "time": "4:42 PM"
+            },
+            {
+              "from": "bot",
+              "text": "That means a lot, thank you! Would you share it on Google? It takes 30 seconds: g.page/r/mapleleaf",
+              "time": "4:42 PM"
+            }
+          ]
+        },
+        {
+          "tab": "Reminders",
+          "business": "Casa Verde",
+          "initials": "CV",
+          "status": "Automated reminder",
+          "trigger": "Reminder sent 24 h before",
+          "sticker": "Appointment reminders",
+          "stickerText": "fewer no-shows, no phone calls",
+          "notifTitle": "Booking confirmed",
+          "notifText": "Tomorrow at 7:30 PM. Table held, no call needed.",
+          "messages": [
+            {
+              "from": "bot",
+              "text": "Hi Daniel, see you tomorrow at Casa Verde: table for 4 at 7:30 PM. Reply YES to confirm or CHANGE to pick another time.",
+              "time": "6:00 PM"
+            },
+            {
+              "from": "client",
+              "text": "YES",
+              "time": "6:03 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Perfect, you're confirmed. See you tomorrow!",
+              "time": "6:03 PM"
+            }
+          ]
+        }
+      ]
     }
   },
   "Pains": {
     "kicker": "The problem",
-    "title": "What's costing you customers, without you noticing",
-    "subtitle": "It's not your team's fault. They're doing by hand what a well-built system would do faster, without forgetting and without getting tired.",
+    "title": "What's quietly costing you <hl>customers</hl>",
+    "subtitle": "It's not your team's fault. They're doing by hand what a well-built system does faster, without forgetting and without getting tired.",
     "items": [
-      { "title": "Messages left unanswered", "text": "A prospect writes in the evening or on the weekend. By morning, they've bought from whoever replied first." },
-      { "title": "Invoices nobody chases", "text": "Chasing payments is awkward, so it gets pushed back. Meanwhile, your cash sits with your customers." },
-      { "title": "Missed appointments", "text": "Without a reminder, some customers simply forget. The slot is lost and nobody fills it." },
-      { "title": "The same questions, a hundred times a week", "text": "Prices, opening hours, delivery times… Your team answers on repeat instead of handling real work." },
-      { "title": "Data typed in by hand", "text": "The same information entered in the spreadsheet, the CRM and the accounting tool. Mistakes are inevitable." },
-      { "title": "Numbers nobody looks at", "text": "Putting a report together takes half a day, so nobody does it. You end up steering by gut feeling." }
+      {
+        "title": "Calls that go to voicemail",
+        "text": "You're on a job or with a client. The caller doesn't leave a message: they just call the next business on Google."
+      },
+      {
+        "title": "Messages left unanswered",
+        "text": "A prospect writes in the evening or on the weekend. By morning, they've booked with whoever replied first."
+      },
+      {
+        "title": "Invoices nobody chases",
+        "text": "Chasing payments is awkward, so it gets pushed back. Meanwhile, your cash sits with your customers."
+      },
+      {
+        "title": "Missed appointments",
+        "text": "Without a reminder, some customers simply forget. The slot is lost and nobody fills it."
+      },
+      {
+        "title": "The same questions, a hundred times a week",
+        "text": "Prices, opening hours, availability… Your team answers on repeat instead of handling real work."
+      },
+      {
+        "title": "Data typed in by hand",
+        "text": "The same information entered in the spreadsheet, the CRM and the accounting tool. Mistakes are inevitable."
+      }
     ],
     "closing": "The good news: all of this can be automated, with the tools you already use.",
     "closingLink": "See the solutions"
   },
   "Offers": {
     "kicker": "Solutions",
-    "title": "Start with what's costing you the most",
+    "title": "Start with what's costing you <hl>the most</hl>",
     "subtitle": "Each solution fixes one specific problem. Start with one, then add the others once you've seen the results.",
     "metricLabel": "On a delivered project",
     "caseLink": "See the full case study",
-    "screenshotAlt": "Real screenshot: {name}",
+    "screenshotAlt": "Example of a message sent by the system: {name}",
     "ctaText": "Not sure where to start? That's exactly what the free audit is for.",
     "cta": "Book a free audit",
     "items": [
       {
         "tab": "Leads & sales",
         "title": "Reply to every lead in under a minute",
-        "text": "An AI assistant replies on WhatsApp, by email or on your website, asks the right questions and offers a time to talk. Serious leads land in your CRM and you're notified right away.",
+        "text": "An AI assistant replies by text, email, WhatsApp or on your website, asks the right questions and offers a time to talk. Serious leads land in your CRM and you're notified right away.",
         "points": ["Instant replies, day and night", "Qualification: need, budget, timing", "Automatic follow-ups until the lead responds"],
         "metric": "3×",
         "metricText": "more leads converted"
@@ -75,7 +210,7 @@
         "tab": "Customer support",
         "title": "Support that gets it right, at any hour",
         "text": "The assistant answers common questions using only your information: prices, hours, terms. It never makes up a price and hands over to your team whenever it should.",
-        "points": ["On WhatsApp, Telegram or your website", "Answers drawn from your own documents", "Clean handoff to a human"],
+        "points": ["By text, on your website, WhatsApp or Telegram", "Answers drawn from your own documents", "Clean handoff to a human"],
         "metric": "~30%",
         "metricText": "more enquiries captured"
       },
@@ -107,7 +242,7 @@
   },
   "Work": {
     "kicker": "Work",
-    "title": "Systems running in production, not mock-ups",
+    "title": "Systems running in production, <hl>not mock-ups</hl>",
     "subtitle": "A few automations we've designed and put into service. Each case study covers the starting problem, the solution, screenshots and key numbers.",
     "viewCase": "Read the case",
     "moreTitle": "More technical projects",
@@ -115,31 +250,117 @@
   },
   "Trust": {
     "kicker": "Testimonials",
-    "title": "What our clients say",
+    "title": "Our clients say it <hl>better</hl> than we do",
     "testimonials": [
-      { "quote": "Ottomate deployed our lead automation and it's been a game-changer: we respond faster, we secure our clients, and we've doubled our revenue. We'll definitely work with them again and recommend them 100%.", "name": "Maison237", "role": "Real-estate developer" },
-      { "quote": "We're really happy with the WhatsApp AI assistant Ottomate deployed for us. We reply to customers fast now, and the AI feels human, so clients get a real sense of trust and professionalism. Thank you for everything!", "name": "Airplace", "role": "Phone shop" },
-      { "quote": "Ottomate builds and runs our production automation: AI content, SEO quality checks and data pipelines that keep the agency running every day.", "name": "Nubet", "role": "Digital agency" }
+      {
+        "name": "Maison237",
+        "role": "Real-estate developer",
+        "result": "2×",
+        "resultLabel": "revenue",
+        "headline": "“We doubled our revenue.”",
+        "quote": "Before Ottomate, leads waited hours for an answer and some never heard back. Now every enquiry gets a reply within a minute, the serious ones land straight in our pipeline, and our sales team only calls people who are ready to move. Our next projects are already lined up with them."
+      },
+      {
+        "name": "Airplace",
+        "role": "Phone shop",
+        "result": "24/7",
+        "resultLabel": "replies in seconds",
+        "headline": "“Customers think they're talking to my best salesperson.”",
+        "quote": "The WhatsApp assistant answers prices, stock and opening hours in seconds, day and night. It sounds human, it never makes up a price, and the moment someone is ready to buy, I get a ping. Customers keep telling me how professional we've become."
+      },
+      {
+        "name": "Nubet",
+        "role": "Digital agency",
+        "result": "Every day",
+        "resultLabel": "runs on its own, monitored",
+        "headline": "“Our production runs every day without us touching it.”",
+        "quote": "Ottomate built and runs the automations behind our agency: AI content, SEO quality checks and data pipelines. Everything is monitored, and when something needs fixing, it's usually handled before we even notice."
+      }
     ],
     "guaranteesTitle": "Our commitments",
     "guarantees": [
-      { "title": "Free audit, no commitment", "text": "You leave with a clear plan, whether we work together or not." },
-      { "title": "Fixed price, agreed upfront", "text": "No hourly billing that spirals. You know exactly what you'll pay." },
-      { "title": "Your data stays yours", "text": "Can be hosted on your own servers, with access limited to the strict minimum." }
+      {
+        "title": "Free audit, no commitment",
+        "text": "You leave with a clear plan, whether we work together or not."
+      },
+      {
+        "title": "Fixed price, agreed upfront",
+        "text": "No hourly billing that spirals. You know exactly what you'll pay."
+      },
+      {
+        "title": "Your data stays yours",
+        "text": "Can be hosted on your own servers, with access limited to the strict minimum."
+      }
     ]
   },
   "Pricing": {
     "kicker": "Pricing",
-    "title": "Clear pricing that pays for itself in weeks",
+    "title": "Clear pricing that <hl>pays for itself</hl> in weeks",
     "subtitle": "A one-time setup, then a monthly plan that covers hosting, monitoring and support.",
     "popular": "Most popular",
     "cta": "Start with an audit",
-    "note": "Indicative pricing. Your exact quote is set after the free audit, based on scope.",
+    "note": "Indicative pricing in US dollars. Your exact quote is set after the free audit, based on scope.",
     "plans": [
-      { "name": "Starter", "tagline": "One automation, done right", "price": "from $500", "priceSuffix": "setup + $150/mo", "features": ["1 automation built and put into service", "Hosting and monitoring included", "Email support", "Fixes and tweaks included"] },
-      { "name": "Growth", "tagline": "A real system for your business", "price": "from $1,500", "priceSuffix": "setup + $400/mo", "features": ["Up to 3 connected automations", "Everything in Starter", "Priority support", "Monthly optimization review"], "popular": true },
-      { "name": "Partner", "tagline": "Your automation team", "price": "Custom", "priceSuffix": "based on your needs", "features": ["Wider scope, delivered in stages", "Dedicated roadmap", "Hosting on your own servers available", "Long-term support"] }
+      {
+        "name": "Starter",
+        "tagline": "One automation, done right",
+        "price": "from $500",
+        "priceSuffix": "setup + $150/mo",
+        "features": ["1 automation built and put into service", "Hosting and monitoring included", "Email support", "Fixes and tweaks included"]
+      },
+      {
+        "name": "Growth",
+        "tagline": "A real system for your business",
+        "price": "from $1,500",
+        "priceSuffix": "setup + $400/mo",
+        "features": ["Up to 3 connected automations", "Everything in Starter", "Priority support", "Monthly optimization review"],
+        "popular": true
+      },
+      {
+        "name": "Partner",
+        "tagline": "Your automation team",
+        "price": "Custom",
+        "priceSuffix": "based on your needs",
+        "features": ["Wider scope, delivered in stages", "Dedicated roadmap", "Hosting on your own servers available", "Long-term support"]
+      }
     ]
+  },
+  "Tools": {
+    "title": "Plugged into the tools you already use",
+    "text": "No new software to learn. We connect the tools you already have.",
+    "items": [
+      "Text messages (SMS)",
+      "WhatsApp",
+      "Gmail",
+      "Google Calendar",
+      "Calendly",
+      "Google Sheets",
+      "Shopify",
+      "WooCommerce",
+      "Stripe",
+      "QuickBooks",
+      "Xero",
+      "HubSpot",
+      "Notion",
+      "Slack",
+      "Telegram"
+    ],
+    "more": "and many more"
+  },
+  "Calculator": {
+    "kicker": "Do the math",
+    "title": "What do repetitive tasks <hl>really cost</hl> you?",
+    "subtitle": "Answering the same questions, copying data, chasing, scheduling. Move the sliders to see what that time adds up to over a year.",
+    "people": "People on your team doing this",
+    "hours": "Hours per week, per person",
+    "rate": "Cost of one hour of work",
+    "rateHint": "Loaded salary divided by hours worked. If it's you, count what an hour of your time is worth.",
+    "resultLabel": "What these tasks cost you every year",
+    "resultHours": "{hours} hours a year, about {days} full working days.",
+    "half": "Automate just half of it and you get back <amount></amount> a year.",
+    "compare": "Compare that with a setup starting at $500. The exact figure depends on your tasks: that's what the audit is for.",
+    "cta": "Get my precise estimate",
+    "method": "Based on {weeks} working weeks a year. Indicative estimate."
   },
   "Industries": {
     "kicker": "Industries",
@@ -154,21 +375,37 @@
     "title": "Everything we can automate for you",
     "subtitle": "Practical automations for every part of the business: sales, support, finance, operations, marketing, HR. Filter by what you do.",
     "all": "All",
-    "count": "{count} automations · {domains} areas"
+    "count": "{count} automations in {domains} areas"
   },
   "Process": {
     "kicker": "Process",
-    "title": "From first call to a system that runs on its own",
+    "title": "From first call to a system that <hl>runs on its own</hl>",
     "subtitle": "Simple and low-risk: you know what you'll gain before committing to anything.",
     "steps": [
-      { "when": "30 min", "title": "Free audit", "text": "We go through how you work and pinpoint the tasks costing you the most time or sales." },
-      { "when": "After the call", "title": "Plan and fixed price", "text": "You get the three most profitable automations for your case, the estimated gain for each, and a fixed quote. No jargon." },
-      { "when": "A few days to a few weeks", "title": "Build and launch", "text": "We build, test on your real cases, then go live. Everything is monitored: if something goes wrong, we know before you do." },
-      { "when": "Every month", "title": "Support and improvements", "text": "We tune, optimize and add new automations whenever you're ready." }
+      {
+        "when": "30 min",
+        "title": "Free audit",
+        "text": "We go through how you work and pinpoint the tasks costing you the most time or sales."
+      },
+      {
+        "when": "After the call",
+        "title": "Plan and fixed price",
+        "text": "You get the three most profitable automations for your case, the estimated gain for each, and a fixed quote. No jargon."
+      },
+      {
+        "when": "A few days to a few weeks",
+        "title": "Build and launch",
+        "text": "We build, test on your real cases, then go live. Everything is monitored: if something goes wrong, we know before you do."
+      },
+      {
+        "when": "Every month",
+        "title": "Support and improvements",
+        "text": "We tune, optimize and add new automations whenever you're ready."
+      }
     ]
   },
   "BookCall": {
-    "badge": "Free · 30 minutes · no commitment",
+    "badge": "Free, 30 minutes, no commitment",
     "title": "Let's find the first 3 tasks worth automating",
     "subtitle": "In 30 minutes, we look at how you work today. You leave with a clear list: what to automate, in what order, and what it could bring in.",
     "points": [
@@ -178,7 +415,7 @@
       "Straight answers, no sales pressure"
     ],
     "cta": "Pick a time",
-    "note": "Prefer to write? WhatsApp and the contact form are below.",
+    "note": "Prefer to write? The contact form is just below.",
     "embedTitle": "Ottomate booking calendar"
   },
   "LeadMagnet": {
@@ -199,27 +436,61 @@
     "kicker": "FAQ",
     "title": "Questions we get before we start",
     "items": [
-      { "q": "Do I need any technical knowledge?", "a": "None. You tell us how you work; we handle everything technical and hand over a system that just runs, with simple documentation." },
-      { "q": "What if the AI gets it wrong or makes something up?", "a": "The assistant only answers from the information you give us: prices, hours, terms. If it doesn't know, it says so and passes the conversation to your team. You approve the tone and answers before anything goes live." },
-      { "q": "How much does it cost?", "a": "It depends on scope, which is why we quote after the free audit. Typically: a one-time setup, then a small monthly fee for hosting and maintenance. Most automations pay for themselves within a few weeks." },
-      { "q": "How long does it take?", "a": "A simple automation ships in a few days, a larger system in a few weeks. The timeline is in your quote, and we deliver in stages so you see results early." },
-      { "q": "Will it work with the tools I already use?", "a": "Almost always. We connect what you already have: WhatsApp, email, spreadsheets, CRM, calendar, online store, accounting software. You don't need to switch anything." },
-      { "q": "Is my data safe?", "a": "Yes. We can host everything on your own servers or a private instance, credentials are stored securely, and every access is limited to the strict minimum." },
-      { "q": "What happens if something breaks?", "a": "Every system has automatic retries, fallbacks and alerts, so we're notified before you are. Maintenance is included in the monthly plan." }
-    ]
+      {
+        "q": "Do I need any technical knowledge?",
+        "a": "None. You tell us how you work; we handle everything technical and hand over a system that just runs, with simple documentation."
+      },
+      {
+        "q": "What if the AI gets it wrong or makes something up?",
+        "a": "The assistant only answers from the information you give us: prices, hours, terms. If it doesn't know, it says so and passes the conversation to your team. You approve the tone and answers before anything goes live."
+      },
+      {
+        "q": "How much does it cost?",
+        "a": "It depends on scope, which is why we quote after the free audit. Typically: a one-time setup, then a small monthly fee for hosting and maintenance. Most automations pay for themselves within a few weeks."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "A simple automation ships in a few days, a larger system in a few weeks. The timeline is in your quote, and we deliver in stages so you see results early."
+      },
+      {
+        "q": "Will it work with the tools I already use?",
+        "a": "Almost always. We connect what you already use: your phone line and text messages, WhatsApp, email, spreadsheets, CRM, calendar, online store, accounting software. You don't have to change anything."
+      },
+      {
+        "q": "Is my data safe?",
+        "a": "Yes. We can host everything on your own servers or a private instance, credentials are stored securely, and every access is limited to the strict minimum."
+      },
+      {
+        "q": "What happens if something breaks?",
+        "a": "Every system has automatic retries, fallbacks and alerts, so we're notified before you are. Maintenance is included in the monthly plan."
+      }
+    ],
+    "askByEmail": "Ask your question by email"
   },
   "About": {
     "kicker": "About us",
-    "title": "You talk directly to the people building your system",
+    "title": "You talk <hl>directly</hl> to the people building your system",
     "p1": "Ottomate was founded by Damarus Ngankou, a software engineer specialized in AI and automation. Since 2024 he has been building production automations for digital agencies and neighborhood businesses alike.",
     "p2": "Our rule is simple: a system is only worth something if it runs without you. Every automation is tested on your real cases, monitored around the clock and clearly documented, so you always know what's going on.",
-    "p3": "We work remotely, in English and French. There's no salesperson between us: the person listening to you on the audit call is the one who builds.",
+    "p3": "We work remotely with businesses around the world, in English and French. There's no salesperson between us: the person listening to you on the audit call is the one who builds.",
     "linkedin": "View LinkedIn profile",
     "facts": [
-      { "value": "30+", "label": "automations delivered" },
-      { "value": "EN · FR", "label": "bilingual support" },
-      { "value": "< 24h", "label": "to get back to you" },
-      { "value": "24/7", "label": "monitoring of your systems" }
+      {
+        "value": "30+",
+        "label": "automations delivered"
+      },
+      {
+        "value": "EN + FR",
+        "label": "bilingual support"
+      },
+      {
+        "value": "< 24h",
+        "label": "to get back to you"
+      },
+      {
+        "value": "24/7",
+        "label": "monitoring of your systems"
+      }
     ]
   },
   "BlogPreview": {
@@ -240,7 +511,7 @@
     "email": "Email",
     "emailPlaceholder": "you@company.com",
     "subject": "Subject",
-    "subjectPlaceholder": "E.g. answering WhatsApp customers in the evening",
+    "subjectPlaceholder": "E.g. replying to texts and calls after hours",
     "message": "Message",
     "messagePlaceholder": "What your business does, the tasks taking up your time, the tools you use…",
     "send": "Send message",
@@ -252,8 +523,9 @@
     "fastest": "Fastest",
     "linkedin": "LinkedIn",
     "emailDirect": "Email",
-    "whatsapp": "WhatsApp",
-    "availability": "Taking on new projects"
+    "availability": "Taking on new projects",
+    "bookCall": "Book a 30-min call",
+    "bookCallValue": "Pick a time that suits you"
   },
   "Footer": {
     "tagline": "AI automation agency. We help small businesses answer customers faster, get paid on time and spend less time on admin.",
@@ -295,7 +567,7 @@
     "ctaButton": "Book a free audit"
   },
   "Cookies": {
-    "text": "We use cookies to measure traffic and improve the site. Analytics and ads only run if you accept.",
+    "text": "Analytics and ad cookies, switched on only if you accept.",
     "learnMore": "Learn more",
     "accept": "Accept",
     "reject": "Decline"
@@ -305,8 +577,7 @@
     "switchToFr": "Passer en français",
     "switchToEn": "Switch to English",
     "menu": "Menu",
-    "close": "Close",
-    "whatsappLabel": "Message us on WhatsApp"
+    "close": "Close"
   },
   "NotFound": {
     "title": "Page not found",

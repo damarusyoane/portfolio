@@ -23,58 +23,51 @@ export default async function OpengraphImage({
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px 80px",
-        background: "#f6f4ef",
-        fontFamily: "serif",
+        background: "#0c3a2b",
+        fontFamily: "sans-serif",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-        <svg width={60} height={60} viewBox="0 0 40 40" fill="none">
-          <circle cx={20} cy={20} r={13.5} stroke="#161512" strokeWidth={3.2} />
-          <path
-            d="M8.31 13.75 A 13.5 13.5 0 0 1 31.69 13.75"
-            stroke="#e4572e"
-            strokeWidth={4.6}
-            strokeLinecap="round"
-          />
-          <circle cx={31.69} cy={13.75} r={3.4} fill="#e4572e" />
-        </svg>
-        <div style={{ color: "#161512", fontSize: 34, fontWeight: 700 }}>
-          {siteConfig.name}
-        </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
         <div
           style={{
-            marginLeft: 12,
-            color: "#5c584f",
-            fontSize: 24,
-            fontFamily: "sans-serif",
+            display: "flex",
+            color: "#ffffff",
+            fontSize: 44,
+            fontWeight: 800,
+            letterSpacing: -2,
           }}
         >
-          {t("eyebrow")}
+          ottomate<span style={{ color: "#ffd23f" }}>.</span>
         </div>
+        <div style={{ color: "#b9d1c5", fontSize: 24 }}>{t("eyebrow")}</div>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
           style={{
-            color: "#161512",
-            fontSize: 72,
-            lineHeight: 1.05,
-            letterSpacing: -2,
-            maxWidth: 1000,
+            display: "flex",
+            flexWrap: "wrap",
+            color: "#ffffff",
+            fontSize: 84,
+            fontWeight: 800,
+            lineHeight: 1.02,
+            letterSpacing: -3,
+            maxWidth: 1040,
           }}
         >
-          {t("headlineTop")}
+          {t("headlineTop")}&nbsp;
+          <span style={{ color: "#ffd23f" }}>{t("headlineAccent")}</span>
         </div>
         <div
           style={{
-            color: "#e4572e",
-            fontSize: 72,
-            lineHeight: 1.1,
-            fontStyle: "italic",
-            letterSpacing: -2,
+            color: "#ffffff",
+            fontSize: 84,
+            fontWeight: 800,
+            lineHeight: 1.05,
+            letterSpacing: -3,
           }}
         >
-          {t("headlineAccent")}
+          {t("headlineEnd")}
         </div>
       </div>
 
@@ -83,14 +76,22 @@ export default async function OpengraphImage({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          borderTop: "2px solid #161512",
-          paddingTop: 24,
-          color: "#34322d",
+          color: "#e1ede7",
           fontSize: 26,
-          fontFamily: "sans-serif",
         }}
       >
-        <div>{t("ctaPrimary")}</div>
+        <div
+          style={{
+            display: "flex",
+            background: "#ffd23f",
+            color: "#0c1f18",
+            padding: "14px 26px",
+            borderRadius: 14,
+            fontWeight: 700,
+          }}
+        >
+          {t("ctaPrimary")} →
+        </div>
         <div>ottomateagency.com</div>
       </div>
     </div>,

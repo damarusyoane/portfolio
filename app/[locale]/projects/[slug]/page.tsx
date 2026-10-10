@@ -82,9 +82,9 @@ export default async function ProjectPage({
             <span className="font-medium" style={{ color: accent }}>
               {project.domain[l]}
             </span>
-            <span className="text-faint">· {project.year}</span>
+            <span className="text-faint">{project.year}</span>
           </p>
-          <h1 className="mt-4 font-display text-[2.4rem] font-normal leading-[1.05] tracking-[-0.025em] text-ink sm:text-[3.4rem]">
+          <h1 className="mt-4 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.04em] text-ink sm:text-[3.4rem]">
             {project.title[l]}
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted sm:text-xl">
@@ -94,7 +94,7 @@ export default async function ProjectPage({
 
         {/* Metrics */}
         <Reveal className="mt-12">
-          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-surface sm:grid-cols-3">
+          <div className="grid grid-cols-1 overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface sm:grid-cols-3">
             {project.metrics.map((m, i) => (
               <div
                 key={m.value}
@@ -105,7 +105,7 @@ export default async function ProjectPage({
                     : "")
                 }
               >
-                <p className="font-display text-4xl font-normal tracking-[-0.02em] text-ink">
+                <p className="hl inline font-display text-4xl font-extrabold tracking-[-0.04em] text-ink">
                   {formatMetric(m.value, l)}
                 </p>
                 <p className="mt-2 text-sm leading-snug text-muted">
@@ -133,7 +133,7 @@ export default async function ProjectPage({
           <Reveal className="mt-12">
             <VideoEmbed
               url={project.loomUrl}
-              title={`${t("demo")} · ${project.title[l]}`}
+              title={`${t("demo")}: ${project.title[l]}`}
               playLabel={t("demo")}
             />
           </Reveal>
@@ -166,7 +166,7 @@ export default async function ProjectPage({
                 key={i}
                 className="grid grid-cols-[2.5rem_1fr] gap-x-3 border-t border-border py-5"
               >
-                <span className="font-display text-xl italic leading-7 text-accent">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent font-display text-[15px] font-extrabold text-[#0c1f18]">
                   {i + 1}
                 </span>
                 <p className="text-[16px] leading-relaxed text-ink-soft">
@@ -208,9 +208,9 @@ export default async function ProjectPage({
 
         {/* CTA */}
         <Reveal className="mt-20">
-          <div className="theme-ink flex flex-col items-start gap-6 rounded-[2rem] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+          <div className="theme-ink flex flex-col items-start gap-6 rounded-[var(--radius-card)] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
             <div>
-              <h2 className="font-display text-3xl font-normal leading-tight tracking-[-0.02em] text-ink">
+              <h2 className="font-display text-3xl font-extrabold leading-tight tracking-[-0.04em] text-ink">
                 {t("ctaTitle")}
               </h2>
               <p className="mt-2 max-w-md text-muted">{t("ctaText")}</p>
@@ -234,7 +234,7 @@ export default async function ProjectPage({
         >
           <div>
             <p className="text-sm text-faint">{t("nextLabel")}</p>
-            <p className="mt-1 font-display text-2xl text-ink transition-colors group-hover:text-accent-ink">
+            <p className="mt-1 font-display text-2xl font-bold tracking-[-0.025em] text-ink transition-colors group-hover:text-accent-ink">
               {next.title[l]}
             </p>
           </div>
@@ -254,7 +254,7 @@ function Section({
 }) {
   return (
     <Reveal className="mt-16">
-      <h2 className="mb-6 font-display text-[1.75rem] font-normal tracking-[-0.015em] text-ink sm:text-[2rem]">
+      <h2 className="mb-6 font-display text-[1.75rem] font-extrabold tracking-[-0.04em] text-ink sm:text-[2rem]">
         {title}
       </h2>
       {children}

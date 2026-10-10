@@ -41,8 +41,8 @@ export const projects: Project[] = [
       fr: "Système distribué d'automatisation d'assets",
     },
     domain: {
-      en: "Distributed systems · Browser automation",
-      fr: "Systèmes distribués · Automatisation navigateur",
+      en: "Distributed systems, Browser automation",
+      fr: "Systèmes distribués, Automatisation navigateur",
     },
     tagline: {
       en: "A one-click internal service that retrieves large licensed assets from a no-API, anti-bot platform — backed by a self-healing fleet of browser agents.",
@@ -121,8 +121,8 @@ export const projects: Project[] = [
       fr: "Moteur d'audit SEO propulsé par l'IA",
     },
     domain: {
-      en: "Data pipelines · Applied AI",
-      fr: "Pipelines de données · IA appliquée",
+      en: "Data pipelines, Applied AI",
+      fr: "Pipelines de données, IA appliquée",
     },
     tagline: {
       en: "Turns a manual SEO QA checklist into a repeatable pipeline that crawls live pages, compares them to the brief with an LLM, and ships actionable fixes.",
@@ -197,8 +197,8 @@ export const projects: Project[] = [
       fr: "Agent IA de création de campagnes Google Ads",
     },
     domain: {
-      en: "Paid ads · Marketing automation",
-      fr: "Publicité · Automatisation marketing",
+      en: "Paid ads, Marketing automation",
+      fr: "Publicité, Automatisation marketing",
     },
     tagline: {
       en: "Turns a one-line product brief into a ready-to-import Google Ads Search campaign — keyword themes, ad groups and RSAs written by AI, exported straight to Google Ads Editor.",
@@ -265,7 +265,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-content-pipeline",
-    screenshot: "/projects/ai-content-pipeline.png",
+    screenshot: "/projects/ai-content-pipeline-v2.png",
     accent: "indigo",
     year: "2025",
     title: {
@@ -273,8 +273,8 @@ export const projects: Project[] = [
       fr: "Publication TikTok autonome",
     },
     domain: {
-      en: "Generative AI · Social media automation",
-      fr: "IA générative · Automatisation réseaux sociaux",
+      en: "Generative AI, Social media automation",
+      fr: "IA générative, Automatisation réseaux sociaux",
     },
     tagline: {
       en: "Every three days, an n8n workflow turns the latest n8n & AI news into a 45-second talking-avatar video and publishes it to TikTok through the official API — with no human in the loop.",
@@ -352,8 +352,8 @@ export const projects: Project[] = [
       fr: "Automatisation de contenu LLM résiliente",
     },
     domain: {
-      en: "LLM reliability · Content ops",
-      fr: "Fiabilité de l'IA · Production de contenu",
+      en: "LLM reliability, Content ops",
+      fr: "Fiabilité de l'IA, Production de contenu",
     },
     tagline: {
       en: "A scheduled content engine engineered around the unglamorous reality of LLMs in production: overload, quotas, and malformed output — with no silent failures.",
@@ -427,8 +427,8 @@ export const projects: Project[] = [
       fr: "Assistant de connaissances RAG",
     },
     domain: {
-      en: "Applied AI · Retrieval-augmented generation",
-      fr: "IA appliquée · Génération augmentée par récupération",
+      en: "Applied AI, Retrieval-augmented generation",
+      fr: "IA appliquée, Génération augmentée par récupération",
     },
     tagline: {
       en: "An assistant that answers staff questions grounded in the company's own documents — retrieval first, then a guard-railed LLM, always with citations.",
@@ -504,8 +504,8 @@ export const projects: Project[] = [
       fr: "Assistant d'appels vocaux IA",
     },
     domain: {
-      en: "Conversational AI · Outbound automation",
-      fr: "IA conversationnelle · Automatisation d'appels",
+      en: "Conversational AI, Outbound automation",
+      fr: "IA conversationnelle, Automatisation d'appels",
     },
     tagline: {
       en: "A fully autonomous outbound-calling pipeline: it reads your contacts, places real AI voice calls, analyses every conversation, logs it, and updates the CRM — with no human in the loop.",
@@ -583,8 +583,8 @@ export const projects: Project[] = [
       fr: "Assistant WhatsApp IA pour PME",
     },
     domain: {
-      en: "Conversational AI · Customer service",
-      fr: "IA conversationnelle · Service client",
+      en: "Conversational AI, Customer service",
+      fr: "IA conversationnelle, Service client",
     },
     tagline: {
       en: "A WhatsApp assistant that answers customers day and night from the business's own information, never invents a price, flags hot leads to the owner and hands over to a human when needed.",
@@ -642,8 +642,8 @@ export const projects: Project[] = [
       fr: "Système de rappels de rendez-vous",
     },
     domain: {
-      en: "Scheduling automation · Anti no-show",
-      fr: "Automatisation d'agenda · Rendez-vous manqués",
+      en: "Scheduling automation, Anti no-show",
+      fr: "Automatisation d'agenda, Rendez-vous manqués",
     },
     tagline: {
       en: "An automated engine that cuts no-shows by reminding clients 24 hours and 2 hours before their appointment, with duplicate-proof tracking.",
@@ -701,8 +701,8 @@ export const projects: Project[] = [
       fr: "Capture & relance de leads instantanée",
     },
     domain: {
-      en: "Sales automation · Speed-to-lead",
-      fr: "Automatisation commerciale · Réactivité",
+      en: "Sales automation, Speed-to-lead",
+      fr: "Automatisation commerciale, Réactivité",
     },
     tagline: {
       en: "Captures inbound leads, qualifies them with an LLM, auto-replies in under a minute, and alerts sales — because answering in 5 minutes instead of an hour wins the deal.",
@@ -760,8 +760,8 @@ export const projects: Project[] = [
       fr: "Automatisation des avis Google",
     },
     domain: {
-      en: "Reputation · Local marketing",
-      fr: "Réputation · Marketing local",
+      en: "Reputation, Local marketing",
+      fr: "Réputation, Marketing local",
     },
     tagline: {
       en: "After every sale, automatically asks happy customers for a Google review and routes unhappy ones to private feedback — more 5-star reviews, fewer public complaints.",
@@ -819,8 +819,8 @@ export const projects: Project[] = [
       fr: "Moteur de relances de paiement",
     },
     domain: {
-      en: "Finance automation · Cash flow",
-      fr: "Automatisation financière · Trésorerie",
+      en: "Finance automation, Cash flow",
+      fr: "Automatisation financière, Trésorerie",
     },
     tagline: {
       en: "A daily engine that chases unpaid invoices with escalating, polite reminders — get paid faster without the awkward manual follow-ups.",

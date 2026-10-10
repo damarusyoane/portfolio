@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import {
+  CalendarDays,
   Mail,
   Send,
   CheckCircle2,
@@ -10,12 +11,12 @@ import {
   Loader2,
   ArrowUpRight,
 } from "lucide-react";
-import { LinkedinIcon, WhatsappIcon } from "@/components/icons";
+import { LinkedinIcon } from "@/components/icons";
 import { Kicker } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { buttonClass } from "@/components/ui/Button";
 import { submitContact, type ContactState } from "@/lib/actions";
-import { siteConfig, whatsappUrl, mailtoUrl } from "@/lib/site";
+import { siteConfig, mailtoUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
 
@@ -39,11 +40,11 @@ export function Contact() {
 
   const directLinks = [
     {
-      label: t("whatsapp"),
-      value: siteConfig.phoneDisplay,
-      href: whatsappUrl(siteConfig.whatsappMessage[locale]),
-      icon: WhatsappIcon,
-      iconClass: "bg-[#25d366] text-white",
+      label: t("bookCall"),
+      value: t("bookCallValue"),
+      href: siteConfig.links.cal,
+      icon: CalendarDays,
+      iconClass: "bg-accent text-[#0c1f18]",
       badge: t("fastest"),
       external: true,
     },
@@ -72,7 +73,7 @@ export function Contact() {
         <div>
           <Reveal>
             <Kicker>{t("kicker")}</Kicker>
-            <h2 className="mt-4 font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem]">
+            <h2 className="mt-3 font-display text-[2.3rem] font-extrabold leading-[1.02] tracking-[-0.04em] text-ink sm:text-[3rem]">
               {t("title")}
             </h2>
             <p className="mt-5 text-[17px] leading-relaxed text-muted">
@@ -81,7 +82,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h3 className="mt-10 text-sm font-medium text-faint">
+            <h3 className="mt-10 text-[13px] font-bold uppercase tracking-[0.14em] text-faint">
               {t("directTitle")}
             </h3>
             <div className="mt-4 space-y-3">
@@ -91,7 +92,7 @@ export function Contact() {
                   href={l.href}
                   target={l.external ? "_blank" : undefined}
                   rel={l.external ? "noopener noreferrer" : undefined}
-                  className="card card-hover group flex items-center gap-4 rounded-2xl p-4 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
+                  className="card card-hover group flex items-center gap-4 rounded-xl p-4 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
                 >
                   <span
                     className={cn(
@@ -102,7 +103,7 @@ export function Contact() {
                     <l.icon className="h-5 w-5" />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="flex items-center gap-2 text-[15px] font-semibold text-ink">
+                    <span className="flex items-center gap-2 text-[15px] font-bold text-ink">
                       {l.label}
                       {l.badge && (
                         <span className="rounded-full bg-accent-2/12 px-2 py-0.5 text-[11px] font-semibold text-accent-2">
@@ -118,8 +119,7 @@ export function Contact() {
                 </a>
               ))}
             </div>
-            <p className="mt-5 inline-flex items-center gap-2 text-sm text-muted">
-              <span className="h-2 w-2 rounded-full bg-accent-2" aria-hidden />
+            <p className="mt-5 text-sm text-muted">
               {t("availability")}
             </p>
           </Reveal>
@@ -127,13 +127,13 @@ export function Contact() {
 
         {/* Form */}
         <Reveal delay={0.05}>
-          <div className="rounded-[2rem] border border-border bg-surface p-6 shadow-[var(--shadow-card)] sm:p-9">
+          <div className="rounded-[var(--radius-card)] border border-border bg-bg-soft p-6 sm:p-9">
             {state.status === "success" ? (
               <div className="flex min-h-[440px] flex-col items-center justify-center text-center">
                 <span className="grid h-16 w-16 place-items-center rounded-full bg-accent-2/12">
                   <CheckCircle2 className="h-8 w-8 text-accent-2" />
                 </span>
-                <p className="mt-5 max-w-sm font-display text-xl text-ink">
+                <p className="mt-5 max-w-sm font-display text-xl font-bold text-ink">
                   {t("success")}
                 </p>
               </div>

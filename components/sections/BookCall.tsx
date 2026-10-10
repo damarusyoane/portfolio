@@ -14,12 +14,12 @@ export function BookCall() {
     <section id="book" className="relative scroll-mt-20 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <div className="grid overflow-hidden rounded-[2rem] border border-border bg-surface lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="flex flex-col p-7 sm:p-10 lg:p-12">
-              <p className="inline-flex w-fit items-center gap-2 rounded-full bg-accent/12 px-3 py-1 text-[13px] font-semibold text-accent-ink">
+          <div className="grid overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface shadow-[var(--shadow-card)] lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="theme-ink flex flex-col p-7 sm:p-10 lg:p-12">
+              <p className="inline-flex w-fit items-center gap-2 rounded-md bg-accent px-2.5 py-1 text-[13px] font-bold text-[#0c1f18]">
                 {t("badge")}
               </p>
-              <h2 className="mt-5 font-display text-[2rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.6rem]">
+              <h2 className="mt-5 font-display text-[2.1rem] font-extrabold leading-[1.02] tracking-[-0.04em] text-ink sm:text-[2.8rem]">
                 {t("title")}
               </h2>
               <p className="mt-5 text-[16px] leading-relaxed text-muted">
@@ -32,7 +32,7 @@ export function BookCall() {
                     key={p}
                     className="flex items-start gap-3 text-[15px] text-ink-soft"
                   >
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent-2 text-white">
+                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-[#0c1f18]">
                       <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
                     </span>
                     {p}
@@ -45,7 +45,7 @@ export function BookCall() {
                   href={siteConfig.links.cal}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={buttonClass("primary", "lg")}
+                  className={buttonClass("accent", "lg")}
                 >
                   {t("cta")}
                   <ButtonArrow />

@@ -2,6 +2,11 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
 
+/** Rich-text tag map: `<hl>words</hl>` in a message gets the yellow marker. */
+export const hl = {
+  hl: (chunks: ReactNode) => <span className="hl">{chunks}</span>,
+};
+
 export function Kicker({
   children,
   className,
@@ -12,11 +17,10 @@ export function Kicker({
   return (
     <p
       className={cn(
-        "inline-flex items-center gap-2 text-sm font-medium text-accent-ink",
+        "text-[13px] font-bold uppercase tracking-[0.14em] text-accent-ink",
         className,
       )}
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
       {children}
     </p>
   );
@@ -46,7 +50,7 @@ export function SectionHeading({
       )}
     >
       <Kicker>{kicker}</Kicker>
-      <Heading className="mt-4 font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem] md:text-5xl">
+      <Heading className="mt-3 font-display text-[2.3rem] font-extrabold leading-[1.02] tracking-[-0.04em] text-ink sm:text-[3rem] md:text-[3.4rem]">
         {title}
       </Heading>
       {subtitle && (

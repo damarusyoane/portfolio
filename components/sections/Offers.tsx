@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Check } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionHeading, hl } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -21,7 +21,7 @@ type Offer = {
   metricText: string;
 };
 
-// Real screenshots from delivered projects, one per offer (same order as the
+// Screenshots rebuilt from delivered projects, one per offer (same order as the
 // `Offers.items` messages), plus the case study each one links to.
 const visuals: {
   slug: string;
@@ -30,34 +30,34 @@ const visuals: {
   {
     slug: "instant-lead-response",
     image: {
-      fr: "/projects/instant-lead-response/02-reponse-client-fr.png",
-      en: "/projects/instant-lead-response/02-reponse-client-en.png",
+      fr: "/projects/instant-lead-response/02-reponse-client-v2-fr.png",
+      en: "/projects/instant-lead-response/02-reponse-client-v2-en.png",
     },
   },
   {
     slug: "whatsapp-ai-assistant",
     image: {
-      fr: "/projects/whatsapp-ai-assistant/02-reponse-client-fr.png",
-      en: "/projects/whatsapp-ai-assistant/02-reponse-client-en.png",
+      fr: "/projects/whatsapp-ai-assistant/02-reponse-client-v2-fr.png",
+      en: "/projects/whatsapp-ai-assistant/02-reponse-client-v2-en.png",
     },
   },
   {
     slug: "payment-reminder-engine",
     image: {
-      fr: "/projects/payment-reminder-engine/02-relance-client-fr.png",
-      en: "/projects/payment-reminder-engine/02-relance-client-en.png",
+      fr: "/projects/payment-reminder-engine/02-relance-client-v2-fr.png",
+      en: "/projects/payment-reminder-engine/02-relance-client-v2-en.png",
     },
   },
   {
     slug: "appointment-reminder-system",
     image: {
-      fr: "/projects/appointment-reminder-system/02-rappel-client-fr.png",
-      en: "/projects/appointment-reminder-system/02-rappel-client-en.png",
+      fr: "/projects/appointment-reminder-system/02-rappel-client-v2-fr.png",
+      en: "/projects/appointment-reminder-system/02-rappel-client-v2-en.png",
     },
   },
   {
     slug: "ai-content-pipeline",
-    image: "/projects/ai-content-pipeline.png",
+    image: "/projects/ai-content-pipeline-v2.png",
   },
 ];
 
@@ -79,7 +79,7 @@ export function Offers() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
           kicker={t("kicker")}
-          title={t("title")}
+          title={t.rich("title", hl)}
           subtitle={t("subtitle")}
         />
 
@@ -102,15 +102,15 @@ export function Offers() {
                   aria-controls={`${baseId}-panel`}
                   onClick={() => setActive(i)}
                   className={cn(
-                    "flex shrink-0 items-center gap-3 rounded-full border px-4 py-2.5 text-left text-[15px] font-medium transition-colors lg:rounded-xl lg:border-transparent lg:px-4 lg:py-3.5",
+                    "flex shrink-0 items-center gap-3 rounded-xl border px-4 py-2.5 text-left text-[15px] font-semibold transition-colors lg:border-transparent lg:px-4 lg:py-3.5",
                     selected
-                      ? "border-ink bg-ink text-bg"
-                      : "border-border-strong text-ink-soft hover:bg-surface hover:text-ink",
+                      ? "border-brand bg-brand text-white"
+                      : "border-border-strong text-ink-soft hover:bg-bg-soft hover:text-ink",
                   )}
                 >
                   <span
                     className={cn(
-                      "hidden font-display text-sm italic lg:inline",
+                      "hidden font-display text-sm font-bold tabular-nums lg:inline",
                       selected ? "text-accent" : "text-faint",
                     )}
                   >
@@ -127,7 +127,7 @@ export function Offers() {
             role="tabpanel"
             id={`${baseId}-panel`}
             aria-labelledby={`${baseId}-tab-${active}`}
-            className="overflow-hidden rounded-3xl border border-border bg-surface"
+            className="overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface shadow-[var(--shadow-card)]"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -139,7 +139,7 @@ export function Offers() {
               >
                 <div className="grid gap-8 p-6 sm:p-9 md:grid-cols-[1.35fr_0.65fr]">
                   <div>
-                    <h3 className="font-display text-[1.7rem] font-normal leading-[1.12] tracking-[-0.015em] text-ink sm:text-[2.1rem]">
+                    <h3 className="font-display text-[1.75rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink sm:text-[2.2rem]">
                       {item.title}
                     </h3>
                     <p className="mt-4 text-[16px] leading-relaxed text-muted">
@@ -153,6 +153,7 @@ export function Offers() {
                         >
                           <Check
                             className="mt-0.5 h-4 w-4 shrink-0 text-accent-2"
+                            strokeWidth={3}
                             aria-hidden
                           />
                           {p}
@@ -161,21 +162,21 @@ export function Offers() {
                     </ul>
                   </div>
 
-                  <div className="flex flex-col justify-between gap-6 border-t border-border pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+                  <div className="flex flex-col justify-between gap-6 rounded-xl bg-accent p-6 text-[#0c1f18]">
                     <div>
-                      <p className="font-display text-5xl font-normal tracking-[-0.03em] text-accent-ink sm:text-6xl">
+                      <p className="font-display text-5xl font-extrabold tracking-[-0.04em] sm:text-6xl">
                         {item.metric}
                       </p>
-                      <p className="mt-2 text-[15px] font-medium text-ink">
+                      <p className="mt-2 text-[15px] font-semibold">
                         {item.metricText}
                       </p>
-                      <p className="mt-1 text-sm text-faint">
+                      <p className="mt-1 text-sm opacity-70">
                         {t("metricLabel")}
                       </p>
                     </div>
                     <Link
                       href={`/projects/${visual.slug}`}
-                      className="group inline-flex items-center gap-1.5 text-sm font-semibold text-ink"
+                      className="group inline-flex items-center gap-1.5 text-sm font-bold"
                     >
                       <span className="link-underline">{t("caseLink")}</span>
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -183,8 +184,8 @@ export function Offers() {
                   </div>
                 </div>
 
-                <div className="border-t border-border bg-surface-2 p-3 sm:p-5">
-                  <div className="relative aspect-[2.1/1] overflow-hidden rounded-xl border border-border bg-[#f3f2ee]">
+                <div className="border-t border-border bg-bg-soft p-3 sm:p-5">
+                  <div className="relative aspect-[2.1/1] overflow-hidden rounded-xl border border-border bg-white">
                     <Image
                       src={src}
                       alt={t("screenshotAlt", { name: item.title })}
@@ -199,13 +200,13 @@ export function Offers() {
           </div>
         </Reveal>
 
-        <Reveal className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-dashed border-border-strong px-6 py-5 sm:flex-row sm:items-center">
+        <Reveal className="mt-8 flex flex-col items-start justify-between gap-4 rounded-[var(--radius-card)] bg-bg-soft px-6 py-5 sm:flex-row sm:items-center">
           <p className="text-[16px] text-ink-soft">{t("ctaText")}</p>
           <a
             href={siteConfig.links.cal}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex shrink-0 items-center gap-1.5 text-[15px] font-semibold text-accent-ink"
+            className="group inline-flex shrink-0 items-center gap-1.5 text-[15px] font-bold text-accent-ink"
           >
             {t("cta")}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

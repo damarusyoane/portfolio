@@ -38,7 +38,7 @@ export function BlogPreview({ posts }: { posts: PostMeta[] }) {
           <Reveal>
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-1.5 text-[15px] font-semibold text-ink"
+              className="group inline-flex items-center gap-1.5 text-[15px] font-bold text-ink"
             >
               <span className="link-underline">{t("viewAll")}</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -46,31 +46,38 @@ export function BlogPreview({ posts }: { posts: PostMeta[] }) {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <ul className="mt-12 border-b border-border">
           {posts.map((post, i) => (
-            <Reveal key={post.slug} delay={Math.min(i * 0.06, 0.2)}>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="card card-hover group flex h-full flex-col rounded-2xl p-6 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]"
-              >
-                <p className="text-[13px] text-faint">
-                  {fmt(post.date)} ·{" "}
-                  {t("readingTime", { minutes: post.readingMinutes })}
-                </p>
-                <h3 className="mt-3 font-display text-[1.35rem] font-normal leading-snug tracking-[-0.01em] text-ink">
-                  {post.title}
-                </h3>
-                <p className="mt-2.5 line-clamp-3 flex-1 text-[15px] leading-relaxed text-muted">
-                  {post.excerpt}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-ink">
-                  {t("readMore")}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </Link>
-            </Reveal>
+            <li key={post.slug} className="border-t border-border">
+              <Reveal delay={Math.min(i * 0.06, 0.2)}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group grid gap-x-10 gap-y-2 py-7 md:grid-cols-[10rem_1fr_auto] md:items-baseline"
+                >
+                  <p className="text-[13px] text-faint">
+                    {fmt(post.date)}
+                    <span className="md:block">
+                      <span className="md:hidden">, </span>
+                      {t("readingTime", { minutes: post.readingMinutes })}
+                    </span>
+                  </p>
+                  <div>
+                    <h3 className="font-display text-[1.45rem] font-bold leading-snug tracking-[-0.025em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.6rem]">
+                      {post.title}
+                    </h3>
+                    <p className="mt-2 line-clamp-2 max-w-2xl text-[15px] leading-relaxed text-muted">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-bold text-accent-ink md:mt-0">
+                    {t("readMore")}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

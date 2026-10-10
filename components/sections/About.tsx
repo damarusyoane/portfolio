@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
 import { LinkedinIcon } from "@/components/icons";
-import { Kicker } from "@/components/ui/SectionHeading";
+import { Kicker, hl } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { siteConfig } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
@@ -23,8 +23,8 @@ export function About() {
         <div>
           <Reveal>
             <Kicker>{t("kicker")}</Kicker>
-            <h2 className="mt-4 font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem]">
-              {t("title")}
+            <h2 className="mt-3 font-display text-[2.3rem] font-extrabold leading-[1.02] tracking-[-0.04em] text-ink sm:text-[3rem]">
+              {t.rich("title", hl)}
             </h2>
           </Reveal>
 
@@ -39,11 +39,11 @@ export function About() {
           <Reveal delay={0.1}>
             <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-border pt-7">
               <div className="flex items-center gap-3.5">
-                <span className="grid h-14 w-14 place-items-center rounded-full bg-ink font-display text-lg text-bg">
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-accent font-display text-lg font-extrabold text-[#0c1f18]">
                   {initials}
                 </span>
                 <div>
-                  <p className="font-display text-xl italic text-ink">
+                  <p className="font-display text-xl font-bold tracking-[-0.02em] text-ink">
                     {siteConfig.founder}
                   </p>
                   <p className="text-sm text-muted">
@@ -55,7 +55,7 @@ export function About() {
                 href={siteConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-sm font-semibold text-ink"
+                className="group inline-flex items-center gap-2 text-sm font-bold text-ink"
               >
                 <LinkedinIcon className="h-4 w-4 text-[#0a66c2]" />
                 <span className="link-underline">{t("linkedin")}</span>
@@ -66,30 +66,29 @@ export function About() {
         </div>
 
         <Reveal delay={0.1} className="lg:pt-14">
-          <div className="grid grid-cols-2 overflow-hidden rounded-3xl border border-border bg-surface">
-            {facts.map((f, i) => (
-              <div
-                key={f.label}
-                className={[
-                  "p-6 sm:p-8",
-                  i % 2 === 0 ? "border-r border-border" : "",
-                  i < 2 ? "border-b border-border" : "",
-                ].join(" ")}
-              >
-                <p className="font-display text-4xl font-normal tracking-[-0.02em] text-ink sm:text-5xl">
-                  {f.value}
-                </p>
-                <p className="mt-2 text-sm leading-snug text-muted">
-                  {f.label}
-                </p>
-              </div>
-            ))}
+          <div className="theme-ink rounded-[var(--radius-card)] p-7 sm:p-9">
+            <ul>
+              {facts.map((f) => (
+                <li
+                  key={f.label}
+                  className="flex items-baseline gap-5 border-b border-border py-4 first:pt-0 last:border-b-0 last:pb-0"
+                >
+                  <span className="w-[6.75rem] shrink-0 whitespace-nowrap font-display text-[2rem] font-extrabold leading-none tracking-[-0.04em] text-accent">
+                    {f.value}
+                  </span>
+                  <span className="text-[15px] leading-snug text-ink-soft">
+                    {f.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-7 text-sm leading-relaxed text-muted">
+              <span className="font-semibold text-ink">
+                {siteConfig.availability[locale]}.
+              </span>{" "}
+              {siteConfig.locationLabel[locale]}
+            </p>
           </div>
-          <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent-2" aria-hidden />
-            {siteConfig.availability[locale]} ·{" "}
-            {siteConfig.locationLabel[locale]}
-          </p>
         </Reveal>
       </div>
     </section>

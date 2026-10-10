@@ -31,14 +31,14 @@ export function CookieConsent() {
   if (consent !== null) return null;
 
   return (
-    <div className="fixed inset-x-3 bottom-3 z-50 sm:inset-x-auto sm:bottom-5 sm:left-5 sm:max-w-md">
+    <div className="fixed inset-x-3 bottom-3 z-50 sm:inset-x-auto sm:bottom-5 sm:left-5 sm:max-w-[25rem]">
       <div
         role="dialog"
         aria-live="polite"
         aria-label="Cookies"
-        className="rounded-2xl border border-border bg-surface p-5 shadow-[var(--shadow-lift)]"
+        className="flex flex-col gap-3 rounded-2xl border border-border bg-surface px-4 py-3.5 shadow-[var(--shadow-lift)] min-[480px]:flex-row min-[480px]:items-center sm:flex-col sm:items-stretch"
       >
-        <p className="text-sm leading-relaxed text-ink-soft">
+        <p className="text-[13px] leading-snug text-ink-soft">
           {t("text")}{" "}
           <Link
             href="/privacy"
@@ -47,7 +47,7 @@ export function CookieConsent() {
             {t("learnMore")}
           </Link>
         </p>
-        <div className="mt-4 flex gap-2">
+        <div className="flex shrink-0 gap-2">
           <button
             type="button"
             onClick={() => decide("granted")}

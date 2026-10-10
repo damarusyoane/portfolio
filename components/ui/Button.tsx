@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "accent" | "secondary" | "ghost";
 
 const base =
-  "group inline-flex items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap transition-[background-color,color,border-color,transform] duration-200 active:translate-y-px";
+  "group inline-flex items-center justify-center gap-2 rounded-xl font-semibold whitespace-nowrap transition-[background-color,color,border-color,transform] duration-200 active:translate-y-px";
 
 export const buttonSizes = {
   sm: "h-9 px-4 text-sm",
@@ -14,10 +14,10 @@ export const buttonSizes = {
 };
 
 // `primary` uses the ink tokens, so inside a `.theme-ink` band it flips to a
-// light button automatically.
+// white button automatically. `accent` is the sun-yellow CTA for green bands.
 export const buttonVariants: Record<Variant, string> = {
-  primary: "bg-ink text-bg hover:bg-accent hover:text-[#161512]",
-  accent: "bg-accent text-[#161512] hover:bg-ink hover:text-bg",
+  primary: "bg-ink text-bg hover:bg-accent hover:text-[#0c1f18]",
+  accent: "bg-accent text-[#0c1f18] hover:bg-[#ffe07a]",
   secondary:
     "border border-border-strong text-ink hover:border-ink hover:bg-ink/[0.04]",
   ghost: "text-ink-soft hover:text-ink",

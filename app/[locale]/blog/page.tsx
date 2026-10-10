@@ -38,7 +38,7 @@ export default async function BlogPage({
     <div className="relative pt-28 sm:pt-32">
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
         <Reveal>
-          <h1 className="font-display text-5xl font-normal tracking-[-0.025em] text-ink sm:text-6xl">
+          <h1 className="font-display text-5xl font-extrabold tracking-[-0.04em] text-ink sm:text-6xl">
             {t("title")}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
@@ -59,10 +59,10 @@ export default async function BlogPage({
                   >
                     <div className="min-w-0">
                       <p className="text-[13px] text-faint">
-                        {formatDate(post.date, l)} ·{" "}
+                        {formatDate(post.date, l)},{" "}
                         {t("readingTime", { minutes: post.readingMinutes })}
                       </p>
-                      <h2 className="mt-2 font-display text-2xl font-normal leading-snug tracking-[-0.01em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.75rem]">
+                      <h2 className="mt-2 font-display text-2xl font-bold leading-snug tracking-[-0.025em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.75rem]">
                         {post.title}
                       </h2>
                       <p className="mt-2 text-[16px] leading-relaxed text-muted">

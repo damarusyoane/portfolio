@@ -26,33 +26,28 @@ export default async function Image({
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px 80px",
-        background: "#f6f4ef",
-        fontFamily: "serif",
+        background: "#0c3a2b",
+        fontFamily: "sans-serif",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-        <svg width={56} height={56} viewBox="0 0 40 40" fill="none">
-          <circle cx={20} cy={20} r={13.5} stroke="#161512" strokeWidth={3.2} />
-          <path
-            d="M8.31 13.75 A 13.5 13.5 0 0 1 31.69 13.75"
-            stroke="#e4572e"
-            strokeWidth={4.6}
-            strokeLinecap="round"
-          />
-          <circle cx={31.69} cy={13.75} r={3.4} fill="#e4572e" />
-        </svg>
-        <div style={{ color: "#161512", fontSize: 32, fontWeight: 700 }}>
-          {siteConfig.name}
-        </div>
+      <div
+        style={{
+          display: "flex",
+          color: "#ffffff",
+          fontSize: 40,
+          fontWeight: 800,
+          letterSpacing: -2,
+        }}
+      >
+        ottomate<span style={{ color: "#ffd23f" }}>.</span>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
           style={{
-            color: "#b23f17",
+            color: "#ffd23f",
             fontSize: 26,
-            fontFamily: "sans-serif",
-            fontWeight: 600,
+            fontWeight: 700,
             marginBottom: 20,
           }}
         >
@@ -60,10 +55,11 @@ export default async function Image({
         </div>
         <div
           style={{
-            color: "#161512",
-            fontSize: 64,
-            lineHeight: 1.08,
-            letterSpacing: -1.5,
+            color: "#ffffff",
+            fontSize: 66,
+            fontWeight: 800,
+            lineHeight: 1.06,
+            letterSpacing: -2.5,
             maxWidth: 1040,
           }}
         >
@@ -75,11 +71,8 @@ export default async function Image({
         style={{
           display: "flex",
           justifyContent: "space-between",
-          borderTop: "2px solid #161512",
-          paddingTop: 24,
-          color: "#34322d",
+          color: "#b9d1c5",
           fontSize: 24,
-          fontFamily: "sans-serif",
         }}
       >
         <div>
