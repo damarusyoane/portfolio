@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { ShieldCheck, BadgeCheck, Lock, type LucideIcon } from "lucide-react";
-import { Kicker } from "@/components/ui/SectionHeading";
+import { Kicker, hl } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 
 const gIcons: LucideIcon[] = [BadgeCheck, ShieldCheck, Lock];
@@ -24,30 +24,30 @@ export function Trust() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <Kicker>{t("kicker")}</Kicker>
-          <h2 className="mt-4 max-w-2xl font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.75rem] md:text-5xl">
-            {t("title")}
+          <h2 className="mt-3 max-w-2xl font-display text-[2.3rem] font-extrabold leading-[1.02] tracking-[-0.04em] text-ink sm:text-[3rem] md:text-[3.4rem]">
+            {t.rich("title", hl)}
           </h2>
         </Reveal>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
           {testimonials.map((tm, i) => (
             <Reveal key={tm.name} delay={i * 0.06}>
-              <figure className="flex h-full flex-col border-t border-border-strong pt-6">
+              <figure className="flex h-full flex-col rounded-[var(--radius-card)] bg-surface p-7">
                 <span
-                  className="font-display text-6xl leading-[0.6] text-accent"
+                  className="font-display text-7xl font-extrabold leading-[0.6] text-accent"
                   aria-hidden
                 >
                   “
                 </span>
-                <blockquote className="mt-4 flex-1 font-display text-[1.25rem] font-normal leading-[1.45] text-ink">
+                <blockquote className="mt-4 flex-1 text-[1.15rem] font-medium leading-[1.55] text-ink">
                   {tm.quote}
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-surface-2 font-display text-sm font-semibold text-ink">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent font-display text-sm font-extrabold text-[#0c1f18]">
                     {tm.name.charAt(0)}
                   </span>
                   <span className="text-sm">
-                    <span className="block font-semibold text-ink">
+                    <span className="block font-bold text-ink">
                       {tm.name}
                     </span>
                     <span className="block text-muted">{tm.role}</span>
@@ -58,8 +58,8 @@ export function Trust() {
           ))}
         </div>
 
-        <Reveal className="mt-16 rounded-3xl border border-border bg-surface p-6 sm:p-8">
-          <h3 className="text-sm font-medium text-faint">
+        <Reveal className="mt-12 rounded-[var(--radius-card)] border border-border-strong p-6 sm:p-8">
+          <h3 className="text-[13px] font-bold uppercase tracking-[0.14em] text-faint">
             {t("guaranteesTitle")}
           </h3>
           <div className="mt-5 grid gap-6 md:grid-cols-3 md:gap-0 md:divide-x md:divide-border">
@@ -75,7 +75,7 @@ export function Trust() {
                     aria-hidden
                   />
                   <div>
-                    <p className="text-[15px] font-semibold text-ink">
+                    <p className="text-[15px] font-bold text-ink">
                       {g.title}
                     </p>
                     <p className="mt-1 text-sm leading-relaxed text-muted">

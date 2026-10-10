@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "AI assistants and business automations for small and mid-sized companies.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f6f4ef",
-    theme_color: "#161512",
+    background_color: "#ffffff",
+    theme_color: "#0c3a2b",
     icons: [
       {
         src: "/icon.svg",

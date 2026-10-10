@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionHeading, hl } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 
 export function Process() {
@@ -17,7 +17,7 @@ export function Process() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
           kicker={t("kicker")}
-          title={t("title")}
+          title={t.rich("title", hl)}
           subtitle={t("subtitle")}
         />
 
@@ -26,17 +26,23 @@ export function Process() {
             <li key={s.title}>
               <Reveal
                 delay={i * 0.07}
-                className="h-full border-t-2 border-ink pt-5"
+                className="relative h-full"
               >
-                <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-display text-3xl italic leading-none text-accent">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent font-display text-xl font-extrabold text-[#0c1f18]">
                     {i + 1}
                   </span>
-                  <span className="text-right text-[13px] font-medium text-faint">
-                    {s.when}
-                  </span>
+                  {i < steps.length - 1 && (
+                    <span
+                      className="hidden h-px flex-1 border-t-2 border-dashed border-border-strong lg:block"
+                      aria-hidden
+                    />
+                  )}
                 </div>
-                <h3 className="mt-5 font-display text-[1.4rem] font-normal leading-snug tracking-[-0.01em] text-ink">
+                <p className="mt-5 inline-block rounded-md bg-bg-soft px-2 py-0.5 text-[13px] font-semibold text-accent-ink">
+                  {s.when}
+                </p>
+                <h3 className="mt-3 font-display text-[1.45rem] font-bold leading-snug tracking-[-0.025em] text-ink">
                   {s.title}
                 </h3>
                 <p className="mt-2.5 text-[15px] leading-relaxed text-muted">

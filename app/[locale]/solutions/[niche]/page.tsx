@@ -82,11 +82,7 @@ export default async function NichePage({
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="relative overflow-hidden pb-16 pt-16 sm:pb-20 sm:pt-24">
-        <div
-          className="paper-grain pointer-events-none absolute inset-0"
-          aria-hidden
-        />
+      <section className="theme-ink relative overflow-hidden pb-16 pt-16 sm:pb-20 sm:pt-24">
         <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal className="max-w-3xl">
             <Link
@@ -99,7 +95,7 @@ export default async function NichePage({
             <p className="mt-8 text-sm font-medium" style={{ color: accent }}>
               {n.hero.eyebrow[l]}
             </p>
-            <h1 className="mt-4 font-display text-[2.5rem] font-normal leading-[1.04] tracking-[-0.025em] text-ink sm:text-6xl">
+            <h1 className="mt-4 font-display text-[2.5rem] font-extrabold leading-[1.04] tracking-[-0.04em] text-ink sm:text-6xl">
               {n.hero.title[l]}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
@@ -110,7 +106,7 @@ export default async function NichePage({
                 href={siteConfig.links.cal}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={buttonClass("primary", "lg")}
+                className={buttonClass("accent", "lg")}
               >
                 {l === "fr" ? "Réserver un audit gratuit" : "Book a free audit"}
                 <ButtonArrow />
@@ -125,7 +121,7 @@ export default async function NichePage({
 
           {/* Stats */}
           <Reveal className="mt-14">
-            <div className="grid grid-cols-2 overflow-hidden rounded-3xl border border-border bg-surface md:grid-cols-4">
+            <div className="grid grid-cols-2 overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface md:grid-cols-4">
               {n.stats.map((st, i) => (
                 <div
                   key={st.label[l]}
@@ -136,7 +132,7 @@ export default async function NichePage({
                     (i === 2 ? " md:border-l" : "")
                   }
                 >
-                  <p className="font-display text-3xl font-normal tracking-[-0.02em] text-ink sm:text-4xl">
+                  <p className="font-display text-3xl font-extrabold tracking-[-0.04em] text-accent sm:text-4xl">
                     {formatMetric(st.value, l)}
                   </p>
                   <p className="mt-2 text-sm leading-snug text-muted">
@@ -154,7 +150,7 @@ export default async function NichePage({
         <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <Kicker>{l === "fr" ? "Le constat" : "The problem"}</Kicker>
-            <h2 className="mt-4 font-display text-[2.1rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.6rem]">
+            <h2 className="mt-4 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink sm:text-[2.6rem]">
               {l === "fr"
                 ? "Là où votre activité perd de l'argent"
                 : "Where your business is leaking money"}
@@ -167,11 +163,11 @@ export default async function NichePage({
                   delay={Math.min(i * 0.04, 0.2)}
                   className="grid grid-cols-[2.75rem_1fr] gap-x-4 py-6"
                 >
-                  <span className="font-display text-2xl italic leading-none text-accent">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent font-display text-lg font-extrabold leading-none text-[#0c1f18]">
+                    {i + 1}
                   </span>
                   <div>
-                    <h3 className="font-display text-xl font-medium text-ink">
+                    <h3 className="font-display text-xl font-bold tracking-[-0.02em] text-ink">
                       {p.title[l]}
                     </h3>
                     <p className="mt-1.5 text-[16px] leading-relaxed text-muted">
@@ -195,7 +191,7 @@ export default async function NichePage({
             <Kicker>
               {l === "fr" ? "Ce que nous automatisons" : "What we automate"}
             </Kicker>
-            <h2 className="mt-4 font-display text-[2.1rem] font-normal leading-[1.08] tracking-[-0.02em] text-ink sm:text-[2.6rem]">
+            <h2 className="mt-4 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink sm:text-[2.6rem]">
               {l === "fr"
                 ? "Les automatisations qui vous font gagner du chiffre"
                 : "The automations that put money back in your pocket"}
@@ -216,7 +212,7 @@ export default async function NichePage({
                     >
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
-                    <h3 className="mt-5 font-display text-xl font-normal text-ink">
+                    <h3 className="mt-5 font-display text-xl font-bold text-ink">
                       {a.title[l]}
                     </h3>
                     <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">
@@ -242,7 +238,7 @@ export default async function NichePage({
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <Reveal>
-            <h2 className="font-display text-[2.1rem] font-normal tracking-[-0.02em] text-ink sm:text-[2.6rem]">
+            <h2 className="font-display text-[2.1rem] font-extrabold tracking-[-0.04em] text-ink sm:text-[2.6rem]">
               {l === "fr"
                 ? "Questions fréquentes"
                 : "Frequently asked questions"}

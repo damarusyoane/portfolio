@@ -1,59 +1,66 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------------------
-   Design tokens — warm paper, ink, one signal colour.
+   Design tokens — white page, deep green brand, one sun-yellow signal.
    Token names are shared by every page; `.theme-ink` flips them for the
-   dark bands so components never need a dark-mode variant of their own.
+   deep-green bands so components never need a dark variant of their own.
 ---------------------------------------------------------------------------- */
 @theme {
-  --color-bg: #f6f4ef;
-  --color-bg-soft: #efebe3;
+  --color-bg: #ffffff;
+  --color-bg-soft: #f1f5f0;
   --color-surface: #ffffff;
-  --color-surface-2: #f1eee7;
-  --color-border: rgba(22, 21, 18, 0.1);
-  --color-border-strong: rgba(22, 21, 18, 0.22);
+  --color-surface-2: #eef2ec;
+  --color-border: rgba(12, 31, 24, 0.1);
+  --color-border-strong: rgba(12, 31, 24, 0.2);
 
-  --color-ink: #161512;
-  --color-ink-soft: #34322d;
-  --color-muted: #5c584f;
-  --color-faint: #6f6a62;
+  --color-ink: #0c1f18;
+  --color-ink-soft: #22362d;
+  --color-muted: #4a5d54;
+  --color-faint: #5f7168;
 
-  /* Signal orange (fills, large type) + a darker shade that passes AA on paper */
-  --color-accent: #e4572e;
-  --color-accent-ink: #b23f17;
+  /* Brand green, used for the dark bands and the logo. */
+  --color-brand: #0c3a2b;
+  --color-brand-2: #124b38;
+
+  /* Sun yellow: fills, highlights and CTAs on green. Never as text on white:
+     `accent-ink` is the readable text shade for links and labels. */
+  --color-accent: #ffd23f;
+  --color-accent-ink: #0f6e4b;
   /* Secondary hues, used sparingly to tell categories apart */
-  --color-accent-2: #1f6f5c;
-  --color-accent-3: #2b4cb3;
+  --color-accent-2: #13865a;
+  --color-accent-3: #2f4fb8;
 
   --color-whatsapp: #25d366;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
+  --radius-card: 14px;
+
   --shadow-card:
-    0 1px 0 rgba(22, 21, 18, 0.04), 0 12px 32px -18px rgba(22, 21, 18, 0.25);
+    0 1px 0 rgba(12, 31, 24, 0.04), 0 14px 32px -20px rgba(12, 31, 24, 0.3);
   --shadow-lift:
-    0 2px 0 rgba(22, 21, 18, 0.04), 0 24px 48px -24px rgba(22, 21, 18, 0.35);
+    0 2px 0 rgba(12, 31, 24, 0.04), 0 30px 60px -28px rgba(12, 31, 24, 0.45);
 }
 
-/* Dark band — same tokens, inverted values. */
+/* Deep-green band — same tokens, inverted values. */
 .theme-ink {
-  --color-bg: #161512;
-  --color-bg-soft: #1c1b17;
-  --color-surface: #211f1b;
-  --color-surface-2: #2a2823;
-  --color-border: rgba(246, 244, 239, 0.12);
-  --color-border-strong: rgba(246, 244, 239, 0.26);
+  --color-bg: #0c3a2b;
+  --color-bg-soft: #0f4232;
+  --color-surface: #124b38;
+  --color-surface-2: #175841;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-border-strong: rgba(255, 255, 255, 0.3);
 
-  --color-ink: #f6f4ef;
-  --color-ink-soft: #dcd8ce;
-  --color-muted: #aca79b;
-  --color-faint: #918c81;
+  --color-ink: #ffffff;
+  --color-ink-soft: #e1ede7;
+  --color-muted: #b9d1c5;
+  --color-faint: #9dbdae;
 
-  --color-accent-ink: #f2825d;
-  --color-accent-2: #5fbf9f;
-  --color-accent-3: #8ea6f0;
+  --color-accent-ink: #ffd23f;
+  --color-accent-2: #7fe3b3;
+  --color-accent-3: #a9bdf5;
 
   background-color: var(--color-bg);
   color: var(--color-ink);
@@ -141,7 +148,7 @@ p {
   border-radius: 999px;
   background: linear-gradient(
     to right,
-    var(--color-accent) var(--fill, 50%),
+    var(--color-brand) var(--fill, 50%),
     var(--color-surface-2) var(--fill, 50%)
   );
   cursor: pointer;
@@ -169,11 +176,23 @@ p {
   transform: scale(1.12);
 }
 
-/* Subtle paper grain for large flat areas. */
-.paper-grain {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.035;
-  mix-blend-mode: multiply;
+/* Yellow marker behind a few words of a heading. On green bands the words
+   simply turn yellow. */
+.hl {
+  background-image: linear-gradient(
+    transparent 60%,
+    var(--color-accent) 60%,
+    var(--color-accent) 92%,
+    transparent 92%
+  );
+  padding: 0 0.06em;
+  margin: 0 -0.03em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.theme-ink .hl {
+  background-image: none;
+  color: var(--color-accent);
 }
 
 :focus-visible {

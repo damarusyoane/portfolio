@@ -22,13 +22,13 @@ export const siteConfig = {
   },
 
   founderRole: {
-    en: "Founder · AI & automation engineer",
-    fr: "Fondateur · Ingénieur IA & automatisation",
+    en: "Founder, AI & automation engineer",
+    fr: "Fondateur, ingénieur IA et automatisation",
   } as Record<Locale, string>,
 
   locationLabel: {
-    en: "Remote, worldwide",
-    fr: "À distance, partout dans le monde",
+    en: "Working remotely with clients worldwide.",
+    fr: "À distance, avec des clients partout dans le monde.",
   } as Record<Locale, string>,
 
   availability: {

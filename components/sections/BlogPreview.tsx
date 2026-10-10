@@ -38,7 +38,7 @@ export function BlogPreview({ posts }: { posts: PostMeta[] }) {
           <Reveal>
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-1.5 text-[15px] font-semibold text-ink"
+              className="group inline-flex items-center gap-1.5 text-[15px] font-bold text-ink"
             >
               <span className="link-underline">{t("viewAll")}</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -57,19 +57,19 @@ export function BlogPreview({ posts }: { posts: PostMeta[] }) {
                   <p className="text-[13px] text-faint">
                     {fmt(post.date)}
                     <span className="md:block">
-                      <span className="md:hidden"> · </span>
+                      <span className="md:hidden">, </span>
                       {t("readingTime", { minutes: post.readingMinutes })}
                     </span>
                   </p>
                   <div>
-                    <h3 className="font-display text-[1.45rem] font-normal leading-snug tracking-[-0.01em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.6rem]">
+                    <h3 className="font-display text-[1.45rem] font-bold leading-snug tracking-[-0.025em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.6rem]">
                       {post.title}
                     </h3>
                     <p className="mt-2 line-clamp-2 max-w-2xl text-[15px] leading-relaxed text-muted">
                       {post.excerpt}
                     </p>
                   </div>
-                  <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-ink md:mt-0">
+                  <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-bold text-accent-ink md:mt-0">
                     {t("readMore")}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>

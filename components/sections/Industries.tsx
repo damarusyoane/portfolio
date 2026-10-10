@@ -60,21 +60,21 @@ export function Industries() {
                     >
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
-                    <h3 className="font-display text-[1.45rem] font-normal leading-tight tracking-[-0.01em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.75rem]">
+                    <h3 className="font-display text-[1.45rem] font-extrabold leading-tight tracking-[-0.035em] text-ink transition-colors group-hover:text-accent-ink sm:text-[1.8rem]">
                       {n.label[locale]}
                     </h3>
                     <p className="col-start-2 row-start-2 text-[15px] leading-relaxed text-muted md:col-start-auto md:row-start-auto">
                       {n.hero.title[locale]}
                     </p>
                     <p className="hidden md:block">
-                      <span className="block font-display text-2xl leading-none text-ink">
+                      <span className="hl font-display text-2xl font-extrabold leading-none tracking-[-0.03em] text-ink">
                         {formatMetric(stat.value, locale)}
                       </span>
-                      <span className="mt-1 block text-[13px] text-faint">
+                      <span className="mt-1.5 block text-[13px] text-faint">
                         {stat.label[locale]}
                       </span>
                     </p>
-                    <span className="col-start-3 row-span-2 row-start-1 grid h-10 w-10 place-items-center rounded-full border border-border-strong text-ink transition-[background-color,color,transform] group-hover:translate-x-1 group-hover:border-transparent group-hover:bg-accent group-hover:text-[#161512] md:col-start-auto md:row-span-1 md:row-start-auto">
+                    <span className="col-start-3 row-span-2 row-start-1 grid h-10 w-10 place-items-center rounded-full border border-border-strong text-ink transition-[background-color,color,transform] group-hover:translate-x-1 group-hover:border-transparent group-hover:bg-accent group-hover:text-[#0c1f18] md:col-start-auto md:row-span-1 md:row-start-auto">
                       <ArrowRight className="h-4 w-4" aria-hidden />
                       <span className="sr-only">{t("explore")}</span>
                     </span>
@@ -88,15 +88,15 @@ export function Industries() {
         <Reveal className="mt-8">
           <Link
             href="/automations"
-            className="group flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-ink px-6 py-5 text-bg sm:px-8"
+            className="theme-ink group flex flex-wrap items-center justify-between gap-4 rounded-[var(--radius-card)] px-6 py-5 sm:px-8"
           >
             <span>
-              <span className="font-display text-xl">{t("viewAll")}</span>{" "}
-              <span className="mt-1 block text-[15px] text-bg/70 sm:mt-0 sm:inline">
+              <span className="font-display text-xl font-bold tracking-[-0.02em]">{t("viewAll")}</span>{" "}
+              <span className="mt-1 block text-[15px] text-muted sm:mt-0 sm:inline">
                 {t("viewAllText")}
               </span>
             </span>
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent text-[#161512] transition-transform group-hover:translate-x-1">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent text-[#0c1f18] transition-transform group-hover:translate-x-1">
               <ArrowRight className="h-4 w-4" aria-hidden />
             </span>
           </Link>

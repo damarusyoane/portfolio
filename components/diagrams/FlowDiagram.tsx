@@ -29,25 +29,21 @@ export function FlowDiagram({
   locale?: "en" | "fr";
 }) {
   return (
-    <div className="rounded-3xl border border-border bg-bg-soft p-4 sm:p-6">
+    <div className="rounded-[var(--radius-card)] border border-border bg-bg-soft p-4 sm:p-6">
       <div className="flex flex-col gap-2 md:flex-row md:items-stretch md:gap-0">
         {nodes.map((node, i) => {
           const kind = node.kind ?? "process";
           const color = kindColor[kind];
           return (
             <Fragment key={i}>
-              <div className="flex min-w-0 flex-1 flex-col justify-center rounded-2xl border border-border bg-surface px-4 py-4 md:text-center">
+              <div className="flex min-w-0 flex-1 flex-col justify-center rounded-xl border border-border bg-surface px-4 py-4 md:text-center">
                 <span
-                  className="mb-1.5 inline-flex items-center gap-1.5 text-[12px] font-semibold md:justify-center"
+                  className="mb-1.5 text-[11.5px] font-bold uppercase tracking-[0.1em]"
                   style={{ color }}
                 >
-                  <span
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{ backgroundColor: color }}
-                  />
                   {kindLabel[kind][locale]}
                 </span>
-                <span className="text-[15px] font-medium leading-snug text-ink">
+                <span className="text-[15px] font-semibold leading-snug text-ink">
                   {node.label}
                 </span>
               </div>

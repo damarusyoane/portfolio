@@ -2,7 +2,7 @@
 
 import { useId, useState, type CSSProperties } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionHeading, hl } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { buttonClass, ButtonArrow } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
@@ -40,7 +40,7 @@ function Slider({
         </label>
         <output
           htmlFor={id}
-          className="font-display text-2xl tabular-nums text-ink"
+          className="font-display text-2xl font-extrabold tabular-nums tracking-[-0.03em] text-ink"
         >
           {display}
         </output>
@@ -69,7 +69,7 @@ export function CostCalculator() {
   const locale = useLocale();
   const [people, setPeople] = useState(2);
   const [hours, setHours] = useState(6);
-  const [rate, setRate] = useState(15);
+  const [rate, setRate] = useState(25);
 
   const nf = new Intl.NumberFormat(locale === "fr" ? "fr-FR" : "en-US", {
     maximumFractionDigits: 0,
@@ -90,12 +90,12 @@ export function CostCalculator() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
           kicker={t("kicker")}
-          title={t("title")}
+          title={t.rich("title", hl)}
           subtitle={t("subtitle")}
         />
 
         <Reveal className="mt-12">
-          <div className="grid overflow-hidden rounded-3xl border border-border lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="grid overflow-hidden rounded-[var(--radius-card)] border border-border shadow-[var(--shadow-card)] lg:grid-cols-[1.05fr_0.95fr]">
             <div className="bg-surface p-7 sm:p-10">
               <Slider
                 label={t("people")}
@@ -116,8 +116,8 @@ export function CostCalculator() {
               <Slider
                 label={t("rate")}
                 value={rate}
-                min={2}
-                max={80}
+                min={10}
+                max={100}
                 display={money(rate)}
                 onChange={setRate}
               />
@@ -128,7 +128,7 @@ export function CostCalculator() {
 
             <div className="theme-ink flex flex-col p-7 sm:p-10" aria-live="polite">
               <p className="text-sm text-muted">{t("resultLabel")}</p>
-              <p className="mt-3 font-display text-[3.25rem] leading-none tracking-[-0.03em] text-accent tabular-nums sm:text-6xl">
+              <p className="mt-3 font-display text-[3.4rem] font-extrabold leading-none tracking-[-0.045em] text-accent tabular-nums sm:text-[4.2rem]">
                 {money(costPerYear)}
               </p>
               <p className="mt-3 text-[15px] text-ink-soft">

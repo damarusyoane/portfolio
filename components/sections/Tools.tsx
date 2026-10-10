@@ -15,7 +15,7 @@ export function Tools() {
           <div>
             <h2
               id="tools-title"
-              className="font-display text-[1.45rem] leading-snug tracking-[-0.01em] text-ink"
+              className="font-display text-[1.5rem] font-extrabold leading-snug tracking-[-0.03em] text-ink"
             >
               {t("title")}
             </h2>
@@ -27,7 +27,7 @@ export function Tools() {
             {tools.map((name) => (
               <li
                 key={name}
-                className="rounded-full border border-border-strong px-3.5 py-1.5 text-[14px] font-medium text-ink-soft"
+                className="rounded-lg bg-bg-soft px-3.5 py-2 text-[14px] font-semibold text-ink-soft"
               >
                 {name}
               </li>

@@ -4,11 +4,9 @@ import { cn } from "@/lib/utils";
 export function Badge({
   children,
   className,
-  dot = false,
 }: {
   children: ReactNode;
   className?: string;
-  dot?: boolean;
 }) {
   return (
     <span
@@ -17,7 +15,6 @@ export function Badge({
         className,
       )}
     >
-      {dot && <span className="h-2 w-2 rounded-full bg-accent-2" aria-hidden />}
       {children}
     </span>
   );

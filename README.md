@@ -1,16 +1,17 @@
 # Ottomate — AI automation agency website
 
-Bilingual (FR/EN) website for **Ottomate**, an AI automation agency for small
-and mid-sized businesses. Warm editorial design (paper, ink and one signal
-orange), a live WhatsApp-style demo in the hero, real screenshots of delivered
-projects, case studies, industry landing pages, a blog and a working contact
-form.
+Bilingual (EN/FR) website for **Ottomate**, an AI automation agency for small
+and mid-sized businesses. White pages, deep-green bands and one sun-yellow
+signal; a phone in the hero that plays back SMS threads for several services
+(missed calls, invoices, reviews, reminders); screenshots rebuilt from
+delivered projects, case studies, industry landing pages, a cost calculator,
+a blog and a working contact form.
 
 ## Stack
 
 - **Next.js 16** (App Router, React 19, TypeScript)
 - **Tailwind CSS v4** — design tokens in `app/globals.css` (`.theme-ink` flips
-  them for dark bands); Fraunces (titles) + Inter (text)
+  them for the green bands); Bricolage Grotesque for titles and text
 - **next-intl** — bilingual routing (`/en`, `/fr`)
 - **Framer Motion** — animations
 - **MDX** (`next-mdx-remote`) — blog in `content/blog/{en,fr}`

@@ -129,7 +129,7 @@ export function AutomationCatalog() {
                     </span>
                   </div>
 
-                  <h3 className="font-display text-lg font-normal leading-snug text-ink">
+                  <h3 className="font-display text-lg font-bold leading-snug text-ink">
                     {s.title[locale]}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">

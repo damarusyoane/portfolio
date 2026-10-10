@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -14,16 +14,12 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site";
 import "../globals.css";
 
-const inter = Inter({
+// One family for everything: Bricolage's optical-size axis keeps body text
+// calm and lets the heavy display weights carry the personality.
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-const display = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-  variable: "--font-fraunces",
+  axes: ["opsz", "wdth"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 const mono = JetBrains_Mono({
@@ -56,7 +52,7 @@ export async function generateMetadata({
     metadataBase: new URL(siteConfig.baseUrl),
     title: {
       default: seoTitle,
-      template: `%s · ${siteConfig.name}`,
+      template: `%s | ${siteConfig.name}`,
     },
     description,
     applicationName: siteConfig.name,
@@ -151,7 +147,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${display.variable} ${mono.variable} h-full`}
+      className={`${bricolage.variable} ${mono.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full antialiased" suppressHydrationWarning>

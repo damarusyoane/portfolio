@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionHeading, hl } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { projects, type Project } from "@/lib/projects";
 import { getGallery } from "@/lib/galleries";
@@ -44,7 +44,7 @@ export function Work() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
           kicker={t("kicker")}
-          title={t("title")}
+          title={t.rich("title", hl)}
           subtitle={t("subtitle")}
         />
 
@@ -58,7 +58,7 @@ export function Work() {
                   href={`/projects/${p.slug}`}
                   className="group flex h-full flex-col"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border bg-surface-2">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-border bg-bg-soft">
                     {src && (
                       <Image
                         src={src}
@@ -70,12 +70,12 @@ export function Work() {
                     )}
                   </div>
                   <p
-                    className="mt-5 text-[13px] font-medium"
+                    className="mt-5 text-[13px] font-bold uppercase tracking-[0.08em]"
                     style={{ color: accentColor(p.accent) }}
                   >
                     {p.domain[locale]}
                   </p>
-                  <h3 className="mt-1.5 font-display text-[1.4rem] font-normal leading-snug tracking-[-0.01em] text-ink">
+                  <h3 className="mt-1.5 font-display text-[1.45rem] font-bold leading-snug tracking-[-0.025em] text-ink transition-colors group-hover:text-accent-ink">
                     {p.title[locale]}
                   </h3>
                   <p className="mt-2 line-clamp-3 text-[15px] leading-relaxed text-muted">
@@ -83,12 +83,12 @@ export function Work() {
                   </p>
                   <div className="mt-auto flex items-end justify-between gap-4 pt-5">
                     <p className="text-sm text-ink-soft">
-                      <span className="font-display text-2xl text-ink">
+                      <span className="hl font-display text-2xl font-extrabold tracking-[-0.03em] text-ink">
                         {formatMetric(metric.value, locale)}
                       </span>{" "}
                       {metric.label[locale]}
                     </p>
-                    <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-ink">
+                    <span className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-ink">
                       {t("viewCase")}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </span>
@@ -101,7 +101,7 @@ export function Work() {
 
         {others.length > 0 && (
           <Reveal className="mt-20">
-            <h3 className="text-sm font-medium text-faint">{t("moreTitle")}</h3>
+            <h3 className="text-[13px] font-bold uppercase tracking-[0.14em] text-faint">{t("moreTitle")}</h3>
             <ul className="mt-4 border-b border-border">
               {others.map((p) => (
                 <li key={p.slug} className="border-t border-border">
@@ -109,7 +109,7 @@ export function Work() {
                     href={`/projects/${p.slug}`}
                     className="group grid items-baseline gap-x-6 gap-y-1 py-4 sm:grid-cols-[1.4fr_1fr_auto]"
                   >
-                    <span className="font-display text-lg text-ink transition-colors group-hover:text-accent-ink">
+                    <span className="font-display text-lg font-bold tracking-[-0.02em] text-ink transition-colors group-hover:text-accent-ink">
                       {p.title[locale]}
                     </span>
                     <span className="text-sm text-muted">
@@ -125,7 +125,7 @@ export function Work() {
             </ul>
             <Link
               href="/automations"
-              className="group mt-6 inline-flex items-center gap-1.5 text-[15px] font-semibold text-accent-ink"
+              className="group mt-6 inline-flex items-center gap-1.5 text-[15px] font-bold text-accent-ink"
             >
               {t("allAutomations")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

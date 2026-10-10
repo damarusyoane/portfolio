@@ -9,10 +9,10 @@ export default function NotFound() {
   return (
     <div className="grid min-h-[80svh] place-items-center px-5 pt-16">
       <div className="text-center">
-        <p className="font-display text-8xl font-normal italic tracking-[-0.04em] text-accent sm:text-9xl">
+        <p className="font-display text-8xl font-extrabold tracking-[-0.05em] text-brand sm:text-9xl">
           404
         </p>
-        <h1 className="mt-4 font-display text-3xl font-normal text-ink">
+        <h1 className="mt-4 font-display text-3xl font-extrabold text-ink">
           {t("title")}
         </h1>
         <p className="mx-auto mt-3 max-w-sm text-muted">{t("text")}</p>

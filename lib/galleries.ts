@@ -39,7 +39,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("instant-lead-response", "02-reponse-client"),
+      src: bi("instant-lead-response", "02-reponse-client-v2"),
       title: { en: "What the customer receives", fr: "Ce que reçoit le client" },
       caption: {
         en: "In under a minute, the prospect gets a warm, tailored reply, in their own language.",
@@ -47,7 +47,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("instant-lead-response", "03-alerte-entreprise"),
+      src: bi("instant-lead-response", "03-alerte-entreprise-v2"),
       title: { en: "What the business receives", fr: "Ce que reçoit l'entreprise" },
       caption: {
         en: "The team is alerted with the score, a summary and the request, by email, WhatsApp or straight into the CRM.",
@@ -65,7 +65,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("whatsapp-ai-assistant", "02-reponse-client"),
+      src: bi("whatsapp-ai-assistant", "02-reponse-client-v2"),
       title: { en: "The reply to the customer", fr: "La réponse au client" },
       caption: {
         en: "The customer gets an instant answer with the real business info (never an invented price), in their language.",
@@ -73,7 +73,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("whatsapp-ai-assistant", "03-alerte-lead"),
+      src: bi("whatsapp-ai-assistant", "03-alerte-lead-v2"),
       title: { en: "The lead alert", fr: "L'alerte lead" },
       caption: {
         en: "The moment a customer shows they want to buy, the owner is notified.",
@@ -91,7 +91,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("rag-knowledge-assistant", "02-question"),
+      src: bi("rag-knowledge-assistant", "02-question-v2"),
       title: { en: "The customer's question", fr: "La question du client" },
       caption: {
         en: "The customer asks a plain-language question (French or English).",
@@ -99,7 +99,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("rag-knowledge-assistant", "03-reponse-sourcee"),
+      src: bi("rag-knowledge-assistant", "03-reponse-sourcee-v2"),
       title: { en: "The sourced answer", fr: "La réponse sourcée" },
       caption: {
         en: "The assistant answers strictly from your documents, with the sources cited, and admits it when it doesn't know.",
@@ -117,7 +117,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("appointment-reminder-system", "02-rappel-client"),
+      src: bi("appointment-reminder-system", "02-rappel-client-v2"),
       title: { en: "The reminder the client gets", fr: "Le rappel reçu par le client" },
       caption: {
         en: "A clear reminder with the exact slot, in the client's language.",
@@ -125,7 +125,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: "/projects/appointment-reminder-system/03-agenda.png",
+      src: "/projects/appointment-reminder-system/03-agenda-v2.png",
       title: { en: "The appointments source", fr: "La source des rendez-vous" },
       caption: {
         en: "A simple sheet or calendar feeds the whole flow: cancelled slots are skipped, no one is reminded twice.",
@@ -143,7 +143,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("payment-reminder-engine", "02-relance-client"),
+      src: bi("payment-reminder-engine", "02-relance-client-v2"),
       title: { en: "The reminder received", fr: "La relance reçue" },
       caption: {
         en: "A polite reminder with the invoice and amount, friendly, firm, or urgent depending on the delay, in the client's language.",
@@ -151,7 +151,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: "/projects/payment-reminder-engine/03-factures.png",
+      src: "/projects/payment-reminder-engine/03-factures-v2.png",
       title: { en: "The invoices source", fr: "La source des factures" },
       caption: {
         en: "Invoice tracking drives the tone automatically: you get paid faster without the awkward chasing.",
@@ -169,7 +169,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("review-reputation-automation", "02-demande-avis"),
+      src: bi("review-reputation-automation", "02-demande-avis-v2"),
       title: { en: "The review request", fr: "La demande d'avis" },
       caption: {
         en: "The happy customer gets a one-click invitation to leave a Google review.",
@@ -177,7 +177,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("review-reputation-automation", "03-alerte-mecontent"),
+      src: bi("review-reputation-automation", "03-alerte-mecontent-v2"),
       title: { en: "Catching an unhappy customer", fr: "L'interception d'un mécontent" },
       caption: {
         en: "The unhappy customer is caught privately and the owner is alerted, before it becomes a public 1-star.",
@@ -195,7 +195,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("ai-voice-calling-assistant", "02-analyse"),
+      src: bi("ai-voice-calling-assistant", "02-analyse-v2"),
       title: { en: "The call analysis", fr: "L'analyse de l'appel" },
       caption: {
         en: "The AI extracts the outcome, sentiment, a summary and the recommended next action.",
@@ -203,7 +203,7 @@ export const galleries: Record<string, GalleryStep[]> = {
       },
     },
     {
-      src: bi("ai-voice-calling-assistant", "03-notif-suivi"),
+      src: bi("ai-voice-calling-assistant", "03-notif-suivi-v2"),
       title: { en: "The follow-up notification", fr: "La notification de suivi" },
       caption: {
         en: "The business is notified whenever a call-back is needed, so nothing slips through.",

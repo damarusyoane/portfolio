@@ -19,26 +19,26 @@ export function LeadMagnet() {
     <section id="guide" className="relative scroll-mt-20 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <div className="grid items-center gap-8 rounded-[2rem] bg-accent p-7 text-[#161512] sm:p-10 md:grid-cols-[auto_1fr_1fr] md:gap-10">
+          <div className="grid items-center gap-8 rounded-[var(--radius-card)] bg-accent p-7 text-[#0c1f18] sm:p-10 md:grid-cols-[auto_1fr_1fr] md:gap-10">
             {/* Mini cover of the PDF */}
             <div
-              className="hidden h-40 w-32 rotate-[-4deg] flex-col justify-between rounded-md bg-[#f6f4ef] p-3.5 shadow-[0_18px_30px_-12px_rgba(22,21,18,0.45)] md:flex"
+              className="hidden h-40 w-32 rotate-[-4deg] flex-col justify-between rounded-md bg-[#0c3a2b] p-3.5 shadow-[0_18px_30px_-12px_rgba(12,31,24,0.5)] md:flex"
               aria-hidden
             >
-              <span className="h-1.5 w-8 rounded-full bg-[#e4572e]" />
-              <span className="font-display text-[17px] leading-tight text-[#161512]">
+              <span className="h-1.5 w-8 rounded-full bg-[#ffd23f]" />
+              <span className="font-display text-[17px] font-extrabold leading-tight tracking-[-0.03em] text-white">
                 {t("coverTop")}
                 <br />
                 {t("coverBottom")}
               </span>
-              <span className="text-[9px] font-semibold uppercase tracking-wider text-[#5c584f]">
+              <span className="text-[9px] font-semibold uppercase tracking-wider text-[#b9d1c5]">
                 Ottomate
               </span>
             </div>
 
             <div>
-              <p className="text-[13px] font-semibold">{t("badge")}</p>
-              <h2 className="mt-2 font-display text-[1.75rem] font-normal leading-[1.1] tracking-[-0.015em] sm:text-[2.1rem]">
+              <p className="text-[13px] font-bold uppercase tracking-[0.12em]">{t("badge")}</p>
+              <h2 className="mt-2 font-display text-[1.85rem] font-extrabold leading-[1.05] tracking-[-0.035em] sm:text-[2.2rem]">
                 {t("title")}
               </h2>
               <p className="mt-3 text-[15px] leading-relaxed">
@@ -59,7 +59,7 @@ export function LeadMagnet() {
 
             <div>
               {state.status === "success" ? (
-                <div className="rounded-2xl bg-[#f6f4ef] p-6 text-center">
+                <div className="rounded-xl bg-white p-6 text-center">
                   <p className="text-[15px] font-medium">{t("successTitle")}</p>
                   <a
                     href={GUIDE}
@@ -92,7 +92,7 @@ export function LeadMagnet() {
                     name="email"
                     required
                     placeholder={t("email")}
-                    className="h-12 w-full rounded-full border-0 bg-[#f6f4ef] px-5 text-[15px] text-[#161512] placeholder:text-[#6f6a62] focus:outline-none focus:ring-2 focus:ring-[#161512]"
+                    className="h-12 w-full rounded-xl border-0 bg-white px-5 text-[15px] text-[#0c1f18] placeholder:text-[#5f7168] focus:outline-none focus:ring-2 focus:ring-[#0c3a2b]"
                   />
                   {state.status === "error" && (
                     <p className="text-sm font-medium">{t("error")}</p>
@@ -100,7 +100,7 @@ export function LeadMagnet() {
                   <button
                     type="submit"
                     disabled={pending}
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#161512] text-[15px] font-medium text-[#f6f4ef] transition-colors hover:bg-[#2a2823] disabled:opacity-70"
+                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#0c3a2b] text-[15px] font-semibold text-white transition-colors hover:bg-[#124b38] disabled:opacity-70"
                   >
                     {pending ? (
                       <>
